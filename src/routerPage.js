@@ -7,8 +7,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function RouterPage() {
   return (
     <Router>
+      <div>Header</div>
       <Route path="/" exact component={Login} />
       <Route path="/homePage" component={HomePage} />
+      <div>Footer</div>
     </Router>
   );
 }

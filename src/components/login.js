@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 
 import './login.css';
 
@@ -42,10 +44,10 @@ class Login extends Component {
             <div className="wrapper">
                 <div className="formContent">
                     <h3>Login</h3>
-                    <span class="glyphicon glyphicon-envelope"></span>
-                    <hr/>
+                    <hr />
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
+                            <FontAwesomeIcon icon={faUser} size="2x"/>
                             <input type="text"
                                 placeholder="Username"
                                 value={this.state.username}
@@ -53,7 +55,7 @@ class Login extends Component {
                             />
                         </div>
                         <div className="form-group">
-                        <span class="glyphicon glyphicon-minus"></span><br/>
+                        <FontAwesomeIcon icon={faLock} size="2x"/>
                             <input type="password"
                                 placeholder="Password"
                                 value={this.state.password}
@@ -66,7 +68,7 @@ class Login extends Component {
                         />
                     </form>
                     <div className="formFooter">
-                        Don't have an account? <a href="#">Sign Up</a> <br/>
+                        Don't have an account? <a href="#">Sign Up</a> <br />
                         <a href="#">Forgot Password?</a>
                     </div>
                 </div>
