@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import './registration.css';
+import './registeration.css';
 
 class Registration extends Component {
     constructor(props) {
