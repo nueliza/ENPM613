@@ -1,0 +1,16 @@
+.userInfo{
+    float:right;
+    display: inline;
+}
+h3{
+    display: inline;
+}
+.modules{
+    display: inline;
+    margin-left: 30px;
+    border: 2px solid purple;
+    border-radius: 5px;
+}
+.dashboard_header{
+    
+}

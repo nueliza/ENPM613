@@ -9,12 +9,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function RouterPage() {
   return (
     <Router>
-      <div>Header</div>
       <Route path="/" exact component={Welcome} />
       <Route path="/login" component={Login}/>
       <Route path="/registration" component={Registeration}/>
       <Route path="/dashboard" component={Dashboard}/>
-      <div>Footer</div>
     </Router>
   );
 }
