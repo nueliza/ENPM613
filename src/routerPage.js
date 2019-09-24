@@ -1,15 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/login";
-import HomePage from "./components/homePage";
+import Welcome from "./components/welcome";
+import Dashboard from "./components/dashboard";
+import Registeration from "./components/registration";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function RouterPage() {
   return (
     <Router>
       <div>Header</div>
-      <Route path="/" exact component={Login} />
-      <Route path="/homePage" component={HomePage} />
+      <Route path="/" exact component={Welcome} />
+      <Route path="/login" component={Login}/>
+      <Route path="/registration" component={Registeration}/>
+      <Route path="/dashboard" component={Dashboard}/>
       <div>Footer</div>
     </Router>
   );

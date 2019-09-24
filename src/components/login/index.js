@@ -37,7 +37,7 @@ class Login extends Component {
         })
         console.log(`${this.state.username}-${this.state.password}`);
         //Call API to check whether login is sucessfull and update store.
-        this.props.history.push("/homePage");
+        this.props.history.push("/dashboard");
     }
     render() {
         return (
