@@ -46,5 +46,8 @@ visibility: visible;
 .mySepecialClass {
     background: black!important;
     font-size: 10px !important;
-  }
+}
+.cursor_pointer{
+    cursor: pointer;
+}
 

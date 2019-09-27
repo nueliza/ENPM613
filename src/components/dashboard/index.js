@@ -24,7 +24,7 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             isSideBarOpened: false,
-            selectedTab: 'Dashboard'
+            selectedTab: 'Dashboard',
         }
 
     }
@@ -44,7 +44,7 @@ class Dashboard extends Component {
                                     }
                                 }}
                             >
-                                <Link to="/dashboard"><img className="mainLogo" src={logo} /></Link>
+                                <Link onClick={() =>this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
                                 <SideNav.Nav defaultSelected="Dashboard">
                                     <NavItem eventKey="Dashboard">
@@ -129,10 +129,11 @@ class Dashboard extends Component {
                             </SideNav>
                             <main className={this.state.isSideBarOpened ? "dashboard_content_expanded" : "dashboard_content_collapsed"}>
                                 <div className="dashboard_header">
-                                    <h3> {this.props.location.state.selectedModule} > <FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3>
+                                    <h3 className="cursor_pointer" onClick={()=>this.props.history.push("/modules")}>{this.props.location.state.selectedModule} ></h3>
+                                    <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3>
                                     <div className="userInfo">
                                         <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br />
-                                        <Link to="/">Sign out</Link>
+                                        <Link onClick={() =>this.props.history.push("/") }>Sign out</Link>
                                     </div>
                                 </div>
                                 <hr />

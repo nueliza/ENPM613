@@ -69,7 +69,6 @@ class Login extends Component {
                     </form>
                     <div className="formFooter">
                         Don't have an account? <a href="#">Sign Up</a> <br />
-                        <a href="#">Forgot Password?</a>
                     </div>
                 </div>
 
