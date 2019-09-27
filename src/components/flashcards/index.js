@@ -10,7 +10,6 @@ class Flashcards extends Component {
     render() {
         return (
             <Fragment>
-                 <h3>Flashcards </h3><hr/>
             </Fragment>)
     }
 }

@@ -10,7 +10,6 @@ class Students extends Component {
     render() {
         return (
             <Fragment>
-                 <h3>Students </h3><hr/>
             </Fragment>)
     }
 }

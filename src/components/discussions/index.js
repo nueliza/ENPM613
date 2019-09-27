@@ -10,7 +10,6 @@ class Discussions extends Component {
     render() {
         return (
             <Fragment>
-                <h3>Discussions</h3> <hr/>
             </Fragment>)
     }
 }

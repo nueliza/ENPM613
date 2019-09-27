@@ -15,14 +15,7 @@ class Modules extends Component {
     render() {
         return (
             <Fragment>
-                <div className="dashboard_header">
-                    <h3>Dashboard</h3>
-                    <div className="userInfo">
-                        <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br />
-                        <Link to="/">Sign out</Link>
-                    </div>
-                </div>
-                <hr />
+               
                 <div className="modules">
                     <div className="card">
                         <img className="card-img" src={math} alt="Math" />

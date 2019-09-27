@@ -1,5 +1,18 @@
+.dashboard_content_collapsed{
+    position: relative;
+    padding: 0 20px;
+    margin-left: 64px;
+}
+.dashboard_content_expanded{
+    margin-left: 240px;
+    padding: 0 20px;
+}
 .dashboard_wrapper{
-    margin-left: 75px;
+    height: 100vh;
+}
+.dashboard_header{
+    margin-top:10px;
+    display: flex;    
 }
 .mainLogo{
     display: block;

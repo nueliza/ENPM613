@@ -10,7 +10,6 @@ class Grades extends Component {
     render() {
         return (
             <Fragment>
-                 <h3>Grades </h3><hr/>
             </Fragment>)
     }
 }
