@@ -132,7 +132,7 @@ class Dashboard extends Component {
                                     <h3 className="cursor_pointer" onClick={()=>this.props.history.push("/modules")}>{this.props.location.state.selectedModule} ></h3>
                                     <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3>
                                     <div className="userInfo">
-                                        <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br />
+                                        <span>Username | </span><span>Last logged In:</span> <br />
                                         <Link onClick={() =>this.props.history.push("/") }>Sign out</Link>
                                     </div>
                                 </div>

@@ -18,7 +18,7 @@ class Modules extends Component {
                 <div className="dashboard_header">
                     <h3> Main dashboard </h3>
                     <div className="userInfo">
-                        <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br />
+                        <span>Username | </span><span>Last logged In:</span> <br />
                         <Link to="/">Sign out</Link>
                     </div>
                 </div>

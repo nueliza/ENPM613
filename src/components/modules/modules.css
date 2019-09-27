@@ -2,6 +2,7 @@
     margin-left: auto;
     margin-right: 20px;
 }
+
 .modules{
     display: flex;
     border-radius: 5px;
@@ -20,3 +21,23 @@
 .card-img{
     height: 200px !important;
 }
+
+@media (max-width: 900px) {
+    .modules {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .card{
+        width: 80%;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+    .userInfo span{
+        display: none;
+    }
+    .userInfo a{
+        float: right;
+        margin-top: -20px;
+    }
+  }

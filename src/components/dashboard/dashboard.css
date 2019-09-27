@@ -12,7 +12,8 @@
 }
 .dashboard_header{
     margin-top:10px;
-    display: flex;    
+    display: flex;  
+    margin-left:10px;  
 }
 .mainLogo{
     display: block;
@@ -50,4 +51,22 @@ visibility: visible;
 .cursor_pointer{
     cursor: pointer;
 }
+.userInfo{
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+@media (max-width: 900px) {
+    .dashboard_header{
+        margin-left:10px;  
+    }
+    .userInfo span{
+        display: none;
+    }
+    .userInfo a{
+        float: right;
+        margin-top: -20px;
+    }
+}
+
 
