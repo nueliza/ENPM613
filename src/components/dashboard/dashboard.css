@@ -10,3 +10,28 @@
 .sidenav---sidenav---_2tBP{
     background: purple !important;
 }
+
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+  
+.tool:hover .tooltiptext {
+visibility: visible;
+}
+
+.mySepecialClass {
+    background: black!important;
+    font-size: 10px !important;
+  }
+

@@ -1,16 +1,23 @@
 .userInfo{
-    float:right;
-    display: inline;
-}
-h3{
-    display: inline;
+    margin-left: auto;
+    margin-right: 20px;
 }
 .modules{
-    display: inline;
+    display: flex;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+.card{
     margin-left: 30px;
     border: 2px solid purple;
     border-radius: 5px;
+    width: 25%;
+    box-shadow: 5px 5px 5px #888888;
 }
 .dashboard_header{
-    
+    margin-top:10px;
+    display: flex;    
+}
+.card-img{
+    height: 200px !important;
 }

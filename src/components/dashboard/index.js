@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ReactTooltip from 'react-tooltip';
 
 import './dashboard.css';
 import logo from "./images/logo.jpg";
@@ -15,7 +16,7 @@ import Students from "../students";
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBook, faFolder, faUserGraduate, faUserEdit, faStar, faComment, faLayerGroup, faBackward } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faFolder, faUserGraduate, faUserEdit, faStar, faComment, faLayerGroup, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class Dashboard extends Component {
 
 
     }
+    
     render() {
         return (
             <Router>
@@ -41,7 +43,11 @@ class Dashboard extends Component {
                             <SideNav.Nav defaultSelected="dashboard">
                                 <NavItem eventKey="dashboard">
                                     <NavIcon>
-                                        <FontAwesomeIcon icon={faBook} size="2x" />
+                                        <FontAwesomeIcon icon={faBook} data-tip data-for='modules' size="2x" />
+                                        <ReactTooltip id='modules' type='info'class='mySepecialClass' >
+                                            <span>All Modules</span>
+                                        </ReactTooltip>
+
                                     </NavIcon>
                                     <NavText>
                                         All Modules
@@ -49,7 +55,10 @@ class Dashboard extends Component {
                                 </NavItem>
                                 <NavItem eventKey="files">
                                     <NavIcon>
-                                        <FontAwesomeIcon icon={faFolder} size="2x" />
+                                        <FontAwesomeIcon icon={faFolder} data-tip data-for='files' size="2x" />
+                                        <ReactTooltip id='files' type='info'class='mySepecialClass'>
+                                            <span>Files</span>
+                                        </ReactTooltip>
                                     </NavIcon>
                                     <NavText>
                                         Files
@@ -57,7 +66,10 @@ class Dashboard extends Component {
                                 </NavItem>
                                 <NavItem eventKey="exams">
                                     <NavIcon>
-                                        <FontAwesomeIcon icon={faUserEdit} size="2x" />
+                                        <FontAwesomeIcon icon={faUserEdit}  data-tip data-for='exams' size="2x" />
+                                        <ReactTooltip id='exams' type='info'class='mySepecialClass'>
+                                            <span>Exams</span>
+                                        </ReactTooltip>
                                     </NavIcon>
                                     <NavText>
                                         Exams
@@ -65,7 +77,10 @@ class Dashboard extends Component {
                                 </NavItem>
                                 <NavItem eventKey="grades">
                                     <NavIcon>
-                                        <FontAwesomeIcon icon={faStar} size="2x" />
+                                        <FontAwesomeIcon icon={faChartLine}  data-tip data-for='grades' size="2x" />
+                                        <ReactTooltip id='grades' type='info'class='mySepecialClass'>
+                                            <span>Grades</span>
+                                        </ReactTooltip>
                                     </NavIcon>
                                     <NavText>
                                         Grades
@@ -73,7 +88,10 @@ class Dashboard extends Component {
                                 </NavItem>
                                 <NavItem eventKey="students">
                                     <NavIcon>
-                                        <FontAwesomeIcon icon={faUserGraduate} size="2x" />
+                                        <FontAwesomeIcon icon={faUserGraduate} data-tip data-for='students' size="2x" />
+                                        <ReactTooltip id='students' type='info'class='mySepecialClass'>
+                                            <span>Students</span>
+                                        </ReactTooltip>
                                     </NavIcon>
                                     <NavText>
                                         Students
@@ -81,7 +99,10 @@ class Dashboard extends Component {
                                 </NavItem>
                                 <NavItem eventKey="flashcards">
                                     <NavIcon>
-                                        <FontAwesomeIcon icon={faLayerGroup} size="2x" />
+                                        <FontAwesomeIcon icon={faLayerGroup} data-tip data-for='flashcards' size="2x" />
+                                        <ReactTooltip id='flashcards' type='info'class='mySepecialClass'>
+                                            <span>Flashcards</span>
+                                        </ReactTooltip>
                                     </NavIcon>
                                     <NavText>
                                         Flashcards
@@ -89,7 +110,10 @@ class Dashboard extends Component {
                                 </NavItem>
                                 <NavItem eventKey="discussions">
                                     <NavIcon>
-                                        <FontAwesomeIcon icon={faComment} size="2x" />
+                                        <FontAwesomeIcon icon={faComment} data-tip data-for='discussions' size="2x" />
+                                        <ReactTooltip id='discussions' type='info' class='mySepecialClass'>
+                                            <span>Discussions</span>
+                                        </ReactTooltip>
                                     </NavIcon>
                                     <NavText>
                                         Discussions

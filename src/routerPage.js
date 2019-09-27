@@ -4,7 +4,8 @@ import Login from "./components/login";
 import Welcome from "./components/welcome";
 import Dashboard from "./components/dashboard";
 import Registeration from "./components/registration";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Files from "./components/files";
+
 
 function RouterPage() {
   return (
@@ -13,6 +14,7 @@ function RouterPage() {
       <Route path="/login" component={Login}/>
       <Route path="/registration" component={Registeration}/>
       <Route path="/dashboard" component={Dashboard}/>
+      <Route path="/files" component={props => <Files />} />
     </Router>
   );
 }

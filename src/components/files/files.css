@@ -1,0 +1,23 @@
+.list-group{
+    width: 50% !important;
+}
+.list-group-item{
+    box-shadow: 5px 5px 5px #a3a3a3 !important;
+    margin-bottom: 2px!important;
+}
+.list-group .btn{
+    float:right;
+}
+.tag{
+    width: 20px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+.newTag{
+    background-color: #28a745;
+}
+
+.notPublishedTag{
+    background-color: #6c757d;   
+}
