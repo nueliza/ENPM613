@@ -1,4 +1,4 @@
-import { faBook, faFolder, faUserGraduate, faUserEdit, faBan, faComment, faLayerGroup, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faFolder, faUserGraduate, faUserEdit, faBan, faComment, faLayerGroup, faChartLine, faCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 export const iconMapping = {
@@ -11,5 +11,5 @@ export const iconMapping = {
     "Flashcards":faLayerGroup,
     "Discussions":faComment,
     "NotPublished": faBan,
-    "New": ""
+    "Circle": faCircle
 };

@@ -6,6 +6,7 @@ import Modules from "./components/modules";
 import Registeration from "./components/registration";
 import Files from "./components/files";
 import Dashboard from "./components/dashboard";
+import Flashcards from "./components/flashcards";
 
 function RouterPage() {
   return (
@@ -16,6 +17,7 @@ function RouterPage() {
       <Route path="/modules" component={Modules}/>
       <Route path="/dashboard" component={Dashboard}/>
       <Route path="/files" component={props => <Files />} />
+      <Route path="/flashcards" component={props => <Flashcards />} />
     </Router>
   );
 }

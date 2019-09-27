@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-
+import CardContainer from './cardConatiner';
 
 class Flashcards extends Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class Flashcards extends Component {
     render() {
         return (
             <Fragment>
+                <CardContainer />
             </Fragment>)
     }
 }
