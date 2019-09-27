@@ -21,3 +21,9 @@
 .notPublishedTag{
     background-color: #6c757d;   
 }
+.dashboard_body{
+ margin-left: 50px;
+}
+.dashboard_subSection{
+    margin-bottom: 30px;
+}

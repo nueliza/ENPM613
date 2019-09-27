@@ -18,39 +18,48 @@ class Modules extends Component {
                 <div className="dashboard_header">
                     <h3>Dashboard</h3>
                     <div className="userInfo">
-                        <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br/>
-                        <Link to="/">Sign out</Link> 
+                        <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br />
+                        <Link to="/">Sign out</Link>
                     </div>
                 </div>
                 <hr />
                 <div className="modules">
                     <div className="card">
                         <img className="card-img" src={math} alt="Math" />
+                        <div className="progress">
+                            <div className="progress-bar" style={{width: '25%', backgroundColor: 'purple'}}><b>25%</b></div>
+                        </div>
                         <div className="card-body">
                             <h5 className="card-title">Math</h5>
-                                <ul className="card-text">
-                                    <li>Algebra</li>
-                                    <li>Calculus</li>
-                                </ul>
+                            <ul className="card-text">
+                                <li>Algebra</li>
+                                <li>Calculus</li>
+                            </ul>
                         </div>
                     </div>
                     <div className="card">
                         <img className="card-img" src={english} alt="English" />
+                        <div className="progress">
+                            <div className="progress-bar" style={{width: '50%', backgroundColor: 'purple'}}><b>50%</b></div>
+                        </div>
                         <div className="card-body">
                             <h5 className="card-title">English</h5>
                             <ul className="card-text">
-                                    <li>Grammar</li>
-                                    <li>Vocabulary</li>
+                                <li>Grammar</li>
+                                <li>Vocabulary</li>
                             </ul>
                         </div>
                     </div>
                     <div className="card">
                         <img className="card-img" src={writing} alt="Writing" />
+                        <div className="progress">
+                            <div className="progress-bar" style={{width: '75%', backgroundColor: 'purple'}}><b>75%</b></div>
+                        </div>
                         <div className="card-body">
                             <h5 className="card-title">Essay Writing</h5>
                             <ul className="card-text">
-                                    <li>Formats</li>
-                                    <li>Blah Blah</li>
+                                <li>Formats</li>
+                                <li>Blah Blah</li>
                             </ul>
                         </div>
                     </div>
