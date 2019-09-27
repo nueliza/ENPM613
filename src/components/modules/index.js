@@ -15,12 +15,24 @@ class Modules extends Component {
     render() {
         return (
             <Fragment>
-               
+                <div className="dashboard_header">
+                    <h3> Main dashboard </h3>
+                    <div className="userInfo">
+                        <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br />
+                        <Link to="/">Sign out</Link>
+                    </div>
+                </div>
+                <hr />
                 <div className="modules">
-                    <div className="card">
+                    <div className="card" onClick={() => {
+                        this.props.history.push({
+                            pathname: '/dashboard',
+                            state: { selectedModule: 'Math' }
+                        })
+                    }}>
                         <img className="card-img" src={math} alt="Math" />
                         <div className="progress">
-                            <div className="progress-bar" style={{width: '25%', backgroundColor: 'purple'}}><b>25%</b></div>
+                            <div className="progress-bar" style={{ width: '25%', backgroundColor: 'purple' }}><b>25%</b></div>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">Math</h5>
@@ -30,10 +42,15 @@ class Modules extends Component {
                             </ul>
                         </div>
                     </div>
-                    <div className="card">
+                    <div className="card" onClick={() => {
+                        this.props.history.push({
+                            pathname: '/dashboard',
+                            state: { selectedModule: 'English' }
+                        })
+                    }}>
                         <img className="card-img" src={english} alt="English" />
                         <div className="progress">
-                            <div className="progress-bar" style={{width: '50%', backgroundColor: 'purple'}}><b>50%</b></div>
+                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'purple' }}><b>50%</b></div>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">English</h5>
@@ -43,10 +60,15 @@ class Modules extends Component {
                             </ul>
                         </div>
                     </div>
-                    <div className="card">
+                    <div className="card" onClick={() => {
+                        this.props.history.push({
+                            pathname: '/dashboard',
+                            state: { selectedModule: 'Essay Writing' }
+                        })
+                    }}>
                         <img className="card-img" src={writing} alt="Writing" />
                         <div className="progress">
-                            <div className="progress-bar" style={{width: '75%', backgroundColor: 'purple'}}><b>75%</b></div>
+                            <div className="progress-bar" style={{ width: '75%', backgroundColor: 'purple' }}><b>75%</b></div>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">Essay Writing</h5>

@@ -10,9 +10,9 @@ import Exams from "../exams";
 import Files from "../files";
 import Flashcards from "../flashcards";
 import Grades from "../grades";
-import Modules from "../modules";
+import ModuleDashboard from "../dashboard/moduleDashboard";
 import Students from "../students";
-import {iconMapping} from "../utils/iconsMapping.js";
+import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -129,8 +129,7 @@ class Dashboard extends Component {
                             </SideNav>
                             <main className={this.state.isSideBarOpened ? "dashboard_content_expanded" : "dashboard_content_collapsed"}>
                                 <div className="dashboard_header">
-                                    {console.log(this.state.selectedTab)}
-                                <FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="2x" /> &nbsp;<h3>{this.state.selectedTab}</h3>
+                                    <h3> {this.props.location.state.selectedModule} > <FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3>
                                     <div className="userInfo">
                                         <span>Username</span>&nbsp;|&nbsp;<span>Last logged In:</span> <br />
                                         <Link to="/">Sign out</Link>
@@ -142,7 +141,7 @@ class Dashboard extends Component {
                                 <Route path="/students" component={props => <Students />} />
                                 <Route path="/exams" component={props => <Exams />} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => <Modules />} />
+                                <Route path="/dashboard" component={props => <ModuleDashboard />} />
                                 <Route path="/files" component={props => <Files />} />
                             </main>
                         </div>
