@@ -9,6 +9,7 @@ import Dashboard from "./components/dashboard";
 import Flashcards from "./components/flashcards";
 
 function RouterPage() {
+    document.title = 'Get SAT Pro';
   return (
     <Router>
       <Route path="/" exact component={Welcome} />

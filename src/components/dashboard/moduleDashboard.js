@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from "react-router-dom";
 
 
 class ModuleDashboard extends Component {
@@ -10,8 +11,23 @@ class ModuleDashboard extends Component {
     render() {
         return (
             <Fragment>
-                Module Dashboard
-                List few things about the module
+                <div className="modules">
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Algebra</h5>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Calculus</h5>
+                        </div>
+                    </div>
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Something</h5>
+                        </div>
+                    </div>
+                </div>
             </Fragment>)
     }
 }

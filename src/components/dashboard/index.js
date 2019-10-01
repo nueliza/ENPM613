@@ -46,23 +46,23 @@ class Dashboard extends Component {
                             >
                                 <Link onClick={() =>this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
-                                <SideNav.Nav defaultSelected="Dashboard">
-                                    <NavItem eventKey="Dashboard">
+                                <SideNav.Nav defaultSelected="Flashcards">
+                                    <NavItem eventKey="Flashcards">
                                         <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x" />
-                                            <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
-                                                <span>All Modules</span>
+                                            <FontAwesomeIcon icon={iconMapping["Flashcards"]} data-tip data-for='Modules' size="2x" />
+                                            <ReactTooltip id='Modules' type='info' class='tooltips' >
+                                                <span>Flashcards</span>
                                             </ReactTooltip>
 
                                         </NavIcon>
                                         <NavText>
-                                            All Modules
+                                            Flashcards
                                     </NavText>
                                     </NavItem>
                                     <NavItem eventKey="Files">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Files"]} data-tip data-for='Files' size="2x" />
-                                            <ReactTooltip id='Files' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Files' type='info' class='tooltips'>
                                                 <span>Files</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -73,7 +73,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Exams">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Exams"]} data-tip data-for='Exams' size="2x" />
-                                            <ReactTooltip id='Exams' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Exams' type='info' class='tooltips'>
                                                 <span>Exams</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -84,7 +84,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Grades">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
-                                            <ReactTooltip id='Grades' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Grades' type='info' class='tooltips'>
                                                 <span>Grades</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -95,7 +95,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Students">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
-                                            <ReactTooltip id='Students' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Students' type='info' class='tooltips'>
                                                 <span>Students</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -103,21 +103,10 @@ class Dashboard extends Component {
                                             Students
                                     </NavText>
                                     </NavItem>
-                                    <NavItem eventKey="Flashcards">
-                                        <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Flashcards"]} data-tip data-for='Flashcards' size="2x" />
-                                            <ReactTooltip id='Flashcards' type='info' class='mySepecialClass'>
-                                                <span>Flashcards</span>
-                                            </ReactTooltip>
-                                        </NavIcon>
-                                        <NavText>
-                                            Flashcards
-                                    </NavText>
-                                    </NavItem>
                                     <NavItem eventKey="Discussions">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Discussions"]} data-tip data-for='Discussions' size="2x" />
-                                            <ReactTooltip id='Discussions' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Discussions' type='info' class='tooltips'>
                                                 <span>Discussions</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -142,7 +131,7 @@ class Dashboard extends Component {
                                 <Route path="/students" component={props => <Students />} />
                                 <Route path="/exams" component={props => <Exams />} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => <ModuleDashboard />} />
+                                <Route path="/dashboard" component={props => <ModuleDashboard selectedModule={this.props.location.state.selectedModule}/>} />
                                 <Route path="/files" component={props => <Files />} />
                             </main>
                         </div>
