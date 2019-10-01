@@ -46,8 +46,8 @@ class Dashboard extends Component {
                             >
                                 <Link onClick={() =>this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
-                                <SideNav.Nav defaultSelected="Flashcards">
-                                    <NavItem eventKey="Flashcards">
+                                <SideNav.Nav defaultSelected="Dashboard">
+                                    <NavItem eventKey="Dashboard">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Flashcards"]} data-tip data-for='Modules' size="2x" />
                                             <ReactTooltip id='Modules' type='info' class='tooltips' >
