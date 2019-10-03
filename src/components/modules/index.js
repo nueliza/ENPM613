@@ -7,11 +7,6 @@ import writing from "./images/writing.jpg";
 
 import "./modules.css"
 class Modules extends Component {
-    constructor(props) {
-        super(props);
-
-
-    }
     render() {
         return (
             <Fragment>

@@ -30,25 +30,26 @@ class CardContainer extends Component {
 
     showNextCard() {
         if ((this.state.cardNumber + 1) !== this.state.cards.size) {
-            this.setState({ cardNumber: this.state.cardNumber += 1 });
+            this.setState({ cardNumber: this.state.cardNumber + 1 });
         }
     }
 
     showPrevCard() {
         if (this.state.cardNumber !== 0) {
-            this.setState({ cardNumber: this.state.cardNumber -= 1 });
+            this.setState({ cardNumber: this.state.cardNumber - 1 });
         }
     }
 
     generateDots() {
         const times = this.state.cards.size;
         let arr = [];
-        _.times(times).forEach((num) => {
+        _.times(times).forEach((num, index) => {
             const dotClass = num === this.state.cardNumber ? 'active' : '';
             arr.push(
                 <FontAwesomeIcon icon={iconMapping["Circle"]} 
                     className={`card-container__dot fa fa-circle ${dotClass}`}
                     onClick={() => this.setState({ cardNumber: num })} size="1x" 
+                    key ={index}
                     />
         )
         });
@@ -57,9 +58,10 @@ class CardContainer extends Component {
 
     generateCards() {
         const cards = this.state.cards;
-        const cardsList = cards.map((card) => {
+        const cardsList = cards.map((card, index) => {
             return (
                 <Card
+                    key={index}
                     frontContent={card.get('word')}
                     backContent={card.get('description')}
                     showNextCard={this.boundShowNextCard}

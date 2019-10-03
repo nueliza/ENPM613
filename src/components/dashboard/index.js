@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactTooltip from 'react-tooltip';
 
@@ -10,13 +10,13 @@ import Exams from "../exams";
 import Files from "../files";
 import Flashcards from "../flashcards";
 import Grades from "../grades";
-import ModuleDashboard from "../dashboard/moduleDashboard";
+import FlashcardSet from "./flashcardSet";
 import Students from "../students";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 class Dashboard extends Component {
@@ -33,7 +33,6 @@ class Dashboard extends Component {
         return (
             <Router>
                 <Route render={({ location, history }) => (
-                    <React.Fragment>
                         <div className="dashboard_wrapper">
                             <SideNav
                                 onSelect={(selected) => {
@@ -44,7 +43,7 @@ class Dashboard extends Component {
                                     }
                                 }}
                             >
-                                <Link onClick={() =>this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
+                                <img className="mainLogo" alt="Logo" src={logo} onClick={() =>this.props.history.push("/modules")}/>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
                                 <SideNav.Nav defaultSelected="Dashboard">
                                     <NavItem eventKey="Dashboard">
@@ -131,11 +130,10 @@ class Dashboard extends Component {
                                 <Route path="/students" component={props => <Students />} />
                                 <Route path="/exams" component={props => <Exams />} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => <ModuleDashboard selectedModule={this.props.location.state.selectedModule}/>} />
+                                <Route path="/dashboard" component={props => <FlashcardSet/>} />
                                 <Route path="/files" component={props => <Files />} />
                             </main>
                         </div>
-                    </React.Fragment>
                 )}
                 />
             </Router>)

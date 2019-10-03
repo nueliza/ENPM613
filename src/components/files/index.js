@@ -4,11 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {iconMapping} from "../utils/iconsMapping.js";
 import "./files.css"
 class Files extends Component {
-    constructor(props) {
-        super(props);
-
-
-    }
     render() {
         return (
             <Fragment>
