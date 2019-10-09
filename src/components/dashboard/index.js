@@ -7,6 +7,7 @@ import logo from "./images/logo.jpg";
 
 import Discussions from "../discussions";
 import Exams from "../exams";
+import CreateExam from "../exams/createExam";
 import Files from "../files";
 import Flashcards from "../flashcards";
 import Grades from "../grades";
@@ -128,9 +129,10 @@ class Dashboard extends Component {
                                 <Route path="/discussions" component={props => <Discussions />} />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
-                                <Route path="/exams" component={props => <Exams />} />
+                                <Route path="/exams" component={props => <Exams {...props}/>} />
+                                <Route path="/CreateExam" component={props => <CreateExam {...props}/>} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => <FlashcardSet/>} />
+                                <Route path="/dashboard" component={props => <FlashcardSet {...props}/>} />
                                 <Route path="/files" component={props => <Files />} />
                             </main>
                         </div>

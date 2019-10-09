@@ -7,6 +7,7 @@ import Registeration from "./components/registration";
 import Files from "./components/files";
 import Dashboard from "./components/dashboard";
 import Flashcards from "./components/flashcards";
+import CreateExam from "./components/exams/createExam";
 
 function RouterPage() {
     document.title = 'Get SAT Pro';
@@ -18,6 +19,7 @@ function RouterPage() {
       <Route path="/modules" component={Modules}/>
       <Route path="/dashboard" component={Dashboard}/>
       <Route path="/files" component={props => <Files />} />
+      <Route path="/CreateExam" component={props => <CreateExam {...props}/>} />
       <Route path="/flashcards" component={props => <Flashcards />} />
     </Router>
   );

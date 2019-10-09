@@ -10,7 +10,6 @@ class FlashcardSet extends Component {
         };
     }
     render() {
-        console.log(this.props.location.state.selectedModule);
         return (
             <Fragment>
                 <div className="modules">
