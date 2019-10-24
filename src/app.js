@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from "./components/login";
+import Login from "./containers/loginContainer";
 import Welcome from "./components/welcome";
 import Modules from "./components/modules";
 import Registeration from "./components/registration";
@@ -8,7 +8,7 @@ import Files from "./components/files";
 import Dashboard from "./components/dashboard";
 import Flashcards from "./components/flashcards";
 
-function RouterPage() {
+function App() {
   return (
     <Router>
       <Route path="/" exact component={Welcome} />
@@ -22,4 +22,4 @@ function RouterPage() {
   );
 }
 
-export default RouterPage;
+export default App;

@@ -37,11 +37,15 @@ class Login extends Component {
         })
         console.log(`${this.state.username}-${this.state.password}`);
         //Call API to check whether login is sucessfull and update store.
+
+        console.log('The Props', this.props);
+        this.props.setData("God is Love");
         this.props.history.push("/modules");
     }
     render() {
         return (
             <div className="wrapper">
+                data : {this.props.data}
                 <div className="formContent">
                     <h3>Login</h3>
                     <hr />
