@@ -78,6 +78,7 @@ class Modules extends Component {
                             </ul>
                         </div>
                     </div>
+                    data: {this.props.data}
                 </div>
 
             </Fragment>)
