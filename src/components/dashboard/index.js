@@ -30,6 +30,10 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log("My Props,", this.props.location)
+        const isTutor = this.props.location.state.isTutor;
+        const userInfo = this.props.location.state.userInfo;
+
         return (
             <Router>
                 <Route render={({ location, history }) => (
@@ -44,12 +48,12 @@ class Dashboard extends Component {
                                     }
                                 }}
                             >
-                                <Link onClick={() =>this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
+                                <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
                                 <SideNav.Nav defaultSelected="Dashboard">
                                     <NavItem eventKey="Dashboard">
                                         <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x">Flashcards</FontAwesomeIcon> 
+                                            <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x">Flashcards</FontAwesomeIcon>
                                             <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
                                                 <span>All Modules</span>
                                             </ReactTooltip>
@@ -93,7 +97,8 @@ class Dashboard extends Component {
                                             Grades
                                     </NavText>
                                     </NavItem>
-                                    <NavItem eventKey="Students">
+                                    {isTutor? 
+                                        <NavItem eventKey="Students">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
                                             <ReactTooltip id='Students' type='info' class='mySepecialClass'>
@@ -103,7 +108,9 @@ class Dashboard extends Component {
                                         <NavText>
                                             Students
                                     </NavText>
-                                    </NavItem>
+                                    </NavItem> : ''
+                                    }
+                                    
                                     <NavItem eventKey="Flashcards">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Flashcards"]} data-tip data-for='Flashcards' size="2x" />
@@ -130,13 +137,20 @@ class Dashboard extends Component {
                             </SideNav>
                             <main className={this.state.isSideBarOpened ? "dashboard_content_expanded" : "dashboard_content_collapsed"}>
                                 <div className="dashboard_header">
-                                    <h3 className="cursor_pointer" onClick={()=>this.props.history.push("/modules")}>{this.props.location.state.selectedModule} <span classname='breadcrumb'>></span></h3>
-                                    <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3>
+                                    {isTutor ?
+                                        <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3> :
+                                        <React.Fragment>
+                                            <h3 className="cursor_pointer" onClick={() => this.props.history.push("/modules")}>{this.props.location.state.selectedModule} <span classname='breadcrumb'>></span></h3>
+                                            <h3>{'\u00A0'}<FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" />{'\u00A0'}{this.state.selectedTab}</h3>
+                                        </React.Fragment> 
+                                    }
                                     <div className="userInfo">
-                                        <span>Username | </span><span>Last logged In:</span> <br />
-                                        <Link onClick={() =>this.props.history.push("/") }>Sign out</Link>
+                                        <span >Username: </span><span classname="bold">{userInfo.username}</span> <br />
+                                        <span>Last logged In:</span><span classname="bold">{userInfo.last_logged_in}</span> <br />
+                                        <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
                                     </div>
                                 </div>
+
                                 <hr />
                                 <Route path="/discussions" component={props => <Discussions />} />
                                 <Route path="/flashcards" component={props => <Flashcards />} />

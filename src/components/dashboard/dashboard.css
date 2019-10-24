@@ -25,6 +25,9 @@
     background: purple !important;
     position: fixed !important;
 }
+.sidenav---sidenav-navitem---uwIJ-{
+    margin-bottom: 5px;
+}
 
 
 .tooltiptext {
@@ -55,6 +58,7 @@ visibility: visible;
 .userInfo{
     margin-left: auto;
     margin-right: 20px;
+    font-size: 12px;
 }
 
 @media (max-width: 900px) {
