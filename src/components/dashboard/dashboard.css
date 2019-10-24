@@ -23,6 +23,7 @@
 }
 .sidenav---sidenav---_2tBP{
     background: purple !important;
+    position: fixed !important;
 }
 
 
@@ -69,4 +70,8 @@ visibility: visible;
     }
 }
 
+.breadcrumb{
+    font-size: 27px;
+    vertical-align: top;
+}
 

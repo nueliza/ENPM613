@@ -49,15 +49,16 @@ class Dashboard extends Component {
                                 <SideNav.Nav defaultSelected="Dashboard">
                                     <NavItem eventKey="Dashboard">
                                         <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x" />
+                                            <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x">Flashcards</FontAwesomeIcon> 
                                             <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
                                                 <span>All Modules</span>
                                             </ReactTooltip>
 
                                         </NavIcon>
+                                        <br />
                                         <NavText>
                                             All Modules
-                                    </NavText>
+                                        </NavText>
                                     </NavItem>
                                     <NavItem eventKey="Files">
                                         <NavIcon>
@@ -129,7 +130,7 @@ class Dashboard extends Component {
                             </SideNav>
                             <main className={this.state.isSideBarOpened ? "dashboard_content_expanded" : "dashboard_content_collapsed"}>
                                 <div className="dashboard_header">
-                                    <h3 className="cursor_pointer" onClick={()=>this.props.history.push("/modules")}>{this.props.location.state.selectedModule} ></h3>
+                                    <h3 className="cursor_pointer" onClick={()=>this.props.history.push("/modules")}>{this.props.location.state.selectedModule} <span classname='breadcrumb'>></span></h3>
                                     <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3>
                                     <div className="userInfo">
                                         <span>Username | </span><span>Last logged In:</span> <br />
