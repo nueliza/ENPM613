@@ -39,7 +39,7 @@ class Login extends Component {
         //Call API to check whether login is sucessfull and update store.
 
         console.log('The Props', this.props);
-        this.props.setData("ENPM613");
+        this.props.setData("Student");
         this.props.history.push("/modules");
     }
     render() {
