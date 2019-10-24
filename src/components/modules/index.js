@@ -27,7 +27,7 @@ class Modules extends Component {
                     <div className="card" onClick={() => {
                         this.props.history.push({
                             pathname: '/dashboard',
-                            state: { selectedModule: 'Math' }
+                            state: { selectedModule: 'Math', userInfo: this.props.userInfo}
                         })
                     }}>
                         <img className="card-img" src={math} alt="Math" />
@@ -45,7 +45,7 @@ class Modules extends Component {
                     <div className="card" onClick={() => {
                         this.props.history.push({
                             pathname: '/dashboard',
-                            state: { selectedModule: 'English' }
+                            state: { selectedModule: 'English', userInfo: this.props.userInfo }
                         })
                     }}>
                         <img className="card-img" src={english} alt="English" />
@@ -63,7 +63,7 @@ class Modules extends Component {
                     <div className="card" onClick={() => {
                         this.props.history.push({
                             pathname: '/dashboard',
-                            state: { selectedModule: 'Essay Writing' }
+                            state: { selectedModule: 'Essay Writing', userInfo: this.props.userInfo }
                         })
                     }}>
                         <img className="card-img" src={writing} alt="Writing" />
