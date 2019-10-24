@@ -11,13 +11,13 @@ import App from './app';
 import * as serviceWorker from './serviceWorker';
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const middleware = [thunk];
+
 function configureStore(initialState) {
     return createStore(
         rootReducer,
         initialState,
-        composeWithDevTools(
-            applyMiddleware(thunk)
-        )
+        composeWithDevTools(applyMiddleware(...middleware))
     );
 }
 const store = configureStore();
