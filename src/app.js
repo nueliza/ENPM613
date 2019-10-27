@@ -4,11 +4,10 @@ import Login from "./containers/login";
 import Welcome from "./components/welcome";
 import Modules from "./containers/modules";
 import Registeration from "./components/registration";
-import Files from "./components/files";
 import Dashboard from "./components/dashboard";
-import Flashcards from "./components/flashcards";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import CreateExam from "./components/exams/createExam";
 
 function App() {
   return (
@@ -21,6 +20,7 @@ function App() {
         <Route path="/registration" component={Registeration} />
         <Route path="/modules" component={Modules} />
         <Route path="/dashboard" component={Dashboard} />
+      <Route path="/CreateExam" component={props => <CreateExam {...props}/>} />
         {/* <Route path="/files" component={props => <Files />} />  TO be removed, added for development ease
         <Route path="/flashcards" component={props => <Flashcards />} />  TO be removed, added for development ease */}
         <Footer />

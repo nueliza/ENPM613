@@ -11,13 +11,13 @@ class CreateExam extends Component {
     }
 
     dropdownChange(e){
-        console.log("herrrr");
         if(e.target.value=="checkbox"){
         }
     }
     render() {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
-        console.log(Object.keys(this.state.Exam).length)
+        console.log(`CreateExam Page: ${Object.keys(this.state.Exam).length}`)
+        console.log("CreateExam Page:" ,this.props)
         return (
             <Fragment>
                 <h3>Algebra</h3>

@@ -6,7 +6,7 @@ import './dashboard.css';
 import logo from "./images/logo.jpg";
 
 import Discussions from "../discussions";
-import Exams from "../exams";
+import Exams from "../../containers/exams";
 import CreateExam from "../exams/createExam";
 import Files from "../files";
 import Flashcards from "../flashcards";
@@ -31,7 +31,6 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log("My Props,", this.props.location)
         const isTutor = this.props.location.state.isTutor;
         const userInfo = this.props.location.state.userInfo;
 
@@ -145,8 +144,8 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span >Username: </span><span classname="bold">{userInfo.username}</span> <br />
-                                        <span>Last logged In:</span><span classname="bold">{userInfo.last_logged_in}</span> <br />
+                                        <span >Username: </span><span className="bold">{userInfo.username}</span> <br />
+                                        <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
                                         <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
                                     </div>
                                 </div>
