@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "./exams.css";
 
 class CreateExam extends Component {
     constructor(props) {
@@ -21,15 +22,21 @@ class CreateExam extends Component {
         return (
             <Fragment>
                 <h3>Algebra</h3>
-                Question number {Object.keys(this.state.Exam).length + 1}
-                <br />
-                <input type="text" placeholder="Type Question here" />
-                <br />
-                <select onChange={(e)=>this.dropdownChange(e)}> 
-                    <option value="radio">Radio</option>
-                    <option value="checkbox">Checkbox</option>
-                    <option value="Long">Long Answer</option>
-                </select>
+                <div className="questionWrapper">
+                    Question number {Object.keys(this.state.Exam).length + 1}
+                    <br />
+                    <input type="text" placeholder="Type Question here" />
+                    <br />
+                    <div className="optionsWrapper">
+                        <input type="text" placeholder="Option 1" /> 
+                        <input type="text" placeholder="Option 2" />
+                        <br/>
+                        The correct answer:<br/>
+                         <input type="text" placeholder="Type the correct answer here"/>
+                    </div>
+                </div>
+                
+                
 
 
 
