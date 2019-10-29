@@ -17,17 +17,9 @@ const QuestionInput = (props) => {
                         data-id={id}
                         id={questionId}
                         className="inputField"
-                        placeholder={props.Exam[id].question}
+                        value={props.Exam[id].question}
                     />
                     </div>
-                    {/* Question number {id + 1}
-                    <input type="text"
-                        name="question"
-                        data-id={id}
-                        id={questionId}
-                        className="question"
-                        placeholder={props.Exam[id].question}
-                    /> */}
                     {id > 0 ? <FontAwesomeIcon
                         className="icon"
                         data-id={id}
@@ -51,7 +43,7 @@ const QuestionInput = (props) => {
                         data-id={id}
                         id={answerId}
                         className="answer"
-                        placeholder={props.Exam[id].answer}
+                        value={props.Exam[id].answer}
                         />
                     </div>
                 </div>
@@ -64,7 +56,6 @@ const OptionsInput = (props) => {
     return (
         props.item.options.map((val, idx) => {
             let optionId = `opt-${props.id}-${idx}`;
-            console.log("Value", val)
             return (
                 <div className="optionsWrapper">
                     <div className="group">
@@ -74,7 +65,8 @@ const OptionsInput = (props) => {
                             name="options"
                             data-id={props.id}
                             id={idx}
-                            placeholder={val}/>
+                            value={val}
+                        />
                     </div>
                     {idx > 1 ? <FontAwesomeIcon
                         data-id={props.id}
@@ -113,17 +105,23 @@ class CreateExam extends Component {
     }
 
     deleteQuestion = (e) => {
-        this.setState({ Exam: this.state.Exam.splice(e.target.dataset.id, 1) });
+        let questionId = e.currentTarget.dataset.id;
+        var updatedExam = this.state.Exam;
+        updatedExam.splice(questionId,1)
+        this.setState({Exam: updatedExam});
+        // updatedExam = this.state.Exam.filter((_, i) => i != questionId);
+        // console.log("HERE", updatedExam);
+        // this.setState({Exam: updatedExam }, ()=>console.log("DeleteQuestion: State Updated", this.state.Exam))
     }
 
     deleteOption = (e) => {
         let questionId = e.currentTarget.dataset.id;
         let optionId = e.currentTarget.id;
         var updatedExam = this.state.Exam;
-        // updatedExam[questionId]["options"].splice(optionId, 1);
+        updatedExam[questionId].options.splice(optionId, 1);
         // console.log("HERE", updatedExam);
         // this.setState({Exam: updatedExam}, ()=>{console.log("State", this.state.Exam)})
-        updatedExam[questionId].options = updatedExam[questionId].options.filter((_,i)=>i != optionId)
+        //updatedExam[questionId].options = this.state.Exam[questionId].options.filter((_,i)=>i != optionId)
         this.setState({Exam: updatedExam })
 
     }
@@ -133,7 +131,6 @@ class CreateExam extends Component {
     }
 
     handleChange = (e) => {
-        console.log("HETEEEEE", e.target)
         let Exam = [...this.state.Exam]
         if (e.target.name == "options") {
             Exam[e.target.dataset.id]["options"][e.target.id] = e.target.value;
@@ -151,10 +148,11 @@ class CreateExam extends Component {
                 <h3>Algebra</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     <QuestionInput
-                        Exam={Exam}
+                        Exam={this.state.Exam}
                         addOption={this.addOption}
                         deleteOption={this.deleteOption}
                         deleteQuestion={this.deleteQuestion}
+                        handleChange={this.handleChange}
                     />
                     <br />
                     <button onClick={this.addQuestion}>

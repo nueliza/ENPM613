@@ -1,5 +1,8 @@
 .questionWrapper input{
     text-align: left !important;
+    margin-bottom: 10px;
+    float: right;
+    margin-right: 20%;
 }
 .questionWrapper{
     border: 1px solid #666666;
@@ -9,13 +12,14 @@
     padding: 25px;
     margin-top: 15px;
     box-shadow: 2px 3px 3px #a3a3a3;
+    overflow: auto;
 }
 .questionWrapper .icon{
     margin-left: 8px;
 }
 
 .questionWrapper .group{
-    display: inline;
+    clear: both;
 }
 
 .questionWrapper button{
