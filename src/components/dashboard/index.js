@@ -157,7 +157,7 @@ class Dashboard extends Component {
                                 <Route path="/exams" component={props => <Exams {...props}/>} />
                                 <Route path="/CreateExam" component={props => <CreateExam {...props}/>} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => <FlashcardSet {...props}/>} />
+                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet {...props}/>} />
                                 <Route path="/files" component={props => <Files />} />
                             </main>
                         </div>

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
+import { update } from 'immutable';
 
 const QuestionInput = (props) => {
     return (
@@ -9,31 +10,50 @@ const QuestionInput = (props) => {
             let questionId = `qn-${id}`, answerId = `ans-${id}`
             return (
                 <div className="questionWrapper" key={id}>
-                    Question number {id + 1}
+                    <div className="group">
+                        <span className="label">Question number {id + 1}</span>
+                        <input type="text"
+                        name="question"
+                        data-id={id}
+                        id={questionId}
+                        className="inputField"
+                        placeholder={props.Exam[id].question}
+                    />
+                    </div>
+                    {/* Question number {id + 1}
                     <input type="text"
-                        name={questionId}
+                        name="question"
                         data-id={id}
                         id={questionId}
                         className="question"
-                        defaultValue={props.Exam[id].question}
-                    />
-                    {id > 0 ?<FontAwesomeIcon icon={iconMapping["Trash"]} size="1x" /> : ''}
+                        placeholder={props.Exam[id].question}
+                    /> */}
+                    {id > 0 ? <FontAwesomeIcon
+                        className="icon"
+                        data-id={id}
+                        onClick={props.deleteQuestion}
+                        icon={iconMapping["Trash"]}
+                        size="1x" /> : ''}
                     <br />
-                    <OptionsInput item={item} id={id} />
+                    <OptionsInput item={item} id={id} deleteOption={props.deleteOption} />
                     <br />
 
                     <button onClick={props.addOption} data-id={id}>
-                        <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
+                        <FontAwesomeIcon
+                            icon={iconMapping["Plus"]}
+                            size="1x" />
                         &nbsp;Add Option
                     </button>
-                    Correct Answer
-                    <input type="text"
+                    <div className="group">
+                        <span className="label"> Correct Answer</span>
+                        <input type="text"
                         name={answerId}
                         data-id={id}
                         id={answerId}
                         className="answer"
-                        defaultValue={props.Exam[id].answer}
-                    />
+                        placeholder={props.Exam[id].answer}
+                        />
+                    </div>
                 </div>
             )
         })
@@ -44,16 +64,26 @@ const OptionsInput = (props) => {
     return (
         props.item.options.map((val, idx) => {
             let optionId = `opt-${props.id}-${idx}`;
+            console.log("Value", val)
             return (
                 <div className="optionsWrapper">
-                    Option {idx+1}
-                    <input type="text"
-                        className="options"
-                        name={idx}
+                    <div className="group">
+                        <span className="label"> Option {idx + 1}</span>
+                        <input type="text"
+                            className="inputField"
+                            name="options"
+                            data-id={props.id}
+                            id={idx}
+                            placeholder={val}/>
+                    </div>
+                    {idx > 1 ? <FontAwesomeIcon
                         data-id={props.id}
-                        id={optionId}
-                        defaultValue={props.item.options[idx]} />
-                    {idx > 1 ?<FontAwesomeIcon icon={iconMapping["Trash"]} size="1x" /> : ''}
+                        className="icon"
+                        name={idx}
+                        id={idx}
+                        onClick={props.deleteOption}
+                        icon={iconMapping["Trash"]}
+                        size="1x" /> : ''}
                 </div>
             )
         })
@@ -63,30 +93,38 @@ class CreateExam extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Exam: [{ question: "Type Question Here", options: ["Option", "Option"], answer: "Type Answer here" }]
+            Exam: [{ question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
         }
     }
 
     addQuestion = (e) => {
         this.setState((prevState) => ({
-            Exam: [...prevState.Exam, { question: "Type Question Here", options: ["Option", "Option"], answer: "Type Answer here" }]
+            Exam: [...prevState.Exam, { question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
         }));
     }
 
     addOption = (e) => {
         let id = e.target.dataset.id;
         let updatedExam = this.state.Exam;
-        updatedExam[id].options = [...updatedExam[id].options, "Optionssss"];
+        updatedExam[id].options = [...updatedExam[id].options, "New Option"];
         this.setState((prevState) => ({
             Exam: updatedExam
         }));
     }
 
-    deleteQuestion =(e) =>{
-        //prevState.Exam.filter or remove
+    deleteQuestion = (e) => {
+        this.setState({ Exam: this.state.Exam.splice(e.target.dataset.id, 1) });
     }
 
-    deleteOption = (e) =>{
+    deleteOption = (e) => {
+        let questionId = e.currentTarget.dataset.id;
+        let optionId = e.currentTarget.id;
+        var updatedExam = this.state.Exam;
+        // updatedExam[questionId]["options"].splice(optionId, 1);
+        // console.log("HERE", updatedExam);
+        // this.setState({Exam: updatedExam}, ()=>{console.log("State", this.state.Exam)})
+        updatedExam[questionId].options = updatedExam[questionId].options.filter((_,i)=>i != optionId)
+        this.setState({Exam: updatedExam })
 
     }
 
@@ -95,11 +133,12 @@ class CreateExam extends Component {
     }
 
     handleChange = (e) => {
+        console.log("HETEEEEE", e.target)
         let Exam = [...this.state.Exam]
-        if (e.target.className == "options") {
-            Exam[e.target.dataset.id]["options"][e.target.name] = e.target.value;
+        if (e.target.name == "options") {
+            Exam[e.target.dataset.id]["options"][e.target.id] = e.target.value;
         } else {
-            Exam[e.target.dataset.id][e.target.className] = e.target.value;
+            Exam[e.target.dataset.id][e.target.name] = e.target.value;
         }
         this.setState({ Exam });
     }
@@ -111,7 +150,13 @@ class CreateExam extends Component {
             <Fragment>
                 <h3>Algebra</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                    <QuestionInput Exam={Exam} addOption={this.addOption} deleteOption={this.deleteOption}/>
+                    <QuestionInput
+                        Exam={Exam}
+                        addOption={this.addOption}
+                        deleteOption={this.deleteOption}
+                        deleteQuestion={this.deleteQuestion}
+                    />
+                    <br />
                     <button onClick={this.addQuestion}>
                         <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
                         &nbsp;Add Question
