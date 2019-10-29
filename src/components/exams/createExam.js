@@ -30,7 +30,7 @@ const QuestionInput = (props) => {
                     <OptionsInput item={item} id={id} deleteOption={props.deleteOption} />
                     <br />
 
-                    <button onClick={props.addOption} data-id={id}>
+                    <button onClick={props.addOption} data-id={id} className="btn btn-info">
                         <FontAwesomeIcon
                             icon={iconMapping["Plus"]}
                             size="1x" />
@@ -127,6 +127,7 @@ class CreateExam extends Component {
     }
 
     handleSubmit = (e) => {
+        console.log("Form submit")
         e.preventDefault();
     }
 
@@ -145,7 +146,7 @@ class CreateExam extends Component {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
         return (
             <Fragment>
-                <h3>Algebra</h3>
+                <h3>Create Exam for Algebra</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     <QuestionInput
                         Exam={this.state.Exam}
@@ -155,9 +156,13 @@ class CreateExam extends Component {
                         handleChange={this.handleChange}
                     />
                     <br />
-                    <button onClick={this.addQuestion}>
+                    <button onClick={this.addQuestion} className="btn btn-info">
                         <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
                         &nbsp;Add Question
+                    </button>
+                    &nbsp;&nbsp;
+                    <button className="btn btn-success" >
+                        Submit 
                     </button>
                 </form>
             </Fragment>
