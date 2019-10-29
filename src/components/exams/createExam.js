@@ -17,7 +17,7 @@ const QuestionInput = (props) => {
                         className="question"
                         defaultValue={props.Exam[id].question}
                     />
-                    {id > 0 ?<FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" /> : ''}
+                    {id > 0 ?<FontAwesomeIcon icon={iconMapping["Trash"]} size="1x" /> : ''}
                     <br />
                     <OptionsInput item={item} id={id} />
                     <br />
@@ -53,7 +53,7 @@ const OptionsInput = (props) => {
                         data-id={props.id}
                         id={optionId}
                         defaultValue={props.item.options[idx]} />
-                    {idx > 1 ?<FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" /> : ''}
+                    {idx > 1 ?<FontAwesomeIcon icon={iconMapping["Trash"]} size="1x" /> : ''}
                 </div>
             )
         })
@@ -87,7 +87,7 @@ class CreateExam extends Component {
     }
 
     deleteOption = (e) =>{
-        
+
     }
 
     handleSubmit = (e) => {
