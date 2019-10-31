@@ -7,8 +7,6 @@ import { Redirect } from 'react-router-dom';
 import { setSelectedModule } from "../actions/moduleActions";
 import { getFlashcardSets } from "../actions/dashboardActions";
 
-
-
 class ModuleContainer extends Component {
   render() {
     if (this.props.userInfo.UserType == "Student") {
