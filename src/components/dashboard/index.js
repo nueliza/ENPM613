@@ -29,10 +29,11 @@ class Dashboard extends Component {
         }
 
     }
-
     render() {
-        const isTutor = this.props.location.state.isTutor;
-        const userInfo = this.props.location.state.userInfo;
+        const userInfo = this.props.userInfo;
+        const isTutor = userInfo.userType == "Tutor" ? true : false;
+        const selectedModule = this.props.selectedModule;
+        console.log(userInfo);
 
         return (
             <Router>
@@ -52,15 +53,26 @@ class Dashboard extends Component {
                                 <SideNav.Nav defaultSelected="Dashboard">
                                     <NavItem eventKey="Dashboard">
                                         <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x">Flashcards</FontAwesomeIcon>
-                                            <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
-                                                <span>All Modules</span>
-                                            </ReactTooltip>
-
+                                            {isTutor? (
+                                            <React.Fragment>
+                                                <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
+                                                <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
+                                                    <span>Students</span>
+                                                </ReactTooltip> 
+                                            </React.Fragment>
+                                            )
+                                            :  
+                                            <React.Fragment>
+                                                <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x" />  
+                                                <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
+                                                    <span>All Modules</span>
+                                                </ReactTooltip>    
+                                            </React.Fragment>
+                                            }
                                         </NavIcon>
                                         <br />
                                         <NavText>
-                                            All Modules
+                                            {isTutor? "Students":"All Modules"}
                                         </NavText>
                                     </NavItem>
                                     <NavItem eventKey="Files">
@@ -96,31 +108,6 @@ class Dashboard extends Component {
                                             Grades
                                     </NavText>
                                     </NavItem>
-                                    {isTutor? 
-                                        <NavItem eventKey="Students">
-                                        <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
-                                            <ReactTooltip id='Students' type='info' class='tooltips'>
-                                                <span>Students</span>
-                                            </ReactTooltip>
-                                        </NavIcon>
-                                        <NavText>
-                                            Students
-                                    </NavText>
-                                    </NavItem> : ''
-                                    }
-                                    
-                                    <NavItem eventKey="Flashcards">
-                                        <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Flashcards"]} data-tip data-for='Flashcards' size="2x" />
-                                            <ReactTooltip id='Flashcards' type='info' class='mySepecialClass'>
-                                                <span>Flashcards</span>
-                                            </ReactTooltip>
-                                        </NavIcon>
-                                        <NavText>
-                                            Flashcards
-                                    </NavText>
-                                    </NavItem>
                                     <NavItem eventKey="Discussions">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Discussions"]} data-tip data-for='Discussions' size="2x" />
@@ -139,7 +126,7 @@ class Dashboard extends Component {
                                     {isTutor ?
                                         <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3> :
                                         <React.Fragment>
-                                            <h3 className="cursor_pointer" onClick={() => this.props.history.push("/modules")}>{this.props.location.state.selectedModule} <span classname='breadcrumb'>></span></h3>
+                                            <h3 className="cursor_pointer" onClick={() => this.props.history.push("/modules")}>{selectedModule} <span classname='breadcrumb'>></span></h3>
                                             <h3>{'\u00A0'}<FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" />{'\u00A0'}{this.state.selectedTab}</h3>
                                         </React.Fragment> 
                                     }
@@ -154,10 +141,10 @@ class Dashboard extends Component {
                                 <Route path="/discussions" component={props => <Discussions />} />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
-                                <Route path="/exams" component={props => <Exams {...props}/>} />
-                                <Route path="/CreateExam" component={props => <CreateExam {...props}/>} />
+                                <Route path="/exams" component={props => <Exams isTutor={isTutor} selectedModule={selectedModule}/>} />
+                                <Route path="/CreateExam" component={props => <CreateExam />} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet {...props}/>} />
+                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
                                 <Route path="/files" component={props => <Files />} />
                             </main>
                         </div>

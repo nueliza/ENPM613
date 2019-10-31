@@ -160,7 +160,7 @@ class CreateExam extends Component {
     render() {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
         return (
-            <Fragment>
+            <div className="dashboard_body">
                 <h3>Create Exam for Algebra</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     <QuestionInput
@@ -186,7 +186,7 @@ class CreateExam extends Component {
                         modalError = {this.state.modalError}
                         />
                 </form>
-            </Fragment>
+            </div>
         )
     }
 }

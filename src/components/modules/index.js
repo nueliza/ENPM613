@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import math from "./images/math.jpg";
 import english from "./images/english.jpg";
@@ -15,17 +15,13 @@ class Modules extends Component {
                     <div className="userInfo">
                         <span >Username: </span><span className="bold">{this.props.userInfo.username}</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
+                        <Link to ='/'>Sign out</Link>
                     </div>
                 </div>
                 <hr />
                 <div className="modules">
-                    <div className="card" onClick={() => {
-                        this.props.history.push({
-                            pathname: '/dashboard',
-                            state: { selectedModule: 'Math', userInfo: this.props.userInfo}
-                        })
-                    }}>
+                    
+                    <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("Math")}} className="card">
                         <img className="card-img" src={math} alt="Math" />
                         <div className="progress">
                             <div className="progress-bar" style={{ width: '25%', backgroundColor: 'purple' }}><b>25%</b></div>
@@ -37,14 +33,10 @@ class Modules extends Component {
                                 <li>Calculus</li>
                             </ul>
                         </div>
-                    </div>
-                    <div className="card" onClick={() => {
-                        this.props.history.push({
-                            pathname: '/dashboard',
-                            state: { selectedModule: 'English', userInfo: this.props.userInfo }
-                        })
-                    }}>
-                        <img className="card-img" src={english} alt="English" />
+                    </Link>
+
+                    <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("English")}} className="card">
+                        <img className="card-img" src={math} alt="English" />
                         <div className="progress">
                             <div className="progress-bar" style={{ width: '50%', backgroundColor: 'purple' }}><b>50%</b></div>
                         </div>
@@ -55,26 +47,21 @@ class Modules extends Component {
                                 <li>Vocabulary</li>
                             </ul>
                         </div>
-                    </div>
-                    <div className="card" onClick={() => {
-                        this.props.history.push({
-                            pathname: '/dashboard',
-                            state: { selectedModule: 'Essay Writing', userInfo: this.props.userInfo }
-                        })
-                    }}>
-                        <img className="card-img" src={writing} alt="Writing" />
+                    </Link>
+
+                    <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("Essay Writing")}} className="card">
+                        <img className="card-img" src={math} alt="Writing" />
                         <div className="progress">
-                            <div className="progress-bar" style={{ width: '75%', backgroundColor: 'purple' }}><b>75%</b></div>
+                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'purple' }}><b>50%</b></div>
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">Essay Writing</h5>
+                            <h5 className="card-title">English</h5>
                             <ul className="card-text">
                                 <li>Formats</li>
                                 <li>Blah Blah</li>
                             </ul>
                         </div>
-                    </div>
-                    data: {this.props.data}
+                    </Link>
                 </div>
 
             </Fragment>)

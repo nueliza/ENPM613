@@ -1,0 +1,10 @@
+.Score{
+    float: right;
+    float: right;
+    font-size: larger;
+    font-weight: 700;
+    margin-left: 20px;
+}
+.grades_body button{
+    float: right;
+}
