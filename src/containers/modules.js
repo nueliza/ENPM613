@@ -5,6 +5,7 @@ import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
 
 import { setSelectedModule } from "../actions/moduleActions";
+import { getFlashcardSets } from "../actions/dashboardActions";
 
 
 
@@ -33,7 +34,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setSelectedModule: (modules) => dispatch(setSelectedModule(modules))
+    setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
+    getFlashcardSets: (payload) =>dispatch(getFlashcardSets(payload))
   }
 }
 

@@ -4,6 +4,9 @@ import Exams from '../components/exams';
 const mapStateToProps = state => ({
     userInfo: state.user.userInfo
   })
-    
-export default connect( mapStateToProps
-)(Exams)
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+  }
+}
+export default connect( mapStateToProps, mapDispatchToProps)(Exams)

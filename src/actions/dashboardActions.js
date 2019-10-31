@@ -1,4 +1,4 @@
-export function getFLashcardSets(payload) {
+export function getFlashcardSets(payload) {
     //TODO: service call to get flashcards sets
     return{
         type: 'GET_FLASHCARD_SETS',
