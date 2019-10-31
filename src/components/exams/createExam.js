@@ -94,14 +94,23 @@ class CreateExam extends Component {
 
     addQuestion = (e) => {
         e.preventDefault()
-        this.setState((prevState) => ({
-            Exam: [...prevState.Exam, { question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
-        }));
+        if(this.state.Exam.length == 20){
+            this.setState({
+                showModal : true, 
+                modalContent : "You have reached the maximum number of questions",
+                modalError: true
+            })
+        }
+        else{
+            this.setState((prevState) => ({
+                Exam: [...prevState.Exam, { question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
+            }));
+        }
+        
     }
 
     addOption = (e) => {
         e.preventDefault()
-        //TODO: add upper limit for options and error messages
         let id = e.target.dataset.id;
         let updatedExam = this.state.Exam;
         if(updatedExam[id].options.length == 4 ){
@@ -122,9 +131,6 @@ class CreateExam extends Component {
         var updatedExam = this.state.Exam;
         updatedExam.splice(questionId, 1)
         this.setState({ Exam: updatedExam });
-        // updatedExam = this.state.Exam.filter((_, i) => i != questionId);
-        // console.log("HERE", updatedExam);
-        // this.setState({Exam: updatedExam }, ()=>console.log("DeleteQuestion: State Updated", this.state.Exam))
     }
 
     deleteOption = (e) => {
@@ -132,9 +138,6 @@ class CreateExam extends Component {
         let optionId = e.currentTarget.id;
         var updatedExam = this.state.Exam;
         updatedExam[questionId].options.splice(optionId, 1);
-        // console.log("HERE", updatedExam);
-        // this.setState({Exam: updatedExam}, ()=>{console.log("State", this.state.Exam)})
-        //updatedExam[questionId].options = this.state.Exam[questionId].options.filter((_,i)=>i != optionId)
         this.setState({ Exam: updatedExam })
 
     }
