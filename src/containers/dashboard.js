@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Dashboard from '../components/dashboard';
 import {getExamList, getDiscussionList, getGrades, getFiles} from "../actions/dashboardActions";
+import {createExam} from '../actions/examActions';
+
 
 const mapDispatchToProps = (dispatch) => {
     return{
@@ -8,6 +10,7 @@ const mapDispatchToProps = (dispatch) => {
         getDiscussionList: (payload) => dispatch(getDiscussionList(payload)),
         getGrades: (payload) => dispatch(getGrades(payload)),
         getFiles: (payload) => dispatch(getFiles(payload)),
+        createExam: (payload) =>dispatch(createExam(payload))
     }
 }
 

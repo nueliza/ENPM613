@@ -33,8 +33,6 @@ class Dashboard extends Component {
         const userInfo = this.props.userInfo;
         const isTutor = userInfo.userType == "Tutor" ? true : false;
         const selectedModule = this.props.selectedModule;
-        console.log(userInfo);
-
         return (
             <Router>
                 <Route render={({ location, history }) => (
@@ -142,7 +140,7 @@ class Dashboard extends Component {
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
                                 <Route path="/exams" component={props => <Exams isTutor={isTutor} selectedModule={selectedModule}/>} />
-                                <Route path="/CreateExam" component={props => <CreateExam />} />
+                                <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
                                 <Route path="/grades" component={props => <Grades />} />
                                 <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
                                 <Route path="/files" component={props => <Files />} />

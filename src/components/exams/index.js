@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 
 class Exams extends Component {
+
+    componentDidMount(){
+        //service call to load exam list
+    }
     render() {
         const isTutor = this.props.isTutor
         return (
@@ -20,7 +24,7 @@ class Exams extends Component {
                         <button type="button" className="btn btn-link" onClick={() => {
                             this.props.history.push({
                                 pathname: '/CreateExam',
-                                state: { selectedSubModule: 'Algebra' }
+                                state: { selectedSubModule: 'Algebra'}
                             })
                         }}>
                             <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
