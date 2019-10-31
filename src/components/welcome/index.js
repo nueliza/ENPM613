@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom';
 
 import './welcome.css';
 class Welcome extends Component {
-    constructor(props) {
-        super(props);
-
-
-    }
     render() {
         return (
             <Fragment>

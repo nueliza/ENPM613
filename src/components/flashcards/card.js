@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
-class Card extends React.Component {
+class Card extends Component {
   
     constructor() {
       super();

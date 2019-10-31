@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import Loader from 'react-loader-spinner';
 
 import './login.css';
 
@@ -35,23 +36,21 @@ class Login extends Component {
             username: "",
             password: "",
         })
-        console.log(`${this.state.username}-${this.state.password}`);
         //Call API to check whether login is sucessfull and update store.
 
-        console.log('The Props', this.props);
         this.props.setData("Tutor");
         this.props.history.push("/modules");
     }
     render() {
         return (
             <div className="wrapper">
-                data : {this.props.data}
+                
                 <div className="formContent">
                     <h3>Login</h3>
                     <hr />
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
-                            <FontAwesomeIcon icon={faUser} size="2x"/>
+                            <FontAwesomeIcon icon={faUser} size="2x" />
                             <input type="text"
                                 placeholder="Username"
                                 value={this.state.username}
@@ -59,7 +58,7 @@ class Login extends Component {
                             />
                         </div>
                         <div className="form-group">
-                        <FontAwesomeIcon icon={faLock} size="2x"/>
+                            <FontAwesomeIcon icon={faLock} size="2x" />
                             <input type="password"
                                 placeholder="Password"
                                 value={this.state.password}

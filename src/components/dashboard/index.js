@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactTooltip from 'react-tooltip';
 
@@ -6,17 +6,18 @@ import './dashboard.css';
 import logo from "./images/logo.jpg";
 
 import Discussions from "../discussions";
-import Exams from "../exams";
+import Exams from "../../containers/exams";
+import CreateExam from "../exams/createExam";
 import Files from "../files";
 import Flashcards from "../flashcards";
 import Grades from "../grades";
-import ModuleDashboard from "../dashboard/moduleDashboard";
+import FlashcardSet from "./flashcardSet";
 import Students from "../students";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 class Dashboard extends Component {
@@ -30,14 +31,12 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log("My Props,", this.props.location)
         const isTutor = this.props.location.state.isTutor;
         const userInfo = this.props.location.state.userInfo;
 
         return (
             <Router>
                 <Route render={({ location, history }) => (
-                    <React.Fragment>
                         <div className="dashboard_wrapper">
                             <SideNav
                                 onSelect={(selected) => {
@@ -67,7 +66,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Files">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Files"]} data-tip data-for='Files' size="2x" />
-                                            <ReactTooltip id='Files' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Files' type='info' class='tooltips'>
                                                 <span>Files</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -78,7 +77,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Exams">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Exams"]} data-tip data-for='Exams' size="2x" />
-                                            <ReactTooltip id='Exams' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Exams' type='info' class='tooltips'>
                                                 <span>Exams</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -89,7 +88,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Grades">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
-                                            <ReactTooltip id='Grades' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Grades' type='info' class='tooltips'>
                                                 <span>Grades</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -101,7 +100,7 @@ class Dashboard extends Component {
                                         <NavItem eventKey="Students">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
-                                            <ReactTooltip id='Students' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Students' type='info' class='tooltips'>
                                                 <span>Students</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -125,7 +124,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Discussions">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Discussions"]} data-tip data-for='Discussions' size="2x" />
-                                            <ReactTooltip id='Discussions' type='info' class='mySepecialClass'>
+                                            <ReactTooltip id='Discussions' type='info' class='tooltips'>
                                                 <span>Discussions</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -145,8 +144,8 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span >Username: </span><span classname="bold">{userInfo.username}</span> <br />
-                                        <span>Last logged In:</span><span classname="bold">{userInfo.last_logged_in}</span> <br />
+                                        <span >Username: </span><span className="bold">{userInfo.username}</span> <br />
+                                        <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
                                         <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
                                     </div>
                                 </div>
@@ -155,13 +154,13 @@ class Dashboard extends Component {
                                 <Route path="/discussions" component={props => <Discussions />} />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
-                                <Route path="/exams" component={props => <Exams />} />
+                                <Route path="/exams" component={props => <Exams {...props}/>} />
+                                <Route path="/CreateExam" component={props => <CreateExam {...props}/>} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => <ModuleDashboard />} />
+                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet {...props}/>} />
                                 <Route path="/files" component={props => <Files />} />
                             </main>
                         </div>
-                    </React.Fragment>
                 )}
                 />
             </Router>)
