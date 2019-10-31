@@ -24,6 +24,7 @@
 .sidenav---sidenav---_2tBP{
     background: purple !important;
     position: fixed !important;
+    z-index: 3 !important;
 }
 .sidenav---sidenav-navitem---uwIJ-{
     margin-bottom: 5px;

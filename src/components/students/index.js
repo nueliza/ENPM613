@@ -5,8 +5,8 @@ class Students extends Component {
 
     render() {
         return (
-            <Fragment>
-            </Fragment>)
+            <Fragment></Fragment>
+        )
     }
 }
 export default Students;

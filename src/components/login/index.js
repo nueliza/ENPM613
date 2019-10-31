@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import Loader from 'react-loader-spinner';
 
 import './login.css';
 
@@ -43,13 +44,13 @@ class Login extends Component {
     render() {
         return (
             <div className="wrapper">
-                data : {this.props.data}
+                
                 <div className="formContent">
                     <h3>Login</h3>
                     <hr />
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
-                            <FontAwesomeIcon icon={faUser} size="2x"/>
+                            <FontAwesomeIcon icon={faUser} size="2x" />
                             <input type="text"
                                 placeholder="Username"
                                 value={this.state.username}
@@ -57,7 +58,7 @@ class Login extends Component {
                             />
                         </div>
                         <div className="form-group">
-                        <FontAwesomeIcon icon={faLock} size="2x"/>
+                            <FontAwesomeIcon icon={faLock} size="2x" />
                             <input type="password"
                                 placeholder="Password"
                                 value={this.state.password}

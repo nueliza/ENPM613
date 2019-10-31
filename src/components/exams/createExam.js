@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
-import { update } from 'immutable';
+import Modal from "../model";
 
 const QuestionInput = (props) => {
     return (
@@ -13,12 +13,12 @@ const QuestionInput = (props) => {
                     <div className="group">
                         <span className="label">Question number {id + 1}</span>
                         <input type="text"
-                        name="question"
-                        data-id={id}
-                        id={questionId}
-                        className="inputField"
-                        value={props.Exam[id].question}
-                    />
+                            name="question"
+                            data-id={id}
+                            id={questionId}
+                            className="inputField"
+                            value={props.Exam[id].question}
+                        />
                     </div>
                     {id > 0 ? <FontAwesomeIcon
                         className="icon"
@@ -39,11 +39,11 @@ const QuestionInput = (props) => {
                     <div className="group">
                         <span className="label"> Correct Answer</span>
                         <input type="text"
-                        name={answerId}
-                        data-id={id}
-                        id={answerId}
-                        className="answer"
-                        value={props.Exam[id].answer}
+                            name={answerId}
+                            data-id={id}
+                            id={answerId}
+                            className="answer"
+                            value={props.Exam[id].answer}
                         />
                     </div>
                 </div>
@@ -85,30 +85,43 @@ class CreateExam extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Exam: [{ question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
+            Exam: [{ question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }],
+            showModal: false,
+            modalContent: "",
+            modalError: false
         }
     }
 
     addQuestion = (e) => {
+        e.preventDefault()
         this.setState((prevState) => ({
             Exam: [...prevState.Exam, { question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
         }));
     }
 
     addOption = (e) => {
+        e.preventDefault()
+        //TODO: add upper limit for options and error messages
         let id = e.target.dataset.id;
         let updatedExam = this.state.Exam;
-        updatedExam[id].options = [...updatedExam[id].options, "New Option"];
-        this.setState((prevState) => ({
-            Exam: updatedExam
-        }));
+        if(updatedExam[id].options.length == 4 ){
+            this.setState({
+                showModal : true, 
+                modalContent : "You have reached the maximum number of options for a question",
+                modalError: true
+            })
+        }
+         else{
+            updatedExam[id].options = [...updatedExam[id].options, "New Option"];
+            this.setState({ Exam: updatedExam });
+         }
     }
 
     deleteQuestion = (e) => {
         let questionId = e.currentTarget.dataset.id;
         var updatedExam = this.state.Exam;
-        updatedExam.splice(questionId,1)
-        this.setState({Exam: updatedExam});
+        updatedExam.splice(questionId, 1)
+        this.setState({ Exam: updatedExam });
         // updatedExam = this.state.Exam.filter((_, i) => i != questionId);
         // console.log("HERE", updatedExam);
         // this.setState({Exam: updatedExam }, ()=>console.log("DeleteQuestion: State Updated", this.state.Exam))
@@ -122,7 +135,7 @@ class CreateExam extends Component {
         // console.log("HERE", updatedExam);
         // this.setState({Exam: updatedExam}, ()=>{console.log("State", this.state.Exam)})
         //updatedExam[questionId].options = this.state.Exam[questionId].options.filter((_,i)=>i != optionId)
-        this.setState({Exam: updatedExam })
+        this.setState({ Exam: updatedExam })
 
     }
 
@@ -142,7 +155,6 @@ class CreateExam extends Component {
     }
 
     render() {
-        let { Exam } = this.state;
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
         return (
             <Fragment>
@@ -162,8 +174,14 @@ class CreateExam extends Component {
                     </button>
                     &nbsp;&nbsp;
                     <button className="btn btn-success" >
-                        Submit 
+                        Submit
                     </button>
+                    <Modal 
+                        isVisible = {this.state.showModal} 
+                        onCloseModal = {()=>{this.setState({ showModal :false} )}} 
+                        modalContent = {this.state.modalContent}
+                        modalError = {this.state.modalError}
+                        />
                 </form>
             </Fragment>
         )
