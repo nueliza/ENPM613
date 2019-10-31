@@ -22,7 +22,8 @@
     background-color: #6c757d;   
 }
 .dashboard_body{
- margin-left: 50px;
+  margin-left: 50px;
+  margin-bottom: 30px;
 }
 .dashboard_subSection{
     margin-bottom: 30px;
