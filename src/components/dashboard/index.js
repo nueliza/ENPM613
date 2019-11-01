@@ -13,6 +13,7 @@ import Flashcards from "../flashcards";
 import Grades from "../grades";
 import FlashcardSet from "./flashcardSet";
 import Students from "../students";
+import TakeExam from "../exams/takeExam";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -139,6 +140,7 @@ class Dashboard extends Component {
                                 <Route path="/discussions" component={props => <Discussions />} />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
+                                <Route path="/takeExam" component={props => <TakeExam  {...props}/>} />
                                 <Route path="/exams" component={props => <Exams isTutor={isTutor} selectedModule={selectedModule}/>} />
                                 <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
                                 <Route path="/grades" component={props => <Grades />} />
