@@ -131,7 +131,7 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span >Username: </span><span className="bold">{userInfo.username}</span> <br />
+                                        <span className="bold">Hello, {this.props.userInfo.firstName} {this.props.userInfo.lastName} !</span> <br />
                                         <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
                                         <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
                                     </div>
@@ -148,7 +148,7 @@ class Dashboard extends Component {
 
                                 <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
                                 <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
-                                <Route path="/discussion" component={props => <Discussion {...props}/>} /> 
+                                <Route path="/discussion" component={props => <Discussion {...props} userInfo={userInfo}/>} /> 
                             </main>
                         </div>
                 )}
