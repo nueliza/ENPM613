@@ -2,6 +2,35 @@ import React, { Component } from 'react';
 
 import "./exams.css";
 
+const ExamQuestions =(props) =>{
+    return(
+        props.sampleExam.map((question, id)=>{
+            return(
+                <div className="group" key={id}>
+                    <label>{`${id+1}. ${question.question}`}</label>
+                    <div className="optionGroup">
+                    {question.options.map((option, idx)=>{
+                        return(
+                            <React.Fragment key={idx}>
+                                <input 
+                                    type="radio" 
+                                    id={`${question.questionId}-${idx}`} 
+                                    name={question.questionId} 
+                                    value={option}
+                                    onChange={props.handleChange}/>
+                                &nbsp;
+                                <label htmlFor={`${question.questionId}-${idx}`}>{option}</label>
+                                <br />
+                            </React.Fragment>
+                        )
+                    })}
+                    </div>
+                </div>
+            )
+        })
+    );
+}
+
 class TakeExam extends Component {
     constructor(props) {
         super(props);
@@ -27,37 +56,19 @@ class TakeExam extends Component {
     handleSubmit = (e) =>{
         console.log(this.state.studentResponse)
         //service call to submit exam
+        this.props.history.push("/exams")
     }
+
     render() {
         return (
             <div className="dashboard_body exam_body">
                 <div className="dashboard_subSection">
                     <h2>Exam Name</h2>
                     <div className="examWrapper">
-                        {this.state.sampleExam.map((question, id)=>{
-                            return(
-                                <div className="group" key={id}>
-                                    <label>{`${id+1}. ${question.question}`}</label>
-                                    <div className="optionGroup">
-                                    {question.options.map((option, idx)=>{
-                                        return(
-                                            <React.Fragment key={idx}>
-                                                <input 
-                                                    type="radio" 
-                                                    id={`${question.questionId}-${idx}`} 
-                                                    name={question.questionId} 
-                                                    value={option}
-                                                    onChange={this.handleChange}/>
-                                                &nbsp;
-                                                <label htmlFor={`${question.questionId}-${idx}`}>{option}</label>
-                                                <br />
-                                            </React.Fragment>
-                                        )
-                                    })}
-                                    </div>
-                                </div>
-                            )
-                        })}
+                        <ExamQuestions
+                            sampleExam = {this.state.sampleExam}
+                            handleChange ={this.handleChange}
+                        />
                         <button className="btn btn-success" onClick={this.handleSubmit} >
                             Submit
                         </button>

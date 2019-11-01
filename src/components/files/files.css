@@ -1,5 +1,6 @@
 .list-group{
     width: 55% !important;
+    
 }
 .list-group-item{
     box-shadow: 5px 5px 5px #a3a3a3 !important;
@@ -27,4 +28,23 @@
 }
 .dashboard_subSection{
     margin-bottom: 30px;
+}
+@media only screen and (max-width: 768px){ 
+    /* Tablet */
+   .list-group{
+       width: 100% !important;
+   }
+   .dashboard_body{
+       margin-left: 10px;
+   }
+}
+@media only screen and (max-width: 425px){
+     /* Mobile */
+    .list-group-item button{
+        width: 100%;
+        margin-top: 5px;
+    }
+    .tag{
+        display: none;
+    }
 }
