@@ -14,6 +14,7 @@ import Grades from "../grades";
 import FlashcardSet from "./flashcardSet";
 import Students from "../students";
 import TakeExam from "../exams/takeExam";
+import Discussion from "../discussions/discussion";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -142,10 +143,12 @@ class Dashboard extends Component {
                                 <Route path="/students" component={props => <Students />} />
                                 <Route path="/takeExam" component={props => <TakeExam  {...props}/>} />
                                 <Route path="/exams" component={props => <Exams isTutor={isTutor} selectedModule={selectedModule}/>} />
-                                <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
                                 <Route path="/files" component={props => <Files />} />
+
+                                <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
+                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
+                                <Route path="/discussion" component={props => <Discussion {...props}/>} /> 
                             </main>
                         </div>
                 )}

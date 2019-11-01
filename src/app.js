@@ -8,6 +8,7 @@ import Dashboard from "./containers/dashboard";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import TakeExam from "./components/exams/takeExam";
+import Discussion from "./components/discussions/discussion";
 import Files from "./components/files";
 import Flashcards from "./components/flashcards";
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/modules" component={Modules} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/takeExam" component={props => <TakeExam {...props}/>} /> {/**To be removed after development */}
+        <Route path="/discussion" component={props => <Discussion {...props}/>} /> {/**To be removed after development */}
         <Route path="/files" component={props => <Files />} /> {/**To be removed after development */}
         <Route path="/grades" component={props => <Grades />} /> {/**To be removed after development */}
         <Route path="/flashcards" component={props => <Flashcards />} />  {/**To be removed after development */}
