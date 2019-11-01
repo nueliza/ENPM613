@@ -72,3 +72,9 @@
     float: right;
     background-color: purple !important;
 }
+
+@media only screen and (max-width: 768px){ 
+    .discussion_body{
+        width:100%;
+    }
+}
