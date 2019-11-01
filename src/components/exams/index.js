@@ -1,9 +1,13 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { withRouter } from 'react-router-dom';
 
 class Exams extends Component {
+
+    componentDidMount(){
+        //service call to load exam list
+    }
     render() {
         const isTutor = this.props.userInfo.type == "Tutor" ? true : false;
         return (
@@ -96,8 +100,8 @@ class Exams extends Component {
                             : ''}
                     </div>
                 </div>
-
-            </Fragment>)
+            </div>
+        )
     }
 }
-export default Exams;
+export default withRouter(Exams);

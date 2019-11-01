@@ -4,17 +4,21 @@ import Modules from '../components/modules';
 import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
 
-
+import { setSelectedModule } from "../actions/moduleActions";
+import { getFlashcardSets } from "../actions/dashboardActions";
 
 class ModuleContainer extends Component {
   render() {
-    if (this.props.userInfo.type == "Student")
-      return <Modules {...this.props} />
-    else if (this.props.userInfo.type == "Tutor") {
+    if (this.props.userInfo.UserType == "Student") {
+      return <Modules
+              userInfo={this.props.userInfo}
+              setSelectedModule={this.props.setSelectedModule}
+            />
+    }
+    else if (this.props.userInfo.userType == "Tutor") {
       return <Redirect to={{
-        pathname: '/dashboard',
-        state: { isTutor: true, userInfo: this.props.userInfo}
-      }} />
+                pathname: '/dashboard'
+          }} />
     }
     else {
       return <AdminDashboard />
@@ -26,5 +30,11 @@ const mapStateToProps = state => ({
   userInfo: state.user.userInfo
 })
 
-export default connect(mapStateToProps,
-)(ModuleContainer)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
+    getFlashcardSets: (payload) =>dispatch(getFlashcardSets(payload))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModuleContainer)

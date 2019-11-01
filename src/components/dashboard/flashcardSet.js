@@ -13,7 +13,7 @@ class FlashcardSet extends Component {
         return (
             <Fragment>
                 <div className="modules">
-                    {this.state[this.props.location.state.selectedModule].map((selectedSubModule, index)=>{
+                    {this.state[this.props.selectedModule].map((selectedSubModule, index)=>{
                         return(
                             <div className="card" key={index} onClick={() => {
                                 this.props.history.push({

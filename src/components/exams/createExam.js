@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
@@ -27,19 +27,19 @@ const QuestionInput = (props) => {
                         icon={iconMapping["Trash"]}
                         size="1x" /> : ''}
                     <br />
-                    <OptionsInput item={item} id={id} deleteOption={props.deleteOption} />
+                    <OptionsInput item={item} id={id} deleteOption={props.deleteOption}/>
                     <br />
 
-                    <button onClick={props.addOption} data-id={id} className="btn btn-info">
+                    <div onClick={props.addOption} data-id={id} className="btn btn-info">
                         <FontAwesomeIcon
                             icon={iconMapping["Plus"]}
                             size="1x" />
                         &nbsp;Add Option
-                    </button>
+                    </div>
                     <div className="group">
                         <span className="label"> Correct Answer</span>
                         <input type="text"
-                            name={answerId}
+                            name="answer"
                             data-id={id}
                             id={answerId}
                             className="answer"
@@ -84,6 +84,7 @@ const OptionsInput = (props) => {
 class CreateExam extends Component {
     constructor(props) {
         super(props);
+        console.log("props",props);
         this.state = {
             Exam: [{ question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }],
             showModal: false,
@@ -143,8 +144,9 @@ class CreateExam extends Component {
     }
 
     handleSubmit = (e) => {
-        console.log("Form submit")
         e.preventDefault();
+        this.props.createExam(this.state.Exam);
+        this.props.history.push("/exams")
     }
 
     handleChange = (e) => {
@@ -160,7 +162,7 @@ class CreateExam extends Component {
     render() {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
         return (
-            <Fragment>
+            <div className="dashboard_body">
                 <h3>Create Exam for Algebra</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     <QuestionInput
@@ -168,7 +170,6 @@ class CreateExam extends Component {
                         addOption={this.addOption}
                         deleteOption={this.deleteOption}
                         deleteQuestion={this.deleteQuestion}
-                        handleChange={this.handleChange}
                     />
                     <br />
                     <button onClick={this.addQuestion} className="btn btn-info">
@@ -186,7 +187,7 @@ class CreateExam extends Component {
                         modalError = {this.state.modalError}
                         />
                 </form>
-            </Fragment>
+            </div>
         )
     }
 }

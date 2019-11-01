@@ -26,3 +26,15 @@
 .questionWrapper button{
     display: block;
 }
+
+.examWrapper{
+    margin-top: 10px;
+}
+
+.examWrapper .optionGroup{
+    margin-left: 20px;
+}
+.examWrapper .group{
+    margin-bottom: 20px;
+}
+
