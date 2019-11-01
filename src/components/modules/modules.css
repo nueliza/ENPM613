@@ -22,16 +22,18 @@
     height: 200px !important;
 }
 
-@media (max-width: 900px) {
+@media only screen and (max-width: 768px) {
     .modules {
         display: flex;
         flex-direction: column;
         margin-top: 20px;
     }
     .card{
-        width: 80%;
+        width: 55%;
         margin-top: 20px;
         cursor: pointer;
+        margin-right:auto;
+        margin-left:auto;
     }
     .userInfo span{
         display: none;
@@ -40,4 +42,13 @@
         float: right;
         margin-top: -20px;
     }
-  }
+}
+
+@media only screen and (max-width: 425px){
+    .card{
+        width: 80%;
+        margin-top: 20px;
+        cursor: pointer;
+
+    }
+}
