@@ -25,11 +25,11 @@ function App() {
         <Route path="/registration" component={Registeration} />
         <Route path="/modules" component={Modules} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/takeExam" component={props => <TakeExam {...props}/>} /> {/**To be removed after development */}
-        <Route path="/discussion" component={props => <Discussion {...props}/>} /> {/**To be removed after development */}
-        <Route path="/files" component={props => <Files />} /> {/**To be removed after development */}
-        <Route path="/grades" component={props => <Grades />} /> {/**To be removed after development */}
-        <Route path="/flashcards" component={props => <Flashcards />} />  {/**To be removed after development */}
+        <Route path="/takeExam" component={props => <TakeExam {...props}/>} /> {/**TODO removed after development */}
+        <Route path="/discussion" component={props => <Discussion {...props}/>} /> {/**TODO removed after development */}
+        <Route path="/files" component={props => <Files />} /> {/**TODO removed after development */}
+        <Route path="/grades" component={props => <Grades />} /> {/**TODO be removed after development */}
+        <Route path="/flashcards" component={props => <Flashcards />} />  {/**TODO be removed after development */}
         <Footer />
       </Router>
      
