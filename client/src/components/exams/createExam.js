@@ -55,7 +55,7 @@ const QuestionInput = (props) => {
 const OptionsInput = (props) => {
     return (
         props.item.options.map((val, idx) => {
-            let optionId = `opt-${props.id}-${idx}`;
+            //let optionId = `opt-${props.id}-${idx}`;
             return (
                 <div className="optionsWrapper">
                     <div className="group">
@@ -95,7 +95,7 @@ class CreateExam extends Component {
 
     addQuestion = (e) => {
         e.preventDefault()
-        if(this.state.Exam.length == 20){
+        if(this.state.Exam.length === 20){
             this.setState({
                 showModal : true, 
                 modalContent : "You have reached the maximum number of questions",
@@ -114,7 +114,7 @@ class CreateExam extends Component {
         e.preventDefault()
         let id = e.target.dataset.id;
         let updatedExam = this.state.Exam;
-        if(updatedExam[id].options.length == 4 ){
+        if(updatedExam[id].options.length === 4 ){
             this.setState({
                 showModal : true, 
                 modalContent : "You have reached the maximum number of options for a question",
@@ -151,7 +151,7 @@ class CreateExam extends Component {
 
     handleChange = (e) => {
         let Exam = [...this.state.Exam]
-        if (e.target.name == "options") {
+        if (e.target.name === "options") {
             Exam[e.target.dataset.id]["options"][e.target.id] = e.target.value;
         } else {
             Exam[e.target.dataset.id][e.target.name] = e.target.value;

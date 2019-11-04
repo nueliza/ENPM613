@@ -1,13 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import Modal from "react-responsive-modal";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Students extends Component {
-    constructor(props){
-        super(props);
-    }
-
     render() {
         return (
             <Modal open={this.props.isVisible} onClose={this.props.onCloseModal}>

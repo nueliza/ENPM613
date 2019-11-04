@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import math from "./images/math.jpg";
-import english from "./images/english.jpg";
-import writing from "./images/writing.jpg";
 
 import "./modules.css"
 class Modules extends Component {

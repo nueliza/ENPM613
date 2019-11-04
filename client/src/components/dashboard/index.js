@@ -33,7 +33,7 @@ class Dashboard extends Component {
     }
     render() {
         const userInfo = this.props.userInfo;
-        const isTutor = userInfo.userType == "Tutor" ? true : false;
+        const isTutor = userInfo.userType === "Tutor" ? true : false;
         const selectedModule = this.props.selectedModule;
         return (
             <Router>
@@ -48,7 +48,7 @@ class Dashboard extends Component {
                                     }
                                 }}
                             >
-                                <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
+                                <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" alt="Logo" src={logo} /></Link>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
                                 <SideNav.Nav defaultSelected="Dashboard">
                                     <NavItem eventKey="Dashboard">
