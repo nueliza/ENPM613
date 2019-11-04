@@ -11,6 +11,7 @@ import TakeExam from "./components/exams/takeExam";
 import Discussion from "./components/discussions/discussion";
 import Files from "./components/files";
 import Flashcards from "./components/flashcards";
+import CreateDiscussion from "./components/discussions/createDiscussion";
 
 import Grades from "./components/grades";
 
@@ -25,6 +26,8 @@ function App() {
         <Route path="/registration" component={Registeration} />
         <Route path="/modules" component={Modules} />
         <Route path="/dashboard" component={Dashboard} />
+
+        <Route path="/CreateDiscussion" component={props => <CreateDiscussion {...props}/>} /> {/**TODO removed after development */}
         <Route path="/takeExam" component={props => <TakeExam {...props}/>} /> {/**TODO removed after development */}
         <Route path="/discussion" component={props => <Discussion {...props}/>} /> {/**TODO removed after development */}
         <Route path="/files" component={props => <Files />} /> {/**TODO removed after development */}
