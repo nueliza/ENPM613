@@ -38,6 +38,16 @@
     margin-bottom: 20px;
 }
 
+.exam_details{
+    margin-left: 5px;
+    margin-top: 5px;
+    color: gray;
+}
+
+.exam_details span{
+    margin-right: 60px;
+}
+
 @media only screen and (max-width: 768px){
     .questionWrapper input{
         width: 100%;

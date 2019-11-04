@@ -38,7 +38,6 @@ class Discussion extends Component {
         let content = this.refs.reply.value;
         let stateData = this.state.data
         stateData.replies = [...this.state.data.replies, { content: content, authorFirstName: this.props.userInfo.firstName, authorLastName: this.props.userInfo.lastName }]
-        console.log("State", stateData);
         this.setState({
             data: stateData
         })

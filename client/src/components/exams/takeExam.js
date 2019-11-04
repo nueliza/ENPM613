@@ -54,7 +54,6 @@ class TakeExam extends Component {
     }
 
     handleSubmit = (e) =>{
-        console.log(this.state.studentResponse)
         //service call to submit exam
         this.props.history.push("/exams")
     }

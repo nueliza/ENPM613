@@ -7,9 +7,6 @@ const ExamList = (props) => {
     return (
         <ul className="list-group">
             <li className="list-group-item">Exam 1
-                <span className="tag newTag">
-                    <b>New</b>
-                </span>
                 <button 
                     type="button" 
                     className="btn btn-info"
@@ -26,13 +23,22 @@ const ExamList = (props) => {
                 <button type="button" className="btn btn-info">
                     Take Exam
                 </button>
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
             </li>
             <li className="list-group-item">Exam 3
                 <button type="button" className="btn btn-info">
                     Take Exam
                 </button>
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
             </li>
             <li className="list-group-item">Exam 4
+                
                 <span className="tag notPublishedTag">
                     <FontAwesomeIcon icon={iconMapping["NotPublished"]} size="1x" />&nbsp;
                     <b>Not published</b>
@@ -40,6 +46,11 @@ const ExamList = (props) => {
                 <button type="button" className="btn btn-secondary">
                     Take Exam
                 </button>
+                <br/>
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
             </li>
         </ul>
     )
@@ -75,8 +86,8 @@ class Exams extends Component {
                     }
                 </div>
                 <div className="dashboard_subSection">
-                    <h2> Algebra</h2>
-                    <ExamList />
+                    <h2> Calculus</h2>
+                    <ExamList {...this.props}/>
                     {isTutor ?
                         <button 
                             type="button" 

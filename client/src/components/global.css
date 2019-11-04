@@ -1,0 +1,9 @@
+.errorMessage {
+    width: 50%;
+    margin-top: 5px;
+    color: red;
+    font-size: 13px;
+}
+.hide{
+    display: none !important;
+}

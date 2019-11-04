@@ -17,7 +17,7 @@ const QuestionInput = (props) => {
                             data-id={id}
                             id={questionId}
                             className="inputField"
-                            value={props.Exam[id].question}
+                            placeholder="Type Question here..."
                         />
                     </div>
                     {id > 0 ? <FontAwesomeIcon
@@ -43,7 +43,7 @@ const QuestionInput = (props) => {
                             data-id={id}
                             id={answerId}
                             className="answer"
-                            value={props.Exam[id].answer}
+                            placeholder="Type correct answer here..."
                         />
                     </div>
                 </div>
@@ -65,7 +65,7 @@ const OptionsInput = (props) => {
                             name="options"
                             data-id={props.id}
                             id={idx}
-                            value={val}
+                            placeholder="Type Option here..."
                         />
                     </div>
                     {idx > 1 ? <FontAwesomeIcon
@@ -84,9 +84,8 @@ const OptionsInput = (props) => {
 class CreateExam extends Component {
     constructor(props) {
         super(props);
-        console.log("props",props);
         this.state = {
-            Exam: [{ question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }],
+            Exam: [{ question: "", options: ["", ""], answer: "" }],
             showModal: false,
             modalContent: "",
             modalError: false
@@ -104,7 +103,7 @@ class CreateExam extends Component {
         }
         else{
             this.setState((prevState) => ({
-                Exam: [...prevState.Exam, { question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
+                Exam: [...prevState.Exam, { question: "", options: ["", ""], answer: "" }]
             }));
         }
         
@@ -122,7 +121,7 @@ class CreateExam extends Component {
             })
         }
          else{
-            updatedExam[id].options = [...updatedExam[id].options, "New Option"];
+            updatedExam[id].options = [...updatedExam[id].options, ""];
             this.setState({ Exam: updatedExam });
          }
     }
@@ -145,6 +144,7 @@ class CreateExam extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        //TODO: Input field validations
         this.props.createExam(this.state.Exam);
         this.props.history.push("/exams")
     }

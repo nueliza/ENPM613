@@ -21,6 +21,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import CreateDiscussion from '../discussions/createDiscussion';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -149,6 +150,7 @@ class Dashboard extends Component {
                                 <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
                                 <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
                                 <Route path="/discussion" component={props => <Discussion {...props} userInfo={userInfo}/>} /> 
+                                <Route path="/CreateDiscussion" component={props => <CreateDiscussion {...props}/>}/>
                             </main>
                         </div>
                 )}
