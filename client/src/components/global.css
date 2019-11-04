@@ -7,3 +7,7 @@
 .hide{
     display: none !important;
 }
+
+input{
+    text-align: left !important;
+}

@@ -9,7 +9,8 @@ class ErrorMessage extends Component{
         let hide = this.props.content === "" ? "hide": "";
         return(
             <div className={"errorMessage "+ hide} >
-                <FontAwesomeIcon icon={iconMapping["Error"]} size="1x" />&nbsp;{this.props.content}
+                <FontAwesomeIcon icon={iconMapping["Error"]} size="1x" />&nbsp;
+                <strong>{this.props.content}</strong>
             </div>
         )
     }
