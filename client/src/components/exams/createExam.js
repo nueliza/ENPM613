@@ -88,7 +88,8 @@ class CreateExam extends Component {
             Exam: [{ question: "", options: ["", ""], answer: "" }],
             showModal: false,
             modalContent: "",
-            modalError: false
+            modalError: false,
+            //errors: {question: "Exam Question is required", option: "Exam Option is required", answer: "Correct Answer is required" }
         }
     }
 
@@ -147,7 +148,20 @@ class CreateExam extends Component {
         //TODO: Input field validations
         this.props.createExam(this.state.Exam);
         this.props.history.push("/exams")
+        
     }
+
+    // validateField = (fieldValue, fieldType) =>{
+    //     let errors = this.state.errors;
+    //     if(fieldValue === ""){
+    //         errors[fieldType] = `Discussion ${fieldType} is required`;
+    //         this.setState({errors: errors,formValid: false});
+    //     }
+    //     else{
+    //         errors[fieldType] = "";
+    //         this.setState({errors: errors, formValid: true})
+    //     }
+    // }
 
     handleChange = (e) => {
         let Exam = [...this.state.Exam]

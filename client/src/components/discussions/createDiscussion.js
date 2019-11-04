@@ -8,7 +8,6 @@ class CreateDiscussion extends Component {
         this.state ={
             discussion: {content: "", header: ""},
             errors: {content: "", header:""},
-            formValid: false
         }
     }
 
@@ -21,20 +20,22 @@ class CreateDiscussion extends Component {
     handleSubmit = (e) =>{
         //TODO: validation of input fields.
         let discussion =  this.state.discussion;
-        this.validateField(discussion.content, "content")
-        this.validateField(discussion.header, "header")
-        //this.state.formValid ? submit Form : error message
+        let isContentValid = this.validateField(discussion.content, "content")
+        let isHeaderValid = this.validateField(discussion.header, "header")
+        isContentValid && isHeaderValid ? console.log("FormValid") :console.log("Form not valid")
     }
 
     validateField = (fieldValue, fieldType) =>{
         let errors = this.state.errors;
         if(fieldValue === ""){
             errors[fieldType] = `Discussion ${fieldType} is required`;
-            this.setState({errors: errors,formValid: false});
+            this.setState({errors: errors})
+            return false
         }
         else{
             errors[fieldType] = "";
-            this.setState({errors: errors, formValid: true})
+            this.setState({errors: errors})
+            return true;
         }
     }
 
