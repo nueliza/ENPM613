@@ -18,7 +18,7 @@ class Discussions extends Component {
                             }}>Discussion 1</li>
                         <li className="list-group-item discussion">Discussion 2 </li>
                         <li className="list-group-item discussion">Discussion 3 </li>
-                        <li className="list-group-item discussion">Discussion 4 </li>
+                        <li className="list-group-item discussion">Discussion 5 </li>
                     </ul>
                     <button 
                         type="button" 
