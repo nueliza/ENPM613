@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Login from "./containers/login";
 import Welcome from "./components/welcome";
 import Modules from "./containers/modules";
@@ -12,7 +13,6 @@ import Discussion from "./components/discussions/discussion";
 import Files from "./components/files";
 import Flashcards from "./components/flashcards";
 import CreateDiscussion from "./components/discussions/createDiscussion";
-
 import Grades from "./components/grades";
 
 function App() {

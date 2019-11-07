@@ -7,7 +7,7 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './dashboard.css';
-import logo from "./images/logo.jpg";
+import logo from "./images/Logo.png";
 
 import Discussions from "../discussions";
 import Discussion from "../discussions/discussion";
