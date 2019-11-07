@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
-import Modal from "../model";
 import ErrorMessage from "../ErrorMessage";
 
 const QuestionInput = (props) => {
@@ -195,12 +194,6 @@ class CreateExam extends Component {
                     <button className="btn btn-success" >
                         Submit
                     </button>
-                    <Modal 
-                        isVisible = {this.state.showModal} 
-                        onCloseModal = {()=>{this.setState({ showModal :false} )}} 
-                        modalContent = {this.state.modalContent}
-                        modalError = {this.state.modalError}
-                        />
                 </form>
             </div>
         )

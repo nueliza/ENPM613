@@ -32,3 +32,13 @@ input{
 .quoteWrapper .author{
     color: gray
 }
+
+.dzu-previewContainer{
+    padding: 10px 3% !important;
+}
+
+.dzu-submitButtonContainer{
+    margin: 0 !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

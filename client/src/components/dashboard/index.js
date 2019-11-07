@@ -185,7 +185,7 @@ class Dashboard extends Component {
                                 />
 
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/files" component={props => <Files />} />
+                                <Route path="/files" component={props => <Files isTutor={isTutor}/>} />
                                 <Route path="/dashboard" component={props => 
                                     isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
