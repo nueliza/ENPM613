@@ -23,7 +23,15 @@ class Files extends Component {
                     </div>
                     <br />
                     <ul className="list-group">
-                        <li className="list-group-item">File 1 <button type="button" className="btn btn-info">Download</button></li>
+                        <li className="list-group-item">File 1 
+                            <FontAwesomeIcon 
+                                icon={iconMapping["Trash"]} 
+                                size="1x" 
+                                //className={props.isTutor?"": "hide"}
+                                style={{color: "red", float: "right", marginTop: "10px", marginLeft: "10px"}}
+                            />
+                            <button type="button" className="btn btn-info">Download</button>
+                        </li>
                         <li className="list-group-item">File 2 <button type="button" className="btn btn-info">Download</button></li>
                         <li className="list-group-item">File 3 <button type="button" className="btn btn-info">Download</button></li>
                         <li className="list-group-item">File 4 <span className="tag notPublishedTag"><FontAwesomeIcon icon={iconMapping["NotPublished"]} size="1x" />&nbsp;<b>Not published</b></span><button type="button" className="btn btn-secondary">Download</button></li>
