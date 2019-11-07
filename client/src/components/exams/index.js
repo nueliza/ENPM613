@@ -22,7 +22,7 @@ const ExamList = (props) => {
                     icon={iconMapping["Trash"]} 
                     size="1x" 
                     className={props.isTutor?"": "hide"}
-                    style={{color: "red", float: "right"}}
+                    style={{color: "var(--alert-color)", float: "right"}}
                 />
                 <div className="exam_details">
                     <span>24 Questions</span>
@@ -46,7 +46,7 @@ const ExamList = (props) => {
                     icon={iconMapping["Trash"]} 
                     size="1x" 
                     className={props.isTutor?"": "hide"}
-                    style={{color: "red", float: "right"}}
+                    style={{color: "var(--alert-color)", float: "right"}}
                 />
                 <div className="exam_details">
                     <span>24 Questions</span>
@@ -70,7 +70,7 @@ const ExamList = (props) => {
                     icon={iconMapping["Trash"]} 
                     size="1x" 
                     className={props.isTutor?"": "hide"}
-                    style={{color: "red", float: "right"}}
+                    style={{color: "var(--alert-color)", float: "right"}}
                 />
                 <div className="exam_details">
                     <span>24 Questions</span>
@@ -99,7 +99,7 @@ const ExamList = (props) => {
                     icon={iconMapping["Trash"]} 
                     size="1x" 
                     className={props.isTutor?"": "hide"}
-                    style={{color: "red", float: "right"}}
+                    style={{color: "var(--alert-color)", float: "right"}}
                 />
                 <br/>
                 <div className="exam_details">
@@ -133,7 +133,7 @@ class Exams extends Component {
                     isTutor ?
                         <button 
                             type="button" 
-                            className="btn btn-link" 
+                            className="btn btn-info getSatProSecondaryButton" 
                             onClick={() => {
                             this.props.history.push({
                                 pathname: '/CreateExam',
@@ -141,7 +141,7 @@ class Exams extends Component {
                             })
                         }}>
                             <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
-                            &nbsp;Add Exam
+                            &nbsp;<span>Add Exam</span>
                         </button>
                     : ''
                     }

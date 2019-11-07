@@ -22,7 +22,7 @@ class Modules extends Component {
                     <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("Math")}} className="card">
                         <img className="card-img" src={math} alt="Math" />
                         <div className="progress">
-                            <div className="progress-bar" style={{ width: '25%', backgroundColor: 'purple' }}><b>25%</b></div>
+                            <div className="progress-bar" style={{ width: '25%', backgroundColor: 'var(--primary-color)' }}><b>25%</b></div>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">Math</h5>
@@ -36,7 +36,7 @@ class Modules extends Component {
                     <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("English")}} className="card">
                         <img className="card-img" src={math} alt="English" />
                         <div className="progress">
-                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'purple' }}><b>50%</b></div>
+                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">English</h5>
@@ -50,7 +50,7 @@ class Modules extends Component {
                     <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("Essay Writing")}} className="card">
                         <img className="card-img" src={math} alt="Writing" />
                         <div className="progress">
-                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'purple' }}><b>50%</b></div>
+                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">English</h5>
