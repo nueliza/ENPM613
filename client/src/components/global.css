@@ -12,18 +12,16 @@ input{
     text-align: left !important;
 }
 
-.quoteWrapper{
-
-}
-
 .quoteWrapper .quote{
-
+    font-size: 85px;
+    color: gray;
+    font-family: initial;
 }
 
 .quoteWrapper .quoteContent{
-
+    font-size: 20px
 }
 
 .quoteWrapper .author{
-
+    color: gray
 }

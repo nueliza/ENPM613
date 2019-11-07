@@ -11,11 +11,11 @@ class Discussions extends Component {
             <div className="dashboard_body discussionList_body">
                 <div className="dashboard_subSection">
                     <div className="quoteWrapper">
-                        <span className="quote">"</span>
-                        <span className="quoteContent">Discussion is an exchange of knowledge; an argument an exchange of ignorance</span>
-                        <span className="quote">"</span>
-                        <span className="quoteAuthor">- Robert Quillen</span>
+                        <FontAwesomeIcon icon={iconMapping["QuoteLeft"]} size="2x" style={{color: "gray"}} />&nbsp;
+                        <span className="quoteContent">Discussion is an exchange of knowledge; an argument an exchange of ignorance </span>
+                        <span className="author">- Robert Quillen</span>
                     </div>
+                    <br />
                     <ul className="list-group">
                         <li className="list-group-item discussion" onClick={() => {
                                 this.props.history.push({

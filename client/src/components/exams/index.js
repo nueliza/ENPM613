@@ -67,13 +67,13 @@ class Exams extends Component {
             <div className="dashboard_body">
                 <div className="dashboard_subSection">
                     <div className="quoteWrapper">
-                        <span className="quote">"</span>
-                        <span className="quoteContent">Believe you can & you're halfway there</span>
-                        <span className="quote">"</span>
-                        <span className="quoteAuthor">- T Roosevelt</span>
+                        <FontAwesomeIcon icon={iconMapping["QuoteLeft"]} size="2x" style={{color: "gray"}} />&nbsp;
+                        <span className="quoteContent">Believe you can & you're halfway there </span>
+                        <span className="author">- T Roosevelt</span>
                     </div>
-                    <h2> Algebra</h2>
+                    <br/>
                     <ExamList {...this.props}/>
+                    <br />
                     {
                     isTutor ?
                         <button 
@@ -90,24 +90,6 @@ class Exams extends Component {
                         </button>
                     : ''
                     }
-                </div>
-                <div className="dashboard_subSection">
-                    <h2> Calculus</h2>
-                    <ExamList {...this.props}/>
-                    {isTutor ?
-                        <button 
-                            type="button" 
-                            className="btn btn-link" 
-                            onClick={() => {
-                            this.props.history.push({
-                                pathname: '/CreateExam',
-                                state: { selectedSubModule: 'Algebra' }
-                            })
-                        }}>
-                            <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
-                            &nbsp;Add Exam
-                        </button>
-                    : ''}
                 </div>
             </div>
         )
