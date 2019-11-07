@@ -66,6 +66,12 @@ class Exams extends Component {
         return (
             <div className="dashboard_body">
                 <div className="dashboard_subSection">
+                    <div className="quoteWrapper">
+                        <span className="quote">"</span>
+                        <span className="quoteContent">Believe you can & you're halfway there</span>
+                        <span className="quote">"</span>
+                        <span className="quoteAuthor">- T Roosevelt</span>
+                    </div>
                     <h2> Algebra</h2>
                     <ExamList {...this.props}/>
                     {
