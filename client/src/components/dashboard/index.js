@@ -139,18 +139,47 @@ class Dashboard extends Component {
                                 </div>
 
                                 <hr />
-                                <Route path="/discussions" component={props => <Discussions />} />
+                                <Route path="/discussions" component={props => 
+                                    <Discussions 
+                                        isTutor={isTutor} 
+                                        deleteDiscussion={this.props.deleteDiscussion}
+                                    />} 
+                                />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
                                 <Route path="/takeExam" component={props => <TakeExam  {...props}/>} />
-                                <Route path="/exams" component={props => <Exams isTutor={isTutor} selectedModule={selectedModule}/>} />
+                                <Route path="/exams" component={props => 
+                                    <Exams 
+                                        isTutor={isTutor} 
+                                        selectedModule={selectedModule}
+                                        />} 
+                                />
                                 <Route path="/grades" component={props => <Grades />} />
                                 <Route path="/files" component={props => <Files />} />
 
-                                <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
-                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
-                                <Route path="/discussion" component={props => <Discussion {...props} userInfo={userInfo}/>} /> 
-                                <Route path="/CreateDiscussion" component={props => <CreateDiscussion {...props}/>}/>
+                                <Route path="/CreateExam" component={props => 
+                                    <CreateExam 
+                                        {...props} 
+                                        createExam={this.props.createExam}
+                                    />} 
+                                />
+                                <Route path="/dashboard" component={props => 
+                                    isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
+                                <Route path="/discussion" component={props => 
+                                    <Discussion 
+                                        {...props} 
+                                        userInfo={userInfo}
+                                        selectedDiscussion={this.props.selectedDiscussion}
+                                        replyToDiscussion={this.props.replyToDiscussion}
+                                    />} 
+                                /> 
+                                <Route path="/CreateDiscussion" component={props => 
+                                    <CreateDiscussion 
+                                        {...props}
+                                        createDiscussion={this.props.createDiscussion}
+                                        selectedModule={selectedModule}
+                                        userInfo = {this.props.userInfo} 
+                                    />}/>
                             </main>
                         </div>
                 )}

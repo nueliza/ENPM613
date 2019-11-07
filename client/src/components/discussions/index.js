@@ -21,7 +21,14 @@ class Discussions extends Component {
                                 this.props.history.push({
                                     pathname: '/Discussion',
                                 })
-                            }}>Discussion 1</li>
+                            }}>Discussion 1
+                            <FontAwesomeIcon 
+                                icon={iconMapping["Trash"]} 
+                                size="1x" 
+                                className={this.props.isTutor? "": "hide"}
+                                style={{color: "red", float: "right"}}
+                            />
+                        </li>
                         <li className="list-group-item discussion">Discussion 2 </li>
                         <li className="list-group-item discussion">Discussion 3 </li>
                         <li className="list-group-item discussion">Discussion 5 </li>
