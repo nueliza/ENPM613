@@ -34,9 +34,7 @@ class FileUploadModal extends Component {
             <Modal open={this.props.isVisible} onClose={this.props.onCloseModal}>
                 <h2>Upload Files</h2>
                 <hr />
-                <div style={{minWidth: "500px"}}>
-                    <FileUploader onCloseModal={this.props.onCloseModal}/>
-                </div>
+                <FileUploader onCloseModal={this.props.onCloseModal}/>
             </Modal>)
     }
 }

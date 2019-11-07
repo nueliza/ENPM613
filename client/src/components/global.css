@@ -42,3 +42,14 @@ input{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.styles_modal__gNwvD{
+    width: 70% !important;
+}
+
+@media only screen and (max-width: 425px){
+    .styles_modal__gNwvD{
+        width: 100% !important;
+    }
+    
+}
