@@ -3,11 +3,14 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
 import Modal from "../model";
+import ErrorMessage from "../ErrorMessage";
 
 const QuestionInput = (props) => {
+   // console.log("Here", props.errors)
     return (
         props.Exam.map((item, id) => {
-            let questionId = `qn-${id}`, answerId = `ans-${id}`
+            let questionId = `qn-${id}`, answerId = `ans-${id}`;
+            console.log("Here", props.errors)
             return (
                 <div className="questionWrapper" key={id}>
                     <div className="group">
@@ -89,7 +92,7 @@ class CreateExam extends Component {
             showModal: false,
             modalContent: "",
             modalError: false,
-            //errors: {question: "Exam Question is required", option: "Exam Option is required", answer: "Correct Answer is required" }
+            //errors: []
         }
     }
 
@@ -143,25 +146,33 @@ class CreateExam extends Component {
 
     }
 
+
     handleSubmit = (e) => {
         e.preventDefault();
         //TODO: Input field validations
+        // if(this.isFormValid()){
+        //     console.log("Form is valid")
+        // }
+        // else{
+        //     console.log("Form is not valid");
+        // }
         this.props.createExam(this.state.Exam);
         this.props.history.push("/exams")
         
     }
 
-    // validateField = (fieldValue, fieldType) =>{
-    //     let errors = this.state.errors;
-    //     if(fieldValue === ""){
-    //         errors[fieldType] = `Discussion ${fieldType} is required`;
-    //         this.setState({errors: errors,formValid: false});
-    //     }
-    //     else{
-    //         errors[fieldType] = "";
-    //         this.setState({errors: errors, formValid: true})
-    //     }
-    // }
+//    isFormValid = () =>{
+//     this.state.Exam.map((item, id)=> {
+//         let questionId = `qn-${id}`, answerId = `ans-${id}`;
+//         if(item.question === ""){
+//             this.setState((prevState) => ({
+//                 errors: [...prevState.errors, { id: questionId, message: "Question is required" }]
+//             }));
+//             console.log("Errros", this.state.errors);
+//         }
+//     })
+//     return this.state.errors.length === 0? true :false;
+//    }
 
     handleChange = (e) => {
         let Exam = [...this.state.Exam]
@@ -184,6 +195,7 @@ class CreateExam extends Component {
                         addOption={this.addOption}
                         deleteOption={this.deleteOption}
                         deleteQuestion={this.deleteQuestion}
+                        errors ={this.state.errors}
                     />
                     <br />
                     <button onClick={this.addQuestion} className="btn btn-info">

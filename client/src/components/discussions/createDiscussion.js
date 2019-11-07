@@ -24,7 +24,7 @@ class CreateDiscussion extends Component {
         let isHeaderValid = this.validateField(discussion.header, "header")
         isContentValid && isHeaderValid ? console.log("FormValid") :console.log("Form not valid")
     }
-
+    
     validateField = (fieldValue, fieldType) =>{
         let errors = this.state.errors;
         if(fieldValue === ""){
