@@ -21,7 +21,7 @@ class ModuleContainer extends Component {
           }} />
     }
     else {
-      return <AdminDashboard />
+      return <AdminDashboard userInfo={this.props.userInfo}/>
     }
   }
 
