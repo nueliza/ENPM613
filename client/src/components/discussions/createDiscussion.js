@@ -51,7 +51,7 @@ class CreateDiscussion extends Component {
                         placeholder="Type Discussion heading here..."
                         onChange= {this.handleChange}
                     />
-                    <ErrorMessage content={this.state.errors.header} />
+                    <ErrorMessage content={this.state.errors.header} messageType="error"/>
                     <br />
                     Discussion Content
                     <textarea
@@ -60,7 +60,7 @@ class CreateDiscussion extends Component {
                         placeholder="Type Discussion Content here..."
                         onChange={this.handleChange}
                     />
-                     <ErrorMessage content={this.state.errors.content} />
+                     <ErrorMessage content={this.state.errors.content} messageType="error" />
                     <br />
                     <button 
                         className="btn btn-success"

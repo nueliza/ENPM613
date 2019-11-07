@@ -11,7 +11,8 @@ import { faBook,
     faTrashAlt, 
     faExclamation, 
     faExclamationCircle,
-    faQuoteLeft} from '@fortawesome/free-solid-svg-icons';
+    faQuoteLeft,
+    faUpload} from '@fortawesome/free-solid-svg-icons';
 
 
 export const iconMapping = {
@@ -30,4 +31,5 @@ export const iconMapping = {
     "Exclamation":faExclamation,
     "Error": faExclamationCircle,
     "QuoteLeft":faQuoteLeft,
+    "Upload": faUpload
 };

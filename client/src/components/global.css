@@ -4,6 +4,13 @@
     color: red;
     font-size: 13px;
 }
+.warningMessage {
+    width: 50%;
+    margin-top: 5px;
+    color: orange;
+    font-size: 13px;
+}
+
 .hide{
     display: none !important;
 }
@@ -24,4 +31,25 @@ input{
 
 .quoteWrapper .author{
     color: gray
+}
+
+.dzu-previewContainer{
+    padding: 10px 3% !important;
+}
+
+.dzu-submitButtonContainer{
+    margin: 0 !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.styles_modal__gNwvD{
+    width: 70% !important;
+}
+
+@media only screen and (max-width: 425px){
+    .styles_modal__gNwvD{
+        width: 100% !important;
+    }
+    
 }

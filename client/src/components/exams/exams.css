@@ -55,3 +55,9 @@
     }
  }
 
+ @media only screen and (max-width: 425px){
+    .exam_details span{
+        display: block;
+    }
+ }
+
