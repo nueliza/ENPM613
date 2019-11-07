@@ -3,11 +3,12 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
 import Modal from "../model";
+import ErrorMessage from "../ErrorMessage";
 
 const QuestionInput = (props) => {
     return (
         props.Exam.map((item, id) => {
-            let questionId = `qn-${id}`, answerId = `ans-${id}`
+            let questionId = `qn-${id}`, answerId = `ans-${id}`;
             return (
                 <div className="questionWrapper" key={id}>
                     <div className="group">
@@ -17,7 +18,8 @@ const QuestionInput = (props) => {
                             data-id={id}
                             id={questionId}
                             className="inputField"
-                            value={props.Exam[id].question}
+                            placeholder="Type Question here..."
+                            required
                         />
                     </div>
                     {id > 0 ? <FontAwesomeIcon
@@ -43,7 +45,8 @@ const QuestionInput = (props) => {
                             data-id={id}
                             id={answerId}
                             className="answer"
-                            value={props.Exam[id].answer}
+                            placeholder="Type correct answer here..."
+                            required
                         />
                     </div>
                 </div>
@@ -55,7 +58,7 @@ const QuestionInput = (props) => {
 const OptionsInput = (props) => {
     return (
         props.item.options.map((val, idx) => {
-            let optionId = `opt-${props.id}-${idx}`;
+            //let optionId = `opt-${props.id}-${idx}`;
             return (
                 <div className="optionsWrapper">
                     <div className="group">
@@ -65,7 +68,8 @@ const OptionsInput = (props) => {
                             name="options"
                             data-id={props.id}
                             id={idx}
-                            value={val}
+                            placeholder="Type Option here..."
+                            required
                         />
                     </div>
                     {idx > 1 ? <FontAwesomeIcon
@@ -84,18 +88,18 @@ const OptionsInput = (props) => {
 class CreateExam extends Component {
     constructor(props) {
         super(props);
-        console.log("props",props);
         this.state = {
-            Exam: [{ question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }],
+            Exam: [{ question: "", options: ["", ""], answer: "" }],
             showModal: false,
             modalContent: "",
-            modalError: false
+            modalError: false,
+            errors: []
         }
     }
 
     addQuestion = (e) => {
         e.preventDefault()
-        if(this.state.Exam.length == 20){
+        if(this.state.Exam.length === 20){
             this.setState({
                 showModal : true, 
                 modalContent : "You have reached the maximum number of questions",
@@ -104,7 +108,7 @@ class CreateExam extends Component {
         }
         else{
             this.setState((prevState) => ({
-                Exam: [...prevState.Exam, { question: "Type Question Here", options: ["Option1", "Option2"], answer: "Type Answer here" }]
+                Exam: [...prevState.Exam, { question: "", options: ["", ""], answer: "" }]
             }));
         }
         
@@ -114,7 +118,7 @@ class CreateExam extends Component {
         e.preventDefault()
         let id = e.target.dataset.id;
         let updatedExam = this.state.Exam;
-        if(updatedExam[id].options.length == 4 ){
+        if(updatedExam[id].options.length === 4 ){
             this.setState({
                 showModal : true, 
                 modalContent : "You have reached the maximum number of options for a question",
@@ -122,7 +126,7 @@ class CreateExam extends Component {
             })
         }
          else{
-            updatedExam[id].options = [...updatedExam[id].options, "New Option"];
+            updatedExam[id].options = [...updatedExam[id].options, ""];
             this.setState({ Exam: updatedExam });
          }
     }
@@ -143,15 +147,29 @@ class CreateExam extends Component {
 
     }
 
+
     handleSubmit = (e) => {
         e.preventDefault();
+        //TODO: Input field validations
+        
         this.props.createExam(this.state.Exam);
         this.props.history.push("/exams")
+        
     }
+
+//    isFormValid = (value, itemId) =>{
+
+//         if(value === ""){
+//             this.setState({
+//                 errors: this.state.errors.push({ id: itemId, message: "This field is required" })
+//             });
+//             console.log("isFormValid", this.state.errors);
+//         }
+//    }
 
     handleChange = (e) => {
         let Exam = [...this.state.Exam]
-        if (e.target.name == "options") {
+        if (e.target.name === "options") {
             Exam[e.target.dataset.id]["options"][e.target.id] = e.target.value;
         } else {
             Exam[e.target.dataset.id][e.target.name] = e.target.value;
@@ -170,6 +188,7 @@ class CreateExam extends Component {
                         addOption={this.addOption}
                         deleteOption={this.deleteOption}
                         deleteQuestion={this.deleteQuestion}
+                        errors ={this.state.errors}
                     />
                     <br />
                     <button onClick={this.addQuestion} className="btn btn-info">

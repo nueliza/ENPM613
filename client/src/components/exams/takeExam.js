@@ -44,8 +44,8 @@ class TakeExam extends Component {
     handleChange = (e) =>{
         const questionId = e.target.name;
         const response = e.target.value;
-        const updatedQuestion = this.state.studentResponse.find((item)=> item.questionId == questionId);
-        if(updatedQuestion == undefined){
+        const updatedQuestion = this.state.studentResponse.find((item)=> item.questionId === questionId);
+        if(updatedQuestion === undefined){
             this.setState((prevState)=>({studentResponse : 
                 [...prevState.studentResponse, 
                     {questionId: questionId,response: response}]
@@ -54,7 +54,6 @@ class TakeExam extends Component {
     }
 
     handleSubmit = (e) =>{
-        console.log(this.state.studentResponse)
         //service call to submit exam
         this.props.history.push("/exams")
     }

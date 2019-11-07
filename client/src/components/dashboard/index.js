@@ -14,12 +14,14 @@ import Grades from "../grades";
 import FlashcardSet from "./flashcardSet";
 import Students from "../students";
 import TakeExam from "../exams/takeExam";
+import Discussion from "../discussions/discussion";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import CreateDiscussion from '../discussions/createDiscussion';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -32,7 +34,7 @@ class Dashboard extends Component {
     }
     render() {
         const userInfo = this.props.userInfo;
-        const isTutor = userInfo.userType == "Tutor" ? true : false;
+        const isTutor = userInfo.userType === "Tutor" ? true : false;
         const selectedModule = this.props.selectedModule;
         return (
             <Router>
@@ -47,7 +49,7 @@ class Dashboard extends Component {
                                     }
                                 }}
                             >
-                                <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" src={logo} /></Link>
+                                <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" alt="Logo" src={logo} /></Link>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
                                 <SideNav.Nav defaultSelected="Dashboard">
                                     <NavItem eventKey="Dashboard">
@@ -130,22 +132,54 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span >Username: </span><span className="bold">{userInfo.username}</span> <br />
+                                        <span className="bold">Hello, {this.props.userInfo.firstName} {this.props.userInfo.lastName} !</span> <br />
                                         <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
                                         <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
                                     </div>
                                 </div>
 
                                 <hr />
-                                <Route path="/discussions" component={props => <Discussions />} />
+                                <Route path="/discussions" component={props => 
+                                    <Discussions 
+                                        isTutor={isTutor} 
+                                        deleteDiscussion={this.props.deleteDiscussion}
+                                    />} 
+                                />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
                                 <Route path="/takeExam" component={props => <TakeExam  {...props}/>} />
-                                <Route path="/exams" component={props => <Exams isTutor={isTutor} selectedModule={selectedModule}/>} />
-                                <Route path="/CreateExam" component={props => <CreateExam {...props} createExam={this.props.createExam}/>} />
+                                <Route path="/exams" component={props => 
+                                    <Exams 
+                                        isTutor={isTutor} 
+                                        selectedModule={selectedModule}
+                                        />} 
+                                />
                                 <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/dashboard" component={props => isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
                                 <Route path="/files" component={props => <Files />} />
+
+                                <Route path="/CreateExam" component={props => 
+                                    <CreateExam 
+                                        {...props} 
+                                        createExam={this.props.createExam}
+                                    />} 
+                                />
+                                <Route path="/dashboard" component={props => 
+                                    isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
+                                <Route path="/discussion" component={props => 
+                                    <Discussion 
+                                        {...props} 
+                                        userInfo={userInfo}
+                                        selectedDiscussion={this.props.selectedDiscussion}
+                                        replyToDiscussion={this.props.replyToDiscussion}
+                                    />} 
+                                /> 
+                                <Route path="/CreateDiscussion" component={props => 
+                                    <CreateDiscussion 
+                                        {...props}
+                                        createDiscussion={this.props.createDiscussion}
+                                        selectedModule={selectedModule}
+                                        userInfo = {this.props.userInfo} 
+                                    />}/>
                             </main>
                         </div>
                 )}

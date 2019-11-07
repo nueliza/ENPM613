@@ -7,12 +7,9 @@ const ExamList = (props) => {
     return (
         <ul className="list-group">
             <li className="list-group-item">Exam 1
-                <span className="tag newTag">
-                    <b>New</b>
-                </span>
                 <button 
                     type="button" 
-                    className="btn btn-info"
+                    className={"btn btn-info " + props.isTutor? "hide":""}
                     onClick={() => {
                         props.history.push({
                             pathname: '/takeExam',
@@ -21,25 +18,94 @@ const ExamList = (props) => {
                 >
                     Take Exam
                 </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
+                
             </li>
-            <li className="list-group-item">Exam 2
-                <button type="button" className="btn btn-info">
+            <li className="list-group-item">Exam 1
+                <button 
+                    type="button" 
+                    className={"btn btn-info " + props.isTutor? "hide":""}
+                    onClick={() => {
+                        props.history.push({
+                            pathname: '/takeExam',
+                        })
+                    }}
+                >
                     Take Exam
                 </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
+                
             </li>
-            <li className="list-group-item">Exam 3
-                <button type="button" className="btn btn-info">
+            <li className="list-group-item">Exam 1
+                <button 
+                    type="button" 
+                    className={"btn btn-info " + props.isTutor? "hide":""}
+                    onClick={() => {
+                        props.history.push({
+                            pathname: '/takeExam',
+                        })
+                    }}
+                >
                     Take Exam
                 </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
+                
             </li>
             <li className="list-group-item">Exam 4
+                
                 <span className="tag notPublishedTag">
                     <FontAwesomeIcon icon={iconMapping["NotPublished"]} size="1x" />&nbsp;
                     <b>Not published</b>
                 </span>
-                <button type="button" className="btn btn-secondary">
+                <button 
+                    type="button" 
+                    className={"btn btn-info " + props.isTutor? "hide":""}
+                    onClick={() => {
+                        props.history.push({
+                            pathname: '/takeExam',
+                        })
+                    }}
+                >
                     Take Exam
                 </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
+                <br/>
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
             </li>
         </ul>
     )
@@ -55,8 +121,14 @@ class Exams extends Component {
         return (
             <div className="dashboard_body">
                 <div className="dashboard_subSection">
-                    <h2> Algebra</h2>
-                    <ExamList {...this.props}/>
+                    <div className="quoteWrapper">
+                        <FontAwesomeIcon icon={iconMapping["QuoteLeft"]} size="2x" style={{color: "gray"}} />&nbsp;
+                        <span className="quoteContent">Believe you can & you're halfway there </span>
+                        <span className="author">- T Roosevelt</span>
+                    </div>
+                    <br/>
+                    <ExamList {...this.props} isTutor={isTutor}/>
+                    <br />
                     {
                     isTutor ?
                         <button 
@@ -73,24 +145,6 @@ class Exams extends Component {
                         </button>
                     : ''
                     }
-                </div>
-                <div className="dashboard_subSection">
-                    <h2> Algebra</h2>
-                    <ExamList />
-                    {isTutor ?
-                        <button 
-                            type="button" 
-                            className="btn btn-link" 
-                            onClick={() => {
-                            this.props.history.push({
-                                pathname: '/CreateExam',
-                                state: { selectedSubModule: 'Algebra' }
-                            })
-                        }}>
-                            <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
-                            &nbsp;Add Exam
-                        </button>
-                    : ''}
                 </div>
             </div>
         )

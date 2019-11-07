@@ -9,13 +9,13 @@ import { getFlashcardSets } from "../actions/dashboardActions";
 
 class ModuleContainer extends Component {
   render() {
-    if (this.props.userInfo.userType == "Student") {
+    if (this.props.userInfo.userType === "Student") {
       return <Modules
               userInfo={this.props.userInfo}
               setSelectedModule={this.props.setSelectedModule}
             />
     }
-    else if (this.props.userInfo.userType == "Tutor") {
+    else if (this.props.userInfo.userType === "Tutor") {
       return <Redirect to={{
                 pathname: '/dashboard'
           }} />

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
-import Loader from 'react-loader-spinner';
-
 import './login.css';
 
 class Login extends Component {
@@ -74,7 +72,6 @@ class Login extends Component {
                         Don't have an account? <a href="#">Sign Up</a> <br />
                     </div>
                 </div>
-
             </div>
         );
     }
