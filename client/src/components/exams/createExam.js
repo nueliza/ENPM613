@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
@@ -30,14 +30,24 @@ const QuestionInput = (props) => {
                         size="1x" /> : ''}
                     <br />
                     <OptionsInput item={item} id={id} deleteOption={props.deleteOption}/>
-                    <br />
-
-                    <div onClick={props.addOption} data-id={id} className="btn btn-info">
-                        <FontAwesomeIcon
-                            icon={iconMapping["Plus"]}
-                            size="1x" />
-                        &nbsp;Add Option
-                    </div>
+                    {item.options.length === 4? 
+                        <Fragment>
+                            <ErrorMessage content="You have reached the maximum number of options" messageType="warning" />
+                            <br />
+                        </Fragment>
+                        :
+                        <Fragment> 
+                            <br/>
+                            <div onClick={props.addOption} data-id={id} className="btn btn-info">
+                                <FontAwesomeIcon
+                                    icon={iconMapping["Plus"]}
+                                    size="1x" />
+                                &nbsp;Add Option
+                            </div>
+                        </Fragment>
+                       
+                    }
+                    
                     <div className="group">
                         <span className="label"> Correct Answer</span>
                         <input type="text"
@@ -90,45 +100,23 @@ class CreateExam extends Component {
         super(props);
         this.state = {
             Exam: [{ question: "", options: ["", ""], answer: "" }],
-            showModal: false,
-            modalContent: "",
-            modalError: false,
             errors: []
         }
     }
 
     addQuestion = (e) => {
         e.preventDefault()
-        if(this.state.Exam.length === 20){
-            this.setState({
-                showModal : true, 
-                modalContent : "You have reached the maximum number of questions",
-                modalError: true
-            })
-        }
-        else{
-            this.setState((prevState) => ({
-                Exam: [...prevState.Exam, { question: "", options: ["", ""], answer: "" }]
-            }));
-        }
-        
+        this.setState((prevState) => ({
+            Exam: [...prevState.Exam, { question: "", options: ["", ""], answer: "" }]
+        }));
     }
 
     addOption = (e) => {
         e.preventDefault()
         let id = e.target.dataset.id;
         let updatedExam = this.state.Exam;
-        if(updatedExam[id].options.length === 4 ){
-            this.setState({
-                showModal : true, 
-                modalContent : "You have reached the maximum number of options for a question",
-                modalError: true
-            })
-        }
-         else{
-            updatedExam[id].options = [...updatedExam[id].options, ""];
-            this.setState({ Exam: updatedExam });
-         }
+        updatedExam[id].options = [...updatedExam[id].options, ""];
+        this.setState({ Exam: updatedExam });
     }
 
     deleteQuestion = (e) => {
@@ -191,11 +179,19 @@ class CreateExam extends Component {
                         errors ={this.state.errors}
                     />
                     <br />
-                    <button onClick={this.addQuestion} className="btn btn-info">
-                        <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
-                        &nbsp;Add Question
-                    </button>
-                    &nbsp;&nbsp;
+                    {this.state.Exam.length === 20? 
+                        <Fragment>
+                            <ErrorMessage content="You have reached the maximum number of questions" messageType="warning" />
+                            <br />
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <button onClick={this.addQuestion} className="btn btn-info">
+                            <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
+                            &nbsp;Add Question
+                            </button> &nbsp;&nbsp;
+                        </Fragment>
+                    }
                     <button className="btn btn-success" >
                         Submit
                     </button>

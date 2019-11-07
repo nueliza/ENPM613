@@ -4,6 +4,13 @@
     color: red;
     font-size: 13px;
 }
+.warningMessage {
+    width: 50%;
+    margin-top: 5px;
+    color: orange;
+    font-size: 13px;
+}
+
 .hide{
     display: none !important;
 }
