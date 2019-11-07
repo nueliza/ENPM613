@@ -6,11 +6,9 @@ import Modal from "../model";
 import ErrorMessage from "../ErrorMessage";
 
 const QuestionInput = (props) => {
-   // console.log("Here", props.errors)
     return (
         props.Exam.map((item, id) => {
             let questionId = `qn-${id}`, answerId = `ans-${id}`;
-            console.log("Here", props.errors)
             return (
                 <div className="questionWrapper" key={id}>
                     <div className="group">
@@ -21,6 +19,7 @@ const QuestionInput = (props) => {
                             id={questionId}
                             className="inputField"
                             placeholder="Type Question here..."
+                            required
                         />
                     </div>
                     {id > 0 ? <FontAwesomeIcon
@@ -47,6 +46,7 @@ const QuestionInput = (props) => {
                             id={answerId}
                             className="answer"
                             placeholder="Type correct answer here..."
+                            required
                         />
                     </div>
                 </div>
@@ -69,6 +69,7 @@ const OptionsInput = (props) => {
                             data-id={props.id}
                             id={idx}
                             placeholder="Type Option here..."
+                            required
                         />
                     </div>
                     {idx > 1 ? <FontAwesomeIcon
@@ -92,7 +93,7 @@ class CreateExam extends Component {
             showModal: false,
             modalContent: "",
             modalError: false,
-            //errors: []
+            errors: []
         }
     }
 
@@ -150,28 +151,20 @@ class CreateExam extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         //TODO: Input field validations
-        // if(this.isFormValid()){
-        //     console.log("Form is valid")
-        // }
-        // else{
-        //     console.log("Form is not valid");
-        // }
+        
         this.props.createExam(this.state.Exam);
         this.props.history.push("/exams")
         
     }
 
-//    isFormValid = () =>{
-//     this.state.Exam.map((item, id)=> {
-//         let questionId = `qn-${id}`, answerId = `ans-${id}`;
-//         if(item.question === ""){
-//             this.setState((prevState) => ({
-//                 errors: [...prevState.errors, { id: questionId, message: "Question is required" }]
-//             }));
-//             console.log("Errros", this.state.errors);
+//    isFormValid = (value, itemId) =>{
+
+//         if(value === ""){
+//             this.setState({
+//                 errors: this.state.errors.push({ id: itemId, message: "This field is required" })
+//             });
+//             console.log("isFormValid", this.state.errors);
 //         }
-//     })
-//     return this.state.errors.length === 0? true :false;
 //    }
 
     handleChange = (e) => {
