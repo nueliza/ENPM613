@@ -26,23 +26,24 @@ class Discussions extends Component {
                                 icon={iconMapping["Trash"]} 
                                 size="1x" 
                                 className={this.props.isTutor? "": "hide"}
-                                style={{color: "red", float: "right"}}
+                                style={{color: "var(--alert-color)", float: "right"}}
                             />
                         </li>
                         <li className="list-group-item discussion">Discussion 2 </li>
                         <li className="list-group-item discussion">Discussion 3 </li>
                         <li className="list-group-item discussion">Discussion 5 </li>
                     </ul>
+                    <br />
                     <button 
                         type="button" 
-                        className="btn btn-link" 
+                        className="btn btn-info getSatProSecondaryButton" 
                         onClick={() => {
                         this.props.history.push({
                             pathname: '/CreateDiscussion',
                         })
                     }}>
-                        <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
-                        &nbsp;Start a Discussion
+                        <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x"/>
+                        &nbsp;<span>Start a Discussion</span>
                     </button>
                 </div>
             </div>

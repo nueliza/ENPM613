@@ -28,7 +28,7 @@ class Files extends Component {
                                 icon={iconMapping["Trash"]} 
                                 size="1x" 
                                 //className={props.isTutor?"": "hide"}
-                                style={{color: "red", float: "right", marginTop: "10px", marginLeft: "10px"}}
+                                style={{color: "var(--alert-color)", float: "right", marginTop: "10px", marginLeft: "10px"}}
                             />
                             <button type="button" className="btn btn-info">Download</button>
                         </li>
@@ -37,14 +37,15 @@ class Files extends Component {
                         <li className="list-group-item">File 4 <span className="tag notPublishedTag"><FontAwesomeIcon icon={iconMapping["NotPublished"]} size="1x" />&nbsp;<b>Not published</b></span><button type="button" className="btn btn-secondary">Download</button></li>
                     </ul>
                     {/**TODO:  show and hide button */}
+                    <br/>
                     <button 
                         type="button" 
-                        className="btn btn-link" 
+                        className="btn btn-info getSatProSecondaryButton" 
                         onClick={() => {
                             this.setState({showModal: true})
                     }}>
                         <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
-                        &nbsp;Upload Files
+                        &nbsp;<span>Upload Files</span>
                     </button>
                     <FileUploadModal 
                         isVisible = {this.state.showModal} 

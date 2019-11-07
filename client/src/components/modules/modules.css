@@ -10,7 +10,7 @@
 }
 .card{
     margin-left: 30px;
-    border: 2px solid purple;
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
     width: 25%;
    /* box-shadow: 5px 5px 5px #888888; */

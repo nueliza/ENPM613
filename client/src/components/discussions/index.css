@@ -50,17 +50,12 @@
     margin-top: 1px;
 }
 
-.thread .avatar{
-    border-radius: 50%;
-    background-color: #17a2b8;
-    line-height: 50px;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    display: inline-block;
-    font-weight: 700;
-    color: white;
-    box-shadow: 2px 3px 3px #a3a3a3;
+.dashboardAvatar{
+    float: left;
+    box-shadow: none !important;
+    margin-left: 8px;
+    background-color: white !important;
+    color: var(--primary-color) !important;
 }
 
 .thread .threadContent{
@@ -70,7 +65,7 @@
 
 .currentUser{
     float: right;
-    background-color: purple !important;
+    background-color:var(--primary-color) !important;
 }
 
 .discussion_body .NewDiscussionWrapper{

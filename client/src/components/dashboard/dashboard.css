@@ -19,10 +19,10 @@
     display: block;
     width: 63px;
     height: 60px;
-    border: 2px solid purple;
+    border: 2px solid var(--primary-color);
 }
 .sidenav---sidenav---_2tBP{
-    background: purple !important;
+    background:var(--primary-color)!important;
     position: fixed !important;
     z-index: 3 !important;
 }

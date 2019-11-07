@@ -63,7 +63,7 @@ class CreateDiscussion extends Component {
                      <ErrorMessage content={this.state.errors.content} messageType="error" />
                     <br />
                     <button 
-                        className="btn btn-success"
+                        className="btn btn-success getSatProSubmitBtn"
                         onClick={this.handleSubmit} 
                         //disabled = {!this.state.formValid}
                         >

@@ -26,6 +26,7 @@ const QuestionInput = (props) => {
                         data-id={id}
                         onClick={props.deleteQuestion}
                         icon={iconMapping["Trash"]}
+                        style={{color: "var(--alert-color)"}}
                         size="1x" /> : ''}
                     <br />
                     <OptionsInput item={item} id={id} deleteOption={props.deleteOption}/>
@@ -37,7 +38,7 @@ const QuestionInput = (props) => {
                         :
                         <Fragment> 
                             <br/>
-                            <div onClick={props.addOption} data-id={id} className="btn btn-info">
+                            <div onClick={props.addOption} data-id={id} className="btn btn-info getSatProSecondaryButton">
                                 <FontAwesomeIcon
                                     icon={iconMapping["Plus"]}
                                     size="1x" />
@@ -88,6 +89,7 @@ const OptionsInput = (props) => {
                         id={idx}
                         onClick={props.deleteOption}
                         icon={iconMapping["Trash"]}
+                        style={{color: "var(--alert-color)"}}
                         size="1x" /> : ''}
                 </div>
             )
@@ -185,13 +187,13 @@ class CreateExam extends Component {
                         </Fragment>
                         :
                         <Fragment>
-                            <button onClick={this.addQuestion} className="btn btn-info">
+                            <button onClick={this.addQuestion} className="btn btn-info getSatProSecondaryButton">
                             <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
                             &nbsp;Add Question
                             </button> &nbsp;&nbsp;
                         </Fragment>
                     }
-                    <button className="btn btn-success" >
+                    <button className="btn btn-success getSatProSubmitBtn" >
                         Submit
                     </button>
                 </form>

@@ -64,7 +64,7 @@ class Login extends Component {
                             />
                         </div>
                         <input type="submit"
-                            className="btn btn-primary"
+                            className="btn btn-primary getSatProSubmitBtn"
                             value="Login"
                         />
                     </form>
