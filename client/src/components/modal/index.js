@@ -24,6 +24,8 @@ const FileUploader = (props) =>{
         getUploadParams={getUploadParams}
         onChangeStatus={handleChangeStatus}
         maxFiles={3}
+        accept=".docx,.pdf"
+        maxSizeBytes={3145728}
         inputWithFilesContent={files => `${3 - files.length} more`}
         onSubmit={handleSubmit}
         />
