@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Dashboard from '../components/dashboard';
 import {getExamList, getDiscussionList, getGrades, getFiles} from "../actions/dashboardActions";
-import {createExam} from '../actions/examActions';
+import {createExam, getExam, submitExam, deleteExam,} from '../actions/examActions';
 
 import { getDiscussion, replyToDiscussion, deleteDiscussion, createDiscussion, deleteReplyToDiscussion } from '../actions/discussionActions';
 
@@ -14,6 +14,9 @@ const mapDispatchToProps = (dispatch) => {
         getFiles: (payload) => dispatch(getFiles(payload)),
         //Exam
         createExam: (payload) =>dispatch(createExam(payload)),
+        getExam: (payload) =>dispatch(getExam(payload)),
+        submitExam: (payload) =>dispatch(submitExam(payload)),
+        deleteExam: (payload) =>dispatch(deleteExam(payload)),
         //Discussion
         getDiscussion: (payload) =>dispatch(getDiscussion(payload)),
         replyToDiscussion: (payload) =>dispatch(replyToDiscussion(payload)),
@@ -36,7 +39,12 @@ const mapStateToProps = state => ({
     replytToDiscussionMessage: state.discussion.replytToDiscussionMessage,
     deleteDiscussionMessage: state.discussion.deleteDiscussionMessage,
     deleteReplytToDiscussionMessage: state.discussion.deleteReplytToDiscussionMessage,
-    createDiscussionMessage: state.discussion.createDiscussionMessage
+    createDiscussionMessage: state.discussion.createDiscussionMessage,
+    //Exam
+    selectedExam: state.exam.selectedExam,
+    deleteExamMessage: state.exam.deleteExamMessage,
+    createExamMesaage: state.exam.createExamMesaage,
+    submitExamMessage: state.exam.submitExamMessage
 })
 
 export default connect( mapStateToProps,mapDispatchToProps)(Dashboard)

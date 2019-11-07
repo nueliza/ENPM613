@@ -1,27 +1,27 @@
 import React, { Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactTooltip from 'react-tooltip';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
+import { iconMapping } from "../utils/iconsMapping.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './dashboard.css';
 import logo from "./images/logo.jpg";
 
 import Discussions from "../discussions";
-import Exams from "../../containers/exams";
+import Discussion from "../discussions/discussion";
+import CreateDiscussion from '../discussions/createDiscussion';
+
+import Exams from "../exams";
 import CreateExam from "../exams/createExam";
+import TakeExam from "../exams/takeExam";
+
 import Files from "../files";
 import Flashcards from "../flashcards";
 import Grades from "../grades";
 import FlashcardSet from "./flashcardSet";
 import Students from "../students";
-import TakeExam from "../exams/takeExam";
-import Discussion from "../discussions/discussion";
-import { iconMapping } from "../utils/iconsMapping.js";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import CreateDiscussion from '../discussions/createDiscussion';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -139,32 +139,13 @@ class Dashboard extends Component {
                                 </div>
 
                                 <hr />
+
                                 <Route path="/discussions" component={props => 
                                     <Discussions 
                                         isTutor={isTutor} 
                                         deleteDiscussion={this.props.deleteDiscussion}
                                     />} 
                                 />
-                                <Route path="/flashcards" component={props => <Flashcards />} />
-                                <Route path="/students" component={props => <Students />} />
-                                <Route path="/takeExam" component={props => <TakeExam  {...props}/>} />
-                                <Route path="/exams" component={props => 
-                                    <Exams 
-                                        isTutor={isTutor} 
-                                        selectedModule={selectedModule}
-                                        />} 
-                                />
-                                <Route path="/grades" component={props => <Grades />} />
-                                <Route path="/files" component={props => <Files />} />
-
-                                <Route path="/CreateExam" component={props => 
-                                    <CreateExam 
-                                        {...props} 
-                                        createExam={this.props.createExam}
-                                    />} 
-                                />
-                                <Route path="/dashboard" component={props => 
-                                    isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
                                 <Route path="/discussion" component={props => 
                                     <Discussion 
                                         {...props} 
@@ -179,7 +160,36 @@ class Dashboard extends Component {
                                         createDiscussion={this.props.createDiscussion}
                                         selectedModule={selectedModule}
                                         userInfo = {this.props.userInfo} 
-                                    />}/>
+                                    />}
+                                />
+
+                                <Route path="/exams" component={props => 
+                                    <Exams 
+                                        isTutor={isTutor} 
+                                        selectedModule={selectedModule}
+                                        deleteExam={this.props.deleteExam}
+                                        />} 
+                                />
+                                <Route path="/CreateExam" component={props => 
+                                    <CreateExam 
+                                        {...props} 
+                                        createExam={this.props.createExam}
+                                    />} 
+                                />
+                                <Route path="/takeExam" component={props => 
+                                    <TakeExam  
+                                        {...props}
+                                        submitExam={this.props.submitExam}
+                                        getExam={this.props.getExam}
+                                    />} 
+                                />
+
+                                <Route path="/grades" component={props => <Grades />} />
+                                <Route path="/files" component={props => <Files />} />
+                                <Route path="/dashboard" component={props => 
+                                    isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
+                                <Route path="/flashcards" component={props => <Flashcards />} />
+                                <Route path="/students" component={props => <Students />} />
                             </main>
                         </div>
                 )}
