@@ -9,7 +9,7 @@ const ExamList = (props) => {
             <li className="list-group-item">Exam 1
                 <button 
                     type="button" 
-                    className="btn btn-info"
+                    className={"btn btn-info " + props.isTutor? "hide":""}
                     onClick={() => {
                         props.history.push({
                             pathname: '/takeExam',
@@ -18,24 +18,65 @@ const ExamList = (props) => {
                 >
                     Take Exam
                 </button>
-            </li>
-            <li className="list-group-item">Exam 2
-                <button type="button" className="btn btn-info">
-                    Take Exam
-                </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
                 <div className="exam_details">
                     <span>24 Questions</span>
                     <span>Posted On: 4/11/2019</span>
                 </div>
+                
             </li>
-            <li className="list-group-item">Exam 3
-                <button type="button" className="btn btn-info">
+            <li className="list-group-item">Exam 1
+                <button 
+                    type="button" 
+                    className={"btn btn-info " + props.isTutor? "hide":""}
+                    onClick={() => {
+                        props.history.push({
+                            pathname: '/takeExam',
+                        })
+                    }}
+                >
                     Take Exam
                 </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
                 <div className="exam_details">
                     <span>24 Questions</span>
                     <span>Posted On: 4/11/2019</span>
                 </div>
+                
+            </li>
+            <li className="list-group-item">Exam 1
+                <button 
+                    type="button" 
+                    className={"btn btn-info " + props.isTutor? "hide":""}
+                    onClick={() => {
+                        props.history.push({
+                            pathname: '/takeExam',
+                        })
+                    }}
+                >
+                    Take Exam
+                </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
+                <div className="exam_details">
+                    <span>24 Questions</span>
+                    <span>Posted On: 4/11/2019</span>
+                </div>
+                
             </li>
             <li className="list-group-item">Exam 4
                 
@@ -43,9 +84,23 @@ const ExamList = (props) => {
                     <FontAwesomeIcon icon={iconMapping["NotPublished"]} size="1x" />&nbsp;
                     <b>Not published</b>
                 </span>
-                <button type="button" className="btn btn-secondary">
+                <button 
+                    type="button" 
+                    className={"btn btn-info " + props.isTutor? "hide":""}
+                    onClick={() => {
+                        props.history.push({
+                            pathname: '/takeExam',
+                        })
+                    }}
+                >
                     Take Exam
                 </button>
+                <FontAwesomeIcon 
+                    icon={iconMapping["Trash"]} 
+                    size="1x" 
+                    className={props.isTutor?"": "hide"}
+                    style={{color: "red", float: "right"}}
+                />
                 <br/>
                 <div className="exam_details">
                     <span>24 Questions</span>
@@ -72,7 +127,7 @@ class Exams extends Component {
                         <span className="author">- T Roosevelt</span>
                     </div>
                     <br/>
-                    <ExamList {...this.props}/>
+                    <ExamList {...this.props} isTutor={isTutor}/>
                     <br />
                     {
                     isTutor ?
