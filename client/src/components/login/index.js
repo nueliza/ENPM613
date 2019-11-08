@@ -36,8 +36,14 @@ class Login extends Component {
             password: "",
         })
         //Call API to check whether login is sucessfull and update store.
+        const payload ={
+            "username": this.state.username,
+            "password": this.state.password
+        }
 
-        this.props.setData("Tutor");
+        this.props.loginUser(payload);
+
+        //this.props.setData("Tutor");
         this.props.history.push("/modules");
     }
     render() {
