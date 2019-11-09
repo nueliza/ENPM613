@@ -5,8 +5,9 @@ import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
 import Loading from '../components/loading';
 
-import { setSelectedModule } from "../actions/userActions";
+import { setSelectedModule, logoutUser } from "../actions/userActions";
 import { getFlashcardSets } from "../actions/dashboardActions";
+import {resetToast} from "../actions/actions";
 
 class ModuleContainer extends Component {
   render() {
@@ -17,6 +18,9 @@ class ModuleContainer extends Component {
         return <Modules
           userInfo={this.props.userInfo}
           setSelectedModule={this.props.setSelectedModule}
+          logoutUser = {this.props.logoutUser}
+          toastMessage = {this.props.toastMessage}
+          resetToast = {this.props.resetToast}
         />
       }
       else if (this.props.userInfo.user_type === "Tutor") {
@@ -32,13 +36,16 @@ class ModuleContainer extends Component {
 }
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
-  loginPending: state.user.loginPending
+  loginPending: state.user.loginPending,
+  toastMessage: state.toast.toastMessage
 })
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
-    getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload))
+    getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload)),
+    logoutUser: ()=>dispatch(logoutUser()),
+    resetToast: () => dispatch(resetToast())
   }
 }
 

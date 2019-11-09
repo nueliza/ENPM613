@@ -4,7 +4,10 @@ const initialState = {
     loginPending: false,
     loginError: false,
     userInfo: {},
-    selectedModule: ""
+    selectedModule: "",
+    logoutSuccess : {},
+    logoutStarted: false,
+    loginFailed: {}
 }
 
 const userReducer = (state = initialState, action) => {
@@ -21,7 +24,15 @@ const userReducer = (state = initialState, action) => {
         case actionTypes.SET_SELECTED_MODULE: {
             return { ...state, selectedModule: action.payload}
         };
-        
+        case actionTypes.LOGOUT_USER_STARTED:{
+            return { ...state, logoutPending: true}
+        };
+        case actionTypes.LOGOUT_USER_SUCESS: {
+            return { ...state, logoutSuccess: action.payload, logoutPending: false}
+        };
+        case actionTypes.LOGOUT_USER_FAILED: {
+            return { ...state, logoutFailed: action.payload, logoutPending: false}
+        };
         default:
             return state
     }

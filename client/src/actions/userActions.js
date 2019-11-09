@@ -52,6 +52,30 @@ export function registerUser(registerData) {
     
 }
 
+export function logoutUser(user) {
+    return dispatch =>{
+        dispatch(actions.logoutStarted());
+        return fetch(`${baseUrl}/logout`, {
+            method: "GET",
+            headers:{
+                'Content-Type':'application/json',
+                'Accept': 'application/json',
+            },
+        })
+        .then(resp => resp.json())
+        .then(payload =>{
+            if(payload.Status === 200){
+                dispatch(actions.logoutSuccess(payload.message));
+            }
+            else{
+                dispatch(actions.logoutFailed(payload.message));
+            }
+        })
+    }
+}
+
+
+
 export const setSelectedModule = (data) =>{
     return{
         type: actionTypes.SET_SELECTED_MODULE,

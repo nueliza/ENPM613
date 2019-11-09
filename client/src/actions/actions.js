@@ -44,4 +44,30 @@ export const registrationFailed = (data) =>{
     }
 }
 
+/* Sign Out */
+export const logoutSuccess = (data) =>{
+    return{
+        type: actionTypes.LOGOUT_USER_SUCESS,
+        payload: data
+    }
+}
+
+export const logoutStarted = () =>{
+    return{
+        type: actionTypes.LOGOUT_USER_STARTED,
+    }
+}
+
+export const logoutFailed = (data) =>{
+    return{
+        type: actionTypes.LOGOUT_USER_FAILED,
+        error: data
+    }
+}
+
+export const resetToast = () =>{
+    return{
+        type: actionTypes.RESET_TOAST
+    }
+}
 

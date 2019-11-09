@@ -2,10 +2,24 @@ import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 
 import math from "./images/math.jpg";
-
+import ToastContainer from "../toast";
 import "./modules.css"
+
+
 class Modules extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            showToast: true
+        }
+    }
+
+    handleSignOut = () =>{
+        this.props.logoutUser();
+    }
+    
     render() {
+        setTimeout(function(){ this.setState({showToast:false});this.props.resetToast();}.bind(this),5000); 
         return (
             <Fragment>
                 <div className="dashboard_header">
@@ -13,9 +27,13 @@ class Modules extends Component {
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <Link to ='/'>Sign out</Link>
+                        <Link to="/" onClick={this.handleSignOut}>Sign out</Link>
                     </div>
                 </div>
+                {
+                    this.props.toastMessage === "" ? "" : <ToastContainer showToast = {this.state.showToast} content={this.props.toastMessage} />
+                }
+               
                 <hr />
                 <div className="modules">
                     
