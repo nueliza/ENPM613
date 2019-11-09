@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => ({
     userInfo: state.user.userInfo,
-    selectedModule: state.modules.selectedModule,
+    selectedModule: state.user.selectedModule,
     examList: state.dashboard.exaList,
     discussionList: state.dashboard.discussionList,
     flashcardSets: state.dashboard.flashcardSets,
