@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { withRouter } from "react-router-dom";
+
 import Particles from 'react-particles-js';
 import './login.css';
 
@@ -13,8 +15,17 @@ class Login extends Component {
 
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            showModal: false
         }
+    }
+
+    componentDidMount(){
+        this.setState({showModal: true})
+    }
+
+    onCloseModal = () =>{
+        this.setState({showModal: false})
     }
 
     onChangeUsername = (e) => {
@@ -37,7 +48,8 @@ class Login extends Component {
         })
         //Call API to check whether login is sucessfull and update store.
 
-        this.props.setData("Tutor");
+        //this.props.setData("Tutor");
+        
         this.props.history.push("/modules");
     }
     render() {
@@ -112,4 +124,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);
