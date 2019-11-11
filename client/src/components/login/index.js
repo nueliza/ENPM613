@@ -96,7 +96,7 @@ class Login extends Component {
                  }}
                 />
                 <div className="formContent">
-                    <h3>Login</h3>
+                    <h3>Sign In</h3>
                     <hr />
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
@@ -117,7 +117,7 @@ class Login extends Component {
                         </div>
                         <input type="submit"
                             className="btn btn-primary getSatProSubmitBtn"
-                            value="Login"
+                            value="Sign In"
                         />
                     </form>
                     <div className="formFooter">

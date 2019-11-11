@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Modal from "react-responsive-modal";
 import './welcome.css';
 import Login from '../login';
+import Registration from '../registration';
 class Welcome extends Component {
     constructor(props){
         super(props);
@@ -30,6 +31,9 @@ class Welcome extends Component {
                     <Modal open={this.state.showLoginModal} onClose={this.onCloseLoginModal}>
 
                         <Login />
+                    </Modal>
+                    <Modal open={this.state.showRegistrationModal} onClose={this.onCloseRegistrationModal}>
+                        <Registration />
                     </Modal>
                 </div>
             </Fragment>)
