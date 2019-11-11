@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iconMapping } from "../utils/iconsMapping.js";
-import FileUploadModal from "../modal";
+import FileUploadModal from "../fileUploadModal";
 import "./files.css";
 
 

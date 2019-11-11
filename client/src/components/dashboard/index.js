@@ -53,7 +53,7 @@ class Dashboard extends Component {
                                 <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" alt="Logo" src={logo} /></Link>
                                 <br />
                                 <span className="avatar dashboardAvatar">
-                                    {userInfo.firstName.charAt(0)}{userInfo.lastName.charAt(0)}
+                                    {userInfo.first_name.charAt(0)}{userInfo.last_name.charAt(0)}
                                 </span>
                                 <br/>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
@@ -138,7 +138,7 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span className="bold">Hello, {this.props.userInfo.firstName} {this.props.userInfo.lastName} !</span> <br />
+                                        <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
                                         <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
                                         <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
                                     </div>

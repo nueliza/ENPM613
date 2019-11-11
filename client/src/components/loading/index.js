@@ -1,24 +1,24 @@
-import React, { Component, Fragment } from './node_modules/react';
-import Loader from './node_modules/react-loader-spinner';
+import React, { Component, Fragment } from 'react';
+import Loader from 'react-loader-spinner';
 
 import "./loader.css";
 
-class Loader extends Component {
+class Loading extends Component {
     render() {
         return (
             <Fragment>
-                {this.props.showLoader? 
+                {this.props.show? 
                 <div className="loaderWrapper">
                     <Loader
                         type="ThreeDots"
                         color= "purple"
                         height={100}
                         width={100}
-                        visible = {true}
+                        visible = {this.props.show}
                     />
                 </div> : ""}
                 
             </Fragment>)
     }
 }
-export default Loader;
+export default Loading;

@@ -6,6 +6,7 @@ class FlashcardSet extends Component {
         super(props);
         this.state = {
             Math: ["Algebra", "Calculus", "Something"],
+            English: ["Algebra", "Calculus", "Something"]
 
         };
     }

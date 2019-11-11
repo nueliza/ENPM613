@@ -69,3 +69,18 @@ input{
     box-shadow: 2px 3px 3px #a3a3a3;
 }
 
+.toast{
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 5px !important;
+    border-radius: 10px !important;
+}
+.toast .toast-body{
+    padding: 5px;
+    text-align: center !important;
+}
+
