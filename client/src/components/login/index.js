@@ -49,7 +49,7 @@ class Login extends Component {
     }
     render() {
         return (
-            <Modal open={this.props.showModal} onClose={this.props.onClose} >
+            <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
                 <div className="wrapper">
                     <Particles className="wrapper"
                         params={{

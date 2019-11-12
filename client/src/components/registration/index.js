@@ -1,16 +1,16 @@
 import React, { Component, Fragment } from 'react';
-
+import Modal from "react-responsive-modal";
 import './registeration.css';
 
 class Registration extends Component {
 
     render() {
         return (
-            <Fragment>
+            <Modal open={this.props.showModal} onClose={this.props.onCloseModal}>
                 <div>
                     Registration Page
-            </div>
-            </Fragment>)
+                </div>
+            </Modal>)
     }
 }
 export default Registration;
