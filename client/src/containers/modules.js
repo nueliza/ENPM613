@@ -10,6 +10,7 @@ import { getFlashcardSets } from "../actions/dashboardActions";
 
 class ModuleContainer extends Component {
   render() {
+    console.log("Modules Container", this.props.loginPending)
     if (this.props.userInfo.user_type === "Student") {
       return <Modules
         userInfo={this.props.userInfo}

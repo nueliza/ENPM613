@@ -5,7 +5,6 @@ import { resetToast } from "../../actions/actions";
 
 class ToastContainer extends Component {
     render() {
-        console.log("Toast", this.props.toastMessage);
         setTimeout(function(){ this.props.resetToast();}.bind(this),5000);
         return (
             this.props.toastMessage !== ""?

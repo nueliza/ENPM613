@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import {loginUser, registerUser} from "../../actions/userActions";
 import Modal from "react-responsive-modal";
-import { withRouter } from "react-router-dom";
+import Loading from "../loading";
+import { Redirect } from 'react-router';
 
 import './login.css';
+import ErrorMessage from '../ErrorMessage';
 
 class Login extends Component {
     constructor(props) {
@@ -44,16 +48,10 @@ class Login extends Component {
         }
 
         this.props.loginUser(payload);
-        // if(this.props.loginPending){
-        //     console.log("Here");
-        //     return <Loading show={this.props.loginPending} />
-        // }
-        // else
-        this.props.history.push("/modules");
-        
     }
     render() {
-        console.log("Login Page", this.props.loginPending)
+        if (this.props.loginPending) return <Loading show={this.props.loginPending} />
+        if (Object.keys(this.props.userInfo).length > 0) return <Redirect to='/modules' /> 
         return (
             <div className="Mywrapper" >
                 <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
@@ -62,6 +60,7 @@ class Login extends Component {
                             <br />
                             <h3>Sign In</h3>
                             <hr />
+                            <ErrorMessage messageType="error" content={this.props.loginError}/>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <FontAwesomeIcon icon={faUserCircle} size="2x" color="gray"/>
@@ -95,4 +94,18 @@ class Login extends Component {
     }
 }
 
-export default withRouter(Login);
+const mapDispatchToProps = (dispatch) => {
+    return{
+        loginUser: (data) => dispatch(loginUser(data)),
+    }
+}
+
+const mapStateToProps =( state) =>{
+    return{
+        loginPending: state.user.loginPending,
+        loginError:  state.user.loginError,
+        userInfo:  state.user.userInfo
+    }
+}
+    
+export default connect( mapStateToProps, mapDispatchToProps)(Login)

@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
     loginPending: false,
-    loginError: false,
+    loginError: "",
     userInfo: {},
     selectedModule: "",
     logoutSuccess : {},

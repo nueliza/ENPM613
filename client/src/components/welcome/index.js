@@ -39,9 +39,7 @@ class Welcome extends Component {
                     <Login 
                         showModal= {this.state.showLoginModal}
                         onCloseModal ={this.onCloseLoginModal}
-                        loginUser = {this.props.loginUser}
                         openRegistrationModal = {this.openRegistrationModal}
-                        loginPending = {this.props.loginPending}
                     />
                     <Registration 
                         showModal={this.state.showRegistrationModal}

@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-//import Login from "./containers/login";
 import Welcome from "./containers/welcome";
 import Modules from "./containers/modules";
-import Registeration from "./components/registration";
 import Dashboard from "./containers/dashboard";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -15,14 +15,14 @@ import Flashcards from "./components/flashcards";
 import CreateDiscussion from "./components/discussions/createDiscussion";
 import Grades from "./components/grades";
 
+
 function App() {
   return (
     <React.Fragment>
       
       <Router>
-      <Header />
+        <Header />
         <Route path="/" exact component={Welcome} />
-        <Route path="/registration" component={Registeration} />
         <Route path="/modules" component={Modules} />
         <Route path="/dashboard" component={Dashboard} />
 
@@ -39,4 +39,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) =>{
+  return{
+    userInfo : state.user.userInfo,
+    loginError: state.user.loginError
+  }
+}
+
+export default connect(mapStateToProps)(App);
