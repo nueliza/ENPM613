@@ -7,8 +7,11 @@ class Registration extends Component {
     render() {
         return (
             <Modal open={this.props.showModal} onClose={this.props.onCloseModal}>
-                <div>
-                    Registration Page
+                <div className="RegistrationWrapper">
+                    <br />
+                    <h3>Sign Up</h3>
+                    <hr />
+
                 </div>
             </Modal>)
     }
