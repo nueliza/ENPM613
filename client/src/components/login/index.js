@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import Modal from "react-responsive-modal";
 import { withRouter } from "react-router-dom";
 
@@ -57,7 +57,7 @@ class Login extends Component {
                             <hr />
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <FontAwesomeIcon icon={faUser} size="2x" />
+                                    <FontAwesomeIcon icon={faUserCircle} size="2x" color="gray"/>
                                     <input type="text"
                                         placeholder="Username"
                                         value={this.state.username}
@@ -65,7 +65,7 @@ class Login extends Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <FontAwesomeIcon icon={faLock} size="2x" />
+                                    <FontAwesomeIcon icon={faLock} size="2x" color="gray"/>
                                     <input type="password"
                                         placeholder="Password"
                                         value={this.state.password}
@@ -78,7 +78,7 @@ class Login extends Component {
                                 />
                             </form>
                             <div className="formFooter">
-                                Don't have an account? <a href="#">Sign Up</a> <br />
+                                Don't have an account? <a href="#"> &nbsp;Sign Up</a> <br />
                             </div>
                         </div>
                     </div>
