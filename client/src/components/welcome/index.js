@@ -28,10 +28,11 @@ class Welcome extends Component {
                     Welcome Page
                     <button className="btn btn-link" onClick={()=> this.setState({showLoginModal: true})}>Sign In </button> | 
                     <button className="btn btn-link" onClick={()=> this.setState({showRegistrationModal: true})}>Sign up </button>
-                    <Modal open={this.state.showLoginModal} onClose={this.onCloseLoginModal}>
-
-                        <Login />
-                    </Modal>
+                        <Login 
+                            showModal= {this.state.showLoginModal}
+                            onCloseModal ={this.onCloseLoginModal}
+                            loginUser = {this.props.loginUser}
+                        />
                     <Modal open={this.state.showRegistrationModal} onClose={this.onCloseRegistrationModal}>
                         <Registration />
                     </Modal>

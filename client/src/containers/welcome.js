@@ -7,7 +7,11 @@ const mapDispatchToProps = (dispatch) => {
         loginUser: (data) => dispatch(loginUser(data))
     }
 }
+
+const mapStateToProps =( state) =>{
+    return{
+        loginPending: state.user.loginPending,
+    }
+}
     
-export default connect( null,
-    mapDispatchToProps
-)(Welcome)
+export default connect( mapStateToProps, mapDispatchToProps)(Welcome)
