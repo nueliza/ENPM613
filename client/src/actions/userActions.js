@@ -42,10 +42,10 @@ export function registerUser(registerData) {
         .then(resp => resp.json())
         .then(payload =>{
             if(payload.Status === 200){
-                dispatch(actions.registrationSuccess);
+                dispatch(actions.registrationSuccess(payload.message));
             }
             else{
-                dispatch(actions.registrationFailed);
+                dispatch(actions.registrationFailed(payload.message));
             }
         })
     }

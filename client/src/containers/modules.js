@@ -7,7 +7,6 @@ import Loading from '../components/loading';
 
 import { setSelectedModule, logoutUser } from "../actions/userActions";
 import { getFlashcardSets } from "../actions/dashboardActions";
-import { resetToast } from "../actions/actions";
 
 class ModuleContainer extends Component {
   render() {
@@ -16,8 +15,6 @@ class ModuleContainer extends Component {
         userInfo={this.props.userInfo}
         setSelectedModule={this.props.setSelectedModule}
         logoutUser={this.props.logoutUser}
-        toastMessage={this.props.toastMessage}
-        resetToast={this.props.resetToast}
       />
     }
     else if (this.props.userInfo.user_type === "Tutor") {
@@ -35,7 +32,6 @@ class ModuleContainer extends Component {
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
   loginPending: state.user.loginPending,
-  toastMessage: state.toast.toastMessage
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -43,7 +39,6 @@ const mapDispatchToProps = (dispatch) => {
     setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
     getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload)),
     logoutUser: () => dispatch(logoutUser()),
-    resetToast: () => dispatch(resetToast())
   }
 }
 

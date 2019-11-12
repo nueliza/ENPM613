@@ -1,9 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Modal from "react-responsive-modal";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope, faPhone, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import './registeration.css';
 import ErrorMessage from "../ErrorMessage";
+import { withRouter } from "react-router-dom";
+import ToastContainer from "../toast";
 
 class Registration extends Component {
     constructor(props) {
@@ -18,7 +20,8 @@ class Registration extends Component {
             phoneError: "",
             isFormValid: false,
             isTermsChecked: false,
-            termsError: ""
+            termsError: "",
+            showToast: false
         }
     }
 
@@ -42,6 +45,14 @@ class Registration extends Component {
         this.validateField("email");
         this.validateField("phone");
         this.validateField("terms");
+
+        if(this.state.fnameError === "" && this.state.lnameError === ""&& 
+        this.state.passwordError === "" && this.state.phoneError === "" &&
+        this.state.emailIdError === "" && this.state.termsError === ""&&
+        this.state.usernameError === ""){
+            this.props.registerUser(this.state.registrationInfo);
+            this.props.onCloseModal();
+        } 
     }
 
     validateField = (field) =>{
@@ -54,7 +65,7 @@ class Registration extends Component {
         let phone = this.state.registrationInfo["phone"];
 
          switch(field){
-             case "fname": {
+             case "fname": 
                  if(fname === ""){
                      this.setState({fnameError: "First name is required"});
                  }
@@ -66,8 +77,8 @@ class Registration extends Component {
                          this.setState({fnameError: ""});
                      }
                  }
-             } break;
-             case "lname": {
+                break;
+             case "lname": 
                 if(lname === ""){
                     this.setState({lnameError: "Last name is required"});
                 }
@@ -79,24 +90,24 @@ class Registration extends Component {
                         this.setState({lnameError: ""});
                     }
                 }
-             } break;
-             case "password": {
+                break;
+             case "password": 
                 if(password === ""){
                     this.setState({passwordError: "Password is required"});
                 }
                 else{
                     this.setState({passwordError: ""});
                 }
-             } break;
-             case "username":{
+                break;
+             case "username":
                  if(username === ""){
                      this.setState({usernameError: "Username is required"})
                  }
                  else{
                     this.setState({usernameError: ""});
                  }
-             } break;
-             case "email":{
+                break;
+             case "email":
                 if(email === ""){
                     this.setState({emailIdError: "Email id is required"})
                 }
@@ -108,8 +119,8 @@ class Registration extends Component {
                         this.setState({emailIdError: ""})
                     }
                 }
-             } break;
-             case "phone":{
+                break;
+             case "phone":
                  if(phone === "") {
                      this.setState({phoneError: "Phone number is required"})
                  }
@@ -121,23 +132,27 @@ class Registration extends Component {
                         this.setState({phoneError: ""});
                     }
                  }
-             } break;
-             case "terms":{
+                break;
+             case "terms":
                  if(this.state.isTermsChecked === false){
                      this.setState({termsError: "Please read the terms and conditions"})
                  }
                  else{
                     this.setState({termsError: ""})
                  }
-             }
+             break;
          }
 
     }
 
     render() {
         console.log("Registration", this.state);
+        
         return (
             <Modal open={this.props.showModal} onClose={this.props.onCloseModal}>
+                {
+                    this.props.toastMessage === "" ? "" : <ToastContainer showToast = {this.state.showToast} content={this.props.toastMessage} />
+                }
                 <div className="RegistrationWrapper">
                     <br />
                     <h3>Sign Up</h3>
@@ -200,4 +215,4 @@ class Registration extends Component {
             </Modal>)
     }
 }
-export default Registration;
+export default withRouter(Registration);

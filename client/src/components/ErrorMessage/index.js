@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

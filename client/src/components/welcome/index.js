@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import Modal from "react-responsive-modal";
 import './welcome.css';
 import Login from '../login';
 import Registration from '../registration';
+import ToastContainer from "../toast";
+
 class Welcome extends Component {
     constructor(props){
         super(props);
@@ -31,6 +31,7 @@ class Welcome extends Component {
     render() {
         return (
             <Fragment>
+                <ToastContainer />
                 <div>
                     Welcome Page
                     <button className="btn btn-link" onClick={()=> this.setState({showLoginModal: true})}>Sign In </button> | 
@@ -40,11 +41,14 @@ class Welcome extends Component {
                         onCloseModal ={this.onCloseLoginModal}
                         loginUser = {this.props.loginUser}
                         openRegistrationModal = {this.openRegistrationModal}
+                        loginPending = {this.props.loginPending}
                     />
                     <Registration 
                         showModal={this.state.showRegistrationModal}
                         onCloseModal = {this.onCloseRegistrationModal}
                         openLoginModal = {this.openLoginModal}
+                        registerUser = {this.props.registerUser}
+                        registrationPending = {this.props.registrationPending}
                     />
                 </div>
             </Fragment>)

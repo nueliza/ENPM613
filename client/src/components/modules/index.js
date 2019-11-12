@@ -7,19 +7,10 @@ import "./modules.css"
 
 
 class Modules extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            showToast: true
-        }
-    }
-
     handleSignOut = () =>{
         this.props.logoutUser();
     }
-    
     render() {
-        setTimeout(function(){ this.setState({showToast:false});this.props.resetToast();}.bind(this),5000); 
         return (
             <Fragment>
                 <div className="dashboard_header">
@@ -30,9 +21,8 @@ class Modules extends Component {
                         <Link to="/" onClick={this.handleSignOut}>Sign out</Link>
                     </div>
                 </div>
-                {
-                    this.props.toastMessage === "" ? "" : <ToastContainer showToast = {this.state.showToast} content={this.props.toastMessage} />
-                }
+
+                 <ToastContainer />
                
                 <hr />
                 <div className="modules">

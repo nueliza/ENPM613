@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import Modal from "react-responsive-modal";
 import { withRouter } from "react-router-dom";
 
@@ -44,9 +44,16 @@ class Login extends Component {
         }
 
         this.props.loginUser(payload);
+        // if(this.props.loginPending){
+        //     console.log("Here");
+        //     return <Loading show={this.props.loginPending} />
+        // }
+        // else
         this.props.history.push("/modules");
+        
     }
     render() {
+        console.log("Login Page", this.props.loginPending)
         return (
             <div className="Mywrapper" >
                 <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
