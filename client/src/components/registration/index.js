@@ -53,13 +53,6 @@ class Registration extends Component {
         let email = this.state.registrationInfo["email"];
         let phone = this.state.registrationInfo["phone"];
 
-        console.log("Fname", /^[a-zA-Z]+$/.test(fname));
-
-        //Validate Fname 
-        //  this.setState({fnameError: fname === ""? "Please enter your first name": ""})
-        //  this.setState({ fnameError: (!/^[a-zA-Z]+$/.test(fname)? "Please enter a valid first name": "")})
-        //  this.setState({lnameError: lname === "" ? "Please enter your lastname": ""})
-
          switch(field){
              case "fname": {
                  if(fname === ""){
@@ -200,7 +193,7 @@ class Registration extends Component {
                             value="Sign Up"
                         />
                         <div className="formFooter">
-                            Already have an account? <a href="#">Sign In</a> <br />
+                            Already have an account? <a href="#" onClick={this.props.openLoginModal}>Sign In</a> <br />
                         </div>
                     </form>
                 </div>

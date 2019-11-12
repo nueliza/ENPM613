@@ -78,7 +78,7 @@ class Login extends Component {
                                 />
                             </form>
                             <div className="formFooter">
-                                Don't have an account? <a href="#"> &nbsp;Sign Up</a> <br />
+                                Don't have an account? <a href="#" onClick={this.props.openRegistrationModal}> &nbsp;Sign Up</a> <br />
                             </div>
                         </div>
                     </div>

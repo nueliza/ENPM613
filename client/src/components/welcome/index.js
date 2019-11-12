@@ -21,6 +21,13 @@ class Welcome extends Component {
         this.setState({showRegistrationModal: false})
     }
     
+    openRegistrationModal = () =>{
+        this.setState({showLoginModal: false, showRegistrationModal: true})
+    }
+    
+    openLoginModal = () =>{
+        this.setState({showLoginModal: true, showRegistrationModal: false})
+    }
     render() {
         return (
             <Fragment>
@@ -32,11 +39,12 @@ class Welcome extends Component {
                         showModal= {this.state.showLoginModal}
                         onCloseModal ={this.onCloseLoginModal}
                         loginUser = {this.props.loginUser}
+                        openRegistrationModal = {this.openRegistrationModal}
                     />
                     <Registration 
                         showModal={this.state.showRegistrationModal}
                         onCloseModal = {this.onCloseRegistrationModal}
-
+                        openLoginModal = {this.openLoginModal}
                     />
                 </div>
             </Fragment>)
