@@ -4,7 +4,7 @@ import Modules from '../components/modules';
 import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
 
-import { setSelectedModule} from "../actions/actions";
+import { setSelectedModule} from "../actions";
 import {  logoutUser } from "../actions/userHandler";
 import { getFlashcardSets } from "../actions/dashboardActions";
 import { getStudentList } from "../actions/studentHandler";

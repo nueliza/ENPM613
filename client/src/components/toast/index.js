@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Toast, ToastBody } from 'reactstrap';
-import { resetToast } from "../../actions/actions";
+import { resetToast } from "../../actions";
 
 class ToastContainer extends Component {
     render() {

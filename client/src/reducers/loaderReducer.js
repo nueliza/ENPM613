@@ -7,20 +7,30 @@ const initialState = {
 const toastReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN_USER_STARTED:
-            return{ ...state, loading: true}
-        case actionTypes.LOGIN_USER_FAILED:
-        case actionTypes.LOGIN_USER_SUCESS: 
-            return{ ...state, loading: false}
         case actionTypes.REGISTERATION_STARTED:
+        case actionTypes.LOGOUT_USER_STARTED:
+        case actionTypes.CREATE_EXAM_STARTED:
+        case actionTypes.SUBMIT_EXAM_STARTED:
+        case actionTypes.DELETE_EXAM_STARTED:
+        case actionTypes.GET_EXAM_LIST_STARTED:
             return{ ...state, loading: true}
+            
+        case actionTypes.LOGIN_USER_FAILED:
+        case actionTypes.LOGIN_USER_SUCESS:
         case actionTypes.REGISTRATION_FAILED:
         case actionTypes.REGISTRATION_SUCCESS: 
-            return{ ...state, loading: false}
-        case actionTypes.LOGOUT_USER_STARTED:
-            return{ ...state, loading: true}
         case actionTypes.LOGOUT_USER_SUCESS:
-        case actionTypes.LOGIN_USER_FAILED:
+        case actionTypes.LOGOUT_USER_FAILED:
+        case actionTypes.CREATE_EXAM_FAILED:
+        case actionTypes.CREATE_EXAM_SUCCESS:
+        case actionTypes.SUBMIT_EXAM_FAILED:
+        case actionTypes.SUBMIT_EXAM_SUCCESS:
+        case actionTypes.DELETE_EXAM_SUCCESS:
+        case actionTypes.DELETE_EXAM_FAILED:
+        case actionTypes.GET_EXAM_LIST_FAILED:
+        case actionTypes.GET_EXAM_LIST_SUCCESS:
             return{ ...state, loading: false}
+        
         default:
             return state
     }
