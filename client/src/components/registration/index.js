@@ -146,7 +146,6 @@ class Registration extends Component {
     }
 
     render() {
-        console.log("Registration", this.state);
         
         return (
             <Modal open={this.props.showModal} onClose={this.props.onCloseModal}>

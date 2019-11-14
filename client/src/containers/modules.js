@@ -3,14 +3,12 @@ import { connect } from 'react-redux';
 import Modules from '../components/modules';
 import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
-import Loading from '../components/loading';
 
 import { setSelectedModule, logoutUser } from "../actions/userActions";
 import { getFlashcardSets } from "../actions/dashboardActions";
 
 class ModuleContainer extends Component {
   render() {
-    console.log("Modules Container", this.props.loginPending)
     if (this.props.userInfo.user_type === "Student") {
       return <Modules
         userInfo={this.props.userInfo}
@@ -24,10 +22,10 @@ class ModuleContainer extends Component {
       }} />
     }
     else if (this.props.userInfo.user_type === "Admin") {
-      return <AdminDashboard />
+      return <AdminDashboard  /> 
     }
     else
-      return <Loading show={true} />
+      return <Redirect to ="/" />
   }
 }
 const mapStateToProps = state => ({
