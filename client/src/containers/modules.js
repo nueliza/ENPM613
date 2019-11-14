@@ -19,7 +19,7 @@ class ModuleContainer extends Component {
       />
     }
     else if (this.props.userInfo.user_type === "Tutor") {
-      this.props.getStudentList()
+      //this.props.getStudentList()
       return <Redirect to={{
         pathname: '/dashboard'
       }} />

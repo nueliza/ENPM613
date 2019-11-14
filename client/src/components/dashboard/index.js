@@ -141,7 +141,7 @@ class Dashboard extends Component {
                                     <div className="userInfo">
                                         <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
                                         <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
-                                        <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
+                                        <a href="/">Sign out</a>
                                     </div>
                                 </div>
 

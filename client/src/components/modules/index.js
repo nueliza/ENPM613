@@ -15,7 +15,7 @@ class Modules extends Component {
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <Link to="/">Sign out</Link>
+                        <a href="/">Sign out</a>
                     </div>
                 </div>
 
@@ -30,11 +30,8 @@ class Modules extends Component {
                             <div className="progress-bar" style={{ width: '25%', backgroundColor: 'var(--primary-color)' }}><b>25%</b></div>
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">Math</h5>
-                            <ul className="card-text">
-                                <li>Algebra</li>
-                                <li>Calculus</li>
-                            </ul>
+                            <h1 className="card-title">Math</h1>
+                            
                         </div>
                     </Link>
 
@@ -44,11 +41,7 @@ class Modules extends Component {
                             <div className="progress-bar" style={{ width: '50%', backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">English</h5>
-                            <ul className="card-text">
-                                <li>Grammar</li>
-                                <li>Vocabulary</li>
-                            </ul>
+                            <h1 className="card-title">English</h1>
                         </div>
                     </Link>
 
@@ -58,11 +51,7 @@ class Modules extends Component {
                             <div className="progress-bar" style={{ width: '50%', backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
                         </div>
                         <div className="card-body">
-                            <h5 className="card-title">English</h5>
-                            <ul className="card-text">
-                                <li>Formats</li>
-                                <li>Blah Blah</li>
-                            </ul>
+                            <h1 className="card-title">English</h1>
                         </div>
                     </Link>
                 </div>

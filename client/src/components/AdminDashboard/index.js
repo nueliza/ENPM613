@@ -17,7 +17,7 @@ class AdminDashboard extends Component {
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.firstName} {this.props.userInfo.lastName} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <Link to ='/'>Sign out</Link>
+                        <a href="/">Sign out</a>
                     </div>
                 </div>
                 <hr />
