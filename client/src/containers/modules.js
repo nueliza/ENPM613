@@ -26,7 +26,7 @@ class ModuleContainer extends Component {
     }
     else if (this.props.userInfo.user_type === "Admin") {
       this.props.getStudentList()
-      return <AdminDashboard  /> 
+      return <AdminDashboard userInfo = {this.props.userInfo} /> 
     }
     else
       return <Redirect to ="/" />
