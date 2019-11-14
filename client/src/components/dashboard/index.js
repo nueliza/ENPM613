@@ -32,9 +32,12 @@ class Dashboard extends Component {
         }
 
     }
+
+    
+
     render() {
         const userInfo = this.props.userInfo;
-        const isTutor = userInfo.userType === "Tutor" ? true : false;
+        const isTutor = userInfo.user_type === "Tutor" ? true : false;
         const selectedModule = this.props.selectedModule;
 
         return (

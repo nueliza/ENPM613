@@ -5,6 +5,7 @@ import examReducer from "./examReducer";
 import discussionReducer from "./discussionReducer";
 import dashboardReducer from "./dashboardReducer";
 import toastReducer from "./toastReducer";
+import loaderReducer from "./loaderReducer";
 
 export default combineReducers({
     user : userReducer ,
@@ -12,5 +13,6 @@ export default combineReducers({
     exam : examReducer,
     discussion: discussionReducer,
     dashboard: dashboardReducer,
-    toast: toastReducer
+    toast: toastReducer,
+    loader : loaderReducer
 })

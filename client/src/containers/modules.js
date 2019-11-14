@@ -9,6 +9,7 @@ import { getFlashcardSets } from "../actions/dashboardActions";
 
 class ModuleContainer extends Component {
   render() {
+    console.log("UserInfo", this.props.userInfo)
     if (this.props.userInfo.user_type === "Student") {
       return <Modules
         userInfo={this.props.userInfo}
@@ -17,6 +18,7 @@ class ModuleContainer extends Component {
       />
     }
     else if (this.props.userInfo.user_type === "Tutor") {
+
       return <Redirect to={{
         pathname: '/dashboard'
       }} />
@@ -30,7 +32,6 @@ class ModuleContainer extends Component {
 }
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
-  loginPending: state.user.loginPending,
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -38,6 +39,7 @@ const mapDispatchToProps = (dispatch) => {
     setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
     getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload)),
     logoutUser: () => dispatch(logoutUser()),
+    //getStudentList: (payload) => dispatch(getStudentList(payload))
   }
 }
 

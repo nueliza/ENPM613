@@ -29,11 +29,14 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = state => ({
     userInfo: state.user.userInfo,
     selectedModule: state.user.selectedModule,
+    
+
     examList: state.dashboard.exaList,
     discussionList: state.dashboard.discussionList,
     flashcardSets: state.dashboard.flashcardSets,
     gradesList: state.dashboard.gradesList,
     filesList: state.dashboard.filesList,
+
     //Discussion
     selectedDiscussion: state.discussion.selectedDiscussion,
     replytToDiscussionMessage: state.discussion.replytToDiscussionMessage,

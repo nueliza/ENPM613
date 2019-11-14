@@ -50,7 +50,7 @@ class Login extends Component {
         this.props.loginUser(payload);
     }
     render() {
-        if (this.props.loginPending) return <Loading show={this.props.loginPending} />
+        if (this.props.loading) return <Loading show={this.props.loading} />
         if (Object.keys(this.props.userInfo).length > 0) return <Redirect to='/modules' /> 
         return (
                 <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
@@ -59,7 +59,7 @@ class Login extends Component {
                             <br />
                             <h3>Sign In</h3>
                             <hr />
-                            <ErrorMessage messageType="error" content={this.props.loginError}/>
+                            
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     <FontAwesomeIcon icon={faUserCircle} size="2x" color="gray"/>
@@ -77,6 +77,7 @@ class Login extends Component {
                                         onChange={this.onChangePassword}
                                     />
                                 </div>
+                                <ErrorMessage messageType="error" content={this.props.loginError}/>
                                 <input type="submit"
                                     className="btn btn-primary getSatProSubmitBtn"
                                     value="Sign In"
@@ -100,7 +101,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps =( state) =>{
     return{
-        loginPending: state.user.loginPending,
+        loading: state.loader.loading,
         loginError:  state.user.loginError,
         userInfo:  state.user.userInfo
     }
