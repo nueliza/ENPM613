@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import {loginUser} from "../../actions/userActions";
+import {loginUser} from "../../actions/userHandler";
 import Modal from "react-responsive-modal";
 import Loading from "../loading";
 import { Redirect } from 'react-router';

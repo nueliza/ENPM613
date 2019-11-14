@@ -1,11 +1,12 @@
-import * as actions from "./actions";
 import * as actionTypes from "./actionTypes";
 
 const baseUrl = "https://get-sat-pro.herokuapp.com";
 
 export function loginUser(user) {
     return async dispatch => {
-        dispatch(actions.loginStarted());
+        dispatch({
+            type: actionTypes.LOGIN_USER_STARTED
+        });
         return fetch(`${baseUrl}/login`,{
             method: "POST",
             headers: {
@@ -18,10 +19,16 @@ export function loginUser(user) {
         .then(payload => {
             if (payload.Status === 200) {
                 localStorage.setItem("token", payload.token);
-                dispatch(actions.loginSuccess(payload));
+                dispatch({
+                    type: actionTypes.LOGIN_USER_SUCESS,
+                    payload: payload
+                });
             }
             else {
-                dispatch(actions.loginFailed(payload.message));
+                dispatch({
+                    type: actionTypes.LOGIN_USER_FAILED,
+                    error: payload.message
+                });
             }
         })
     }
@@ -30,7 +37,9 @@ export function loginUser(user) {
 
 export function registerUser(registerData) {
     return async dispatch =>{
-        dispatch(actions.registrationStarted());
+        dispatch({
+            type: actionTypes.REGISTERATION_STARTED
+        });
         //TODO service call for register
         const resp = await fetch(`${baseUrl}/register`, {
             method: "POST",
@@ -42,20 +51,28 @@ export function registerUser(registerData) {
         });
         const payload = await resp.json();
         if (payload.Status === 200) {
-            dispatch(actions.registrationSuccess(payload.message));
+            dispatch({
+                type: actionTypes.REGISTRATION_SUCCESS,
+                payload: payload.message
+            });
         }
         else {
-            dispatch(actions.registrationFailed(payload.message));
+            dispatch({
+                type: actionTypes.REGISTRATION_FAILED,
+                error: payload.message
+            });
         }
     }
     
 }
 
-export function logoutUser(user) {
+export function logoutUser() {
     return async dispatch => {
-        dispatch(actions.logoutStarted());
+        dispatch({
+            type: actionTypes.LOGOUT_USER_STARTED
+        });
         return fetch(`${baseUrl}/logout`,{
-            method: "POST",
+            method: "GET",
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -65,19 +82,18 @@ export function logoutUser(user) {
         .then(payload => {
             if (payload.Status === 200) {
                 localStorage.removeItem("token", payload.token);
-                dispatch(actions.logoutSuccess(payload.message));
+                dispatch({
+                    type: actionTypes.LOGOUT_USER_SUCESS,
+                    payload: payload.message
+                });
             }
             else {
-                dispatch(actions.logoutFailed(payload.message));
+                dispatch({
+                    type: actionTypes.LOGOUT_USER_FAILED,
+                    error: payload.message
+                });
             }
         })
     }
   }
 
-export const setSelectedModule = (data) =>{
-    return{
-        type: actionTypes.SET_SELECTED_MODULE,
-        payload: data
-    }
-
-}

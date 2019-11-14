@@ -1,10 +1,11 @@
-import * as actions from "./actions";
 import * as actionTypes from "./actionTypes";
 
 const baseUrl = "https://get-sat-pro.herokuapp.com/api";
 export function getStudentList() {
     return async dispatch => {
-        dispatch(actions.studentListStarted());
+        dispatch({
+            type: actionTypes.GET_STUDENT_LIST_STARTED
+        });
         return fetch(`${baseUrl}/get_students`,{
             method: "GET",
             headers: {
@@ -17,9 +18,17 @@ export function getStudentList() {
         .then(payload => {
             if (payload.Status === 200) {
                 console.log("getStudentList", payload);
+                dispatch({
+                    type: actionTypes.GET_STUDENT_LIST_SUCCESS,
+                    payload: payload
+                })
             }
             else {
                 console.log("getStudentList", payload);
+                dispatch({
+                    type: actionTypes.GET_STUDENT_LIST_FAILED,
+                    error: payload.message
+                })
             }
         })
     }

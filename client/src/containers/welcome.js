@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {loginUser, registerUser} from "../actions/userActions";
+import {loginUser, registerUser} from "../actions/userHandler";
 import Welcome from '../components/welcome';
 
 const mapDispatchToProps = (dispatch) => {

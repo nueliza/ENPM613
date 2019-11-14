@@ -4,9 +4,10 @@ import Modules from '../components/modules';
 import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
 
-import { setSelectedModule, logoutUser } from "../actions/userActions";
+import { setSelectedModule} from "../actions/actions";
+import {  logoutUser } from "../actions/userHandler";
 import { getFlashcardSets } from "../actions/dashboardActions";
-import { getStudentList } from "../actions/studentActions";
+import { getStudentList } from "../actions/studentHandler";
 
 class ModuleContainer extends Component {
   render() {
