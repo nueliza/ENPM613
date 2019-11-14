@@ -1,6 +1,13 @@
+/**
+ * Conatins all the service handlers for the student related actions
+ */
 import * as actionTypes from "./actionTypes";
 
 const baseUrl = "https://get-sat-pro.herokuapp.com/api";
+
+/**
+ * gets the list of students after communicating with the get_students API
+ */
 export function getStudentList() {
     return async dispatch => {
         dispatch({

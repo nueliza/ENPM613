@@ -1,8 +1,15 @@
+/**
+ * Contains all the service handlers for exam related actions
+ */
+
 import * as actionTypes from "./actionTypes";
 
 const baseUrl = "https://get-sat-pro.herokuapp.com/api";
 
-
+/**
+ * getExamlist gets the list of exams for a particular module
+ * @param {Object} reqObject 
+ */
 export function getExamList(reqObject) {
     return async dispatch => {
         dispatch({
@@ -35,6 +42,11 @@ export function getExamList(reqObject) {
         })
     }
   }
+
+  /**
+   * submitExam submits the exam taken by the student
+   * @param {Object} reqObject 
+   */
 
   export function submitExam(reqObject) {
     return async dispatch => {
@@ -70,6 +82,10 @@ export function getExamList(reqObject) {
     }
   }
 
+  /**
+   * Creates a new exam
+   * @param {Object} reqObject 
+   */
   export function createExam(reqObject) {
     return async dispatch => {
         dispatch({
@@ -104,6 +120,10 @@ export function getExamList(reqObject) {
     }
   }
 
+  /**
+   * Deletes a particular Exam
+   * @param {Object} reqObject 
+   */
   export function deleteExam(reqObject) {
     return async dispatch => {
         dispatch({

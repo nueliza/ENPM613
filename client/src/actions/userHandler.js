@@ -1,7 +1,15 @@
+/**
+ * Contains service handlers for all user account actions
+ */
+
 import * as actionTypes from "./actionTypes";
 
 const baseUrl = "https://get-sat-pro.herokuapp.com";
 
+/**
+ * loginUser communicates with the login API, and logs in the user. Also stores the JWT token in the local storage
+ * @param {Object} user 
+ */
 export function loginUser(user) {
     return async dispatch => {
         dispatch({
@@ -34,7 +42,10 @@ export function loginUser(user) {
     }
   }
 
-
+/**
+ * registerUser communicated with registerUser API, registers the user. 
+ * @param {Object} registerData 
+ */
 export function registerUser(registerData) {
     return async dispatch =>{
         dispatch({
@@ -65,7 +76,9 @@ export function registerUser(registerData) {
     }
     
 }
-
+/**
+ * logoutUser communicates with the logout API and removes the JWT token from the local storage
+ */
 export function logoutUser() {
     return async dispatch => {
         dispatch({
