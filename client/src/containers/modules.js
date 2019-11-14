@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 import { setSelectedModule, logoutUser } from "../actions/userActions";
 import { getFlashcardSets } from "../actions/dashboardActions";
+import { getStudentList } from "../actions/studentActions";
 
 class ModuleContainer extends Component {
   render() {
@@ -18,12 +19,13 @@ class ModuleContainer extends Component {
       />
     }
     else if (this.props.userInfo.user_type === "Tutor") {
-
+      this.props.getStudentList()
       return <Redirect to={{
         pathname: '/dashboard'
       }} />
     }
     else if (this.props.userInfo.user_type === "Admin") {
+      this.props.getStudentList()
       return <AdminDashboard  /> 
     }
     else
@@ -39,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
     setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
     getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload)),
     logoutUser: () => dispatch(logoutUser()),
-    //getStudentList: (payload) => dispatch(getStudentList(payload))
+    getStudentList: (payload) => dispatch(getStudentList(payload))
   }
 }
 

@@ -33,8 +33,6 @@ class Dashboard extends Component {
 
     }
 
-    
-
     render() {
         const userInfo = this.props.userInfo;
         const isTutor = userInfo.user_type === "Tutor" ? true : false;

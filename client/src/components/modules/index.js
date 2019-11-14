@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
-
+import { withRouter } from "react-router-dom";
 import math from "./images/math.jpg";
 import ToastContainer from "../toast";
 import "./modules.css"
@@ -8,7 +8,8 @@ import "./modules.css"
 
 class Modules extends Component {
     handleSignOut = () =>{
-        this.props.logoutUser();
+        //this.props.logoutUser();
+        
     }
     render() {
         return (
@@ -18,7 +19,7 @@ class Modules extends Component {
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <Link to="/" onClick={this.handleSignOut}>Sign out</Link>
+                        <Link onClick={()=>{this.props.history.push("/")}}>Sign out</Link>
                     </div>
                 </div>
 
@@ -73,4 +74,4 @@ class Modules extends Component {
             </Fragment>)
     }
 }
-export default Modules;
+export default withRouter(Modules);

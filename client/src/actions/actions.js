@@ -44,7 +44,7 @@ export const registrationFailed = (data) =>{
     }
 }
 
-/* Sign Out */
+/* Sign Out Actions */
 export const logoutSuccess = (data) =>{
     return{
         type: actionTypes.LOGOUT_USER_SUCESS,
@@ -65,9 +65,33 @@ export const logoutFailed = (data) =>{
     }
 }
 
+// Get Students Actions
+export const studentListStarted =() =>{
+    return{
+        type: actionTypes.GET_STUDENT_LIST_STARTED
+    }
+}
+
+export const studentListFailed = (data) =>{
+    return{
+        type: actionTypes.GET_STUDENT_LIST_FAILED,
+        error: data
+    }
+}
+
+export const studentListSuccess = (data) =>{
+    return{
+        type: actionTypes.GET_STUDENT_LIST_SUCCESS,
+        error: data
+    }
+}
+
+// Toast Action
 export const resetToast = () =>{
     return{
         type: actionTypes.RESET_TOAST
     }
 }
+
+
 

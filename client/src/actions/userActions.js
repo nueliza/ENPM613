@@ -1,7 +1,7 @@
 import * as actions from "./actions";
 import * as actionTypes from "./actionTypes";
 
-const baseUrl = "https://get-sat-pro.herokuapp.com/";
+const baseUrl = "https://get-sat-pro.herokuapp.com";
 
 export function loginUser(user) {
     return async dispatch => {
