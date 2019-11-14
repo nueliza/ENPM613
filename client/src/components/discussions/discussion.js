@@ -4,8 +4,8 @@ const DiscussionThreads = (props) => {
 
     return (
         props.replies.map((replyItem, id) => {
-            let isCrrentUser = (props.userInfo.firstName === replyItem.authorFirstName && 
-                props.userInfo.lastName === replyItem.authorLastName) ? "avatar currentUser" : "avatar";
+            let isCrrentUser = (props.userInfo.first_name === replyItem.authorFirstName && 
+                props.userInfo.last_name === replyItem.authorLastName) ? "avatar currentUser" : "avatar";
             return (
                 <div className="thread" key={id}>
                     <div className={isCrrentUser}>
