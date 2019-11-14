@@ -35,8 +35,8 @@ class App extends React.Component {
         <Router>
           <Header />
           <Route path="/" exact component={Welcome} />  
-          <Route path="/modules" component ={Modules} />
-          {/* <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/modules' component={Modules} />
+          <Route path="/modules" component ={props => <Modules {...props}/>} />
+    {/* <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/modules' component={Modules} />
           <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/dashboard' component={Dashboard} />
    */}
   

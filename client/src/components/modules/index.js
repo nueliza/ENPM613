@@ -7,10 +7,6 @@ import "./modules.css"
 
 
 class Modules extends Component {
-    handleSignOut = () =>{
-        //this.props.logoutUser();
-        
-    }
     render() {
         return (
             <Fragment>
@@ -19,7 +15,7 @@ class Modules extends Component {
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <Link onClick={()=>{this.props.history.push("/")}}>Sign out</Link>
+                        <Link to="/">Sign out</Link>
                     </div>
                 </div>
 
