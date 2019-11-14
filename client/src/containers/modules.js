@@ -4,36 +4,40 @@ import Modules from '../components/modules';
 import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
 
-import { setSelectedModule } from "../actions/moduleActions";
+import { setSelectedModule, logoutUser } from "../actions/userActions";
 import { getFlashcardSets } from "../actions/dashboardActions";
 
 class ModuleContainer extends Component {
   render() {
-    if (this.props.userInfo.userType === "Student") {
+    if (this.props.userInfo.user_type === "Student") {
       return <Modules
-              userInfo={this.props.userInfo}
-              setSelectedModule={this.props.setSelectedModule}
-            />
+        userInfo={this.props.userInfo}
+        setSelectedModule={this.props.setSelectedModule}
+        logoutUser={this.props.logoutUser}
+      />
     }
-    else if (this.props.userInfo.userType === "Tutor") {
+    else if (this.props.userInfo.user_type === "Tutor") {
       return <Redirect to={{
-                pathname: '/dashboard'
-          }} />
+        pathname: '/dashboard'
+      }} />
     }
-    else {
-      return <AdminDashboard />
+    else if (this.props.userInfo.user_type === "Admin") {
+      return <AdminDashboard  /> 
     }
+    else
+      return <Redirect to ="/" />
   }
-
 }
 const mapStateToProps = state => ({
-  userInfo: state.user.userInfo
+  userInfo: state.user.userInfo,
+  loginPending: state.user.loginPending,
 })
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
-    getFlashcardSets: (payload) =>dispatch(getFlashcardSets(payload))
+    getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload)),
+    logoutUser: () => dispatch(logoutUser()),
   }
 }
 

@@ -14,7 +14,8 @@
 }
 
 .styles_modal__gNwvD{
-    width: 70% !important;
+    min-width: 500px !important;
+    border-radius: 20px !important;
 }
 
 .dzu-inputLabel{
@@ -29,7 +30,7 @@
 
 @media only screen and (max-width: 425px){
     .styles_modal__gNwvD{
-        width: 100% !important;
+        min-width: 100% !important;
     }
     
 }
