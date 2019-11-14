@@ -53,7 +53,6 @@ class Login extends Component {
         if (this.props.loginPending) return <Loading show={this.props.loginPending} />
         if (Object.keys(this.props.userInfo).length > 0) return <Redirect to='/modules' /> 
         return (
-            <div className="Mywrapper" >
                 <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
                     <div className="Loginwrapper">
                         <div className="formContent">
@@ -89,7 +88,6 @@ class Login extends Component {
                         </div>
                     </div>
                 </Modal>
-            </div>
         );
     }
 }

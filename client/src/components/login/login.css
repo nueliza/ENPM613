@@ -6,6 +6,9 @@
     width: 100%;
     min-height: 330px;
     position: relative;
+    align-items: center;
+    text-align: center;
+
 
     -webkit-background-size: cover;
     -moz-background-size: cover;
