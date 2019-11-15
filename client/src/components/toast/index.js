@@ -5,10 +5,10 @@ import { resetToast } from "../../actions";
 
 class ToastContainer extends Component {
     render() {
-        setTimeout(function(){ this.props.resetToast();}.bind(this),5000);
+        setTimeout(function(){ this.props.resetToast();}.bind(this),6000);
         return (
             this.props.toastMessage !== ""?
-            <Toast isOpen={this.props.showToast}>
+            <Toast isOpen={this.props.showToast} className={this.props.toastType === "SUCCESS"? " success " : " failure "}>
                 <ToastBody>
                     {this.props.toastMessage}
                 </ToastBody>
@@ -25,7 +25,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps =( state) =>{
     return{
-        toastMessage: state.toast.toastMessage
+        toastMessage: state.toast.toastMessage,
+        toastType: state.toast.toastType
     }
 }
     

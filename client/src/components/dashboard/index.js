@@ -12,16 +12,15 @@ import logo from "./images/Logo.png";
 import Discussions from "../../containers/discussions";
 import Discussion from "../discussions/discussion";
 import CreateDiscussion from '../discussions/createDiscussion';
-
 import Exams from "../../containers/exams";
 import CreateExam from "../exams/createExam";
 import TakeExam from "../exams/takeExam";
-
 import Files from "../../containers/files";
 import Flashcards from "../../containers/flashcards";
 import Grades from "../../containers/grades";
 import FlashcardSet from "./flashcardSet";
 import Students from "../../containers/students";
+import ToastContainer from "../toast/index";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -134,6 +133,7 @@ class Dashboard extends Component {
                                 </SideNav.Nav>
                             </SideNav>
                             <main className={this.state.isSideBarOpened ? "dashboard_content_expanded" : "dashboard_content_collapsed"}>
+                                <ToastContainer />
                                 <div className="dashboard_header">
                                     {isTutor ?
                                         <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3> :

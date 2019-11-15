@@ -78,13 +78,31 @@ input{
     left: 0 !important;
     right: 0 !important;
     top: 0 !important;
+    max-width: 500px !important;
+    height: 50px !important;
     margin-left: auto !important;
     margin-right: auto !important;
     margin-top: 5px !important;
     border-radius: 10px !important;
+
 }
 .toast .toast-body{
     padding: 5px;
     text-align: center !important;
+    margin-top: 9px;
+    color: white !important;
+    font-weight: 800 !important;
 }
 
+.success{
+    background-color: var(--submit-color) !important;
+}
+
+.failure{
+    background-color: var(--alert-color) !important;
+}
+@media only screen and (max-width: 425px){
+    .toast{
+        max-width: 300px !important;
+    }
+}
