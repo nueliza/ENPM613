@@ -9,17 +9,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './dashboard.css';
 import logo from "./images/Logo.png";
 
-import Discussions from "../discussions";
+import Discussions from "../../containers/discussions";
 import Discussion from "../discussions/discussion";
 import CreateDiscussion from '../discussions/createDiscussion';
 
-import Exams from "../exams";
+import Exams from "../../containers/exams";
 import CreateExam from "../exams/createExam";
 import TakeExam from "../exams/takeExam";
 
-import Files from "../files";
-import Flashcards from "../flashcards";
-import Grades from "../grades";
+import Files from "../../containers/files";
+import Flashcards from "../../containers/flashcards";
+import Grades from "../../containers/grades";
 import FlashcardSet from "./flashcardSet";
 import Students from "../../containers/students";
 
