@@ -5,7 +5,6 @@ import {getExamList, submitExam, createExam } from '../actions/examHandler';
 
 const mapDispatchToProps = (dispatch) => {
     return{
-     
         //getExamList: (payload)=>{}
     }
 }

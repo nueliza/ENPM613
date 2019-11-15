@@ -21,8 +21,7 @@ import Files from "../files";
 import Flashcards from "../flashcards";
 import Grades from "../grades";
 import FlashcardSet from "./flashcardSet";
-import Students from "../students";
-import Loading from '../loading/index.js';
+import Students from "../../containers/students";
 
 class Dashboard extends Component {
     constructor(props) {

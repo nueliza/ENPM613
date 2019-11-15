@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getStudentList } from "../../actions/studentHandler";
+
 import Loading from '../loading';
 import NotFound from "../NotFound";
 
@@ -9,6 +8,7 @@ class Students extends Component {
     UNSAFE_componentWillMount(){
         this.props.getStudentList();
     }
+    
     render() {
         console.log(this.props.studentList);
         if(this.props.loading) return <Loading />
@@ -37,16 +37,5 @@ class Students extends Component {
     }
 }
 
-const mapStateToProps =( state) =>{
-    return{
-        loading: state.loader.loading,
-        studentList: state.student.studentList,
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        getStudentList: (payload) => dispatch(getStudentList(payload)),
-    }
-}
-export default connect( mapStateToProps,mapDispatchToProps)(Students)
+export default Students
