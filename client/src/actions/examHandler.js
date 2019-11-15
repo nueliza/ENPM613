@@ -159,3 +159,42 @@ export function getExamList(reqObject) {
     }
   }
 
+  /**
+ * getExamlist gets a particular exam
+ * @param {Object} reqObject 
+ */
+export function getExam(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_EXAM_LIST_STARTED
+        });
+        return fetch(`${baseUrl}/get_exams/{mod_id}`,{
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify(reqObject)
+        })
+        .then(response => response.json())
+        .then(payload => {
+            if (payload.Status === 200) {
+                console.log("getExamList", payload);
+                dispatch({
+                    type: actionTypes.GET_EXAM_LIST_SUCCESS,
+                    payload: payload
+                })
+            }
+            else {
+                console.log("getExamList", payload);
+                dispatch({
+                    type: actionTypes.GET_EXAM_LIST_FAILED,
+                    error: payload.message
+                })
+            }
+        })
+    }
+  }
+
+
