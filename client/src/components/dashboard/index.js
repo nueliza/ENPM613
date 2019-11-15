@@ -34,10 +34,6 @@ class Dashboard extends Component {
 
     }
 
-    UNSAFE_componentWillMount(){
-        this.props.getStudentList();
-    }
-
     loadExamList = () =>{
         this.props.getExamList();
     }
@@ -47,7 +43,6 @@ class Dashboard extends Component {
         const isTutor = userInfo.user_type === "Tutor" ? true : false;
         const selectedModule = this.props.selectedModule;
 
-        if(this.props.loading) return <Loading />
         return (
             <Router>
                 <Route render={({ location, history }) => (

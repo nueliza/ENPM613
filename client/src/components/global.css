@@ -68,6 +68,10 @@ input{
     color: white;
     box-shadow: 2px 3px 3px #a3a3a3;
 }
+.currentUser{
+    float: right;
+    background-color:var(--primary-color) !important;
+}
 
 .toast{
     position: absolute !important;

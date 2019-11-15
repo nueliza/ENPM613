@@ -1,22 +1,52 @@
-import React, { Component} from 'react';
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getStudentList } from "../../actions/studentHandler";
+import Loading from '../loading';
+import NotFound from "../NotFound";
 
 class Students extends Component {
 
+    UNSAFE_componentWillMount(){
+        this.props.getStudentList();
+    }
     render() {
-        return (
+        console.log(this.props.studentList);
+        if(this.props.loading) return <Loading />
+        //redirects to Not found page if the getStudentList API fails
+        return Object.keys(this.props.studentList).length === 0? <NotFound />:
+        (
             <div className="dashboard_body student_body">
                 <h2>Student List</h2>
                 <div className="dashboard_subSection">
                     <ul className="list-group">
-                        <li className="list-group-item discussion">Student 1 </li>
-                        <li className="list-group-item">Student 2 </li>
-                        <li className="list-group-item">Student 3 </li>
-                        <li className="list-group-item">Student 4 </li>
+                        {this.props.studentList.map((student, id) => {
+                            return <li className="list-group-item" key={id}>
+                                <div className="avatar">
+                                    {student.fname.charAt(0)}{student.lname.charAt(0)}
+                                </div>
+                                &nbsp; &nbsp;
+                                <span>
+                                    {student.fname} {student.lname}
+                                </span>
+                            </li>
+                        })}
                     </ul>
                 </div>
             </div>
         )
     }
 }
-export default Students;
+
+const mapStateToProps =( state) =>{
+    return{
+        loading: state.loader.loading,
+        studentList: state.student.studentList,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getStudentList: (payload) => dispatch(getStudentList(payload)),
+    }
+}
+export default connect( mapStateToProps,mapDispatchToProps)(Students)

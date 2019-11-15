@@ -4,7 +4,7 @@
 
 import * as actionTypes from "./actionTypes";
 
-const baseUrl = "https://get-sat-pro.herokuapp.com";
+const baseUrl = "https://get-sat-pro.herokuapp.com/api";
 
 /**
  * loginUser communicates with the login API, and logs in the user. Also stores the JWT token in the local storage
@@ -116,7 +116,7 @@ export function logoutUser() {
         dispatch({
             type: actionTypes.GET_MODULE_LIST_STARTED
         })
-        return fetch(`${baseUrl}/api/get_modules`,{
+        return fetch(`${baseUrl}/get_modules`,{
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

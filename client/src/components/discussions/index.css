@@ -50,22 +50,9 @@
     margin-top: 1px;
 }
 
-.dashboardAvatar{
-    float: left;
-    box-shadow: none !important;
-    margin-left: 8px;
-    background-color: white !important;
-    color: var(--primary-color) !important;
-}
-
 .thread .threadContent{
     display: inline;
     margin-left: 10px;
-}
-
-.currentUser{
-    float: right;
-    background-color:var(--primary-color) !important;
 }
 
 .discussion_body .NewDiscussionWrapper{

@@ -31,5 +31,5 @@ export const iconMapping = {
     "Exclamation":faExclamation,
     "Error": faExclamationCircle,
     "QuoteLeft":faQuoteLeft,
-    "Upload": faUpload
+    "Upload": faUpload,
 };
