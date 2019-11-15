@@ -4,15 +4,23 @@ import Modules from '../components/modules';
 import AdminDashboard from '../components/AdminDashboard';
 import { Redirect } from 'react-router-dom';
 
-import { setSelectedModule} from "../actions";
-import {  logoutUser } from "../actions/userHandler";
+import { setSelectedModule } from "../actions";
+import { logoutUser, getModulesList } from "../actions/userHandler";
 import { getFlashcardSets } from "../actions/dashboardActions";
-import { getStudentList } from "../actions/studentHandler";
+
+import Loading from "../components/loading";
+import NotFound from "../components/NotFound";
 
 class ModuleContainer extends Component {
+  UNSAFE_componentWillMount() {
+    if (this.props.userInfo.user_type === "Student")
+      this.props.getModulesList({ stud_id: this.props.userInfo.user_id });
+  }
   render() {
     console.log("UserInfo", this.props.userInfo)
     if (this.props.userInfo.user_type === "Student") {
+      if (this.props.loading) return <Loading />
+      if (Object.keys(this.props.moduleList).length === 0) return <NotFound />
       return <Modules
         userInfo={this.props.userInfo}
         setSelectedModule={this.props.setSelectedModule}
@@ -20,21 +28,21 @@ class ModuleContainer extends Component {
       />
     }
     else if (this.props.userInfo.user_type === "Tutor") {
-      //this.props.getStudentList()
       return <Redirect to={{
         pathname: '/dashboard'
       }} />
     }
     else if (this.props.userInfo.user_type === "Admin") {
-      this.props.getStudentList()
-      return <AdminDashboard userInfo = {this.props.userInfo} /> 
+      return <AdminDashboard userInfo={this.props.userInfo} />
     }
     else
-      return <Redirect to ="/" />
+      return <Redirect to="/" />
   }
 }
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
+  loading: state.loader.loading,
+  moduleList: state.user.moduleList
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -42,7 +50,7 @@ const mapDispatchToProps = (dispatch) => {
     setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
     getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload)),
     logoutUser: () => dispatch(logoutUser()),
-    getStudentList: (payload) => dispatch(getStudentList(payload))
+    getModulesList: (payload) => dispatch(getModulesList(payload))
   }
 }
 

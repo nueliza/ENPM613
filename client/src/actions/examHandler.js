@@ -22,6 +22,7 @@ export function getExamList(reqObject) {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
             },
+            body: JSON.stringify(reqObject)
         })
         .then(response => response.json())
         .then(payload => {

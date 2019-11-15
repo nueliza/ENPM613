@@ -13,6 +13,7 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.SUBMIT_EXAM_STARTED:
         case actionTypes.DELETE_EXAM_STARTED:
         case actionTypes.GET_EXAM_LIST_STARTED:
+        case actionTypes.GET_MODULE_LIST_STARTED:
             return{ ...state, loading: true}
             
         case actionTypes.LOGIN_USER_FAILED:
@@ -29,6 +30,8 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.DELETE_EXAM_FAILED:
         case actionTypes.GET_EXAM_LIST_FAILED:
         case actionTypes.GET_EXAM_LIST_SUCCESS:
+        case actionTypes.GET_MODULE_LIST_SUCCESS:
+        case actionTypes.GET_MODULE_LIST_FAILED:
             return{ ...state, loading: false}
         
         default:

@@ -10,13 +10,12 @@ const toastReducer = (state = initialState, action) => {
             return{ ...state, toastMessage: "User Successfully Logged In"}
 
         case actionTypes.REGISTRATION_SUCCESS:
-            return{ ...state, toastMessage: action.payload}
         case actionTypes.LOGOUT_USER_SUCESS:
-            return{ ...state, toastMessage: action.payload}
-
         case actionTypes.CREATE_EXAM_SUCCESS:
             return{...state, toastMessage: action.payload}
 
+        case actionTypes.GET_EXAM_LIST_FAILED:
+            return{...state, toastMessage: action.error}
         
         case actionTypes.RESET_TOAST: 
             return{ ...state, toastMessage: ""}

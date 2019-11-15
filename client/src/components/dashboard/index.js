@@ -22,6 +22,7 @@ import Flashcards from "../flashcards";
 import Grades from "../grades";
 import FlashcardSet from "./flashcardSet";
 import Students from "../students";
+import Loading from '../loading/index.js';
 
 class Dashboard extends Component {
     constructor(props) {
@@ -33,11 +34,20 @@ class Dashboard extends Component {
 
     }
 
+    UNSAFE_componentWillMount(){
+        this.props.getStudentList();
+    }
+
+    loadExamList = () =>{
+        this.props.getExamList();
+    }
+
     render() {
         const userInfo = this.props.userInfo;
         const isTutor = userInfo.user_type === "Tutor" ? true : false;
         const selectedModule = this.props.selectedModule;
 
+        if(this.props.loading) return <Loading />
         return (
             <Router>
                 <Route render={({ location, history }) => (
@@ -94,7 +104,7 @@ class Dashboard extends Component {
                                             Files
                                     </NavText>
                                     </NavItem>
-                                    <NavItem eventKey="Exams">
+                                    <NavItem eventKey="Exams" onClick={()=> this.loadExamList}>
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Exams"]} data-tip data-for='Exams' size="2x" />
                                             <ReactTooltip id='Exams' type='info' class='tooltips'>

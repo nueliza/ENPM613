@@ -5,7 +5,8 @@ const initialState = {
     userInfo: {},
     selectedModule: "",
     logoutFailed : "",
-    registrationError: ""
+    registrationError: "",
+    moduleList: {}
 }
 
 const userReducer = (state = initialState, action) => {
@@ -20,6 +21,8 @@ const userReducer = (state = initialState, action) => {
             return { ...state, logoutFailed: action.payload}
         case actionTypes.REGISTRATION_FAILED: 
             return{...state, registrationError: action.error}
+        case actionTypes.GET_MODULE_LIST_SUCCESS: 
+            return{...state, moduleList: action.payload}
         default:
             return state
     }
