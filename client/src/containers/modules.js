@@ -6,7 +6,6 @@ import { Redirect } from 'react-router-dom';
 
 import { setSelectedModule } from "../actions";
 import { logoutUser, getModulesList } from "../actions/userHandler";
-import { getFlashcardSets } from "../actions/dashboardActions";
 
 import Loading from "../components/loading";
 import NotFound from "../components/NotFound";
@@ -48,7 +47,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     setSelectedModule: (modules) => dispatch(setSelectedModule(modules)),
-    getFlashcardSets: (payload) => dispatch(getFlashcardSets(payload)),
     logoutUser: () => dispatch(logoutUser()),
     getModulesList: (payload) => dispatch(getModulesList(payload))
   }
