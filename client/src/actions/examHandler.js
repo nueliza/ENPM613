@@ -32,7 +32,7 @@ export function getExamListTutor() {
         .catch( error =>{
             dispatch({
                 type: actionTypes.GET_EXAM_LIST_FAILED,
-                error: error.response.message
+                error: error.response.data.message
             })
         })
     }
@@ -57,7 +57,7 @@ export function getExamListTutor() {
         .catch( error =>{
             dispatch({
                 type: actionTypes.CREATE_EXAM_FAILED,
-                error: error.response.message
+                error: error.response.data.message
             })
         })
     }
@@ -111,29 +111,19 @@ export function getExamListTutor() {
         dispatch({
             type: actionTypes.DELETE_EXAM_STARTED
         });
-        return fetch(`${baseUrl}/get_exams/{mod_id}`,{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem("token")}`
-            },
-            body: JSON.stringify(reqObject)
+        return axios.post(`/delete`, reqObject)
+        .then(response => {
+            dispatch({
+                type: actionTypes.DELETE_EXAM_SUCCESS,
+                payload: response.data.message
+            })
         })
-        .then(response => response.json())
-        .then(payload => {
-            if (payload.Status === 200) {
-                dispatch({
-                    type: actionTypes.DELETE_EXAM_SUCCESS,
-                    payload: payload.message
-                })
-            }
-            else {
-                dispatch({
-                    type: actionTypes.DELETE_EXAM_FAILED,
-                    error: payload.message
-                })
-            }
+        .catch( error => {
+            console.log(error)
+            dispatch({
+                type: actionTypes.DELETE_EXAM_FAILED,
+                error: error.response.data.message
+            })
         })
     }
   }

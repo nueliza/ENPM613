@@ -3,6 +3,13 @@
  */
 
 import * as actionTypes from "./actionTypes";
+import axios from "axios";
+
+axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
+axios.defaults.headers.common['Accept'] = 'application/json';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
+axios.defaults.withCredentials = true
 
 const baseUrl = "https://get-sat-pro.herokuapp.com/api";
 
@@ -15,29 +22,18 @@ export function createDiscussion(reqObject) {
         dispatch({
             type: actionTypes.CREATE_DISCUSSION_STARTED
         });
-        return fetch(`${baseUrl}/create_discussion`,{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem("token")}`
-            },
-            body: JSON.stringify(reqObject)
+        return axios.post(`/create_discussion`, reqObject)
+        .then( response =>{
+            dispatch({
+                type: actionTypes.CREATE_DISCUSSION_SUCCESS,
+                payload: response.data.message
+            })
         })
-        .then(response => response.json())
-        .then(payload => {
-            if (payload.Status === 200) {
-                dispatch({
-                    type: actionTypes.CREATE_DISCUSSION_SUCCESS,
-                    payload: payload.message
-                })
-            }
-            else {
-                dispatch({
-                    type: actionTypes.CREATE_DICUSSION_FAILED,
-                    error: payload.message
-                })
-            }
+        .catch( error =>{
+            dispatch({
+                type: actionTypes.CREATE_DICUSSION_FAILED,
+                error: error.response.data.message
+            })
         })
     }
   }

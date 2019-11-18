@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import Exams from '../components/exams';
 
-import {getExamListTutor, createExam} from "../actions/examHandler";
+import {getExamListTutor, deleteExam} from "../actions/examHandler";
 
 
 const mapDispatchToProps = (dispatch) => {
     return{
         getExamListTutor : ()=>dispatch(getExamListTutor()),
-        createExam : (payload) => dispatch(createExam(payload))
+        deleteExam : (payload) => dispatch(deleteExam(payload))
     }
 }
 

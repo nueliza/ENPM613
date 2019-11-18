@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import ErrorMessage from "../ErrorMessage";
+
+import {createDiscussion} from "../../actions/discussionHandler";
 
 class CreateDiscussion extends Component {
     constructor(props){
@@ -74,5 +76,14 @@ class CreateDiscussion extends Component {
         )
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createDiscussion : (payload) => dispatch(createDiscussion(payload))
+    }
+}
 
-export default CreateDiscussion
+const mapStateToProps = state => ({
+    loading: state.loader.loading,
+})
+
+export default connect( mapStateToProps,mapDispatchToProps)(CreateDiscussion)

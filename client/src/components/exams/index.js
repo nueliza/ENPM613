@@ -28,6 +28,7 @@ const ExamList = (props) => {
                             size="1x" 
                             className={props.isTutor?"": "hide"}
                             style={{color: "var(--alert-color)", float: "right"}}
+                            onClick={()=>props.handleDelete(exam.exam_id)}
                         />
                         <div className="exam_details">
                             <span>{exam.ques_no} Questions</span>
@@ -47,6 +48,15 @@ class Exams extends Component {
             this.props.getExamListTutor()
     }
 
+    handleDelete =(exam_id) =>{
+        let reqObject ={
+            "model_name": "exam",
+            "model_id": exam_id
+        }
+        this.props.deleteExam(reqObject)
+
+    }
+
     render() {
         const isTutor = this.props.isTutor;
         if(this.props.loading) return <Loading />
@@ -62,7 +72,7 @@ class Exams extends Component {
                     </div>
                     <ToastContainer />
                     <br/>
-                    <ExamList {...this.props} isTutor={isTutor} />
+                    <ExamList {...this.props} isTutor={isTutor} handleDelete={this.handleDelete} />
                     <br />
                     {
                     isTutor ?
