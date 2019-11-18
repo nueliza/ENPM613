@@ -16,7 +16,6 @@ class ModuleContainer extends Component {
       this.props.getModulesList({ stud_id: this.props.userInfo.user_id });
   }
   render() {
-    console.log("UserInfo", this.props.userInfo)
     if (this.props.userInfo.user_type === "Student") {
       if (this.props.loading) return <Loading />
       if (Object.keys(this.props.moduleList).length === 0) return <NotFound />

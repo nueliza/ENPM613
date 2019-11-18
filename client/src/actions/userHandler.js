@@ -34,7 +34,6 @@ export function loginUser(user) {
         });
         return axios.post(`/login`, user)
         .then(result => {
-            console.log(result.data);
             localStorage.setItem("token", result.data.token);
             dispatch({
                 type: actionTypes.LOGIN_USER_SUCESS,
@@ -42,7 +41,6 @@ export function loginUser(user) {
         })
         })
         .catch(error =>{
-            console.log(error.response)
             dispatch({
                 type: actionTypes.LOGIN_USER_FAILED,
                 error: error.response.data.message
@@ -89,7 +87,6 @@ export function registerUser(registerData) {
  * logoutUser communicates with the logout API and removes the JWT token from the local storage
  */
 export function logoutUser() {
-    console.log("here- Lgout")
     return async dispatch => {
         dispatch({
             type: actionTypes.LOGOUT_USER_STARTED
@@ -112,7 +109,6 @@ export function logoutUser() {
   }
 
   export function getModulesList(reqObject) {
-      console.log("HERE", reqObject)
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_MODULE_LIST_STARTED
@@ -128,7 +124,6 @@ export function logoutUser() {
         })
         .then(response => response.json())
         .then(payload => {
-            console.log("HERE")
             if (payload.Status === 200) {
                 dispatch({
                     type: actionTypes.GET_MODULE_LIST_SUCCESS,

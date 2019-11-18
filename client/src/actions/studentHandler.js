@@ -56,14 +56,12 @@ export function getStudentList() {
         });
         return axios.get(`/get_students`)
         .then(result => {
-            console.log("here",result.data);
             dispatch({
                 type: actionTypes.GET_STUDENT_LIST_SUCCESS,
                 payload: result.data.students
             })
         })
         .catch(error =>{
-            console.log("here",error.response.data);
             dispatch({
                 type: actionTypes.GET_STUDENT_LIST_SUCCESS,
                 error: error.data.message

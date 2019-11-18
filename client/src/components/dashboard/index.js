@@ -34,7 +34,6 @@ class Dashboard extends Component {
     }
     logout = (e) =>{
         e.preventDefault();
-        console.log("here", this.props)
         this.props.logoutUser();
         this.props.history.push("/");
     }

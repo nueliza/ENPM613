@@ -27,14 +27,12 @@ export function createDiscussion(reqObject) {
         .then(response => response.json())
         .then(payload => {
             if (payload.Status === 200) {
-                console.log("getExamList", payload);
                 dispatch({
                     type: actionTypes.CREATE_DISCUSSION_SUCCESS,
                     payload: payload.message
                 })
             }
             else {
-                console.log("getExamList", payload);
                 dispatch({
                     type: actionTypes.CREATE_DICUSSION_FAILED,
                     error: payload.message
@@ -64,14 +62,12 @@ export function createDiscussion(reqObject) {
         .then(response => response.json())
         .then(payload => {
             if (payload.Status === 200) {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.GET_DISCUSSION_LIST_SUCCESS,
                     payload: payload
                 })
             }
             else {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.GET_DISCUSSION_LIST_FAILED,
                     error: payload.message

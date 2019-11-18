@@ -10,7 +10,6 @@ class Students extends Component {
     }
     
     render() {
-        console.log(this.props.studentList);
         if(this.props.loading) return <Loading />
         //redirects to Not found page if the getStudentList API fails
         return Object.keys(this.props.studentList).length === 0? <NotFound />:

@@ -27,14 +27,12 @@ export function getExamList(reqObject) {
         .then(response => response.json())
         .then(payload => {
             if (payload.Status === 200) {
-                console.log("getExamList", payload);
                 dispatch({
                     type: actionTypes.GET_EXAM_LIST_SUCCESS,
                     payload: payload
                 })
             }
             else {
-                console.log("getExamList", payload);
                 dispatch({
                     type: actionTypes.GET_EXAM_LIST_FAILED,
                     error: payload.message
@@ -66,14 +64,12 @@ export function getExamList(reqObject) {
         .then(response => response.json())
         .then(payload => {
             if (payload.Status === 200) {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.SUBMIT_EXAM_SUCCESS,
                     payload: payload.message
                 })
             }
             else {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.SUBMIT_EXAM_FAILED,
                     error: payload.message
@@ -104,14 +100,12 @@ export function getExamList(reqObject) {
         .then(response => response.json())
         .then(payload => {
             if (payload.Status === 200) {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.CREATE_EXAM_SUCCESS,
                     payload: payload.message
                 })
             }
             else {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.CREATE_EXAM_FAILED,
                     error: payload.message
@@ -142,14 +136,12 @@ export function getExamList(reqObject) {
         .then(response => response.json())
         .then(payload => {
             if (payload.Status === 200) {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.DELETE_EXAM_SUCCESS,
                     payload: payload.message
                 })
             }
             else {
-                console.log("submitExam", payload);
                 dispatch({
                     type: actionTypes.DELETE_EXAM_FAILED,
                     error: payload.message
@@ -180,14 +172,12 @@ export function getExam(reqObject) {
         .then(response => response.json())
         .then(payload => {
             if (payload.Status === 200) {
-                console.log("getExamList", payload);
                 dispatch({
                     type: actionTypes.GET_EXAM_LIST_SUCCESS,
                     payload: payload
                 })
             }
             else {
-                console.log("getExamList", payload);
                 dispatch({
                     type: actionTypes.GET_EXAM_LIST_FAILED,
                     error: payload.message
