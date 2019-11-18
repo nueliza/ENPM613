@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from "react-responsive-modal";
+import NumberFormat from 'react-number-format';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope, faPhone, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import './registeration.css';
@@ -7,11 +8,13 @@ import ErrorMessage from "../ErrorMessage";
 import { withRouter } from "react-router-dom";
 import ToastContainer from "../toast";
 
+
+
 class Registration extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            registrationInfo: { fname: "", lname: "", username: "", password: "", emailId: "", phone: "", role_id: 1 },
+            registrationInfo: { fname: "", lname: "", username: "", password: "", email: "", phone: "", role_id: 1 },
             fnameError: "",
             lnameError: "",
             usernameError: "",
@@ -26,6 +29,7 @@ class Registration extends Component {
     }
 
     handleChange = (e) => {
+        console.log(e)
         let registrationInfo = this.state.registrationInfo;
         if (e.target.name !== "terms") {
             registrationInfo[e.target.name] = e.target.value;
@@ -192,8 +196,10 @@ class Registration extends Component {
                         </div>
                         <div className="form-group">
                             <FontAwesomeIcon icon={faPhone} size="2x" color="gray" />
-                            <input type="text" name="phone"
-                                placeholder="Your phone number"
+                            <NumberFormat  placeholder="Your phone number" 
+                                format="+1 (###) ###-####" mask="_" 
+                                name="phone" 
+                                onChange={this.handleChange}
                             />
                             <ErrorMessage content={this.state.phoneError} messageType="error" />
                         </div>

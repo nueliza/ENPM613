@@ -16,39 +16,6 @@ axios.defaults.withCredentials = true
  */
 
 //credentials: 'include' sends the cookie along with request. fetch by default does not inlude cookies
-// export function getStudentList() {
-//     return async dispatch => {
-//         dispatch({
-//             type: actionTypes.GET_STUDENT_LIST_STARTED
-//         });
-//         return fetch(`${baseUrl}/get_students`,{
-//             method: "GET",
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json',
-//                 'Authorization': `Bearer ${localStorage.getItem("token")}`,
-//                 'session': cookies.get('session')
-//             },
-//             credentials: 'include'
-//         })
-//         .then(response => response.json())
-//         .then(payload => {
-//             if (student_list_response.Status === 200) {
-//                 dispatch({
-//                     type: actionTypes.GET_STUDENT_LIST_SUCCESS,
-//                     payload: student_list_response.students
-//                 })
-//             }
-//             else {
-//                 dispatch({
-//                     type: actionTypes.GET_STUDENT_LIST_SUCCESS,
-//                     error: student_list_response.students
-//                 })
-//             }
-//         })
-//     }
-//   }
-
 export function getStudentList() {
     return async dispatch => {
         dispatch({

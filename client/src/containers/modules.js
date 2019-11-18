@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modules from '../components/modules';
-import AdminDashboard from '../components/AdminDashboard';
+import AdminDashboard from '../containers/adminDashboard';
 import { Redirect } from 'react-router-dom';
 
 import { setSelectedModule } from "../actions";
@@ -31,7 +31,7 @@ class ModuleContainer extends Component {
       }} />
     }
     else if (this.props.userInfo.user_type === "Admin") {
-      return <AdminDashboard userInfo={this.props.userInfo} />
+      return <AdminDashboard/>
     }
     else
       return <Redirect to="/" />

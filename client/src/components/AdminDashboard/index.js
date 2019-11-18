@@ -9,6 +9,13 @@ class AdminDashboard extends Component {
     constructor(props){
         super(props);
     }
+
+    logout = (e) =>{
+        e.preventDefault();
+        this.props.logoutUser();
+        this.props.history.push("/");
+    }
+    
     render() {
         return (
             <Fragment>
@@ -17,7 +24,7 @@ class AdminDashboard extends Component {
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.firstName} {this.props.userInfo.lastName} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <a href="/">Sign out</a>
+                        <a href="/" onClick={this.logout}>Sign out</a>
                     </div>
                 </div>
                 <hr />
