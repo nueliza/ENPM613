@@ -23,6 +23,8 @@ const userReducer = (state = initialState, action) => {
             return{...state, registrationError: action.error}
         case actionTypes.GET_MODULE_LIST_SUCCESS: 
             return{...state, moduleList: action.payload}
+        case actionTypes.LOGOUT_USER_SUCESS:
+            return {...state, userInfo: {}}
         default:
             return state
     }

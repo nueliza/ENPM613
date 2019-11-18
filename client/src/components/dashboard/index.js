@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactTooltip from 'react-tooltip';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import { withRouter } from "react-router-dom";
 
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,6 +32,12 @@ class Dashboard extends Component {
         }
 
     }
+    logout = (e) =>{
+        e.preventDefault();
+        console.log("here", this.props)
+        this.props.logoutUser();
+        this.props.history.push("/");
+    }
 
     loadExamList = () =>{
         this.props.getExamList();
@@ -57,7 +64,7 @@ class Dashboard extends Component {
                                 <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" alt="Logo" src={logo} /></Link>
                                 <br />
                                 <span className="avatar dashboardAvatar">
-                                    {userInfo.first_name.charAt(0)}{userInfo.last_name.charAt(0)}
+                                    {userInfo.fname.charAt(0)}{userInfo.lname.charAt(0)}
                                 </span>
                                 <br/>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
@@ -143,9 +150,9 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
+                                        <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
                                         <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
-                                        <a href="/">Sign out</a>
+                                        <a href="/" onClick={this.logout}>Sign out</a>
                                     </div>
                                 </div>
 
@@ -208,4 +215,4 @@ class Dashboard extends Component {
             </Router>)
     }
 }
-export default Dashboard;
+export default withRouter(Dashboard);

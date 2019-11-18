@@ -14,7 +14,7 @@ class Modules extends Component {
                 <div className="dashboard_header">
                     <h3> Main dashboard </h3>
                     <div className="userInfo">
-                        <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
+                        <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
                         <a href="/">Sign out</a>
                     </div>
