@@ -17,8 +17,8 @@ class ModuleContainer extends Component {
   }
   render() {
     if (this.props.userInfo.user_type === "Student") {
-      if (this.props.loading) return <Loading />
-      if (Object.keys(this.props.moduleList).length === 0) return <NotFound />
+      // if (this.props.loading) return <Loading />
+      // if (Object.keys(this.props.moduleList).length === 0) return <NotFound />
       return <Modules
         userInfo={this.props.userInfo}
         setSelectedModule={this.props.setSelectedModule}

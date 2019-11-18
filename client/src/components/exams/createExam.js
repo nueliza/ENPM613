@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { createExam} from "../../actions/examHandler";
 import "./exams.css";
 import ErrorMessage from "../ErrorMessage";
 
@@ -101,6 +103,7 @@ class CreateExam extends Component {
         super(props);
         this.state = {
             Exam: [{ question: "", options: ["", ""], answer: "" }],
+            examName: "",
             errors: []
         }
     }
@@ -140,8 +143,11 @@ class CreateExam extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         //TODO: Input field validations
-        
-        this.props.createExam(this.state.Exam);
+        const reqObject ={
+            "exam_name":this.state.examName,
+            "exam": this.state.Exam
+        }
+        this.props.createExam(reqObject);
         this.props.history.push("/exams")
         
     }
@@ -160,7 +166,10 @@ class CreateExam extends Component {
         let Exam = [...this.state.Exam]
         if (e.target.name === "options") {
             Exam[e.target.dataset.id]["options"][e.target.id] = e.target.value;
-        } else {
+        } else if(e.target.name === "name"){
+            this.setState({examName: e.target.value})
+        }
+        else {
             Exam[e.target.dataset.id][e.target.name] = e.target.value;
         }
         this.setState({ Exam });
@@ -168,10 +177,12 @@ class CreateExam extends Component {
 
     render() {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
+        console.log("CreateExamPage", this.props)
         return (
             <div className="dashboard_body">
                 <h3>Create Exam for Algebra</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+                    Exam Name <input type="text" name="name" placeholder="Exam Name" required/>
                     <QuestionInput
                         Exam={this.state.Exam}
                         addOption={this.addOption}
@@ -201,4 +212,14 @@ class CreateExam extends Component {
         )
     }
 }
-export default CreateExam;
+const mapDispatchToProps = (dispatch) => {
+    return{
+        createExam : (payload) => dispatch(createExam(payload))
+    }
+}
+
+const mapStateToProps = state => ({
+    loading: state.loader.loading,
+})
+
+export default connect( mapStateToProps,mapDispatchToProps)(CreateExam)

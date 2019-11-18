@@ -2,123 +2,57 @@ import React, { Component } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
+import ToastContainer from "../toast";
+import Loading from "../loading";
+import NotFound from "../NotFound";
 
 const ExamList = (props) => {
     return (
         <ul className="list-group">
-            <li className="list-group-item">Exam 1
-                <button 
-                    type="button" 
-                    className={"btn btn-info " + props.isTutor? "hide":""}
-                    onClick={() => {
-                        props.history.push({
-                            pathname: '/takeExam',
-                        })
-                    }}
-                >
-                    Take Exam
-                </button>
-                <FontAwesomeIcon 
-                    icon={iconMapping["Trash"]} 
-                    size="1x" 
-                    className={props.isTutor?"": "hide"}
-                    style={{color: "var(--alert-color)", float: "right"}}
-                />
-                <div className="exam_details">
-                    <span>24 Questions</span>
-                    <span>Posted On: 4/11/2019</span>
-                </div>
-                
-            </li>
-            <li className="list-group-item">Exam 1
-                <button 
-                    type="button" 
-                    className={"btn btn-info " + props.isTutor? "hide":""}
-                    onClick={() => {
-                        props.history.push({
-                            pathname: '/takeExam',
-                        })
-                    }}
-                >
-                    Take Exam
-                </button>
-                <FontAwesomeIcon 
-                    icon={iconMapping["Trash"]} 
-                    size="1x" 
-                    className={props.isTutor?"": "hide"}
-                    style={{color: "var(--alert-color)", float: "right"}}
-                />
-                <div className="exam_details">
-                    <span>24 Questions</span>
-                    <span>Posted On: 4/11/2019</span>
-                </div>
-                
-            </li>
-            <li className="list-group-item">Exam 1
-                <button 
-                    type="button" 
-                    className={"btn btn-info " + props.isTutor? "hide":""}
-                    onClick={() => {
-                        props.history.push({
-                            pathname: '/takeExam',
-                        })
-                    }}
-                >
-                    Take Exam
-                </button>
-                <FontAwesomeIcon 
-                    icon={iconMapping["Trash"]} 
-                    size="1x" 
-                    className={props.isTutor?"": "hide"}
-                    style={{color: "var(--alert-color)", float: "right"}}
-                />
-                <div className="exam_details">
-                    <span>24 Questions</span>
-                    <span>Posted On: 4/11/2019</span>
-                </div>
-                
-            </li>
-            <li className="list-group-item">Exam 4
-                
-                <span className="tag notPublishedTag">
-                    <FontAwesomeIcon icon={iconMapping["NotPublished"]} size="1x" />&nbsp;
-                    <b>Not published</b>
-                </span>
-                <button 
-                    type="button" 
-                    className={"btn btn-info " + props.isTutor? "hide":""}
-                    onClick={() => {
-                        props.history.push({
-                            pathname: '/takeExam',
-                        })
-                    }}
-                >
-                    Take Exam
-                </button>
-                <FontAwesomeIcon 
-                    icon={iconMapping["Trash"]} 
-                    size="1x" 
-                    className={props.isTutor?"": "hide"}
-                    style={{color: "var(--alert-color)", float: "right"}}
-                />
-                <br/>
-                <div className="exam_details">
-                    <span>24 Questions</span>
-                    <span>Posted On: 4/11/2019</span>
-                </div>
-            </li>
+            {props.examList.map((exam, idx) =>{
+                return(
+                    <li className="list-group-item" id={exam.exam_id} key={idx}> {exam.exam_name}
+                        <button 
+                            type="button" 
+                            className={"btn btn-info " + props.isTutor? "hide":""}
+                            onClick={() => {
+                                props.history.push({
+                                    pathname: '/takeExam',
+                                })
+                            }}
+                        >
+                            Take Exam
+                        </button>
+                        <FontAwesomeIcon 
+                            icon={iconMapping["Trash"]} 
+                            size="1x" 
+                            className={props.isTutor?"": "hide"}
+                            style={{color: "var(--alert-color)", float: "right"}}
+                        />
+                        <div className="exam_details">
+                            <span>{exam.ques_no} Questions</span>
+                        <span>Posted On: {exam.published}</span>
+                        </div>
+                    </li>
+                )
+            })}
         </ul>
     )
 }
 
 class Exams extends Component {
 
-    componentDidMount() {
-        //service call to load exam list
+    UNSAFE_componentWillMount(){
+        if(this.props.isTutor)
+            this.props.getExamListTutor()
     }
+
     render() {
         const isTutor = this.props.isTutor;
-        return (
+        if(this.props.loading) return <Loading />
+        //redirects to Not found page if the getStudentList API fails
+        return Object.keys(this.props.examList).length === 0? <NotFound />:
+        (
             <div className="dashboard_body">
                 <div className="dashboard_subSection">
                     <div className="quoteWrapper">
@@ -126,8 +60,9 @@ class Exams extends Component {
                         <span className="quoteContent">Believe you can & you're halfway there </span>
                         <span className="author">- T Roosevelt</span>
                     </div>
+                    <ToastContainer />
                     <br/>
-                    <ExamList {...this.props} isTutor={isTutor}/>
+                    <ExamList {...this.props} isTutor={isTutor} />
                     <br />
                     {
                     isTutor ?
@@ -137,7 +72,6 @@ class Exams extends Component {
                             onClick={() => {
                             this.props.history.push({
                                 pathname: '/CreateExam',
-                                state: { selectedSubModule: 'Algebra' }
                             })
                         }}>
                             <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />

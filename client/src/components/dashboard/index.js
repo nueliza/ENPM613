@@ -35,11 +35,6 @@ class Dashboard extends Component {
     logout = (e) =>{
         e.preventDefault();
         this.props.logoutUser();
-        this.props.history.push("/");
-    }
-
-    loadExamList = () =>{
-        this.props.getExamList();
     }
 
     render() {
@@ -103,7 +98,7 @@ class Dashboard extends Component {
                                             Files
                                     </NavText>
                                     </NavItem>
-                                    <NavItem eventKey="Exams" onClick={()=> this.loadExamList}>
+                                    <NavItem eventKey="Exams">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Exams"]} data-tip data-for='Exams' size="2x" />
                                             <ReactTooltip id='Exams' type='info' class='tooltips'>
@@ -114,17 +109,20 @@ class Dashboard extends Component {
                                             Exams
                                     </NavText>
                                     </NavItem>
-                                    <NavItem eventKey="Grades">
-                                        <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
-                                            <ReactTooltip id='Grades' type='info' class='tooltips'>
-                                                <span>Grades</span>
-                                            </ReactTooltip>
-                                        </NavIcon>
-                                        <NavText>
-                                            Grades
-                                    </NavText>
-                                    </NavItem>
+                                    {
+                                        isTutor? '':
+                                        <NavItem eventKey="Grades">
+                                            <NavIcon>
+                                                <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
+                                                <ReactTooltip id='Grades' type='info' class='tooltips'>
+                                                    <span>Grades</span>
+                                                </ReactTooltip>
+                                            </NavIcon>
+                                            <NavText>
+                                                Grades
+                                            </NavText>
+                                        </NavItem>
+                                    }
                                     <NavItem eventKey="Discussions">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Discussions"]} data-tip data-for='Discussions' size="2x" />

@@ -11,7 +11,6 @@ class Modules extends Component {
     logout = (e) =>{
         e.preventDefault();
         this.props.logoutUser();
-        this.props.history.push("/");
     }
 
 
