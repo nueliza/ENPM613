@@ -31,7 +31,7 @@ export function getStudentList() {
         .catch(error =>{
             dispatch({
                 type: actionTypes.GET_STUDENT_LIST_SUCCESS,
-                error: error.response.data.message
+                error: error.response.message
             });
         })
   }

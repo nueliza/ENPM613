@@ -78,7 +78,6 @@ input{
     left: 0 !important;
     right: 0 !important;
     top: 0 !important;
-    max-width: 500px !important;
     height: 50px !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -92,16 +91,18 @@ input{
     margin-top: 9px;
     color: white !important;
     font-weight: 800 !important;
-    opacity: 0.75 !important;
+    
 }
 
 .success{
-    background-color: beige!important;
+    background-color: var(--submit-color) !important;
+    opacity: 0.75 !important;
 }
 
 .failure{
     background-color: var(--alert-color) !important;
 }
+
 @media only screen and (max-width: 425px){
     .toast{
         max-width: 300px !important;

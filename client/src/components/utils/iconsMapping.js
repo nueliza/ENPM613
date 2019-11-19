@@ -12,7 +12,11 @@ import { faBook,
     faExclamation, 
     faExclamationCircle,
     faQuoteLeft,
-    faUpload} from '@fortawesome/free-solid-svg-icons';
+    faUpload,
+    faCheckCircle,
+    faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+
+    import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons' ;
 
 
 export const iconMapping = {
@@ -32,4 +36,9 @@ export const iconMapping = {
     "Error": faExclamationCircle,
     "QuoteLeft":faQuoteLeft,
     "Upload": faUpload,
+    "tick": faCheckCircle,
+    "cross": faTimesCircle,
+    "facebook": faFacebook,
+    "twitter": faTwitter,
+    "instagram": faInstagram
 };
