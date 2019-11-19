@@ -5,7 +5,7 @@ import { resetToast } from "../../actions";
 
 class ToastContainer extends Component {
     render() {
-        setTimeout(function(){ this.props.resetToast();}.bind(this),6000);
+        setTimeout(function(){ this.props.resetToast();}.bind(this),60000);
         return (
             this.props.toastMessage !== ""?
             <Toast isOpen={this.props.showToast} className={this.props.toastType === "SUCCESS"? " success " : " failure "}>
