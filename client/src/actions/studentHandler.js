@@ -36,3 +36,25 @@ export function getStudentList() {
         })
   }
 }
+
+export function getModulesList(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_MODULE_LIST_STARTED
+        })
+        return axios.post(`get_modules`, reqObject)
+        .then(response => {
+            dispatch({
+                type: actionTypes.GET_MODULE_LIST_SUCCESS,
+                payload: response.data.mod_list
+            });
+        })
+        .catch( error =>{
+            dispatch({
+                type: actionTypes.GET_MODULE_LIST_FAILED,
+                error: error.response.data.message
+            });
+        })
+    }
+}
+

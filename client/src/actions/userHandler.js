@@ -99,36 +99,3 @@ export function logoutUser() {
             })
     }
 }
-
-export function getModulesList(reqObject) {
-    return async dispatch => {
-        dispatch({
-            type: actionTypes.GET_MODULE_LIST_STARTED
-        })
-        return fetch(`${baseUrl}/get_modules`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem("token")}`
-            },
-            body: JSON.stringify(reqObject)
-        })
-            .then(response => response.json())
-            .then(payload => {
-                if (payload.Status === 200) {
-                    dispatch({
-                        type: actionTypes.GET_MODULE_LIST_SUCCESS,
-                        payload: payload
-                    });
-                }
-                else {
-                    dispatch({
-                        type: actionTypes.GET_MODULE_LIST_FAILED,
-                        error: payload.message
-                    });
-                }
-            })
-    }
-}
-

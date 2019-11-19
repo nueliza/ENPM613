@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
         case actionTypes.GET_MODULE_LIST_SUCCESS: 
             return{...state, moduleList: action.payload}
         case actionTypes.LOGOUT_USER_SUCESS:
-            return {...state, userInfo: {}}
+            return {...state, userInfo: {}, loginError: ""}
         default:
             return state
     }
