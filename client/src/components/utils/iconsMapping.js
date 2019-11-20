@@ -14,7 +14,10 @@ import { faBook,
     faQuoteLeft,
     faUpload,
     faCheckCircle,
-    faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+    faTimesCircle,
+    faMapMarkerAlt,
+    faEnvelope,
+    faPhone} from '@fortawesome/free-solid-svg-icons';
 
     import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons' ;
 
@@ -40,5 +43,8 @@ export const iconMapping = {
     "cross": faTimesCircle,
     "facebook": faFacebook,
     "twitter": faTwitter,
-    "instagram": faInstagram
+    "instagram": faInstagram,
+    "map": faMapMarkerAlt,
+    "phone": faPhone,
+    "mail": faEnvelope
 };

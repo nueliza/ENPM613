@@ -10,8 +10,8 @@ const Header = props => {
     return (
         <div className="headerWrapper">
             <span className="links">
-                <span>About</span> <span>|</span>
-                <span> Services</span> 
+                <a href="/">About</a> <span>|</span>
+                <a href="/"> Services</a> 
             </span>
             <span className="right">
                 <span className="social">

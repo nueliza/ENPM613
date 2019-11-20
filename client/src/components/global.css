@@ -103,6 +103,10 @@ input{
     background-color: var(--alert-color) !important;
 }
 
+
+body{
+    font-family: Poppins,sans-serif !important;
+}
 @media only screen and (max-width: 425px){
     .toast{
         max-width: 300px !important;
