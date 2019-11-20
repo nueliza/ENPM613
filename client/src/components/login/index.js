@@ -62,7 +62,7 @@ class Login extends Component {
                             
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <FontAwesomeIcon icon={faUserCircle} size="2x" color="gray"/>
+                                    <FontAwesomeIcon icon={faUserCircle} size="2x" color="#601A4A"/>
                                     <input type="text"
                                         placeholder="Username"
                                         value={this.state.username}
@@ -70,7 +70,7 @@ class Login extends Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <FontAwesomeIcon icon={faLock} size="2x" color="gray"/>
+                                    <FontAwesomeIcon icon={faLock} size="2x" color="#601A4A"/>
                                     <input type="password"
                                         placeholder="Password"
                                         value={this.state.password}

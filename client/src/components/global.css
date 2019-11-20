@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 :root {
     --alert-color: #ee442f;
     --warning-color: #f5793A;
@@ -45,7 +47,7 @@ input{
 .quoteWrapper .quote{
     font-size: 85px;
     color: gray;
-    font-family: initial;
+    font-family: initial !important;
 }
 
 .quoteWrapper .quoteContent{
@@ -109,7 +111,7 @@ input{
 
 
 body{
-    font-family: Poppins,sans-serif !important;
+    font-family: 'Poppins',sans-serif !important;
 }
 @media only screen and (max-width: 425px){
     .toast{
