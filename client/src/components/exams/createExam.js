@@ -145,7 +145,7 @@ class CreateExam extends Component {
         //TODO: Input field validations
         const reqObject ={
             "exam_name":this.state.examName,
-            "exam": this.state.Exam
+            "questions": this.state.Exam
         }
         this.props.createExam(reqObject);
         this.props.history.push("/exams")
