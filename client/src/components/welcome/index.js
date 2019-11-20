@@ -6,6 +6,7 @@ import ToastContainer from "../toast";
 import logo from "../dashboard/images/Logo.png";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import WelcomeCarousel from "../carousel";
 
 class Welcome extends Component {
     constructor(props) {
@@ -56,20 +57,31 @@ class Welcome extends Component {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <Login
-                        showModal={this.state.showLoginModal}
-                        onCloseModal={this.onCloseLoginModal}
-                        openRegistrationModal={this.openRegistrationModal}
-                    />
-                    <Registration
-                        showModal={this.state.showRegistrationModal}
-                        onCloseModal={this.onCloseRegistrationModal}
-                        openLoginModal={this.openLoginModal}
-                        registerUser={this.props.registerUser}
-                        registrationPending={this.props.registrationPending}
-                    />
+                <WelcomeCarousel />
+                <div className="services">
+                    <div className="subItem"> 
+                        Autograding
+                    </div>
+                    <div className="subItem">
+                        Flashcards
+                    </div>
+                    <div className="subItem">
+                        Discussions
+                    </div>
+
                 </div>
+                <Login
+                    showModal={this.state.showLoginModal}
+                    onCloseModal={this.onCloseLoginModal}
+                    openRegistrationModal={this.openRegistrationModal}
+                />
+                <Registration
+                    showModal={this.state.showRegistrationModal}
+                    onCloseModal={this.onCloseRegistrationModal}
+                    openLoginModal={this.openLoginModal}
+                    registerUser={this.props.registerUser}
+                    registrationPending={this.props.registrationPending}
+                />
             </Fragment>)
     }
 }

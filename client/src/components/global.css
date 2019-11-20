@@ -103,6 +103,10 @@ input{
     background-color: var(--alert-color) !important;
 }
 
+.carousel-slider {
+    height: 500px !important;
+}
+
 
 body{
     font-family: Poppins,sans-serif !important;
