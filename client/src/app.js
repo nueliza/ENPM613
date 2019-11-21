@@ -9,7 +9,7 @@ import Modules from "./containers/modules";
 import Dashboard from "./containers/dashboard";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import TakeExam from "./components/exams/takeExam";
+import ViewExam from "./components/exams/viewExam";
 import Discussion from "./components/discussions/discussion";
 import Files from "./components/files";
 import Flashcards from "./components/flashcards";
@@ -40,7 +40,7 @@ class App extends React.Component {
   
   
           <Route path="/CreateDiscussion" component={props => <CreateDiscussion {...props}/>} /> {/**TODO removed after development */}
-          <Route path="/takeExam" component={props => <TakeExam {...props}/>} /> {/**TODO removed after development */}
+          <Route path="/viewExam" component={props => <ViewExam {...props}/>} /> {/**TODO removed after development */}
           <Route path="/discussion" component={props => <Discussion {...props}/>} /> {/**TODO removed after development */}
           <Route path="/files" component={props => <Files />} /> {/**TODO removed after development */}
           <Route path="/grades" component={props => <Grades />} /> {/**TODO be removed after development */}
