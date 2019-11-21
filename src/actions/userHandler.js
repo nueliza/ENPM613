@@ -11,8 +11,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 //axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
 //axios.defaults.withCredentials = true;
 
-const baseUrl = "https://get-sat-pro.herokuapp.com/api";
-
+export let token=  "";
 /**
  * loginUser communicates with the login API, and logs in the user. Also stores the JWT token in the local storage
  * @param {Object} user 
@@ -28,27 +27,25 @@ export function loginUser(user) {
     //     })
     // }
 
-
     return async dispatch => {
         dispatch({
             type: actionTypes.LOGIN_USER_STARTED
         });
         return axios.post(`/login`, user)
-            .then(result => {
-                this.localStorage.setItem('token', result.data.token).then(() => {
-                    dispatch({
-                        type: actionTypes.LOGIN_USER_SUCESS,
-                        payload: result.data
-                    })
-                });
-                //localStorage.setItem("token", result.data.token);
+        .then(result => {
+            sessionStorage.setItem("token", result.data.token);
+            console.log("token",localStorage.getItem("token"))
+            dispatch({
+                type: actionTypes.LOGIN_USER_SUCESS,
+                payload: result.data
             })
-            .catch(error => {
-                dispatch({
-                    type: actionTypes.LOGIN_USER_FAILED,
-                    error: error.response.data.message
-                });
-            })
+        })
+        .catch(error => {
+            dispatch({
+                type: actionTypes.LOGIN_USER_FAILED,
+                error: error.response.data.message
+            });
+        })
     }
 }
 

@@ -11,14 +11,14 @@ import Loading from "../components/loading";
 import NotFound from "../components/NotFound";
 
 class ModuleContainer extends Component {
-  UNSAFE_componentWillMount() {
-    if (this.props.userInfo.user_type === "Student")
-      this.props.getModulesList({"user_id": this.props.userInfo.user_id});
-  }
+  // UNSAFE_componentWillMount() {
+  //   if (this.props.userInfo.user_type === "Student")
+  //     this.props.getModulesList({"user_id": this.props.userInfo.user_id});
+  // }
   render() {
     if (this.props.userInfo.user_type === "Student") {
       if (this.props.loading) return <Loading />
-      if (Object.keys(this.props.moduleList).length === 0) return <NotFound />
+      //if (Object.keys(this.props.moduleList).length === 0) return <NotFound />
       return <Modules
         userInfo={this.props.userInfo}
         setSelectedModule={this.props.setSelectedModule}

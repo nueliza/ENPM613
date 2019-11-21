@@ -11,7 +11,9 @@ class Students extends Component {
     
     render() {
         if(this.props.loading) return <Loading />
+
         //redirects to Not found page if the getStudentList API fails
+
         return Object.keys(this.props.studentList).length === 0? <NotFound />:
         (
             <div className="dashboard_body student_body">

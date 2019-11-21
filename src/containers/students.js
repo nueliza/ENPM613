@@ -5,6 +5,7 @@ import { getStudentList } from "../actions/studentHandler";
 const mapStateToProps =( state) =>{
     return{
         loading: state.loader.loading,
+        userInfo: state.user.userInfo,
         studentList: state.student.studentList,
     }
 }
