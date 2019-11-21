@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import {loginUser, registerUser} from "../../actions/userActions";
+import {loginUser} from "../../actions/userHandler";
 import Modal from "react-responsive-modal";
 import Loading from "../loading";
 import { Redirect } from 'react-router';
@@ -50,7 +50,7 @@ class Login extends Component {
         this.props.loginUser(payload);
     }
     render() {
-        if (this.props.loginPending) return <Loading show={this.props.loginPending} />
+        if (this.props.loading) return <Loading show={this.props.loading} />
         if (Object.keys(this.props.userInfo).length > 0) return <Redirect to='/modules' /> 
         return (
                 <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
@@ -59,10 +59,10 @@ class Login extends Component {
                             <br />
                             <h3>Sign In</h3>
                             <hr />
-                            <ErrorMessage messageType="error" content={this.props.loginError}/>
+                            
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
-                                    <FontAwesomeIcon icon={faUserCircle} size="2x" color="gray"/>
+                                    <FontAwesomeIcon icon={faUserCircle} size="2x" color="#601A4A"/>
                                     <input type="text"
                                         placeholder="Username"
                                         value={this.state.username}
@@ -70,13 +70,14 @@ class Login extends Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <FontAwesomeIcon icon={faLock} size="2x" color="gray"/>
+                                    <FontAwesomeIcon icon={faLock} size="2x" color="#601A4A"/>
                                     <input type="password"
                                         placeholder="Password"
                                         value={this.state.password}
                                         onChange={this.onChangePassword}
                                     />
                                 </div>
+                                <ErrorMessage messageType="error" content={this.props.loginError}/>
                                 <input type="submit"
                                     className="btn btn-primary getSatProSubmitBtn"
                                     value="Sign In"
@@ -100,7 +101,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps =( state) =>{
     return{
-        loginPending: state.user.loginPending,
+        loading: state.loader.loading,
         loginError:  state.user.loginError,
         userInfo:  state.user.userInfo
     }

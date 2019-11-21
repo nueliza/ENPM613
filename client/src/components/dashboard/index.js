@@ -3,25 +3,25 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ReactTooltip from 'react-tooltip';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import { withRouter } from "react-router-dom";
 
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './dashboard.css';
 import logo from "./images/Logo.png";
 
-import Discussions from "../discussions";
+import Discussions from "../../containers/discussions";
 import Discussion from "../discussions/discussion";
 import CreateDiscussion from '../discussions/createDiscussion';
-
-import Exams from "../exams";
+import Exams from "../../containers/exams";
 import CreateExam from "../exams/createExam";
 import TakeExam from "../exams/takeExam";
-
-import Files from "../files";
-import Flashcards from "../flashcards";
-import Grades from "../grades";
+import Files from "../../containers/files";
+import Flashcards from "../../containers/flashcards";
+import Grades from "../../containers/grades";
 import FlashcardSet from "./flashcardSet";
-import Students from "../students";
+import Students from "../../containers/students";
+import ToastContainer from "../toast/index";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -32,9 +32,14 @@ class Dashboard extends Component {
         }
 
     }
+    logout = (e) =>{
+        e.preventDefault();
+        this.props.logoutUser();
+    }
+
     render() {
         const userInfo = this.props.userInfo;
-        const isTutor = userInfo.userType === "Tutor" ? true : false;
+        const isTutor = userInfo.user_type === "Tutor" ? true : false;
         const selectedModule = this.props.selectedModule;
 
         return (
@@ -53,7 +58,7 @@ class Dashboard extends Component {
                                 <Link onClick={() => this.props.history.push("/modules")}><img className="mainLogo" alt="Logo" src={logo} /></Link>
                                 <br />
                                 <span className="avatar dashboardAvatar">
-                                    {userInfo.first_name.charAt(0)}{userInfo.last_name.charAt(0)}
+                                    {userInfo.fname.charAt(0)}{userInfo.lname.charAt(0)}
                                 </span>
                                 <br/>
                                 <SideNav.Toggle onClick={() => { this.setState({ isSideBarOpened: !this.state.isSideBarOpened }) }} />
@@ -104,17 +109,20 @@ class Dashboard extends Component {
                                             Exams
                                     </NavText>
                                     </NavItem>
-                                    <NavItem eventKey="Grades">
-                                        <NavIcon>
-                                            <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
-                                            <ReactTooltip id='Grades' type='info' class='tooltips'>
-                                                <span>Grades</span>
-                                            </ReactTooltip>
-                                        </NavIcon>
-                                        <NavText>
-                                            Grades
-                                    </NavText>
-                                    </NavItem>
+                                    {
+                                        isTutor? '':
+                                        <NavItem eventKey="Grades">
+                                            <NavIcon>
+                                                <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
+                                                <ReactTooltip id='Grades' type='info' class='tooltips'>
+                                                    <span>Grades</span>
+                                                </ReactTooltip>
+                                            </NavIcon>
+                                            <NavText>
+                                                Grades
+                                            </NavText>
+                                        </NavItem>
+                                    }
                                     <NavItem eventKey="Discussions">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Discussions"]} data-tip data-for='Discussions' size="2x" />
@@ -129,6 +137,7 @@ class Dashboard extends Component {
                                 </SideNav.Nav>
                             </SideNav>
                             <main className={this.state.isSideBarOpened ? "dashboard_content_expanded" : "dashboard_content_collapsed"}>
+                                <ToastContainer />
                                 <div className="dashboard_header">
                                     {isTutor ?
                                         <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3> :
@@ -138,9 +147,9 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span className="bold">Hello, {this.props.userInfo.first_name} {this.props.userInfo.last_name} !</span> <br />
+                                        <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
                                         <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
-                                        <Link onClick={() => this.props.history.push("/")}>Sign out</Link>
+                                        <a href="/" onClick={this.logout}>Sign out</a>
                                     </div>
                                 </div>
 
@@ -203,4 +212,4 @@ class Dashboard extends Component {
             </Router>)
     }
 }
-export default Dashboard;
+export default withRouter(Dashboard);

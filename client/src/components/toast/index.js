@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Toast, ToastBody } from 'reactstrap';
-import { resetToast } from "../../actions/actions";
+import { resetToast } from "../../actions";
+import { iconMapping } from "../utils/iconsMapping.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ToastContainer extends Component {
     render() {
-        setTimeout(function(){ this.props.resetToast();}.bind(this),5000);
+        setTimeout(function(){ this.props.resetToast();}.bind(this),6000);
+        let icon = this.props.toastType === "SUCCESS"? "tick": "cross";
         return (
             this.props.toastMessage !== ""?
-            <Toast isOpen={this.props.showToast}>
+            <Toast isOpen={this.props.showToast} className={this.props.toastType === "SUCCESS"? " success " : " failure "}>
                 <ToastBody>
-                    {this.props.toastMessage}
+                <FontAwesomeIcon color="white" icon={iconMapping[icon]} data-tip data-for='Exams' size="1x" /> &nbsp;
+                {this.props.toastMessage}
                 </ToastBody>
             </Toast>
             :""
@@ -25,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps =( state) =>{
     return{
-        toastMessage: state.toast.toastMessage
+        toastMessage: state.toast.toastMessage,
+        toastType: state.toast.toastType
     }
 }
     

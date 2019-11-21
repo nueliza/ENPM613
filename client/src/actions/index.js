@@ -1,11 +1,20 @@
-// export function setData(data){
-//     return {
-//         type: 'GET_DATA',
-//         data: {
-//             userType: "Admin",
-//             firstName: "Iona",
-//             lastName: "Rus",
-//             last_logged_in: '2016-01-12 15:12:34.524'
-//         }
-//     }
-// }
+import * as actionTypes from "./actionTypes";
+
+// set the module selected by the student in the store
+export const setSelectedModule = (data) =>{
+    return{
+        type: actionTypes.SET_SELECTED_MODULE,
+        payload: data
+    }
+
+}
+
+// Reset the toast message after the timeout
+export const resetToast = () =>{
+    return{
+        type: actionTypes.RESET_TOAST
+    }
+}
+
+
+

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
 :root {
     --alert-color: #ee442f;
     --warning-color: #f5793A;
@@ -45,7 +47,7 @@ input{
 .quoteWrapper .quote{
     font-size: 85px;
     color: gray;
-    font-family: initial;
+    font-family: initial !important;
 }
 
 .quoteWrapper .quoteContent{
@@ -68,19 +70,51 @@ input{
     color: white;
     box-shadow: 2px 3px 3px #a3a3a3;
 }
+.currentUser{
+    float: right;
+    background-color:var(--primary-color) !important;
+}
 
 .toast{
     position: absolute !important;
     left: 0 !important;
     right: 0 !important;
     top: 0 !important;
+    height: 50px !important;
     margin-left: auto !important;
     margin-right: auto !important;
     margin-top: 5px !important;
     border-radius: 10px !important;
+
 }
 .toast .toast-body{
     padding: 5px;
     text-align: center !important;
+    margin-top: 9px;
+    color: white !important;
+    font-weight: 800 !important;
+    
 }
 
+.success{
+    background-color: var(--submit-color) !important;
+    opacity: 0.75 !important;
+}
+
+.failure{
+    background-color: var(--alert-color) !important;
+}
+
+.carousel-slider {
+    height: 500px !important;
+}
+
+
+body{
+    font-family: 'Poppins',sans-serif !important;
+}
+@media only screen and (max-width: 425px){
+    .toast{
+        max-width: 300px !important;
+    }
+}
