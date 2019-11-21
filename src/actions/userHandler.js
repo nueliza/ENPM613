@@ -35,11 +35,13 @@ export function loginUser(user) {
         });
         return axios.post(`/login`, user)
             .then(result => {
-                localStorage.setItem("token", result.data.token);
-                dispatch({
-                    type: actionTypes.LOGIN_USER_SUCESS,
-                    payload: result.data
-                })
+                this.localStorage.setItem('token', result.data.token).then(() => {
+                    dispatch({
+                        type: actionTypes.LOGIN_USER_SUCESS,
+                        payload: result.data
+                    })
+                });
+                //localStorage.setItem("token", result.data.token);
             })
             .catch(error => {
                 dispatch({

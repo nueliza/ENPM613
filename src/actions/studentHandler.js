@@ -7,10 +7,10 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-this.localStorage.getItem('token').then((value) => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${value}` 
-    });
-//axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
+// this.localStorage.getItem('token').then((value) => {
+//     axios.defaults.headers.common['Authorization'] = `Bearer ${value}` 
+//     });
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
 axios.defaults.withCredentials = true
 
 
