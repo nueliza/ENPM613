@@ -60,7 +60,7 @@ class Exams extends Component {
     render() {
         const isTutor = this.props.isTutor;
         if(this.props.loading) return <Loading />
-        //redirects to Not found page if the getStudentList API fails
+        //redirects to Not found page if the getExamsList API fails
         return Object.keys(this.props.examList).length === 0? <NotFound />:
         (
             <div className="dashboard_body">

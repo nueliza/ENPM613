@@ -55,6 +55,18 @@
     margin-right: 0;
 }
 
+.view_exam .optionsWrapper{
+    margin-left: 30px
+}
+
+.view_exam .correctAnsTag{
+    background-color: var(--submit-color);
+}
+
+.view_exam .optionsWrapper .itemWrapper{
+    margin-top: 10px;
+}
+
 @media only screen and (max-width: 768px){
     .questionWrapper input{
         width: 100%;
