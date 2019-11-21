@@ -1,0 +1,53 @@
+.Loginwrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100%;
+    min-height: 330px;
+    position: relative;
+    align-items: center;
+    text-align: center;
+
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    padding: 0px;
+    text-align: center;
+  }
+  
+  .formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+    margin-top: 10px;
+  }
+
+  .Loginwrapper input[type=text], input[type =password]{
+    width: 60% !important;
+  }
+
+  input[type=text], input[type =password]{
+    border: 2px solid #ced4da;
+    border-radius: 5px 5px 5px 5px;
+    height: 40px;
+    text-align: center;
+    margin-left: 10px;
+  }
+
+

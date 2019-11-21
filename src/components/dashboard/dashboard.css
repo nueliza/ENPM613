@@ -1,0 +1,91 @@
+.dashboard_content_collapsed{
+    position: relative;
+    padding: 0 20px;
+    margin-left: 64px;
+}
+.dashboard_content_expanded{
+    margin-left: 240px;
+    padding: 0 20px;
+}
+.dashboard_wrapper{
+    height: 100vh;
+}
+.dashboard_header{
+    margin-top: 19px;
+    display: flex;  
+    margin-left:10px;  
+}
+.mainLogo{
+    display: block;
+    width: 63px;
+    height: 60px;
+    border: 2px solid var(--primary-color);
+}
+.sidenav---sidenav---_2tBP{
+    background:var(--primary-color)!important;
+    position: fixed !important;
+    z-index: 3 !important;
+}
+.sidenav---sidenav-navitem---uwIJ-{
+    margin-bottom: 5px;
+}
+
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+  
+.tool:hover .tooltiptext {
+visibility: visible;
+}
+
+.tooltips {
+    background: black!important;
+    font-size: 10px !important;
+}
+.cursor_pointer{
+    cursor: pointer;
+}
+.userInfo{
+    margin-left: auto;
+    margin-right: 20px;
+    font-size: 12px;
+}
+
+.dashboardAvatar{
+    float: left;
+    box-shadow: none !important;
+    margin-left: 8px;
+    background-color: white !important;
+    color: var(--primary-color) !important;
+}
+
+
+@media (max-width: 900px) {
+    .dashboard_header{
+        margin-left:10px;  
+    }
+    .userInfo span{
+        display: none;
+    }
+    .userInfo a{
+        float: right;
+        margin-top: -20px;
+    }
+}
+
+.breadcrumb{
+    font-size: 27px;
+    vertical-align: top;
+}
+

@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+:root {
+    --alert-color: #ee442f;
+    --warning-color: #f5793A;
+    --submit-color: #17a2b8;
+    --primary-color: #601A4A;
+}
+
+.getSatProSubmitBtn{
+    background-color: var(--submit-color) !important;
+    border-color: var(--submit-color) !important;
+}
+
+.getSatProLinks{
+    color: var(--primary-color);
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.getSatProSecondaryButton{
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.errorMessage {
+    width: 50%;
+    margin-top: 5px;
+    color: var(--alert-color);
+    font-size: 13px;
+}
+.warningMessage {
+    width: 50%;
+    margin-top: 5px;
+    color: var(--warning-color);
+    font-size: 13px;
+}
+
+.hide{
+    display: none !important;
+}
+
+input{
+    text-align: left !important;
+}
+
+.quoteWrapper .quote{
+    font-size: 85px;
+    color: gray;
+    font-family: initial !important;
+}
+
+.quoteWrapper .quoteContent{
+    font-size: 20px
+}
+
+.quoteWrapper .author{
+    color: gray
+}
+
+.avatar{
+    border-radius: 50%;
+    background-color: #17a2b8;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: inline-block;
+    font-weight: 700;
+    color: white;
+    box-shadow: 2px 3px 3px #a3a3a3;
+}
+.currentUser{
+    float: right;
+    background-color:var(--primary-color) !important;
+}
+
+.toast{
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    height: 50px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 5px !important;
+    border-radius: 10px !important;
+
+}
+.toast .toast-body{
+    padding: 5px;
+    text-align: center !important;
+    margin-top: 9px;
+    color: white !important;
+    font-weight: 800 !important;
+    
+}
+
+.success{
+    background-color: var(--submit-color) !important;
+    opacity: 0.75 !important;
+}
+
+.failure{
+    background-color: var(--alert-color) !important;
+}
+
+.carousel-slider {
+    height: 500px !important;
+}
+
+
+body{
+    font-family: 'Poppins',sans-serif !important;
+}
+@media only screen and (max-width: 425px){
+    .toast{
+        max-width: 300px !important;
+    }
+}
