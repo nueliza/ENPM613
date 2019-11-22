@@ -68,7 +68,7 @@ export function registerUser(registerData) {
             .catch(error => {
                 dispatch({
                     type: actionTypes.REGISTRATION_FAILED,
-                    error: error.response.message
+                    error: error.response.data.message
                 });
             })
     }

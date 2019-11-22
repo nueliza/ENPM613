@@ -186,6 +186,8 @@ class Dashboard extends Component {
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
                                         deleteExam={this.props.deleteExam}
+                                        setSelectedExam ={this.props.setSelectedExam}
+                                        getExam={this.props.getExam}
                                         />} 
                                 />
                                 <Route path="/CreateExam" component={props => 
@@ -196,9 +198,11 @@ class Dashboard extends Component {
                                 />
                                 <Route path="/takeExam" component={props => 
                                     <TakeExam  
-                                        {...props}
                                         submitExam={this.props.submitExam}
                                         getExam={this.props.getExam}
+                                        selectedExam = {this.props.selectedExam}
+                                        selectedExamName = {this.props.selectedExamName}
+                                        selectedExamId ={this.props.selectedExamId}
                                     />} 
                                 />
 

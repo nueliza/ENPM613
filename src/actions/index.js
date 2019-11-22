@@ -9,6 +9,7 @@ export const setSelectedModule = (moduleId, moduleName) =>{
 
 }
 
+
 // Reset the toast message after the timeout
 export const resetToast = () =>{
     return{

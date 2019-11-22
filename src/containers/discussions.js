@@ -12,8 +12,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => ({
     discussionList: state.discussion.discussionList,
-    loading: state.loader.loading,
-    
 })
 
 export default connect( mapStateToProps,mapDispatchToProps)(Discussions)

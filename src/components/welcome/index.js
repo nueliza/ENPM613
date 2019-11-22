@@ -82,7 +82,7 @@ class Welcome extends Component {
                     onCloseModal={this.onCloseRegistrationModal}
                     openLoginModal={this.openLoginModal}
                     registerUser={this.props.registerUser}
-                    registrationPending={this.props.registrationPending}
+                    registrationError={this.props.registrationError}
                 />
             </Fragment>)
     }

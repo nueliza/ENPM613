@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps =( state) =>{
     return{
-        registrationPending:  state.user.registrationPending,
+        registrationPending:  state.user.registrationError,
         loginPending: state.user.loginPending,
         loginError:  state.user.loginError,
         userInfo:  state.user.userInfo, 

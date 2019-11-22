@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
 import "./exams.css";
+import Loading from "../loading";
+import NotFound from "../NotFound";
 
 const ExamQuestions =(props) =>{
     return(
-        props.sampleExam.map((question, id)=>{
+        props.exam.map((question, id)=>{
             return(
                 <div className="group" key={id}>
                     <label>{`${id+1}. ${question.question}`}</label>
@@ -14,8 +16,8 @@ const ExamQuestions =(props) =>{
                             <React.Fragment key={idx}>
                                 <input 
                                     type="radio" 
-                                    id={`${question.questionId}-${idx}`} 
-                                    name={question.questionId} 
+                                    id={`${question.ques_id}-${idx}`} 
+                                    name={question.ques_id} 
                                     value={option}
                                     onChange={props.handleChange}/>
                                 &nbsp;
@@ -35,37 +37,46 @@ class TakeExam extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sampleExam: [{ questionId: 123, question: "How old are you?", options: ["20 years", "30 years", "35 years"] }, 
-            { questionId: 234, question: "Are you enrolled in a program?", options: ["True", "false"] }],
             studentResponse: []
         }
     }
 
+
     handleChange = (e) =>{
-        const questionId = e.target.name;
+        const questionId = parseInt(e.target.name, 10);
         const response = e.target.value;
-        const updatedQuestion = this.state.studentResponse.find((item)=> item.questionId === questionId);
+        const updatedQuestion = this.state.studentResponse.find((item)=> item.ques_id === questionId);
         if(updatedQuestion === undefined){
             this.setState((prevState)=>({studentResponse : 
                 [...prevState.studentResponse, 
-                    {questionId: questionId,response: response}]
+                    {ques_id: questionId,ans: response}]
             }));
         }
     }
 
     handleSubmit = (e) =>{
-        //service call to submit exam
+        e.preventDefault();
+        let payload = {
+            "exam_id": this.props.selectedExamId,
+            "sub": this.state.studentResponse
+        }
+        this.props.submitExam(payload)
         this.props.history.push("/exams")
     }
 
     render() {
-        return (
+
+        console.log("Here, Take Exam", this.state);
+        if (this.props.loading) return <Loading />
+        //redirects to Not found page if the getExamsList API fails
+        return Object.keys(this.props.selectedExam).length === 0 ? <NotFound /> :
+        (
             <div className="dashboard_body exam_body">
                 <div className="dashboard_subSection">
-                    <h2>Exam Name</h2>
+                    <h2>{this.props.selectedExamName}</h2>
                     <div className="examWrapper">
                         <ExamQuestions
-                            sampleExam = {this.state.sampleExam}
+                            exam = {this.props.selectedExam}
                             handleChange ={this.handleChange}
                         />
                         <button className="btn btn-success" onClick={this.handleSubmit} >
@@ -78,4 +89,4 @@ class TakeExam extends Component {
     }
 }
 
-export default TakeExam;
+export default withRouter(TakeExam);

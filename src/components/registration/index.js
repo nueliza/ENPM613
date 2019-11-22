@@ -21,9 +21,12 @@ class Registration extends Component {
             passwordError: "",
             emailIdError: "",
             phoneError: "",
-            isFormValid: false,
-            isTermsChecked: false,
             termsError: "",
+            //errors: {fname: "", lname: "", username: "", password: "", email: "", phone: "", terms: ""},
+            errors:{},
+           // isFormValid: false,
+            isTermsChecked: false,
+            
             showToast: false
         }
     }
@@ -42,21 +45,76 @@ class Registration extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        this.validateField("fname");
-        this.validateField("lname");
-        this.validateField("password");
-        this.validateField("username");
-        this.validateField("email");
-        this.validateField("phone");
-        this.validateField("terms");
+        // this.validateField("fname");
+        // this.validateField("lname");
+        // this.validateField("password");
+        // this.validateField("username");
+        // this.validateField("email");
+        // this.validateField("phone");
+        // this.validateField("terms");
 
-        if(this.state.fnameError === "" && this.state.lnameError === ""&& 
-        this.state.passwordError === "" && this.state.phoneError === "" &&
-        this.state.emailIdError === "" && this.state.termsError === ""&&
-        this.state.usernameError === ""){
+        // if(this.state.fnameError === "" && this.state.lnameError === ""&& 
+        // this.state.passwordError === "" && this.state.phoneError === "" &&
+        // this.state.emailIdError === "" && this.state.termsError === ""&&
+        // this.state.usernameError === ""){
+        //     this.props.registerUser(this.state.registrationInfo);
+        //     this.props.onCloseModal();
+        // } 
+        if(this.validateForm()){
             this.props.registerUser(this.state.registrationInfo);
             this.props.onCloseModal();
-        } 
+        }
+    }
+
+    validateForm =() =>{
+        let formIsValid =true;
+        let fname = this.state.registrationInfo["fname"];
+        let lname = this.state.registrationInfo["lname"];
+        let password = this.state.registrationInfo["password"];
+        let username = this.state.registrationInfo["username"];
+        let email = this.state.registrationInfo["email"];
+        let phone = this.state.registrationInfo["phone"];
+        let errors ={};
+
+        if (fname === "" || !/^[a-zA-Z]+$/.test(fname)) {
+            formIsValid = false;
+            errors["fname"] = "Please enter a valid first name";
+        }
+        if (lname === "" || !/^[a-zA-Z]+$/.test(lname)) {
+            formIsValid = false;
+            errors["lname"] = "Please enter a valid last name";
+        }
+        if (password === "") {
+            formIsValid = false;
+            errors["password"] = "Password is required";
+        }
+        if (username === "") {
+            formIsValid = false;
+            errors["username"] = "Username is required";
+        }
+        if (email === ""  || !/\S+@\S+\.\S+/.test(email)) {
+            formIsValid = false;
+            errors["email"] = "Please enter a valid Email id";
+        }
+        if(phone === ""){
+            formIsValid = false;
+            errors["phone"] = "Please enter a valid Phone Number";
+        }
+        else if(phone.match(/\d/g).length != 11){
+            formIsValid = false;
+            errors["phone"] = "Please enter a valid Phone Number";
+        }
+
+        if(this.state.isTermsChecked === false){
+            formIsValid = false;
+            errors["terms"] = "Please agree the terms and conditions";
+        }
+
+        this.setState({
+            errors: errors
+          });
+        return formIsValid;
+
     }
 
     validateField = (field) =>{
@@ -169,15 +227,15 @@ class Registration extends Component {
                             <input type="text" name="lname"
                                 placeholder="Your last name"
                             />
-                            <ErrorMessage content={this.state.fnameError} messageType="error" />
-                            <ErrorMessage content={this.state.lnameError} messageType="error" />
+                            <ErrorMessage content={this.state.errors["fname"]} messageType="error" />
+                            <ErrorMessage content={this.state.errors["lname"]} messageType="error" />
                         </div>
                         <div className="form-group">
                             <FontAwesomeIcon icon={faUserCircle} size="2x" color="#601A4A" />
                             <input type="text" name="username"
                                 placeholder="Your username"
                             />
-                            <ErrorMessage content={this.state.usernameError} messageType="error" />
+                            <ErrorMessage content={this.state.errors["username"]} messageType="error" />
                         </div>
                         <div className="form-group">
                             <FontAwesomeIcon icon={faLock} size="2x" color="#601A4A" />
@@ -185,14 +243,14 @@ class Registration extends Component {
                                 id="password"
                                 placeholder="Your password"
                             />
-                            <ErrorMessage content={this.state.passwordError} messageType="error" />
+                            <ErrorMessage content={this.state.errors["password"]} messageType="error" />
                         </div>
                         <div className="form-group">
                             <FontAwesomeIcon icon={faEnvelope} size="2x" color="#601A4A" />
                             <input type="text" name="email"
                                 placeholder="Your email"
                             />
-                            <ErrorMessage content={this.state.emailIdError} messageType="error" />
+                            <ErrorMessage content={this.state.errors["email"]} messageType="error" />
                         </div>
                         <div className="form-group">
                             <FontAwesomeIcon icon={faPhone} size="2x" color="#601A4A" />
@@ -201,12 +259,12 @@ class Registration extends Component {
                                 name="phone" 
                                 onChange={this.handleChange}
                             />
-                            <ErrorMessage content={this.state.phoneError} messageType="error" />
+                            <ErrorMessage content={this.state.errors["phone"]} messageType="error" />
                         </div>
                         <div className="form-group">
                             <input type="checkbox" name="terms"
                             /> I read and agree to <a href="/">Terms and Conditions</a>
-                            <ErrorMessage content={this.state.termsError} messageType="error" />
+                            <ErrorMessage content={this.state.errors["terms"]} messageType="error" />
                         </div>
                         <input type="submit"
                             className="btn btn-primary getSatProSubmitBtn"
