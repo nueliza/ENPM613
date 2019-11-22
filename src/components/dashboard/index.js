@@ -40,7 +40,9 @@ class Dashboard extends Component {
     render() {
         const userInfo = this.props.userInfo;
         const isTutor = userInfo.user_type === "Tutor" ? true : false;
-        const selectedModule = this.props.selectedModule;
+        const selectedModuleId = this.props.selectedModuleId;
+        const selectedModuleName = this.props.selectedModuleName;
+        console.log("SelectedModule", selectedModuleId, selectedModuleName);
 
         return (
             <Router>
@@ -142,7 +144,7 @@ class Dashboard extends Component {
                                     {isTutor ?
                                         <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3> :
                                         <React.Fragment>
-                                            <h3 className="cursor_pointer" onClick={() => this.props.history.push("/modules")}>{selectedModule} <span classname='breadcrumb'>></span></h3>
+                                            <h3 className="cursor_pointer" onClick={() => this.props.history.push("/modules")}>{selectedModuleName} <span classname='breadcrumb'>></span></h3>
                                             <h3>{'\u00A0'}<FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" />{'\u00A0'}{this.state.selectedTab}</h3>
                                         </React.Fragment> 
                                     }
@@ -159,6 +161,7 @@ class Dashboard extends Component {
                                     <Discussions 
                                         isTutor={isTutor} 
                                         deleteDiscussion={this.props.deleteDiscussion}
+                                        selectedModuleId = {selectedModuleId}
                                     />} 
                                 />
                                 <Route path="/discussion" component={props => 
@@ -173,15 +176,15 @@ class Dashboard extends Component {
                                     <CreateDiscussion 
                                         {...props}
                                         createDiscussion={this.props.createDiscussion}
-                                        selectedModule={selectedModule}
                                         userInfo = {this.props.userInfo} 
+                                        selectedModuleId = {selectedModuleId}
                                     />}
                                 />
 
                                 <Route path="/exams" component={props => 
                                     <Exams 
                                         isTutor={isTutor} 
-                                        selectedModule={selectedModule}
+                                        selectedModuleId = {selectedModuleId}
                                         deleteExam={this.props.deleteExam}
                                         />} 
                                 />
@@ -202,7 +205,7 @@ class Dashboard extends Component {
                                 <Route path="/grades" component={props => <Grades />} />
                                 <Route path="/files" component={props => <Files isTutor={isTutor}/>} />
                                 <Route path="/dashboard" component={props => 
-                                    isTutor? <Students />:<FlashcardSet selectedModule={selectedModule}/>} />
+                                    isTutor? <Students />:<FlashcardSet selectedModuleId = {selectedModuleId}/>} />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
                             </main>

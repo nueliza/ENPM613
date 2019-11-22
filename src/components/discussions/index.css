@@ -50,6 +50,16 @@
     margin-top: 1px;
 }
 
+.discussionDetails{
+    margin-left: 5px;
+    margin-top: 5px;
+    color: gray;
+}
+
+.discussionDetails span{
+    margin-right: 60px;
+}
+
 .thread .threadContent{
     display: inline;
     margin-left: 10px;

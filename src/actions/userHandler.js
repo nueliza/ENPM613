@@ -33,8 +33,8 @@ export function loginUser(user) {
         });
         return axios.post(`/login`, user)
         .then(result => {
-            sessionStorage.setItem("token", result.data.token);
-            console.log("token",localStorage.getItem("token"))
+            localStorage.setItem("token", result.data.token);
+            console.log("token",sessionStorage.getItem("token"))
             dispatch({
                 type: actionTypes.LOGIN_USER_SUCESS,
                 payload: result.data

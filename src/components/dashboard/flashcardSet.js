@@ -5,8 +5,8 @@ class FlashcardSet extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Math: ["Algebra", "Calculus", "Something"],
-            English: ["Algebra", "Calculus", "Something"]
+            1: ["Algebra", "Calculus", "Something"],
+            2: ["Algebra", "Calculus", "Something"]
 
         };
     }
@@ -14,12 +14,12 @@ class FlashcardSet extends Component {
         return (
             <Fragment>
                 <div className="modules">
-                    {this.state[this.props.selectedModule].map((selectedSubModule, index)=>{
+                    {this.state[this.props.selectedModuleId].map((selectedSubModule, index)=>{
                         return(
                             <div className="card" key={index} onClick={() => {
                                 this.props.history.push({
                                     pathname: '/flashcards',
-                                    state: { selectedFlashcardSet: selectedSubModule}
+                                    state: { selectedFlashcardSet: "Algebra"}
                                 })
                             }}>
                                 <div className="card-body">
