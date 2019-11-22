@@ -15,7 +15,7 @@ import Discussion from "../discussions/discussion";
 import CreateDiscussion from '../discussions/createDiscussion';
 import Exams from "../../containers/exams";
 import CreateExam from "../exams/createExam";
-import TakeExam from "../exams/takeExam";
+import TakeExam from "../../containers/takeExam";
 import Files from "../../containers/files";
 import Flashcards from "../../containers/flashcards";
 import Grades from "../../containers/grades";
@@ -185,9 +185,6 @@ class Dashboard extends Component {
                                     <Exams 
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
-                                        deleteExam={this.props.deleteExam}
-                                        setSelectedExam ={this.props.setSelectedExam}
-                                        getExam={this.props.getExam}
                                         />} 
                                 />
                                 <Route path="/CreateExam" component={props => 
@@ -197,13 +194,7 @@ class Dashboard extends Component {
                                     />} 
                                 />
                                 <Route path="/takeExam" component={props => 
-                                    <TakeExam  
-                                        submitExam={this.props.submitExam}
-                                        getExam={this.props.getExam}
-                                        selectedExam = {this.props.selectedExam}
-                                        selectedExamName = {this.props.selectedExamName}
-                                        selectedExamId ={this.props.selectedExamId}
-                                    />} 
+                                    <TakeExam  />} 
                                 />
 
                                 <Route path="/grades" component={props => <Grades />} />
