@@ -9,19 +9,36 @@ import ToastContainer from "../toast/index";
 import "./index.css";
 
 class Discussions extends Component {
+    constructor(props){
+        super(props);
+    }
 
     UNSAFE_componentWillMount(){
         if(!this.props.isTutor)
         this.props.getDiscussionListStudent({"mod_id": this.props.selectedModuleId});
     }
 
-
     render() {
+        console.log("here", this.props);
         if(this.props.loading) return <Loading />
 
         //redirects to Not found page if the getStudentList API fails
-
-        return Object.keys(this.props.discussionList).length === 0? <NotFound />:
+        //TODO check if discussion call is success
+        return Object.keys(this.props.discussionList).length === 0? 
+        <div className="dashboard_body discussionList_body"> There are no discussions yet! <br/><br/>
+            <button 
+                        type="button" 
+                        className="btn btn-info getSatProSecondaryButton" 
+                        onClick={() => {
+                        this.props.history.push({
+                            pathname: '/CreateDiscussion',
+                        })
+                    }}>
+                        <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x"/>
+                        &nbsp;<span>Start a Discussion</span>
+            </button>
+        </div>
+        :
         (
             <div className="dashboard_body discussionList_body">
                 <ToastContainer />

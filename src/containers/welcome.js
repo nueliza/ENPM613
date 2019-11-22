@@ -15,7 +15,8 @@ const mapStateToProps =( state) =>{
         registrationPending:  state.user.registrationPending,
         loginPending: state.user.loginPending,
         loginError:  state.user.loginError,
-        userInfo:  state.user.userInfo
+        userInfo:  state.user.userInfo, 
+        loading: state.loader.loading
     }
 }
     

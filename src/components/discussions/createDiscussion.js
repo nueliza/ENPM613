@@ -28,7 +28,7 @@ class CreateDiscussion extends Component {
         }
         if(isContentValid && isHeaderValid){
             this.props.createDiscussion(payload)
-            this.props.history.push("/exams")
+            this.props.history.push("/discussions")
         }
         else{
             console.log("Form not valid")
@@ -86,4 +86,4 @@ class CreateDiscussion extends Component {
 }
 
 
-export default (CreateDiscussion)
+export default CreateDiscussion;
