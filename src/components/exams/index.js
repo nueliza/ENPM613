@@ -29,7 +29,7 @@ const ExamList = (props) => {
                             :
                             <button
                                 type="button"
-                                className={props.isTutor ? "btn btn-info hide" : "btn btn-info"}
+                                className={props.isTutor ? "btn btn-info hide" : "btn btn-info getSatProSecondaryButton"}
                                 onClick={() => {
                                     props.history.push({
                                         pathname: '/viewExam',

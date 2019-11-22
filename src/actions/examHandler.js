@@ -171,4 +171,27 @@ export function getExam(reqObject) {
     }
 }
 
-
+/**
+ * getGradesList gets the list of exams for a particular module
+ * @param {Object} reqObject 
+ */
+export function getGradesList(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_GRADES_LIST_STARTED
+        });
+        return axios.post(`/view_grades`, reqObject)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.GET_GRADES_LIST_SUCCESS,
+                    payload: response.data.exams
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: actionTypes.GET_GRADES_LIST_FAILED,
+                    error: error.response.data.message
+                })
+            })
+    }
+}
