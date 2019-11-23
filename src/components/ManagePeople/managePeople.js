@@ -4,3 +4,4 @@ class ManagePeople extends Component {
         return (<div> </div>)
     }
 }
+export default ManagePeople;
