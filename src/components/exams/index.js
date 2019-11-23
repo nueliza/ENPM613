@@ -68,7 +68,7 @@ class Exams extends Component {
 
     handleDelete = (exam_id) => {
         let reqObject = {
-            "model_name": "exam",
+            "model_name": "Exam",
             "model_id": exam_id
         }
         this.props.deleteExam(reqObject)
