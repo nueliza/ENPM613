@@ -5,6 +5,7 @@ import discussionReducer from "./discussionReducer";
 import toastReducer from "./toastReducer";
 import loaderReducer from "./loaderReducer";
 import studentReducer from './studentReducer';
+import flashcardReducer from './flashcardReducer';
 
 export default combineReducers({
     user : userReducer ,
@@ -12,5 +13,6 @@ export default combineReducers({
     discussion: discussionReducer,
     toast: toastReducer,
     loader : loaderReducer,
-    student : studentReducer
+    student : studentReducer,
+    flashcards: flashcardReducer
 })

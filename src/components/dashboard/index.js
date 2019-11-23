@@ -202,7 +202,12 @@ class Dashboard extends Component {
                                 />
                                 <Route path="/files" component={props => <Files isTutor={isTutor}/>} />
                                 <Route path="/dashboard" component={props => 
-                                    isTutor? <Students />:<FlashcardSet selectedModuleId = {selectedModuleId}/>} />
+                                    isTutor? <Students />:
+                                    <FlashcardSet 
+                                        selectedModuleId = {selectedModuleId}
+                                        flashcardSets = {this.props.flashcardSets}
+                                    />} 
+                                    />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
                             </main>

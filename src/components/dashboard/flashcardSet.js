@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router-dom";
+import Loading from "../loading";
+import NotFound from "../NotFound";
 
 class FlashcardSet extends Component {
     constructor(props) {
@@ -10,8 +12,18 @@ class FlashcardSet extends Component {
 
         };
     }
+
+    UNSAFE_componentWillMount() {
+        this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})
+    }
+
     render() {
-        return (
+
+        console.log("This", this.props);
+        if (this.props.loading) return <Loading />
+        //redirects to Not found page if the getExamsList API fails
+        return Object.keys(this.props.flashcardSets).length === 0 ? <NotFound /> :
+         (
             <Fragment>
                 <div className="modules">
                     {this.state[this.props.selectedModuleId].map((selectedSubModule, index)=>{
