@@ -56,11 +56,35 @@
 .services .subItem{
     margin-right: 20px;
     width: 33.33%;
-    box-shadow: 1px 1px 3px var(--primary-color);
-    min-height: 100px;
+    min-height: 50px;
     text-align: center;
     padding-top: 2%;
 }
+
+.serviceImage{
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-style: italic;    
+}
+
+.serviceImage div{
+    font-size: 1em;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+
+.serviceText{
+font-size: 20px;
+color: var(--primary-color);
+}
+
+.subItem .myimg{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:50%;
+  }
 
 .successStoryHeader{
     font-size: 40px;
@@ -89,9 +113,10 @@
     color: var(--primary-color);
     /* color: ivory; */
     /* background-color: var(--primary-color); */
-    min-height: 100px;
+    min-height: 300px;
     text-align: center;
     padding: 1%;
+ 
 }
 
 .successImage{
@@ -110,11 +135,12 @@
     font-size: 20px;
 }
 
-.myimg{
+.successImage .myimg{
     width:100px;
     height:100px;
     object-fit:cover;
     border-radius:50%;
+    border: 2px solid var(--primary-color);
   }
 
 .smallItalics{

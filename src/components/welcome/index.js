@@ -8,6 +8,11 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import WelcomeCarousel from "../carousel";
 import success1 from "../successStories/images/success1.jpg";
+import success2 from "../successStories/images/success2.jpg";
+import success3 from "../successStories/images/success3.jpg";
+import autoGrading from "../serviceHighlights/images/autoGrading.png";
+import discussion from "../serviceHighlights/images/discussion.jpg";
+import flashCard from "../serviceHighlights/images/flashCard.png";
 
 class Welcome extends Component {
     constructor(props) {
@@ -59,15 +64,22 @@ class Welcome extends Component {
                     </div>
                 </div>
                 <WelcomeCarousel />
+
                 <div className="services">
+
                     <div className="subItem">
-                        Autograding
+                        <div className="serviceImage"> <img alt='autograde' src={autoGrading} className="myimg" /> </div>
+                        <div className="serviceText"> <b>Autograding</b> <p className="smallItalics">Save time marking up assignments and ensure grading consistency. Instant feedback promotes instant clarification.</p> </div>
                     </div>
+
                     <div className="subItem">
-                        Flashcards
+                        <div className="serviceImage"> <img alt='flsh' src={flashCard} className="myimg" /> </div>
+                        <div className="serviceText"> <b>Flashcards</b> <p className="smallItalics">When it comes to studying or reviewing concepts in the most effective way possible, nothing comes close to flashcards.</p> </div>
                     </div>
+
                     <div className="subItem">
-                        Discussions
+                        <div className="serviceImage"> <img alt='discuss' src={discussion} className="myimg" /> </div>
+                        <div className="serviceText"> <b>Discussions</b> <p className="smallItalics">Discussions not only help students learn from one another but also help students understand and retain the lecture better.</p> </div>
                     </div>
 
                 </div>
@@ -84,16 +96,16 @@ class Welcome extends Component {
                         </div>
                     </div>
                     <div className="subItem">
-                    <div className="successImage">
-                            <img alt='story1' src={success1} className="myimg" /> <div className="successImage"><b>Karen Jacob</b> <br /> <p className="smallItalics">SAT Score: 1480</p></div>
+                        <div className="successImage">
+                            <img alt='story1' src={success2} className="myimg" /> <div className="successImage"><b>Karen Jacob</b> <br /> <p className="smallItalics">SAT Score: 1480</p></div>
                         </div>
                         <div className="successImage">
                             <p> Karen from Puerto Rico is another test-taker with an astounding 800 on SAT Math, 680 Reading/Writing. She took the exam three times and, as is true for many students, saw her scores climb steadily each time!She took her final SAT after prepping with Get SAT Pro and saw her score go up by 100 points.</p>
                         </div>
                     </div>
                     <div className="subItem">
-                    <div className="successImage">
-                            <img alt='story1' src={success1} className="myimg" /> <div className="successImage"><b>Andrew Anderson</b> <br /> <p className="smallItalics">SAT Score: 1600</p></div>
+                        <div className="successImage">
+                            <img alt='story1' src={success3} className="myimg" /> <div className="successImage"><b>Andrew Anderson</b> <br /> <p className="smallItalics">SAT Score: 1600</p></div>
                         </div>
                         <div className="successImage">
                             <p>Andrew from Washington scored a perfect 1600 as well. After a 1550 the previous year, Andrew decided to go back and try to score even higher. He took help of the Get SAT Pro online classes. He utilized the feature of discussion to connect with many other aspiring students and made his way to a perfect score.</p>
