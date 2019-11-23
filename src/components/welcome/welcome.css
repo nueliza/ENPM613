@@ -50,13 +50,74 @@
     justify-content: center;
     padding-top: 50px;
     padding-left: 30px;
+    padding-bottom: 50px;
 }
 
 .services .subItem{
     margin-right: 20px;
     width: 33.33%;
-    box-shadow: 1px 1px 3px #a3a3a3;
+    box-shadow: 1px 1px 3px var(--primary-color);
     min-height: 100px;
     text-align: center;
     padding-top: 2%;
+}
+
+.successStoryHeader{
+    font-size: 40px;
+    color: var(--primary-color);
+    min-height: 100px;
+    text-align: center;
+    padding: 1%;
+    font-style: italic;
+}
+
+
+.successStories{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-bottom: 50px;
+}
+
+.successStories .subItem{
+    margin-right: 20px;
+    width: 33.33%;
+    box-shadow: 1px 1px 5px var(--primary-color);
+    color: var(--primary-color);
+    /* color: ivory; */
+    /* background-color: var(--primary-color); */
+    min-height: 100px;
+    text-align: center;
+    padding: 1%;
+}
+
+.successImage{
+    display: inline-block;
+    padding-top: 15px;
+    font-style: italic;
+}
+
+.successImage div{
+    font-size: 1em;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+
+.successImage b{
+    font-size: 20px;
+}
+
+.myimg{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:50%;
+  }
+
+.smallItalics{
+    font-style:italic ;
+    font-size: 15px;
 }
