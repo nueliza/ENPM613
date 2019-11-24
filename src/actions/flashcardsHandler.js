@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
-axios.defaults.withCredentials = false
+axios.defaults.withCredentials = true
 
 
 /**
