@@ -12,8 +12,11 @@ import NotFound from "../components/NotFound";
 
 class ModuleContainer extends Component {
   UNSAFE_componentWillMount() {
-    if (this.props.userInfo.user_type === "Student")
+    if(Object.keys(this.props.userInfo).length !== 0){
+      if (this.props.userInfo.user_type === "Student")
       this.props.getModulesList();
+    }
+    
   }
   render() {
     if (this.props.userInfo.user_type === "Student") {
