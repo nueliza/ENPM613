@@ -1,5 +1,5 @@
 /**
- * Conatins all the service handlers for the flashcard related actions
+ * Conatins all the service handlers for the flashcard
  */
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
@@ -12,10 +12,9 @@ axios.defaults.withCredentials = true;
 
 
 /**
- * gets the list of students after communicating with the get_students API
+ * Gets the list of Flashcard sets
  */
 
-//credentials: 'include' sends the cookie along with request. fetch by default does not inlude cookies
 export function getFlashcardSets(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
@@ -40,10 +39,9 @@ export function getFlashcardSets(reqObject) {
 }
 
 /**
- * gets the list of students after communicating with the get_students API
+ * Gets the first flashcard in the selected flashcard set
  */
 
-//credentials: 'include' sends the cookie along with request. fetch by default does not inlude cookies
 export function getFlashcard(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {

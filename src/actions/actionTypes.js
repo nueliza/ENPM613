@@ -1,3 +1,7 @@
+/**
+ * Includes the action types for dispatching actions
+ */
+
 export const LOGIN_USER_STARTED = "LOGIN_USER_STARTED";
 export const LOGIN_USER_FAILED = "LOGIN_USER_FAILED";
 export const LOGIN_USER_SUCESS = "LOGIN_USER_SUCCESS";

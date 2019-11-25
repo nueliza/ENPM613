@@ -1,5 +1,5 @@
 /**
- * Contains all the service handlers for exam related actions
+ * Contains all the service handlers for exam
  */
 
 import * as actionTypes from "./actionTypes";
@@ -13,7 +13,7 @@ axios.defaults.withCredentials = true
 
 
 /**
- * getExamlist gets the list of exams for a particular module
+ * Gets the list of exams for a particular module for a tutor
  * @param {Object} reqObject 
  */
 export function getExamListTutor() {
@@ -38,7 +38,7 @@ export function getExamListTutor() {
 }
 
 /**
-* getExamlist gets the list of exams for a particular module
+* getExamlist gets the list of exams for a particular module for a student
 * @param {Object} reqObject 
 */
 export function getExamListStudent(reqObject) {
@@ -90,7 +90,7 @@ export function createExam(reqObject) {
 }
 
 /**
- * submitExam submits the exam taken by the student
+ * Submits the exam taken by the student
  * @param {Object} reqObject 
  */
 
@@ -144,7 +144,7 @@ export function deleteExam(reqObject) {
 }
 
 /**
-* getExamlist gets a particular exam
+* Gets the details of a particular exam
 * @param {Object} reqObject 
 */
 export function getExam(reqObject) {
@@ -171,7 +171,7 @@ export function getExam(reqObject) {
 }
 
 /**
- * getGradesList gets the list of exams for a particular module
+ * Gets the list of grades for a particular module
  * @param {Object} reqObject 
  */
 export function getGradesList(reqObject) {

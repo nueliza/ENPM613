@@ -1,5 +1,5 @@
 /**
- * Contains all the service handlers for discussion related actions
+ * Contains all the service handlers for discussions
  */
 
 import * as actionTypes from "./actionTypes";
@@ -38,7 +38,7 @@ export function createDiscussion(reqObject) {
   }
 
   /**
-   * gets all the discussions in a module
+   * Gets all the discussions in a module for a student
    */
 
   export function getDiscussionListStudent(reqObject) {
@@ -64,6 +64,9 @@ export function createDiscussion(reqObject) {
     }
   }
 
+/**
+   * Gets all the discussions in a module for a tutor
+   */
 
   export function getDiscussionListTutor() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 

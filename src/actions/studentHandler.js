@@ -1,5 +1,5 @@
 /**
- * Conatins all the service handlers for the student related actions
+ * Conatins all the service handlers for the student
  */
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
@@ -7,15 +7,13 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-//axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
 axios.defaults.withCredentials = true;
 
 
 /**
- * gets the list of students after communicating with the get_students API
+ * Gets the list of all students
  */
 
-//credentials: 'include' sends the cookie along with request. fetch by default does not inlude cookies
 export function getStudentList() {
     axios.defaults.withCredentials = true;
     console.log("token2",sessionStorage.getItem("token"))
@@ -40,6 +38,10 @@ export function getStudentList() {
         })
   }
 }
+
+/**
+ * Gets the list of modules available to students
+ */
 
 export function getModulesList() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
