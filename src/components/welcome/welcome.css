@@ -113,9 +113,10 @@ color: var(--primary-color);
     color: var(--primary-color);
     /* color: ivory; */
     /* background-color: var(--primary-color); */
-    min-height: 300px;
+    max-height: 300px;
     text-align: center;
     padding: 1%;
+    overflow: auto;
  
 }
 
