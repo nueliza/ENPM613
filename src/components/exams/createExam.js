@@ -177,7 +177,6 @@ class CreateExam extends Component {
 
     render() {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
-        console.log("CreateExamPage", this.props)
         return (
             <div className="dashboard_body">
                 <h3>Create Exam for Algebra</h3>
