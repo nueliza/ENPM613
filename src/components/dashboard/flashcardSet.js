@@ -13,7 +13,7 @@ class FlashcardSet extends Component {
         };
     }
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})
     }
 
@@ -26,16 +26,16 @@ class FlashcardSet extends Component {
          (
             <Fragment>
                 <div className="modules">
-                    {this.state[this.props.selectedModuleId].map((selectedSubModule, index)=>{
+                    {this.props.flashcardSets.map((set, id)=>{
                         return(
-                            <div className="card" key={index} onClick={() => {
+                            <div className="card" key={id} onClick={() => {
                                 this.props.history.push({
                                     pathname: '/flashcards',
-                                    state: { selectedFlashcardSet: "Algebra"}
+                                    state: { setId: set.set_id}
                                 })
                             }}>
                                 <div className="card-body">
-                                    <h5 className="card-title">{selectedSubModule}</h5>
+                                    <h5 className="card-title">{set.set_name}</h5>
                                 </div>
                             </div>
                         )

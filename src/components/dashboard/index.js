@@ -19,7 +19,7 @@ import TakeExam from "../../containers/takeExam";
 import Files from "../../containers/files";
 import Flashcards from "../../containers/flashcards";
 import Grades from "../../containers/grades";
-import FlashcardSet from "./flashcardSet";
+import FlashcardSet from "../../containers/flashcardSets";
 import Students from "../../containers/students";
 import ToastContainer from "../toast/index";
 
@@ -205,7 +205,6 @@ class Dashboard extends Component {
                                     isTutor? <Students />:
                                     <FlashcardSet 
                                         selectedModuleId = {selectedModuleId}
-                                        flashcardSets = {this.props.flashcardSets}
                                     />} 
                                     />
                                 <Route path="/flashcards" component={props => <Flashcards />} />

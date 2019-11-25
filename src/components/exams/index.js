@@ -66,11 +66,6 @@ class Exams extends Component {
             this.props.getExamListStudent({ "mod_id": this.props.selectedModuleId })
     }
 
-
-    componentDidUpdate(){
-        console.log("ComponnetDID")
-    }
-
     handleDelete = (exam_id) => {
         let reqObject = {
             "model_name": "Exam",

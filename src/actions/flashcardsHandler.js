@@ -7,8 +7,8 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
-axios.defaults.withCredentials = true
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+axios.defaults.withCredentials = true;
 
 
 /**
@@ -17,6 +17,7 @@ axios.defaults.withCredentials = true
 
 //credentials: 'include' sends the cookie along with request. fetch by default does not inlude cookies
 export function getFlashcardSets(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_FC_SET_STARTED
