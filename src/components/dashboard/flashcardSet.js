@@ -4,10 +4,6 @@ import Loading from "../loading";
 import NotFound from "../NotFound";
 
 class FlashcardSet extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})
     }

@@ -4,10 +4,6 @@ import Loading from "../loading";
 import NotFound from "../NotFound";
 
 class Flashcards extends Component {
-    constructor(props){
-        super(props);
-    }
-
     componentDidMount() {
     }
 
