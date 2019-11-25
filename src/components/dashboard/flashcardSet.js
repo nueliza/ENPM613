@@ -6,11 +6,6 @@ import NotFound from "../NotFound";
 class FlashcardSet extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            1: ["Algebra", "Calculus", "Something"],
-            2: ["Algebra", "Calculus", "Something"]
-
-        };
     }
 
     componentDidMount() {
@@ -29,9 +24,9 @@ class FlashcardSet extends Component {
                     {this.props.flashcardSets.map((set, id)=>{
                         return(
                             <div className="card" key={id} onClick={() => {
+                                this.props.getFlashcard({"set_id": set.set_id})
                                 this.props.history.push({
                                     pathname: '/flashcards',
-                                    state: { setId: set.set_id}
                                 })
                             }}>
                                 <div className="card-body">

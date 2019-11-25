@@ -39,4 +39,32 @@ export function getFlashcardSets(reqObject) {
   }
 }
 
+/**
+ * gets the list of students after communicating with the get_students API
+ */
+
+//credentials: 'include' sends the cookie along with request. fetch by default does not inlude cookies
+export function getFlashcard(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_FC_STARTED
+        });
+        return axios.post(`/view_flashcard_set`, reqObject)
+        .then(result => {
+            dispatch({
+                type: actionTypes.GET_FC_SUCCESS,
+                payload: result.data.fc_data
+            })
+        })
+        .catch(error =>{
+            console.log("error", error)
+            dispatch({
+                type: actionTypes.GET_FC_FAILED,
+                error: error.response.data.message
+            });
+        })
+  }
+}
+
 
