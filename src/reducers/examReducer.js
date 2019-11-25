@@ -6,7 +6,7 @@ const initialState = {
     selectedExam: {},
     selectedExamName:"",
     selectedExamId:"",
-    gradesList: {}
+    gradesList: {},
 }
 
 const examReducer = (state = initialState, action) => {

@@ -15,7 +15,9 @@ class Discussions extends Component {
 
     UNSAFE_componentWillMount(){
         if(!this.props.isTutor)
-        this.props.getDiscussionListStudent({"mod_id": this.props.selectedModuleId});
+            this.props.getDiscussionListStudent({"mod_id": this.props.selectedModuleId});
+        else
+            this.props.getDiscussionListTutor();
     }
 
     render() {

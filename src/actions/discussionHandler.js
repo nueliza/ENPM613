@@ -16,6 +16,7 @@ axios.defaults.withCredentials = true
  * @param {Object} reqObject 
  */
 export function createDiscussion(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
         dispatch({
             type: actionTypes.CREATE_DISCUSSION_STARTED
@@ -41,11 +42,36 @@ export function createDiscussion(reqObject) {
    */
 
   export function getDiscussionListStudent(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_DISCUSSION_LIST_STARTED
         });
-        return axios.post(`get_discussions`, reqObject)
+        return axios.post(`/get_discussions`, reqObject)
+        .then(response => {
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_LIST_SUCCESS,
+                payload: response.data.discuss_list
+            })
+        })
+        .catch(error =>{
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_LIST_FAILED,
+                error: error.response.data.message
+            })
+        })
+                
+    }
+  }
+
+
+  export function getDiscussionListTutor() {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_DISCUSSION_LIST_STARTED
+        });
+        return axios.get(`/get_discussions`)
         .then(response => {
             dispatch({
                 type: actionTypes.GET_DISCUSSION_LIST_SUCCESS,

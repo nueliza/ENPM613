@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import Discussions from '../components/discussions';
 
-import {getDiscussionListStudent} from "../actions/discussionHandler"
+import {getDiscussionListStudent, getDiscussionListTutor} from "../actions/discussionHandler"
 
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        getDiscussionListStudent: (payload) =>{ dispatch(getDiscussionListStudent(payload))}
+        getDiscussionListStudent: (payload) =>{ dispatch(getDiscussionListStudent(payload))},
+        getDiscussionListTutor: () =>{dispatch(getDiscussionListTutor())}
     }
 }
 
