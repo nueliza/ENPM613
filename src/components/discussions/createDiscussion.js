@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ErrorMessage from "../ErrorMessage";
+import { iconMapping } from "../utils/iconsMapping.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class CreateDiscussion extends Component {
     constructor(props){
@@ -55,6 +57,7 @@ class CreateDiscussion extends Component {
                 <h3>Start a Discussion</h3>
                 <div className="NewDiscussionWrapper">
                     Discussion Heading
+                    <br />
                     <input
                         type="text"
                         id="header"
@@ -80,6 +83,18 @@ class CreateDiscussion extends Component {
                         Submit
                     </button>
                 </div>
+                <br />
+                <button
+                        type="button"
+                        className="btn btn-info getSatProSecondaryButton"
+                        onClick={() => {
+                            this.props.history.push({
+                                pathname: '/discussions',
+                            })
+                        }}>
+                        <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                        &nbsp;<span>Back to Discussions</span>
+                    </button>
             </div>
         )
     }
