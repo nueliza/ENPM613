@@ -58,6 +58,9 @@ class CardContainer extends Component {
 
     generateCards() {
         const cards = this.state.cards;
+        //add the last card to the props. 
+        //The last card will have the word and description as 
+        //"Congratulations! You've completed this flashcard set."
         const cardsList = cards.map((card, index) => {
             return (
                 <Card
