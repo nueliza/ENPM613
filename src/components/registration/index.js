@@ -100,7 +100,7 @@ class Registration extends Component {
             formIsValid = false;
             errors["phone"] = "Please enter a valid Phone Number";
         }
-        else if(phone.match(/\d/g).length != 11){
+        else if(phone.match(/\d/g).length !== 11){
             formIsValid = false;
             errors["phone"] = "Please enter a valid Phone Number";
         }
@@ -203,6 +203,7 @@ class Registration extends Component {
                     this.setState({termsError: ""})
                  }
              break;
+             default: console.log("Form is valid");
          }
 
     }

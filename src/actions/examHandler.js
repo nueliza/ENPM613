@@ -11,7 +11,6 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
 axios.defaults.withCredentials = true
 
-const baseUrl = "https://get-sat-pro.herokuapp.com/api";
 
 /**
  * getExamlist gets the list of exams for a particular module

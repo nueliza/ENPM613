@@ -3,15 +3,11 @@ import { withRouter } from "react-router-dom";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from '../loading';
-import NotFound from "../NotFound";
 import ToastContainer from "../toast/index";
 
 import "./index.css";
 
 class Discussions extends Component {
-    constructor(props){
-        super(props);
-    }
 
     UNSAFE_componentWillMount(){
         if(!this.props.isTutor)
