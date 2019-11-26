@@ -20,6 +20,7 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_GRADES_LIST_STARTED:
         case actionTypes.GET_FC_SET_STARTED:
         case actionTypes.GET_FC_STARTED:
+        case actionTypes.SET_PREF_STARTED:
             return{ ...state, loading: true}
             
         case actionTypes.LOGIN_USER_FAILED:
@@ -50,6 +51,8 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_FC_SET_FAILED:
         case actionTypes.GET_FC_SUCCESS:
         case actionTypes.GET_FC_FAILED:
+        case actionTypes.SET_PREF_SUCCESS:
+        case actionTypes.SET_PREF_FAILED:
             return{ ...state, loading: false}
         
         default:
