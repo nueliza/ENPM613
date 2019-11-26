@@ -2,7 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
     flashcardSets: {},
-    flashcards: {}
+    flashcard: ""
 }
 
 const flashcardReducer = (state = initialState, action) => {
@@ -10,7 +10,9 @@ const flashcardReducer = (state = initialState, action) => {
         case actionTypes.GET_FC_SET_SUCCESS: 
             return{...state, flashcardSets: action.payload}
         case actionTypes.GET_FC_SUCCESS:
-            return{...state, flashcards: action.payload}
+            return{...state, flashcard: action.payload}
+        case actionTypes.SET_PREF_SUCCESS:
+            return{...state, flashcard: action.payload}
         default:
             return state
     }

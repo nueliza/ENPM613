@@ -8,14 +8,13 @@ class Flashcards extends Component {
     }
 
     render() {
-        console.log("Flashcards", this.props.flashcards);
         console.log("this.props", this.props)
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
-        return Object.keys(this.props.flashcards).length === 0 ? <NotFound /> :
+        return this.props.flashcard === "" ? <NotFound /> :
         (
             <Fragment>
-                <CardContainer flashcards={this.props.flashcards} />
+                <CardContainer flashcard={this.props.flashcard} setPreference={this.props.setPreference} />
             </Fragment>)
     }
 }
