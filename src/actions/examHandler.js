@@ -99,7 +99,7 @@ export function submitExam(reqObject) {
         dispatch({
             type: actionTypes.SUBMIT_EXAM_STARTED
         });
-        return axios.post(`submit_exam`, reqObject)
+        return axios.post(`/submit_exam`, reqObject)
         .then(response => {
             dispatch({
                 type: actionTypes.SUBMIT_EXAM_SUCCESS,
@@ -154,7 +154,7 @@ export function getExam(reqObject) {
             type: actionTypes.GET_EXAM_STARTED,
             payload: reqObject.exam_id
         });
-        return axios.post(`view_exam`, reqObject)
+        return axios.post(`/view_exam`, reqObject)
             .then(response => {
                 dispatch({
                     type: actionTypes.GET_EXAM_SUCCESS,

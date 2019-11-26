@@ -56,15 +56,15 @@ class Discussions extends Component {
                                         state: { selectedDiscussion: discussion.discuss_id}
                                     })
                                 }}> {discussion.title}
-                                <div className="discussionDetails">
-                                    <span>Posted On: {discussion.posted}</span>
-                                </div>
                                 <FontAwesomeIcon 
                                     icon={iconMapping["Trash"]} 
                                     size="1x" 
                                     className={this.props.isTutor? "": "hide"}
                                     style={{color: "var(--alert-color)", float: "right"}}
                                 />
+                                <div className="discussionDetails">
+                                    <span>Posted On: {discussion.posted}</span>
+                                </div>
                             </li>
                             )
                         })}
