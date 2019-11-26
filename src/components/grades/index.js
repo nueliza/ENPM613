@@ -2,11 +2,21 @@ import React, { Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iconMapping } from "../utils/iconsMapping.js";
 import "./grades.css";
+import Loading from "../loading";
+import NotFound from "../NotFound";
 
 class Grades extends Component {
+    UNSAFE_componentWillMount() {
+        this.props.getGradesList({"mod_id": this.props.selectedModuleId})
+    }
 
     render() {
-        return (
+
+        console.log("Grades", this.props.gradesList);
+        if (this.props.loading) return <Loading />
+        //redirects to Not found page if the getExamsList API fails
+        return Object.keys(this.props.gradesList).length === 0 ? <NotFound /> :
+         (
             <div className="dashboard_body grades_body">
                 <div className="dashboard_subSection">
                     <div className="quoteWrapper">
@@ -16,10 +26,14 @@ class Grades extends Component {
                     </div>
                     <br />
                     <ul className="list-group">
-                        <li className="list-group-item">Exam 1 <span className="Score"> Score:  23</span><button type="button" className="btn btn-info">View Answers</button></li>
-                        <li className="list-group-item">Exam 1 <span className="Score"> Score:  23</span><button type="button" className="btn btn-info">View Answers</button></li>
-                        <li className="list-group-item">Exam 1 <span className="Score"> Score:  23</span><button type="button" className="btn btn-info">View Answers</button></li>
-                        <li className="list-group-item">Exam 1 <span className="Score"> Score:  23</span><button type="button" className="btn btn-info">View Answers</button></li>
+                        {this.props.gradesList.map((grade, id)=>{
+                            return(
+                                <li className="list-group-item">{grade.exam_name} 
+                                    <span className="Score"> Score:  {grade.grade}</span>
+                                    <button type="button" className="btn btn-info">View Answers</button>
+                                </li>
+                            )
+                        })}
                     </ul>
                 </div>
             </div>

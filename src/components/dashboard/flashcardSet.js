@@ -1,29 +1,32 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router-dom";
+import Loading from "../loading";
+import NotFound from "../NotFound";
 
 class FlashcardSet extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            Math: ["Algebra", "Calculus", "Something"],
-            English: ["Algebra", "Calculus", "Something"]
-
-        };
+    componentDidMount() {
+        this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})
     }
+
     render() {
-        return (
+
+        console.log("This", this.props);
+        if (this.props.loading) return <Loading />
+        //redirects to Not found page if the getExamsList API fails
+        return Object.keys(this.props.flashcardSets).length === 0 ? <NotFound /> :
+         (
             <Fragment>
                 <div className="modules">
-                    {this.state[this.props.selectedModule].map((selectedSubModule, index)=>{
+                    {this.props.flashcardSets.map((set, id)=>{
                         return(
-                            <div className="card" key={index} onClick={() => {
+                            <div className="card" key={id} onClick={() => {
+                                this.props.getFlashcard({"set_id": set.set_id})
                                 this.props.history.push({
                                     pathname: '/flashcards',
-                                    state: { selectedFlashcardSet: selectedSubModule}
                                 })
                             }}>
                                 <div className="card-body">
-                                    <h5 className="card-title">{selectedSubModule}</h5>
+                                    <h5 className="card-title">{set.set_name}</h5>
                                 </div>
                             </div>
                         )

@@ -1,5 +1,5 @@
 /**
- * Conatins all the service handlers for the student related actions
+ * Conatins all the service handlers for the student
  */
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
@@ -7,18 +7,18 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
 
 /**
- * gets the list of students after communicating with the get_students API
+ * Gets the list of all students
  */
 
-//credentials: 'include' sends the cookie along with request. fetch by default does not inlude cookies
 export function getStudentList() {
+    axios.defaults.withCredentials = true;
+    console.log("token2",sessionStorage.getItem("token"))
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
-        
         dispatch({
             type: actionTypes.GET_STUDENT_LIST_STARTED
         });
@@ -30,20 +30,26 @@ export function getStudentList() {
             })
         })
         .catch(error =>{
+            console.log("error", error)
             dispatch({
-                type: actionTypes.GET_STUDENT_LIST_SUCCESS,
-                error: error.response.message
+                type: actionTypes.GET_STUDENT_LIST_FAILED,
+                error: error.response.data.message
             });
         })
   }
 }
 
-export function getModulesList(reqObject) {
+/**
+ * Gets the list of modules available to students
+ */
+
+export function getModulesList() {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_MODULE_LIST_STARTED
         })
-        return axios.post(`get_modules`, reqObject)
+        return axios.get(`get_modules`)
         .then(response => {
             dispatch({
                 type: actionTypes.GET_MODULE_LIST_SUCCESS,

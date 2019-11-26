@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
 import Dashboard from '../components/dashboard';
-import {getExamList, submitExam, createExam } from '../actions/examHandler';
 import {logoutUser} from "../actions/userHandler";
+import {createDiscussion} from "../actions/discussionHandler";
+
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        logoutUser: ()=>dispatch(logoutUser())
+        logoutUser: ()=>dispatch(logoutUser()),
+        createDiscussion: (payload) =>(dispatch(createDiscussion(payload)))
     }
 }
 
 const mapStateToProps = state => ({
     userInfo: state.user.userInfo,
-    selectedModule: state.user.selectedModule,
+    selectedModuleId: state.user.selectedModuleId,
+    selectedModuleName: state.user.selectedModuleName,
     
 })
 

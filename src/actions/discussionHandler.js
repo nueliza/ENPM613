@@ -1,5 +1,5 @@
 /**
- * Contains all the service handlers for discussion related actions
+ * Contains all the service handlers for discussions
  */
 
 import * as actionTypes from "./actionTypes";
@@ -11,13 +11,12 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
 axios.defaults.withCredentials = true
 
-const baseUrl = "https://get-sat-pro.herokuapp.com/api";
-
 /**
  * createDiscussion starts a new discussion
  * @param {Object} reqObject 
  */
 export function createDiscussion(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
         dispatch({
             type: actionTypes.CREATE_DISCUSSION_STARTED
@@ -39,37 +38,56 @@ export function createDiscussion(reqObject) {
   }
 
   /**
-   * gets all the discussions in a module
+   * Gets all the discussions in a module for a student
    */
 
-  export function getDiscussionList() {
+  export function getDiscussionListStudent(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_DISCUSSION_LIST_STARTED
         });
-        return fetch(`${baseUrl}/get_discussions/{mod_id}`,{
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem("token")}`
-            },
+        return axios.post(`/get_discussions`, reqObject)
+        .then(response => {
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_LIST_SUCCESS,
+                payload: response.data.discuss_list
+            })
         })
-        .then(response => response.json())
-        .then(payload => {
-            if (payload.Status === 200) {
-                dispatch({
-                    type: actionTypes.GET_DISCUSSION_LIST_SUCCESS,
-                    payload: payload
-                })
-            }
-            else {
-                dispatch({
-                    type: actionTypes.GET_DISCUSSION_LIST_FAILED,
-                    error: payload.message
-                })
-            }
+        .catch(error =>{
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_LIST_FAILED,
+                error: error.response.data.message
+            })
         })
+                
+    }
+  }
+
+/**
+   * Gets all the discussions in a module for a tutor
+   */
+
+  export function getDiscussionListTutor() {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_DISCUSSION_LIST_STARTED
+        });
+        return axios.get(`/get_discussions`)
+        .then(response => {
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_LIST_SUCCESS,
+                payload: response.data.discuss_list
+            })
+        })
+        .catch(error =>{
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_LIST_FAILED,
+                error: error.response.data.message
+            })
+        })
+                
     }
   }
 

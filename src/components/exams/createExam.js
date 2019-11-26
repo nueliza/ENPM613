@@ -102,7 +102,7 @@ class CreateExam extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Exam: [{ question: "", options: ["", ""], answer: "" }],
+            Exam: [{ question: "", options: ["", ""], ans: "" }],
             examName: "",
             errors: []
         }
@@ -111,7 +111,7 @@ class CreateExam extends Component {
     addQuestion = (e) => {
         e.preventDefault()
         this.setState((prevState) => ({
-            Exam: [...prevState.Exam, { question: "", options: ["", ""], answer: "" }]
+            Exam: [...prevState.Exam, { question: "", options: ["", ""], ans: "" }]
         }));
     }
 
@@ -177,7 +177,6 @@ class CreateExam extends Component {
 
     render() {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
-        console.log("CreateExamPage", this.props)
         return (
             <div className="dashboard_body">
                 <h3>Create Exam for Algebra</h3>
