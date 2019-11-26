@@ -37,7 +37,7 @@ class ViewExam extends Component {
                         className="btn btn-info getSatProSecondaryButton"
                         onClick={() => {
                             this.props.history.push({
-                                pathname: '/CreateExam',
+                                pathname: '/Exams',
                             })
                         }}>
                         <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />

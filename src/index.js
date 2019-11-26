@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
-import { composeWithDevTools } from 'remote-redux-devtools';
+//import { composeWithDevTools } from 'remote-redux-devtools';
 
 import './index.css';
 import App from './app';
@@ -17,7 +17,8 @@ function configureStore(initialState) {
     return createStore(
         rootReducer,
         initialState,
-        composeWithDevTools(applyMiddleware(...middleware))
+        //composeWithDevTools(applyMiddleware(...middleware))
+        applyMiddleware(...middleware)
     );
 }
 const store = configureStore();

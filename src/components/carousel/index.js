@@ -12,13 +12,13 @@ class WelcomeCarousel extends Component {
         return (
             <Carousel autoPlay={true} showThumbs={false} infiniteLoop={true}>
                 <div>
-                    <img src={slide1} />
+                    <img src={slide1} alt="Slide 1" />
                 </div>
                 <div>
-                    <img src={slide2} />
+                    <img src={slide2} alt="Slide 2"/>
                 </div>
                 <div>
-                    <img src={slide3} />
+                    <img src={slide3} alt="Slide 3"/>
                 </div>
             </Carousel>
         )

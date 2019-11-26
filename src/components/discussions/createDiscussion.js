@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import ErrorMessage from "../ErrorMessage";
-
-import {createDiscussion} from "../../actions/discussionHandler";
+import { iconMapping } from "../utils/iconsMapping.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class CreateDiscussion extends Component {
     constructor(props){
@@ -24,7 +23,18 @@ class CreateDiscussion extends Component {
         let discussion =  this.state.discussion;
         let isContentValid = this.validateField(discussion.content, "content")
         let isHeaderValid = this.validateField(discussion.header, "header")
-        isContentValid && isHeaderValid ? console.log("FormValid") :console.log("Form not valid")
+        let payload =  {
+            "mod_id": this.props.selectedModuleId,
+            "title": discussion.header,
+            "content":  discussion.content
+        }
+        if(isContentValid && isHeaderValid){
+            this.props.createDiscussion(payload)
+            this.props.history.push("/discussions")
+        }
+        else{
+            console.log("Form not valid")
+        }
     }
     
     validateField = (fieldValue, fieldType) =>{
@@ -47,6 +57,7 @@ class CreateDiscussion extends Component {
                 <h3>Start a Discussion</h3>
                 <div className="NewDiscussionWrapper">
                     Discussion Heading
+                    <br />
                     <input
                         type="text"
                         id="header"
@@ -72,18 +83,22 @@ class CreateDiscussion extends Component {
                         Submit
                     </button>
                 </div>
+                <br />
+                <button
+                        type="button"
+                        className="btn btn-info getSatProSecondaryButton"
+                        onClick={() => {
+                            this.props.history.push({
+                                pathname: '/discussions',
+                            })
+                        }}>
+                        <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                        &nbsp;<span>Back to Discussions</span>
+                    </button>
             </div>
         )
     }
 }
-const mapDispatchToProps = (dispatch) => {
-    return{
-        createDiscussion : (payload) => dispatch(createDiscussion(payload))
-    }
-}
 
-const mapStateToProps = state => ({
-    loading: state.loader.loading,
-})
 
-export default connect( mapStateToProps,mapDispatchToProps)(CreateDiscussion)
+export default CreateDiscussion;

@@ -6,6 +6,7 @@ import NotFound from "../NotFound";
 class Students extends Component {
 
     UNSAFE_componentWillMount(){
+        //if(Object.keys(this.props.userInfo).length !== 0)
         this.props.getStudentList();
     }
     

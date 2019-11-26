@@ -74,13 +74,15 @@ class Welcome extends Component {
                     showModal={this.state.showLoginModal}
                     onCloseModal={this.onCloseLoginModal}
                     openRegistrationModal={this.openRegistrationModal}
+                    loading = {this.props.loading}
+                    userInfo = {this.props.userInfo} //For redirecting to modules when response is received.
                 />
                 <Registration
                     showModal={this.state.showRegistrationModal}
                     onCloseModal={this.onCloseRegistrationModal}
                     openLoginModal={this.openLoginModal}
                     registerUser={this.props.registerUser}
-                    registrationPending={this.props.registrationPending}
+                    registrationError={this.props.registrationError}
                 />
             </Fragment>)
     }

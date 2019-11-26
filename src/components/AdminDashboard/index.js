@@ -1,15 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from "react-router-dom";
 
 import "../modules/modules.css";
 import modules from "./images/courses.png";
 import peopele from "./images/people.jpg";
 
 class AdminDashboard extends Component {
-    constructor(props){
-        super(props);
-    }
-
     logout = (e) =>{
         e.preventDefault();
         this.props.logoutUser();
