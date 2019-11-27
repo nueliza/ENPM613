@@ -23,6 +23,7 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.SET_PREF_STARTED:
         case actionTypes.GET_DISCUSSION_STARTED:
         case actionTypes.RESET_PREF_STARTED:
+        case actionTypes.REPLY_TO_DISCUSSION_STARTED:
             return{ ...state, loading: true}
             
         case actionTypes.LOGIN_USER_FAILED:
@@ -59,6 +60,8 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_DISCUSSION_FAILED:
         case actionTypes.RESET_PREF_SUCCESS:
         case actionTypes.RESET_PREF_FAILED:
+        case actionTypes.REPLY_TO_DISCUSSION_SUCCESS:
+        case actionTypes.REPLY_TO_DISCUSSION_FAILED:
             return{ ...state, loading: false}
         
         default:

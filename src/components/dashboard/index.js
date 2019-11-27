@@ -11,7 +11,7 @@ import './dashboard.css';
 import logo from "./images/Logo.png";
 
 import Discussions from "../../containers/discussions";
-import Discussion from "../discussions/discussion";
+import Discussion from "../../containers/viewDiscussion";
 import CreateDiscussion from '../discussions/createDiscussion';
 import Exams from "../../containers/exams";
 import CreateExam from "../exams/createExam";
@@ -164,9 +164,7 @@ class Dashboard extends Component {
                                     />} 
                                 />
                                 <Route path="/discussion" component={props => 
-                                    <Discussion 
-                                        {...props} 
-                                    />} 
+                                    <Discussion />} 
                                 /> 
                                 <Route path="/CreateDiscussion" component={props => 
                                     <CreateDiscussion 
