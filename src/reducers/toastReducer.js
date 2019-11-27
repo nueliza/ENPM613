@@ -8,7 +8,7 @@ const initialState = {
 const toastReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOGIN_USER_SUCESS:
-            return{ ...state, toastMessage: "User Successfully Logged In", toastType:"SUCCESS"}
+            return{ ...state, toastMessage: "You've logged in successfully!!", toastType:"SUCCESS"}
 
         case actionTypes.REGISTRATION_SUCCESS:
         case actionTypes.LOGOUT_USER_SUCESS:
@@ -24,6 +24,7 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.DELETE_DISCUSSION_FAILED:
         case actionTypes.RESET_PREF_FAILED:
         case actionTypes.REPLY_TO_DISCUSSION_FAILED:
+        case actionTypes.REGISTRATION_FAILED:
             return{...state, toastMessage: action.error, toastType: "FAILURE"}
         
         case actionTypes.RESET_TOAST: 

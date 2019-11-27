@@ -134,10 +134,16 @@ export function deleteExam(reqObject) {
                 })
             })
             .catch(error => {
-                console.log(error)
+                let errorMessage ="";
+                if(error.response){
+                    errorMessage = "Not Sure what happened";
+                }
+                else{
+                    errorMessage = "Something went wrong. Please try again later";
+                }
                 dispatch({
                     type: actionTypes.DELETE_EXAM_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }

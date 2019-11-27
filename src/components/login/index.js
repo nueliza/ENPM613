@@ -102,7 +102,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps =( state) =>{
     return{
         loading: state.loader.loading,
-        loginError:  state.user.loginError,
         userInfo:  state.user.userInfo
     }
 }
