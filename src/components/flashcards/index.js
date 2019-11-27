@@ -14,6 +14,9 @@ class Flashcards extends Component {
         return this.props.flashcard === "" ? <NotFound /> :
         (
             <Fragment>
+                <button className="btn btn-info">
+                    Reset Progress 
+                </button>
                 <CardContainer flashcard={this.props.flashcard} setPreference={this.props.setPreference} />
             </Fragment>)
     }
