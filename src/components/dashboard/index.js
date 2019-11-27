@@ -43,7 +43,7 @@ class Dashboard extends Component {
         const isTutor = userInfo.user_type === "Tutor" ? true : false;
         const selectedModuleId = this.props.selectedModuleId;
         const selectedModuleName = this.props.selectedModuleName;
-        console.log("SelectedModule", selectedModuleId, selectedModuleName);
+        console.log("props", this.props);
 
         return (
             <Router>
@@ -158,13 +158,13 @@ class Dashboard extends Component {
 
                                 <hr />
 
-                                <Route path="/discussions" component={props => 
+                                <Route path="/Discussions" component={props => 
                                     <Discussions 
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
                                     />} 
                                 />
-                                <Route path="/discussion" component={props => 
+                                <Route path="/Discussion" component={props => 
                                     <Discussion />} 
                                 /> 
                                 <Route path="/CreateDiscussion" component={props => 
@@ -176,7 +176,7 @@ class Dashboard extends Component {
                                     />}
                                 />
 
-                                <Route path="/exams" component={props => 
+                                <Route path="/Exams" component={props => 
                                     <Exams 
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
@@ -188,23 +188,23 @@ class Dashboard extends Component {
                                         createExam={this.props.createExam}
                                     />} 
                                 />
-                                <Route path="/takeExam" component={props => 
+                                <Route path="/TakeExam" component={props => 
                                     <TakeExam  />} 
                                 />
 
-                                <Route path="/grades" component={props => 
+                                <Route path="/Grades" component={props => 
                                     <Grades selectedModuleId = {selectedModuleId} />} 
                                 />
-                                <Route path="/files" component={props => <Files isTutor={isTutor}/>} />
+                                <Route path="/Files" component={props => <Files isTutor={isTutor}/>} />
                                 <Route path="/dashboard" component={props => 
                                     isTutor? <Students />:
                                     <FlashcardSet 
                                         selectedModuleId = {selectedModuleId}
                                     />} 
                                     />
-                                <Route path="/flashcards" component={props => <Flashcards />} />
-                                <Route path="/students" component={props => <Students />} />
-                                <Route path="/viewExam" component={props => 
+                                <Route path="/Flashcards" component={props => <Flashcards />} />
+                                <Route path="/Students" component={props => <Students />} />
+                                <Route path="/ViewExam" component={props => 
                                     <ViewExam
                                         isTutor={isTutor} 
                                         loading= {this.props.loading}

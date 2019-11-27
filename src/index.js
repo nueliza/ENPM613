@@ -13,15 +13,41 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const middleware = [thunk];
 
-function configureStore(initialState) {
+function saveToLocalStorage(state) {
+    try{
+        const serializedState = JSON.stringify(state)
+        localStorage.setItem('state', serializedState)
+    }
+    catch(e){
+        console.log(e);
+    }
+}
+
+function loadFromLocalStorage(){
+    try{
+        const serializedState =localStorage.getItem('state')
+        if(serializedState === null ) return undefined
+            return JSON.parse(serializedState)
+    }
+    catch(e){
+        console.log(e);
+        return undefined
+    }
+}
+
+const persistedState = loadFromLocalStorage()
+
+function configureStore() {
     return createStore(
         rootReducer,
-        initialState,
+        persistedState,
         //composeWithDevTools(applyMiddleware(...middleware))
         applyMiddleware(...middleware)
     );
 }
 const store = configureStore();
+
+store.subscribe(()=>{saveToLocalStorage(store.getState())})
 
 render(
     <Provider store={store}>

@@ -7,22 +7,22 @@ import { Redirect } from 'react-router';
 import Welcome from "./containers/welcome";
 import Modules from "./containers/modules";
 import Dashboard from "./containers/dashboard";
-import Header from "./components/header";
-import Footer from "./components/footer";
 import ViewExam from "./components/exams/viewExam";
 import Discussion from "./components/discussions/discussion";
 import Files from "./components/files";
 import Flashcards from "./components/flashcards";
 import CreateDiscussion from "./components/discussions/createDiscussion";
-import Grades from "./components/grades";
+import Grades from "./containers/grades";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
     <Route
       {...rest}
-      render={(props) => authed === true
+      render={(props) => 
+        authed === true
         ? <Component {...props} />
-        : <Redirect to="/" />}
+        : <Redirect to="/" />
+      }
     />
   )
 }
@@ -33,19 +33,20 @@ class App extends React.Component {
       <React.Fragment>
         
         <Router>
-          <Header />
           <Route path="/" exact component={Welcome} />  
           <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/modules' component={Modules} />
           <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/dashboard' component={Dashboard} />
-  
-  
-          <Route path="/CreateDiscussion" component={props => <CreateDiscussion {...props}/>} /> {/**TODO removed after development */}
-          <Route path="/viewExam" component={props => <ViewExam {...props}/>} /> {/**TODO removed after development */}
-          <Route path="/discussion" component={props => <Discussion {...props}/>} /> {/**TODO removed after development */}
-          <Route path="/files" component={props => <Files />} /> {/**TODO removed after development */}
-          <Route path="/grades" component={props => <Grades />} /> {/**TODO be removed after development */}
-          <Route path="/flashcards" component={props => <Flashcards />} />  {/**TODO be removed after development */}
-          <Footer />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/CreateDiscussion' component={Dashboard} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Discussion' component={Dashboard} />
+          {/* <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Disucssions' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Exams' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/TakeExam' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/CreateExam' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/ViewExam' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Grades' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Files' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Flashcards' component={Modules} />
+          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Students' component={Modules} /> */}
         </Router>
        
       </React.Fragment>
