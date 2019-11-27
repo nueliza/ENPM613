@@ -148,7 +148,6 @@ export function deleteExam(reqObject) {
 * @param {Object} reqObject 
 */
 export function getExam(reqObject) {
-    console.log("ExamHandler", reqObject)
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_EXAM_STARTED,
