@@ -85,6 +85,8 @@ input{
     margin-right: auto !important;
     margin-top: 5px !important;
     border-radius: 10px !important;
+    position: fixed !important;
+    z-index: 10000;
 
 }
 .toast .toast-body{

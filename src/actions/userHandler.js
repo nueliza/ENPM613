@@ -1,56 +1,52 @@
 /**
- * Contains service handlers for all user account actions
+ * Contains service handlers for all user account
  */
 
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import * as errors from "./errorMessage";
 
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-//axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
-//axios.defaults.withCredentials = true;
 
-export let token=  "";
 /**
- * loginUser communicates with the login API, and logs in the user. Also stores the JWT token in the local storage
+ * Communicates with the login API, and logs in the user. Also stores the JWT token in the local storage
  * @param {Object} user 
  */
+
 export function loginUser(user) {
-
-    // return async dispatch =>{
-    //     return axios.get(`${baseUrl}/logout`, {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json',
-    //         }
-    //     })
-    // }
-
     return async dispatch => {
         dispatch({
             type: actionTypes.LOGIN_USER_STARTED
         });
         return axios.post(`/login`, user)
         .then(result => {
-            sessionStorage.setItem("token", result.data.token);
-            console.log("token",localStorage.getItem("token"))
+            localStorage.setItem("token", result.data.token);
+            console.log("token",sessionStorage.getItem("token"))
             dispatch({
                 type: actionTypes.LOGIN_USER_SUCESS,
                 payload: result.data
             })
         })
         .catch(error => {
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.LOGIN_USER_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
     }
 }
 
 /**
- * registerUser communicated with registerUser API, registers the user. 
+ * Communicates with registerUser API, and registers the user. 
  * @param {Object} registerData 
  */
 export function registerUser(registerData) {
@@ -66,16 +62,23 @@ export function registerUser(registerData) {
                 })
             })
             .catch(error => {
+                let errorMessage = ""
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.REGISTRATION_FAILED,
-                    error: error.response.message
+                    error: errorMessage
                 });
             })
     }
 
 }
 /**
- * logoutUser communicates with the logout API and removes the JWT token from the local storage
+ * Communicates with the logout API, removes the JWT token from the local storage, and logs out the user
  */
 export function logoutUser() {
     return async dispatch => {
@@ -87,13 +90,13 @@ export function logoutUser() {
                 localStorage.removeItem("token", payload.token);
                 dispatch({
                     type: actionTypes.LOGOUT_USER_SUCESS,
-                    payload: payload.data.message
+                    payload: "You've logged out sucessfully!"
                 });
             })
             .catch(error => {
                 dispatch({
                     type: actionTypes.LOGOUT_USER_FAILED,
-                    error: error.response.data.message
+                    error: errors.Error_500
                 });
             })
     }
