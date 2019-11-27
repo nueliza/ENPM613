@@ -18,7 +18,7 @@ class Modules extends Component {
         return (
             <Fragment>
                 <div className="dashboard_header">
-                    <h3> Main dashboard </h3>
+                    <h3> Modules </h3>
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
