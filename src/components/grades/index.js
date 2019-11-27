@@ -4,7 +4,6 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import { withRouter } from "react-router-dom";
 import "./grades.css";
 import Loading from "../loading";
-import NotFound from "../NotFound";
 
 class Grades extends Component {
     UNSAFE_componentWillMount() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Loading from "../loading";
-import NotFound from "../NotFound";
+import { Redirect } from 'react-router';
 import { withRouter } from "react-router-dom";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -51,7 +51,7 @@ class Discussion extends Component {
 
     render() {
         if (this.props.loading) return <Loading />
-        return this.props.selectedDiscussion === "" ? <NotFound /> :
+        return this.props.selectedDiscussion === "" ? <Redirect to="/discussions"/>:
         (
             <div className="dashboard_body discussion_body">
                 <button

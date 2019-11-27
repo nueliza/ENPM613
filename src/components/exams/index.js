@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import ToastContainer from "../toast";
 import Loading from "../loading";
-import NotFound from "../NotFound";
 
 const ExamList = (props) => {
     console.log("Here Exams Page", props.isTutor);
