@@ -210,6 +210,7 @@ class Dashboard extends Component {
                                         loading= {this.props.loading}
                                         selectedExam ={this.props.selectedExam}
                                         selectedExamName = {this.props.selectedExamName}
+                                        selectedExamScore = {this.props.selectedExamScore}
                                     />} 
                                 />
                             </main>

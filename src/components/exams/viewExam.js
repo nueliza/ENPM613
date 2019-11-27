@@ -30,6 +30,7 @@ class ViewExam extends Component {
                     </button>
                     <br />
                     <h3>{this.props.selectedExamName}</h3>
+                    {this.props.selectedExamScore === ""? "":<h4>Score: &nbsp; {this.props.selectedExamScore}</h4> }
                     <FontAwesomeIcon icon={iconMapping["tick"]}  color="#17a2b8" size="1x" /> Correct Answer &nbsp;
                     {this.props.isTutor? "" :<Fragment><FontAwesomeIcon icon={iconMapping["cross"]}  color="#ee442f" size="1x" /> Wrong Answer</Fragment>}
                     {this.props.selectedExam.map((question, id)=>{
