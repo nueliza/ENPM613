@@ -18,7 +18,7 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.DELETE_EXAM_SUCCESS:
         //discussion handler
         case actionTypes.DELETE_DISCUSSION_SUCCESS:
-        case actionTypes.REPLY_TO_DISCUSSION_SUCCESS:
+        //case actionTypes.REPLY_TO_DISCUSSION_SUCCESS:
         case actionTypes.CREATE_DISCUSSION_SUCCESS:
         //flashcards handler
         case actionTypes.RESET_PREF_SUCCESS:

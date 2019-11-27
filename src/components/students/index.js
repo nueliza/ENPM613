@@ -15,7 +15,11 @@ class Students extends Component {
 
         //redirects to Not found page if the getStudentList API fails
 
-        return Object.keys(this.props.studentList).length === 0? <NotFound />:
+        return Object.keys(this.props.studentList).length === 0? 
+        <div>
+            Where did all the students go??
+        </div>
+        :
         (
             <div className="dashboard_body student_body">
                 <h2>Student List</h2>

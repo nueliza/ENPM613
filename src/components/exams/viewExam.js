@@ -4,15 +4,14 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
 import Loading from "../loading";
-import NotFound from "../NotFound";
-
+import { Redirect } from 'react-router';
 
 class ViewExam extends Component {
 
     render() {
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
-        return Object.keys(this.props.selectedExam).length === 0 ? <NotFound /> :
+        return Object.keys(this.props.selectedExam).length === 0 ? <Redirect to="/exams"/> :
         (
             <div className="dashboard_body view_exam">
                 <div className="dashboard_subSection">
