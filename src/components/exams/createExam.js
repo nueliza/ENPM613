@@ -52,14 +52,22 @@ const QuestionInput = (props) => {
                     
                     <div className="group">
                         <span className="label"> Correct Answer</span>
-                        <input type="text"
-                            name="answer"
+                        {/* <input type="text"
+                            name="ans"
                             data-id={id}
                             id={answerId}
                             className="answer"
                             placeholder="Type correct answer here..."
                             required
-                        />
+                        /> */}
+                        <select name="ans" data-id={id} id={answerId} style={{width: "100%"}} required>
+                            <option value = "">Select the correct answer</option>
+                            {
+                                item.options.map((option,idx)=>{
+                                    return <option>{option}</option>
+                                })
+                            }
+                        </select>
                     </div>
                 </div>
             )
@@ -102,7 +110,7 @@ class CreateExam extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Exam: [{ question: "", options: ["", ""], answer: "" }],
+            Exam: [{ question: "", options: ["", ""], ans: "" }],
             examName: "",
             errors: []
         }
@@ -111,7 +119,7 @@ class CreateExam extends Component {
     addQuestion = (e) => {
         e.preventDefault()
         this.setState((prevState) => ({
-            Exam: [...prevState.Exam, { question: "", options: ["", ""], answer: "" }]
+            Exam: [...prevState.Exam, { question: "", options: ["", ""], ans: "" }]
         }));
     }
 
@@ -143,13 +151,17 @@ class CreateExam extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         //TODO: Input field validations
+
+        console.log("Exam", this.state.Exam);
         const reqObject ={
             "exam_name":this.state.examName,
             "questions": this.state.Exam
         }
-        this.props.createExam(reqObject);
-        this.props.history.push("/exams")
-        
+        console.log("reqObject", reqObject);
+        this.props.createExam(reqObject)
+        .then(()=>{
+            this.props.history.push("/exams")
+        })
     }
 
 //    isFormValid = (value, itemId) =>{
@@ -170,17 +182,30 @@ class CreateExam extends Component {
             this.setState({examName: e.target.value})
         }
         else {
+            console.log("HERE IN", e.target.dataset.id, 
+            e.target.name, e.target.value)
             Exam[e.target.dataset.id][e.target.name] = e.target.value;
         }
         this.setState({ Exam });
     }
 
     render() {
-        //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
-        console.log("CreateExamPage", this.props)
         return (
             <div className="dashboard_body">
-                <h3>Create Exam for Algebra</h3>
+                 <button
+                    type="button"
+                    className="btn btn-info getSatProSecondaryButton"
+                    style={{marginBottom: "10px"}}
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: '/exams',
+                        })
+                    }}>
+                    <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                    &nbsp;<span>Back to Exams</span>
+                </button>
+
+                <h3>Create an Exam</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     Exam Name <input type="text" name="name" placeholder="Exam Name" required/>
                     <QuestionInput

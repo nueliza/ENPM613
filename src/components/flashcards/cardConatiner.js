@@ -24,24 +24,16 @@ class CardContainer extends Component {
             ]),
             cardNumber: 0
         };
-        this.boundShowPrevCard = this.showPrevCard.bind(this);
         this.boundShowNextCard = this.showNextCard.bind(this);
     }
 
-    showNextCard() {
-        if ((this.state.cardNumber + 1) !== this.state.cards.size) {
-            this.setState({ cardNumber: this.state.cardNumber + 1 });
-        }
-    }
-
-    showPrevCard() {
-        if (this.state.cardNumber !== 0) {
-            this.setState({ cardNumber: this.state.cardNumber - 1 });
-        }
+    showNextCard(payload) {
+        this.props.setPreference(payload);
+        
     }
 
     generateDots() {
-        const times = this.state.cards.size;
+        const times = 1;
         let arr = [];
         _.times(times).forEach((num, index) => {
             const dotClass = num === this.state.cardNumber ? 'active' : '';
@@ -56,28 +48,20 @@ class CardContainer extends Component {
         return arr;
     }
 
-    generateCards() {
-        const cards = this.state.cards;
-        const cardsList = cards.map((card, index) => {
-            return (
-                <Card
-                    key={index}
-                    frontContent={card.get('word')}
-                    backContent={card.get('description')}
-                    showNextCard={this.boundShowNextCard}
-                    showPrevCard={this.boundShowPrevCard}
-                    cardNumber={this.state.cardNumber}
-                />
-            );
-        })
-        return (cardsList.toJS()[this.state.cardNumber]);
-    }
     render() {
+        const card = this.props.flashcard;
         return (
             <div>
-                {this.generateCards()}
+                <Card
+                    frontContent={card.question}
+                    backContent={card.answer}
+                    cardId = {card.fc_id}
+                    showNextCard={this.boundShowNextCard}
+                   // showPrevCard={this.boundShowPrevCard}
+                    cardNumber={this.state.cardNumber}
+                />
                 <div className='card-container__dots-wrapper'>
-                    {this.generateDots()}
+                   
                 </div>
             </div>
         );

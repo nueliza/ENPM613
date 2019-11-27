@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
+import Loading from "../loading";
+import { Redirect } from 'react-router';
+import { withRouter } from "react-router-dom";
+import { iconMapping } from "../utils/iconsMapping.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const DiscussionThreads = (props) => {
 
     return (
         props.replies.map((replyItem, id) => {
-            let isCrrentUser = (props.userInfo.fname === replyItem.authorFirstName && 
-                props.userInfo.lname === replyItem.authorLastName) ? "avatar currentUser" : "avatar";
+            let isCrrentUser = (props.userInfo.fname === replyItem.fname && 
+                props.userInfo.lname === replyItem.lname) ? "avatar currentUser" : "avatar";
             return (
                 <div className="thread" key={id}>
                     <div className={isCrrentUser}>
-                        {replyItem.authorFirstName.charAt(0)}{replyItem.authorLastName.charAt(0)}
+                        {replyItem.fname.charAt(0)}{replyItem.lname.charAt(0)}
                     </div>
                     <div className="threadContent">
                         {replyItem.content}
                     </div>
-                    <span className="author">- {replyItem.authorFirstName} {replyItem.authorLastName}</span>
+                    <span className="author">
+                        - {replyItem.fname} {replyItem.lname}
+                        <br/> replied at {replyItem.reply_posted}
+                    </span>
                 </div>
             )
         })
@@ -26,33 +34,49 @@ class Discussion extends Component {
         super(props);
         this.state = {
             showReplyContainer: false,
-            data: {
-                discussion: { header: "See this?", content: "Are you able to see this?", authorFirstName: "Annu", authorLastName: "Abraham" },
-                replies: [{ content: "Yes, I see this clearly", authorFirstName: "Aarohi", authorLastName: "Mehta" }]
-            }
         }
     }
 
     handleReply = (e) => {
         this.setState({ showReplyContainer: !this.state.showReplyContainer });
-        let content = this.refs.reply.value;
-        let stateData = this.state.data
-        stateData.replies = [...this.state.data.replies, { content: content, authorFirstName: this.props.userInfo.firstName, authorLastName: this.props.userInfo.lastName }]
-        this.setState({
-            data: stateData
-        })
+        let payload ={
+            "discuss_id": this.props.selectedDiscussion.discuss_id,
+            "content": this.refs.reply.value
+        }
+       this.props.replyToDiscussion(payload)
+       .then(()=>{
+           this.props.getDiscussion({"discuss_id": this.props.selectedDiscussion.discuss_id})
+       })
     }
 
     render() {
-        return (
+        if (this.props.loading) return <Loading />
+        return this.props.selectedDiscussion === "" ? <Redirect to="/discussions"/>:
+        (
             <div className="dashboard_body discussion_body">
+                <button
+                    type="button"
+                    className="btn btn-info getSatProSecondaryButton"
+                    style={{marginBottom: "10px"}}
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: '/discussions',
+                        })
+                    }}>
+                    <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                    &nbsp;<span>Back to Discussions</span>
+                </button>
                 <div className="discussion">
-                    <h2>{this.state.data.discussion.header}</h2>
+                    <h2>{this.props.selectedDiscussion.title}</h2>
                     <hr />
                     <span className="discussionContent">
-                        {this.state.data.discussion.content}
+                        {this.props.selectedDiscussion.content}
                     </span>
-                    <div className="author"> - {this.state.data.discussion.authorFirstName} {this.state.data.discussion.authorLastName}</div>
+                    <div className="author"> 
+                        - {this.props.selectedDiscussion.fname} {this.props.selectedDiscussion.lname}
+                        <br />
+                        Posted at {this.props.selectedDiscussion.posted}
+                    </div>
                     <div className="reply">
                         <button
                             type="button"
@@ -82,7 +106,7 @@ class Discussion extends Component {
                     : ""}
 
                 <DiscussionThreads
-                    replies={this.state.data.replies}
+                    replies={this.props.selectedDiscussion.replies}
                     userInfo={this.props.userInfo}
                 />
             </div>
@@ -90,4 +114,4 @@ class Discussion extends Component {
     }
 }
 
-export default Discussion;
+export default withRouter(Discussion);

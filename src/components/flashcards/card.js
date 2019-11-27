@@ -10,6 +10,8 @@ class Card extends Component {
     }
    
     render() {
+
+      console.log("FC_d", this.props.cardId);
       const content = this.state.showAnswer ? this.props.backContent : this.props.frontContent;
       const iconClass = this.state.showAnswer ? 'reply' : 'share';
       const cardClass = this.state.showAnswer ? 'back' : '';
@@ -21,7 +23,7 @@ class Card extends Component {
           className={`flashcard ${cardClass}`}
           onClick={() => this.setState({showAnswer: !this.state.showAnswer})}
         >
-        <span className='card__counter'>{this.props.cardNumber + 1}</span>
+        <span className='card__counter'></span>
           <div 
             className='card__flip-card'
             onClick={ () => {
@@ -39,7 +41,7 @@ class Card extends Component {
               type ="button"
               className='card__prev-button btn btn-success'
               onClick={() => {
-                this.props.showNextCard();
+                this.props.showNextCard({"fc_id": this.props.cardId, "pref": 1});
                 this.setState({showAnswer: false});
               }}
             >
@@ -49,7 +51,7 @@ class Card extends Component {
               type ="button"
               className='card__prev-button btn btn-warning'
               onClick={() => {
-                this.props.showNextCard();
+                this.props.showNextCard({"fc_id": this.props.cardId, "pref": 2});
                 this.setState({showAnswer: false});
               }}
             >
@@ -59,7 +61,7 @@ class Card extends Component {
               type ="button"
               className='card__prev-button btn btn-danger'
               onClick={() => {
-                this.props.showNextCard();
+                this.props.showNextCard({"fc_id": this.props.cardId, "pref": 3});
                 this.setState({showAnswer: false});
               }}
             >

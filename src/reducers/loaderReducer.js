@@ -15,6 +15,15 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_EXAM_LIST_STARTED:
         case actionTypes.GET_MODULE_LIST_STARTED:
         case actionTypes.GET_STUDENT_LIST_STARTED:
+        case actionTypes.GET_DISCUSSION_LIST_STARTED:
+        case actionTypes.GET_EXAM_STARTED:
+        case actionTypes.GET_GRADES_LIST_STARTED:
+        case actionTypes.GET_FC_SET_STARTED:
+        case actionTypes.GET_FC_STARTED:
+        case actionTypes.SET_PREF_STARTED:
+        case actionTypes.GET_DISCUSSION_STARTED:
+        case actionTypes.RESET_PREF_STARTED:
+        case actionTypes.REPLY_TO_DISCUSSION_STARTED:
             return{ ...state, loading: true}
             
         case actionTypes.LOGIN_USER_FAILED:
@@ -35,6 +44,24 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_MODULE_LIST_FAILED:
         case actionTypes.GET_STUDENT_LIST_FAILED:
         case actionTypes.GET_STUDENT_LIST_SUCCESS:
+        case actionTypes.GET_DISCUSSION_LIST_FAILED:
+        case actionTypes.GET_DISCUSSION_LIST_SUCCESS:
+        case actionTypes.GET_EXAM_SUCCESS:
+        case actionTypes.GET_EXAM_FAILED:
+        case actionTypes.GET_GRADES_LIST_SUCCESS:
+        case actionTypes.GET_GRADES_LIST_FAILED:
+        case actionTypes.GET_FC_SET_SUCCESS:
+        case actionTypes.GET_FC_SET_FAILED:
+        case actionTypes.GET_FC_SUCCESS:
+        case actionTypes.GET_FC_FAILED:
+        case actionTypes.SET_PREF_SUCCESS:
+        case actionTypes.SET_PREF_FAILED:
+        case actionTypes.GET_DISCUSSION_SUCCESS:
+        case actionTypes.GET_DISCUSSION_FAILED:
+        case actionTypes.RESET_PREF_SUCCESS:
+        case actionTypes.RESET_PREF_FAILED:
+        case actionTypes.REPLY_TO_DISCUSSION_SUCCESS:
+        case actionTypes.REPLY_TO_DISCUSSION_FAILED:
             return{ ...state, loading: false}
         
         default:

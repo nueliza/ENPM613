@@ -1,5 +1,5 @@
 .information{
-    background-color: rgba(243, 243, 244, 1);
+    background-color: white;
     overflow: auto;
     padding-top: 20px;
     padding-left: 20px;
@@ -50,13 +50,101 @@
     justify-content: center;
     padding-top: 50px;
     padding-left: 30px;
+    padding-bottom: 50px;
 }
 
 .services .subItem{
     margin-right: 20px;
     width: 33.33%;
-    box-shadow: 1px 1px 3px #a3a3a3;
-    min-height: 100px;
+    min-height: 50px;
     text-align: center;
     padding-top: 2%;
+}
+
+.serviceImage{
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-style: italic;    
+}
+
+.serviceImage div{
+    font-size: 1em;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+
+.serviceText{
+font-size: 20px;
+color: var(--primary-color);
+}
+
+.subItem .myimg{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:50%;
+  }
+
+.successStoryHeader{
+    font-size: 40px;
+    color: var(--primary-color);
+    min-height: 100px;
+    text-align: center;
+    padding: 1%;
+    font-style: italic;
+}
+
+
+.successStories{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-bottom: 50px;
+}
+
+.successStories .subItem{
+    margin-right: 20px;
+    width: 33.33%;
+    box-shadow: 1px 1px 5px var(--primary-color);
+    color: var(--primary-color);
+    /* color: ivory; */
+    /* background-color: var(--primary-color); */
+    max-height: 300px;
+    text-align: center;
+    padding: 1%;
+    overflow: auto;
+ 
+}
+
+.successImage{
+    display: inline-block;
+    padding-top: 15px;
+    font-style: italic;
+}
+
+.successImage div{
+    font-size: 1em;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+
+.successImage b{
+    font-size: 20px;
+}
+
+.successImage .myimg{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:50%;
+    border: 2px solid var(--primary-color);
+  }
+
+.smallItalics{
+    font-style:italic ;
+    font-size: 15px;
 }

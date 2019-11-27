@@ -18,7 +18,7 @@ class Modules extends Component {
         return (
             <Fragment>
                 <div className="dashboard_header">
-                    <h3> Main dashboard </h3>
+                    <h3> Modules </h3>
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
@@ -30,37 +30,21 @@ class Modules extends Component {
                
                 <hr />
                 <div className="modules">
-                    
-                    <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("Math")}} className="card">
-                        <img className="card-img" src={math} alt="Math" />
-                        <div className="progress">
-                            <div className="progress-bar" style={{ width: '25%', backgroundColor: 'var(--primary-color)' }}><b>25%</b></div>
-                        </div>
-                        <div className="card-body">
-                            <h1 className="card-title">Math</h1>
-                            
-                        </div>
-                    </Link>
-
-                    <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("English")}} className="card">
-                        <img className="card-img" src={math} alt="English" />
-                        <div className="progress">
-                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
-                        </div>
-                        <div className="card-body">
-                            <h1 className="card-title">English</h1>
-                        </div>
-                    </Link>
-
-                    <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule("Essay Writing")}} className="card">
-                        <img className="card-img" src={math} alt="Writing" />
-                        <div className="progress">
-                            <div className="progress-bar" style={{ width: '50%', backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
-                        </div>
-                        <div className="card-body">
-                            <h1 className="card-title">English</h1>
-                        </div>
-                    </Link>
+                    {this.props.moduleList.map((module, id)=>{
+                        let progress = module.progress + "%";
+                        return(
+                            <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card" key={id}>
+                                <img className="card-img" src={math} alt="Math" />
+                                <div className="progress">
+                                    <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{module.progress}%</b></div>
+                                </div>
+                                <div className="card-body">
+                                    <h1 className="card-title">{module.mod_name}</h1>
+                                    
+                                </div>
+                            </Link>
+                        )
+                    })}
                 </div>
 
             </Fragment>)

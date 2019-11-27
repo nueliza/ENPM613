@@ -5,7 +5,13 @@ const Footer = props => {
     if (props.location.pathname === "/dashboard" || props.location.pathname === "/modules") return null;
     return (
         <React.Fragment>
-            Footer
+            <div className="headerWrapper">
+            © 2019 Get SAT Pro <span>|</span>
+            <span className="links">
+                <a href="/"> Terms of use </a> <span>|</span>
+                <a href="/"> Privacy Policy</a>
+            </span>
+            </div>            
         </React.Fragment>
     );
 };

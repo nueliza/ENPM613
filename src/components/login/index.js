@@ -51,7 +51,7 @@ class Login extends Component {
     }
     render() {
         if (this.props.loading) return <Loading show={this.props.loading} />
-        if (Object.keys(this.props.userInfo).length > 0) return <Redirect to='/modules' /> 
+        if (Object.keys(this.props.userInfo).length !== 0) return <Redirect to='/modules' /> 
         return (
                 <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
                     <div className="Loginwrapper">
@@ -102,7 +102,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps =( state) =>{
     return{
         loading: state.loader.loading,
-        loginError:  state.user.loginError,
         userInfo:  state.user.userInfo
     }
 }
