@@ -91,4 +91,57 @@ export function createDiscussion(reqObject) {
     }
   }
 
+  /**
+   * Gets a particular discussion
+   */
+
+  export function getDiscussion(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_DISCUSSION_STARTED
+        });
+        return axios.post(`/view_discussion`, reqObject)
+        .then(response => {
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_SUCCESS,
+                payload: response.data.discuss_list
+            })
+        })
+        .catch(error =>{
+            dispatch({
+                type: actionTypes.GET_DISCUSSION_FAILED,
+                error: error.response.data.message
+            })
+        })
+                
+    }
+  }
+
+  /**
+ * Deletes a particular Discussion
+ * @param {Object} reqObject 
+ */
+export function deleteDiscussion(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.DELETE_DISCUSSION_STARTED
+        });
+        return axios.post(`/delete`, reqObject)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.DELETE_DISCUSSION_SUCCESS,
+                    payload: response.data.message
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch({
+                    type: actionTypes.DELETE_DISCUSSION_FAILED,
+                    error: error.response.data.message
+                })
+            })
+    }
+}
+
   

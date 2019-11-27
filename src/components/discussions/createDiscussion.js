@@ -30,7 +30,10 @@ class CreateDiscussion extends Component {
         }
         if(isContentValid && isHeaderValid){
             this.props.createDiscussion(payload)
-            this.props.history.push("/discussions")
+            .then(()=>{
+                this.props.history.push("/discussions")
+            })
+            
         }
         else{
             console.log("Form not valid")

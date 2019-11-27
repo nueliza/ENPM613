@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
     userInfo: state.user.userInfo,
     selectedModuleId: state.user.selectedModuleId,
     selectedModuleName: state.user.selectedModuleName,
+    selectedDiscussion: state.discussion.selectedDiscussion
     
 })
 
