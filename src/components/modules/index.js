@@ -31,11 +31,12 @@ class Modules extends Component {
                 <hr />
                 <div className="modules">
                     {this.props.moduleList.map((module, id)=>{
+                        let progress = module.progress + "%";
                         return(
                             <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card">
                                 <img className="card-img" src={math} alt="Math" />
                                 <div className="progress">
-                                    <div className="progress-bar" style={{ width: module.progress, backgroundColor: 'var(--primary-color)' }}><b>{module.progress}%</b></div>
+                                    <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{module.progress}%</b></div>
                                 </div>
                                 <div className="card-body">
                                     <h1 className="card-title">{module.mod_name}</h1>

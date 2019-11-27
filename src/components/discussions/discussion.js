@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Loading from "../loading";
+import NotFound from "../NotFound";
 
 const DiscussionThreads = (props) => {
 
@@ -44,13 +46,16 @@ class Discussion extends Component {
     }
 
     render() {
-        return (
+        if (this.props.loading) return <Loading />
+
+        return this.props.selectedDiscussion.length === "" ? <NotFound /> :
+        (
             <div className="dashboard_body discussion_body">
                 <div className="discussion">
-                    <h2>{this.state.data.discussion.header}</h2>
+                    <h2>{this.props.selectedDiscussion.title}</h2>
                     <hr />
                     <span className="discussionContent">
-                        {this.state.data.discussion.content}
+                        {this.props.selectedDiscussion.content}
                     </span>
                     <div className="author"> - {this.state.data.discussion.authorFirstName} {this.state.data.discussion.authorLastName}</div>
                     <div className="reply">

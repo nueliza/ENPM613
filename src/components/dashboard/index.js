@@ -160,16 +160,12 @@ class Dashboard extends Component {
                                 <Route path="/discussions" component={props => 
                                     <Discussions 
                                         isTutor={isTutor} 
-                                        deleteDiscussion={this.props.deleteDiscussion}
                                         selectedModuleId = {selectedModuleId}
                                     />} 
                                 />
                                 <Route path="/discussion" component={props => 
                                     <Discussion 
                                         {...props} 
-                                        userInfo={userInfo}
-                                        selectedDiscussion={this.props.selectedDiscussion}
-                                        replyToDiscussion={this.props.replyToDiscussion}
                                     />} 
                                 /> 
                                 <Route path="/CreateDiscussion" component={props => 

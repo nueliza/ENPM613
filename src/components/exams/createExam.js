@@ -52,14 +52,19 @@ const QuestionInput = (props) => {
                     
                     <div className="group">
                         <span className="label"> Correct Answer</span>
-                        <input type="text"
-                            name="answer"
+                        {/* <input type="text"
+                            name="ans"
                             data-id={id}
                             id={answerId}
                             className="answer"
                             placeholder="Type correct answer here..."
                             required
-                        />
+                        /> */}
+                        <select name="ans" data-id={id} id={answerId} style={{width: "100%"}}>
+                            {item.options.map((option,id)=>{
+                                return <option>{option}</option>
+                            })}
+                        </select>
                     </div>
                 </div>
             )
@@ -143,10 +148,13 @@ class CreateExam extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         //TODO: Input field validations
+
+        console.log("Exam", this.state.Exam);
         const reqObject ={
             "exam_name":this.state.examName,
             "questions": this.state.Exam
         }
+        console.log("reqObject", reqObject);
         this.props.createExam(reqObject);
         this.props.history.push("/exams")
         
@@ -170,6 +178,8 @@ class CreateExam extends Component {
             this.setState({examName: e.target.value})
         }
         else {
+            console.log("HERE IN", e.target.dataset.id, 
+            e.target.name, e.target.value)
             Exam[e.target.dataset.id][e.target.name] = e.target.value;
         }
         this.setState({ Exam });
@@ -179,7 +189,7 @@ class CreateExam extends Component {
         //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
         return (
             <div className="dashboard_body">
-                <h3>Create Exam for Algebra</h3>
+                <h3>Create Exam</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     Exam Name <input type="text" name="name" placeholder="Exam Name" required/>
                     <QuestionInput

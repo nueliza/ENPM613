@@ -11,6 +11,8 @@ const discussionReducer = (state = initialState, action) => {
             return {
                 ...state, discussionList: action.payload
             };
+        case actionTypes.GET_DISCUSSION_SUCCESS:
+            return{...state, selectedDiscussion: action.payload}
         default:
             return state
     }

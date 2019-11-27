@@ -87,3 +87,27 @@ export function setPreference(reqObject) {
 }
 
 
+export function resetProgress(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.SET_PREF_STARTED
+        });
+        return axios.post(`/reset_flashcard_set`, reqObject)
+        .then(result => {
+            dispatch({
+                type: actionTypes.SET_PREF_SUCCESS,
+                payload: result.data.message
+            })
+        })
+        .catch(error =>{
+            dispatch({
+                type: actionTypes.SET_PREF_FAILED,
+                error: error.response.data.message
+            });
+        })
+  }
+}
+
+
+
