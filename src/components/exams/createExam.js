@@ -155,9 +155,10 @@ class CreateExam extends Component {
             "questions": this.state.Exam
         }
         console.log("reqObject", reqObject);
-        this.props.createExam(reqObject);
-        this.props.history.push("/exams")
-        
+        this.props.createExam(reqObject)
+        .then(()=>{
+            this.props.history.push("/exams")
+        })
     }
 
 //    isFormValid = (value, itemId) =>{
@@ -186,10 +187,22 @@ class CreateExam extends Component {
     }
 
     render() {
-        //<h3>Create {this.props.location.state.selectedSubModule} Exam</h3>
         return (
             <div className="dashboard_body">
-                <h3>Create Exam</h3>
+                 <button
+                    type="button"
+                    className="btn btn-info getSatProSecondaryButton"
+                    style={{marginBottom: "10px"}}
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: '/exams',
+                        })
+                    }}>
+                    <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                    &nbsp;<span>Back to Exams</span>
+                </button>
+
+                <h3>Create an Exam</h3>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     Exam Name <input type="text" name="name" placeholder="Exam Name" required/>
                     <QuestionInput

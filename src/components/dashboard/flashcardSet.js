@@ -9,8 +9,6 @@ class FlashcardSet extends Component {
     }
 
     render() {
-
-        console.log("This", this.props);
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
         return Object.keys(this.props.flashcardSets).length === 0 ? <NotFound /> :

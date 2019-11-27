@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Loading from "../loading";
 import NotFound from "../NotFound";
+import { withRouter } from "react-router-dom";
+import { iconMapping } from "../utils/iconsMapping.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const DiscussionThreads = (props) => {
 
@@ -47,11 +50,22 @@ class Discussion extends Component {
     }
 
     render() {
-        console.log(this.props)
         if (this.props.loading) return <Loading />
         return this.props.selectedDiscussion === "" ? <NotFound /> :
         (
             <div className="dashboard_body discussion_body">
+                <button
+                    type="button"
+                    className="btn btn-info getSatProSecondaryButton"
+                    style={{marginBottom: "10px"}}
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: '/discussions',
+                        })
+                    }}>
+                    <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                    &nbsp;<span>Back to Discussions</span>
+                </button>
                 <div className="discussion">
                     <h2>{this.props.selectedDiscussion.title}</h2>
                     <hr />
@@ -100,4 +114,4 @@ class Discussion extends Component {
     }
 }
 
-export default Discussion;
+export default withRouter(Discussion);

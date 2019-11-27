@@ -22,6 +22,7 @@ import Grades from "../../containers/grades";
 import FlashcardSet from "../../containers/flashcardSets";
 import Students from "../../containers/students";
 import ToastContainer from "../toast/index";
+import ViewExam from "../exams/viewExam";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -203,6 +204,14 @@ class Dashboard extends Component {
                                     />
                                 <Route path="/flashcards" component={props => <Flashcards />} />
                                 <Route path="/students" component={props => <Students />} />
+                                <Route path="/viewExam" component={props => 
+                                    <ViewExam
+                                        isTutor={isTutor} 
+                                        loading= {this.props.loading}
+                                        selectedExam ={this.props.selectedExam}
+                                        selectedExamName = {this.props.selectedExamName}
+                                    />} 
+                                />
                             </main>
                         </div>
                 )}
