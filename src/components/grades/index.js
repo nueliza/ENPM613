@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component, Fragment} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { withRouter } from "react-router-dom";
@@ -15,8 +15,7 @@ class Grades extends Component {
 
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
-        return Object.keys(this.props.gradesList).length === 0 ? <NotFound /> :
-         (
+        return  (
             <div className="dashboard_body grades_body">
                 <div className="dashboard_subSection">
                     <div className="quoteWrapper">
@@ -25,6 +24,12 @@ class Grades extends Component {
                         <span className="author">- Unknown</span>
                     </div>
                     <br />
+                    { Object.keys(this.props.gradesList).length === 0 ? 
+                    <Fragment>
+                        <FontAwesomeIcon icon={iconMapping["glass"]} color="gray" size="7x" /> <br /><br />
+                        Hallelujah! No grades yet! <br /><br />
+                    </Fragment>
+                    :
                     <ul className="list-group">
                         {this.props.gradesList.map((grade, id)=>{
                             return(
@@ -44,7 +49,7 @@ class Grades extends Component {
                                 </li>
                             )
                         })}
-                    </ul>
+                    </ul> }
                 </div>
             </div>
         )
