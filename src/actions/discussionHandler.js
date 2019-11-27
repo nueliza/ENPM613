@@ -4,6 +4,7 @@
 
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import * as errors from "./errorMessage";
 
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
@@ -25,13 +26,20 @@ export function createDiscussion(reqObject) {
         .then( response =>{
             dispatch({
                 type: actionTypes.CREATE_DISCUSSION_SUCCESS,
-                payload: response.data.message
+                payload: "You've successfully created the discussion!"
             })
         })
         .catch( error =>{
+            let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
             dispatch({
                 type: actionTypes.CREATE_DICUSSION_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             })
         })
     }
@@ -55,9 +63,16 @@ export function createDiscussion(reqObject) {
             })
         })
         .catch(error =>{
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.GET_DISCUSSION_LIST_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             })
         })
                 
@@ -82,9 +97,16 @@ export function createDiscussion(reqObject) {
             })
         })
         .catch(error =>{
+            let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
             dispatch({
                 type: actionTypes.GET_DISCUSSION_LIST_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             })
         })
                 
@@ -109,9 +131,16 @@ export function createDiscussion(reqObject) {
             })
         })
         .catch(error =>{
+            let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
             dispatch({
                 type: actionTypes.GET_DISCUSSION_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             })
         })
                 
@@ -131,14 +160,20 @@ export function deleteDiscussion(reqObject) {
             .then(response => {
                 dispatch({
                     type: actionTypes.DELETE_DISCUSSION_SUCCESS,
-                    payload: response.data.message
+                    payload: "You've successfully deleted the discussion!"
                 })
             })
             .catch(error => {
-                console.log(error)
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.DELETE_DISCUSSION_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }
@@ -158,10 +193,16 @@ export function replyToDiscussion(reqObject) {
                 })
             })
             .catch(error => {
-                console.log(error)
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.REPLY_TO_DISCUSSION_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }
