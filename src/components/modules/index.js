@@ -33,7 +33,7 @@ class Modules extends Component {
                     {this.props.moduleList.map((module, id)=>{
                         let progress = module.progress + "%";
                         return(
-                            <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card">
+                            <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card" key={id}>
                                 <img className="card-img" src={math} alt="Math" />
                                 <div className="progress">
                                     <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{module.progress}%</b></div>
