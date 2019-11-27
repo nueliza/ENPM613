@@ -60,10 +60,13 @@ const QuestionInput = (props) => {
                             placeholder="Type correct answer here..."
                             required
                         /> */}
-                        <select name="ans" data-id={id} id={answerId} style={{width: "100%"}}>
-                            {item.options.map((option,id)=>{
-                                return <option>{option}</option>
-                            })}
+                        <select name="ans" data-id={id} id={answerId} style={{width: "100%"}} required>
+                            <option value = "">Select the correct answer</option>
+                            {
+                                item.options.map((option,idx)=>{
+                                    return <option>{option}</option>
+                                })
+                            }
                         </select>
                     </div>
                 </div>
