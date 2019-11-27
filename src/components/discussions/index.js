@@ -8,7 +8,7 @@ import ToastContainer from "../toast/index";
 import "./index.css";
 
 class Discussions extends Component {
-
+    
     UNSAFE_componentWillMount() {
         if (!this.props.isTutor)
             this.props.getDiscussionListStudent({ "mod_id": this.props.selectedModuleId });
@@ -16,13 +16,18 @@ class Discussions extends Component {
             this.props.getDiscussionListTutor();
     }
 
-    handleDelete = (discussionId) =>{
-        let payload = { "model_name": "Discussion", "model_id":discussionId };
-        this.props.deleteDiscussion(payload).then(()=>{
-            if (!this.props.isTutor)
-                this.props.getDiscussionListStudent({ "mod_id": this.props.selectedModuleId });
+    handleDelete = (discussion_id) => {
+        let reqObject = {
+            "model_name": "Discussion",
+            "model_id": discussion_id
+        }
+        console.log("here", this.props.deleteDiscussion);
+        this.props.deleteDiscussion(reqObject)
+        .then(()=>{
+            if (this.props.isTutor)
+            this.props.getDiscussionListTutor()
             else
-                this.props.getDiscussionListTutor();
+            this.props.getDiscussionListStudent({ "mod_id": this.props.selectedModuleId })
         })
     }
 
@@ -66,7 +71,7 @@ class Discussions extends Component {
                                             size="1x"
                                             className={this.props.isTutor ? "" : "hide"}
                                             style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
-                                            onClick={() => { this.handleDelete(discussion.discuss_id) }}
+                                            onClick={()=> this.handleDelete(discussion.discuss_id)}
                                         />
                                         <button
                                             type="button"

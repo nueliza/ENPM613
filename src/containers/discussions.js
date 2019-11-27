@@ -9,7 +9,7 @@ const mapDispatchToProps = (dispatch) => {
         getDiscussionListStudent: (payload) =>{ dispatch(getDiscussionListStudent(payload))},
         getDiscussionListTutor: () =>{dispatch(getDiscussionListTutor())},
         getDiscussion: (payload) =>{dispatch(getDiscussion(payload))},
-        deleteDiscussion: (payload)=>{dispatch(deleteDiscussion(payload))}
+        deleteDiscussion: (payload) => dispatch(deleteDiscussion(payload))
     }
 }
 
