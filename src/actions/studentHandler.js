@@ -3,6 +3,7 @@
  */
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import * as errors from "./errorMessage";
 
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
@@ -30,10 +31,16 @@ export function getStudentList() {
             })
         })
         .catch(error =>{
-            console.log("error", error)
+            let errorMessage ="";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.GET_STUDENT_LIST_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
   }
@@ -57,9 +64,16 @@ export function getModulesList() {
             });
         })
         .catch( error =>{
+            let errorMessage ="";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.GET_MODULE_LIST_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
     }
