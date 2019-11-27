@@ -18,7 +18,9 @@ import { faBook,
     faMapMarkerAlt,
     faEnvelope,
     faPhone,
-    faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+    faArrowLeft,
+    faGlassCheers,
+    faSadCry} from '@fortawesome/free-solid-svg-icons';
 
     import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons' ;
 
@@ -48,5 +50,7 @@ export const iconMapping = {
     "map": faMapMarkerAlt,
     "phone": faPhone,
     "mail": faEnvelope,
-    "back": faArrowLeft
+    "back": faArrowLeft,
+    "glass": faGlassCheers,
+    "sad": faSadCry
 };

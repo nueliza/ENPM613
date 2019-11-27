@@ -57,6 +57,18 @@ class CreateDiscussion extends Component {
     render() {
         return (
             <div className="dashboard_body discussion_body">
+                <button
+                    type="button"
+                    className="btn btn-info getSatProSecondaryButton"
+                    style={{marginBottom: "10px"}}
+                    onClick={() => {
+                        this.props.history.push({
+                            pathname: '/discussions',
+                        })
+                    }}>
+                    <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                    &nbsp;<span>Back to Discussions</span>
+                </button>
                 <h3>Start a Discussion</h3>
                 <div className="NewDiscussionWrapper">
                     Discussion Heading
@@ -86,18 +98,7 @@ class CreateDiscussion extends Component {
                         Submit
                     </button>
                 </div>
-                <br />
-                <button
-                        type="button"
-                        className="btn btn-info getSatProSecondaryButton"
-                        onClick={() => {
-                            this.props.history.push({
-                                pathname: '/discussions',
-                            })
-                        }}>
-                        <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
-                        &nbsp;<span>Back to Discussions</span>
-                    </button>
+                
             </div>
         )
     }

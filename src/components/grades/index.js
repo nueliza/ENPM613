@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iconMapping } from "../utils/iconsMapping.js";
+import { withRouter } from "react-router-dom";
 import "./grades.css";
 import Loading from "../loading";
 import NotFound from "../NotFound";
@@ -12,7 +13,6 @@ class Grades extends Component {
 
     render() {
 
-        console.log("Grades", this.props.gradesList);
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
         return Object.keys(this.props.gradesList).length === 0 ? <NotFound /> :
@@ -30,7 +30,17 @@ class Grades extends Component {
                             return(
                                 <li className="list-group-item">{grade.exam_name} 
                                     <span className="Score"> Score:  {grade.grade}</span>
-                                    <button type="button" className="btn btn-info">View Answers</button>
+                                    <button type="button" 
+                                        className="btn btn-info"
+                                        onClick={() => {
+                                            this.props.getExam({ "exam_id": grade.exam_id});
+                                            this.props.history.push({
+                                                pathname: '/viewExam',
+                                            })
+                                        }}
+                                    >
+                                        
+                                        View Answers</button>
                                 </li>
                             )
                         })}
@@ -40,4 +50,4 @@ class Grades extends Component {
         )
     }
 }
-export default Grades;
+export default withRouter(Grades);

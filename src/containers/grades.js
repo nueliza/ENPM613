@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import Grades from '../components/grades';
 
-import {getGradesList} from "../actions/examHandler";
+import {getGradesList, getExam} from "../actions/examHandler";
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        getGradesList: (payload) =>(dispatch(getGradesList(payload)))
+        getGradesList: (payload) =>(dispatch(getGradesList(payload))),
+        getExam: (payload) =>(dispatch(getExam(payload))),
     }
 }
 
