@@ -105,7 +105,7 @@ export function createDiscussion(reqObject) {
         .then(response => {
             dispatch({
                 type: actionTypes.GET_DISCUSSION_SUCCESS,
-                payload: response.data.discuss_list
+                payload: response.data
             })
         })
         .catch(error =>{
@@ -144,4 +144,26 @@ export function deleteDiscussion(reqObject) {
     }
 }
 
+
+export function replyToDiscussion(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.REPLY_TO_DISCUSSION_STARTED
+        });
+        return axios.post(`/create_discuss_thread`, reqObject)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.REPLY_TO_DISCUSSION_SUCCESS,
+                    payload: response.data.message
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                dispatch({
+                    type: actionTypes.REPLY_TO_DISCUSSION_FAILED,
+                    error: error.response.data.message
+                })
+            })
+    }
+}
   
