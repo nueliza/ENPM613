@@ -4,6 +4,7 @@
 
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import * as errors from "./errorMessage";
 
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
@@ -17,6 +18,7 @@ axios.defaults.withCredentials = true
  * @param {Object} reqObject 
  */
 export function getExamListTutor() {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_EXAM_LIST_STARTED
@@ -29,9 +31,16 @@ export function getExamListTutor() {
                 })
             })
             .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.GET_EXAM_LIST_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }
@@ -42,6 +51,7 @@ export function getExamListTutor() {
 * @param {Object} reqObject 
 */
 export function getExamListStudent(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_EXAM_LIST_STARTED
@@ -54,9 +64,16 @@ export function getExamListStudent(reqObject) {
                 })
             })
             .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.GET_EXAM_LIST_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }
@@ -69,6 +86,7 @@ export function getExamListStudent(reqObject) {
  * @param {Object} reqObject 
  */
 export function createExam(reqObject) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
         dispatch({
             type: actionTypes.CREATE_EXAM_STARTED
@@ -77,13 +95,20 @@ export function createExam(reqObject) {
             .then(response => {
                 dispatch({
                     type: actionTypes.CREATE_EXAM_SUCCESS,
-                    payload: response.data.message
+                    payload: "You've successfully created the exam!"
                 })
             })
             .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.CREATE_EXAM_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }
@@ -103,13 +128,20 @@ export function submitExam(reqObject) {
         .then(response => {
             dispatch({
                 type: actionTypes.SUBMIT_EXAM_SUCCESS,
-                payload: response.data.message
+                payload: "You've successfully submitted the exam!"
             })
         })
         .catch( error =>{
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.SUBMIT_EXAM_FAILED,
-                error: error.response.data.message
+                error:errorMessage
             })
         })
     }
@@ -130,14 +162,20 @@ export function deleteExam(reqObject) {
             .then(response => {
                 dispatch({
                     type: actionTypes.DELETE_EXAM_SUCCESS,
-                    payload: response.data.message
+                    payload: "You've successfully deleted the exam!"
                 })
             })
             .catch(error => {
-                console.log(error)
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.DELETE_EXAM_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }
@@ -161,9 +199,16 @@ export function getExam(reqObject) {
                 })
             })
             .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.GET_EXAM_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }
@@ -186,9 +231,16 @@ export function getGradesList(reqObject) {
                 })
             })
             .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.GET_GRADES_LIST_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 })
             })
     }

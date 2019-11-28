@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import ToastContainer from "../toast";
 import Loading from "../loading";
-import NotFound from "../NotFound";
 
 const ExamList = (props) => {
     console.log("Here Exams Page", props.isTutor);
@@ -109,19 +108,19 @@ class Exams extends Component {
                     }
                     <br />
                     {
-                        this.props.isTutor ?
-                            <button
-                                type="button"
-                                className="btn btn-info getSatProSecondaryButton"
-                                onClick={() => {
-                                    this.props.history.push({
-                                        pathname: '/CreateExam',
-                                    })
-                                }}>
-                                <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
-                                &nbsp;<span>Add Exam</span>
-                            </button>
-                            : ''
+                    this.props.isTutor ?
+                        <button
+                            type="button"
+                            className="btn btn-info getSatProSecondaryButton"
+                            onClick={() => {
+                                this.props.history.push({
+                                    pathname: '/CreateExam',
+                                })
+                            }}>
+                            <FontAwesomeIcon icon={iconMapping["Plus"]} size="1x" />
+                            &nbsp;<span>Add Exam</span>
+                        </button>
+                        : ''
                     }
                 </div>
             </div>

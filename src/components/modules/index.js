@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import math from "./images/math.jpg";
 import ToastContainer from "../toast";
 import "./modules.css"
+import Footer from "../footer";
 
 
 class Modules extends Component {
@@ -18,7 +19,7 @@ class Modules extends Component {
         return (
             <Fragment>
                 <div className="dashboard_header">
-                    <h3> Main dashboard </h3>
+                    <h3> Modules </h3>
                     <div className="userInfo">
                         <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
@@ -33,7 +34,7 @@ class Modules extends Component {
                     {this.props.moduleList.map((module, id)=>{
                         let progress = module.progress + "%";
                         return(
-                            <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card">
+                            <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card" key={id}>
                                 <img className="card-img" src={math} alt="Math" />
                                 <div className="progress">
                                     <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{module.progress}%</b></div>
@@ -46,7 +47,7 @@ class Modules extends Component {
                         )
                     })}
                 </div>
-
+                
             </Fragment>)
     }
 }

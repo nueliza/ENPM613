@@ -145,7 +145,7 @@ class Dashboard extends Component {
                                     {isTutor ?
                                         <h3><FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" /> {this.state.selectedTab}</h3> :
                                         <React.Fragment>
-                                            <h3 className="cursor_pointer" onClick={() => this.props.history.push("/modules")}>{selectedModuleName} <span classname='breadcrumb'>></span></h3>
+                                            <h3 className="cursor_pointer" onClick={() => this.props.history.push("/modules")}>{selectedModuleName} <span >></span></h3>
                                             <h3>{'\u00A0'}<FontAwesomeIcon icon={iconMapping[this.state.selectedTab]} size="1x" />{'\u00A0'}{this.state.selectedTab}</h3>
                                         </React.Fragment> 
                                     }

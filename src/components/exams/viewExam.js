@@ -4,15 +4,14 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./exams.css";
 import Loading from "../loading";
-import NotFound from "../NotFound";
-
+import { Redirect } from 'react-router';
 
 class ViewExam extends Component {
 
     render() {
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
-        return Object.keys(this.props.selectedExam).length === 0 ? <NotFound /> :
+        return Object.keys(this.props.selectedExam).length === 0 ? <Redirect to="/exams"/> :
         (
             <div className="dashboard_body view_exam">
                 <div className="dashboard_subSection">
@@ -30,7 +29,7 @@ class ViewExam extends Component {
                     </button>
                     <br />
                     <h3>{this.props.selectedExamName}</h3>
-                    {this.props.selectedExamScore === ""? "":<h4>Score: &nbsp; {this.props.selectedExamScore}</h4> }
+                    {this.props.isTutor? "":<h4>Score: &nbsp; {this.props.selectedExamScore}</h4> }
                     <FontAwesomeIcon icon={iconMapping["tick"]}  color="#17a2b8" size="1x" /> Correct Answer &nbsp;
                     {this.props.isTutor? "" :<Fragment><FontAwesomeIcon icon={iconMapping["cross"]}  color="#ee442f" size="1x" /> Wrong Answer</Fragment>}
                     {this.props.selectedExam.map((question, id)=>{

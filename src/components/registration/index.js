@@ -45,24 +45,12 @@ class Registration extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        // this.validateField("fname");
-        // this.validateField("lname");
-        // this.validateField("password");
-        // this.validateField("username");
-        // this.validateField("email");
-        // this.validateField("phone");
-        // this.validateField("terms");
-
-        // if(this.state.fnameError === "" && this.state.lnameError === ""&& 
-        // this.state.passwordError === "" && this.state.phoneError === "" &&
-        // this.state.emailIdError === "" && this.state.termsError === ""&&
-        // this.state.usernameError === ""){
-        //     this.props.registerUser(this.state.registrationInfo);
-        //     this.props.onCloseModal();
-        // } 
+        console.log("Here", this.validateForm());
         if(this.validateForm()){
-            this.props.registerUser(this.state.registrationInfo);
-            this.props.onCloseModal();
+            this.props.registerUser(this.state.registrationInfo)
+            .then(()=>{
+                this.props.onCloseModal();
+            })
         }
     }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import "./exams.css";
 import Loading from "../loading";
-import NotFound from "../NotFound";
+import { Redirect } from 'react-router';
 
 const ExamQuestions =(props) =>{
     return(
@@ -69,7 +69,7 @@ class TakeExam extends Component {
         console.log("Here, Take Exam", this.state);
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
-        return Object.keys(this.props.selectedExam).length === 0 ? <NotFound /> :
+        return Object.keys(this.props.selectedExam).length === 0 ? <Redirect to="/exams"/> :
         (
             <div className="dashboard_body exam_body">
                 <div className="dashboard_subSection">

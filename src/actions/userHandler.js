@@ -4,6 +4,7 @@
 
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import * as errors from "./errorMessage";
 
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
@@ -22,16 +23,22 @@ export function loginUser(user) {
         return axios.post(`/login`, user)
         .then(result => {
             localStorage.setItem("token", result.data.token);
-            console.log("token",sessionStorage.getItem("token"))
             dispatch({
                 type: actionTypes.LOGIN_USER_SUCESS,
                 payload: result.data
             })
         })
         .catch(error => {
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = "Invalid Credentials"
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.LOGIN_USER_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
     }
@@ -54,9 +61,16 @@ export function registerUser(registerData) {
                 })
             })
             .catch(error => {
+                let errorMessage = ""
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
                 dispatch({
                     type: actionTypes.REGISTRATION_FAILED,
-                    error: error.response.data.message
+                    error: errorMessage
                 });
             })
     }
@@ -75,13 +89,13 @@ export function logoutUser() {
                 localStorage.clear();
                 dispatch({
                     type: actionTypes.LOGOUT_USER_SUCESS,
-                    payload: payload.data.message
+                    payload: "You've logged out sucessfully!"
                 });
             })
             .catch(error => {
                 dispatch({
                     type: actionTypes.LOGOUT_USER_FAILED,
-                    error: error.response.data.message
+                    error: errors.Error_500
                 });
             })
     }

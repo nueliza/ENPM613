@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import CardContainer from './cardConatiner';
 import Loading from "../loading";
-import NotFound from "../NotFound";
+import { Redirect } from 'react-router';
 
 class Flashcards extends Component {
     handleReset = () =>{
@@ -19,7 +19,7 @@ class Flashcards extends Component {
         console.log("this.props", this.props)
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
-        return this.props.flashcard === "" ? <NotFound /> :
+        return this.props.flashcard === "" ? <Redirect to="/dashboard" />:
         (
             <Fragment>
                 <button className="btn btn-info getSatProSecondaryButton" onClick={() =>{

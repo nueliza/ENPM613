@@ -3,6 +3,7 @@
  */
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
+import * as errors from "./errorMessage";
 
 axios.defaults.baseURL = 'https://get-sat-pro.herokuapp.com/api';
 axios.defaults.headers.common['Accept'] = 'application/json';
@@ -29,10 +30,16 @@ export function getFlashcardSets(reqObject) {
             })
         })
         .catch(error =>{
-            console.log("error", error)
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.GET_FC_SET_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
   }
@@ -56,9 +63,16 @@ export function getFlashcard(reqObject) {
             })
         })
         .catch(error =>{
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.GET_FC_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
   }
@@ -78,9 +92,16 @@ export function setPreference(reqObject) {
             })
         })
         .catch(error =>{
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.SET_PREF_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
   }
@@ -97,13 +118,20 @@ export function resetProgress(reqObject) {
         .then(result => {
             dispatch({
                 type: actionTypes.SET_PREF_SUCCESS,
-                payload: result.data.message
+                payload: "Flashcard Set progress reset successfully!!"
             })
         })
         .catch(error =>{
+            let errorMessage = "";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
             dispatch({
                 type: actionTypes.SET_PREF_FAILED,
-                error: error.response.data.message
+                error: errorMessage
             });
         })
   }

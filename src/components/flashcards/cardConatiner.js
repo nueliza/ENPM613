@@ -61,7 +61,7 @@ class CardContainer extends Component {
                     cardNumber={this.state.cardNumber}
                 />
                 <div className='card-container__dots-wrapper'>
-                    {this.generateDots()}
+                   
                 </div>
             </div>
         );
