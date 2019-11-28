@@ -63,6 +63,9 @@ const mapDispatchToProps = (dispatch) => {
         getStudentList : ()=>dispatch(getStudentList()),
     }
 }
-//mapStateToProps //Todo
+const mapStateToProps = state => ({
+    studentList: state.user.studentList
+})
+
 export default connect(null, mapDispatchToProps)(ManagePeople)
 // export default ManagePeople;
