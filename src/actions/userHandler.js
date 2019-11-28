@@ -23,7 +23,6 @@ export function loginUser(user) {
         return axios.post(`/login`, user)
         .then(result => {
             localStorage.setItem("token", result.data.token);
-            console.log("token",sessionStorage.getItem("token"))
             dispatch({
                 type: actionTypes.LOGIN_USER_SUCESS,
                 payload: result.data
@@ -32,7 +31,7 @@ export function loginUser(user) {
         .catch(error => {
             let errorMessage = "";
             if(error.response){
-                errorMessage = error.response.data.message
+                errorMessage = "Invalid Credentials"
             }
             else{
                 errorMessage = errors.Error_500
