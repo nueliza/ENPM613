@@ -2,8 +2,18 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import React, { Component } from 'react';
 import { getStudentList } from '../../actions/studentHandler';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {connect} from 'react-redux'
 
 class ManagePeople extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    UNSAFE_componentWillMount(){
+        this.props.getStudentList();
+    }
+
     render(){
         //Call API to get list of student.
         //Call API to check whether login is sucessfull and update store.
@@ -35,4 +45,11 @@ class ManagePeople extends Component {
     }
 }
 
-export default ManagePeople;
+const mapDispatchToProps = (dispatch) => {
+    return{
+        getStudentList : ()=>dispatch(getStudentList()),
+    }
+}
+//mapStateToProps //Todo
+export default connect(null, mapDispatchToProps)(ManagePeople)
+// export default ManagePeople;
