@@ -40,7 +40,6 @@ class App extends React.Component {
           <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/dashboard' component={Dashboard} />
   
           <Route path="/ManagePeople" component={props => <ManagePeople {...props}/>} /> {/**TODO removed after development */}
-          <Route path="/ManagePeopleTest" component={props => <ManagePeople {...props}/>} /> {/**TODO removed after development */}
           <Route path="/CreateDiscussion" component={props => <CreateDiscussion {...props}/>} /> {/**TODO removed after development */}
           <Route path="/viewExam" component={props => <ViewExam {...props}/>} /> {/**TODO removed after development */}
           <Route path="/discussion" component={props => <Discussion {...props}/>} /> {/**TODO removed after development */}
