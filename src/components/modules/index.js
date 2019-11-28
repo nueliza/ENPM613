@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import math from "./images/math.jpg";
 import ToastContainer from "../toast";
 import "./modules.css"
+import Footer from "../footer";
 
 
 class Modules extends Component {
@@ -46,7 +47,7 @@ class Modules extends Component {
                         )
                     })}
                 </div>
-
+                
             </Fragment>)
     }
 }
