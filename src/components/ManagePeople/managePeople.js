@@ -65,6 +65,35 @@ class ManagePeople extends Component {
                         </li>
                     })}
                 </ul>
+                <h2>Tutor List</h2>
+                <ul className="list-group">
+                    {this.props.studentList.map((student, id) => {
+                        return <li className="list-group-item" key={id}>
+                             <div className="avatar">
+                                {student.fname.charAt(0)}{student.lname.charAt(0)}
+                            </div>
+                            &nbsp; &nbsp;
+                            <span>
+                                {student.fname} {student.lname}
+                            </span>
+                            <button onClick={this.deleteStudent} type="button" className="btn btn-info">Delete</button>
+                        </li>
+                    })}
+                </ul>
+                {/* <ul className="list-group">
+                    {this.props.tutorList.map((tutor, id) => {
+                        return <li className="list-group-item" key={id}>
+                             <div className="avatar">
+                                {tutor.fname.charAt(0)}{tutor.lname.charAt(0)}
+                            </div>
+                            &nbsp; &nbsp;
+                            <span>
+                                {tutor.fname} {tutor.lname}
+                            </span>
+                            <button onClick={this.deleteStudent} type="button" className="btn btn-info">Delete</button>
+                        </li>
+                    })}
+                </ul> */}
                 </div>
             </div>
         )
