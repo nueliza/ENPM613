@@ -62,19 +62,7 @@ class ManagePeople extends Component {
                             <button type="button" className="btn btn-info">Delete</button>
                         </li>
                     })}
-                        <li className="list-group-item">Osama Bin Laden 
-                            <FontAwesomeIcon 
-                                icon={iconMapping["Trash"]} 
-                                size="1x" 
-                                className={this .props.isTutor?"": "hide"}
-                                style={{color: "var(--alert-color)", float: "right", marginTop: "10px", marginLeft: "10px"}}
-                            />
-                            <button type="button" className="btn btn-info">Delete</button>
-                        </li>
-                        <li className="list-group-item">Donald Trump <button type="button" className="btn btn-info">Delete</button></li>
-                        <li className="list-group-item">Adolf Hitler <button type="button" className="btn btn-info">Delete</button></li>
-                        <li className="list-group-item">Make America Great Again <button type="button" className="btn btn-info">Delete</button></li>
-                    </ul>
+                </ul>
                 </div>
             </div>
         )
