@@ -20,6 +20,8 @@ class Login extends Component {
         this.state = {
             username: "",
             password: "",
+            usernamError: "",
+            passwordError: ""
         }
     }
 
@@ -36,19 +38,41 @@ class Login extends Component {
     }
     onSubmit = (e) => {
         e.preventDefault();
+        if(this.validateForm()){
+            this.setState({
+                username: "",
+                password: "",
+                usernamError:"",
+                passwordError:""
+            })
+            //Call API to check whether login is sucessfull and update store.
+            const payload = {
+                "username": this.state.username,
+                "password": this.state.password
+            }
+    
+            this.props.loginUser(payload);
+        }
+    }
 
-        this.setState({
-            username: "",
-            password: "",
-        })
-        //Call API to check whether login is sucessfull and update store.
-        const payload = {
-            "username": this.state.username,
-            "password": this.state.password
+    validateForm = () =>{
+        let username = this.state.username;
+        let password = this.state.password;
+        let formValid = true;
+
+        if(username === ""){
+            formValid = false;
+            this.setState({usernamError: "Username is Required"});
+        }
+            
+        if(password === ""){
+            formValid = false;
+            this.setState({passwordError: "Password is Required"});
         }
 
-        this.props.loginUser(payload);
+        return formValid
     }
+
     render() {
         if (this.props.loading) return <Loading show={this.props.loading} />
         if (Object.keys(this.props.userInfo).length !== 0) return <Redirect to='/modules' /> 
@@ -77,6 +101,8 @@ class Login extends Component {
                                         onChange={this.onChangePassword}
                                     />
                                 </div>
+                                <ErrorMessage messageType="error" content={this.state.usernamError}/>
+                                <ErrorMessage messageType="error" content={this.state.passwordError}/>
                                 <ErrorMessage messageType="error" content={this.props.loginError}/>
                                 <input type="submit"
                                     className="btn btn-primary getSatProSubmitBtn"

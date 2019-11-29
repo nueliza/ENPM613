@@ -20,7 +20,9 @@ import { faBook,
     faPhone,
     faArrowLeft,
     faGlassCheers,
-    faSadCry} from '@fortawesome/free-solid-svg-icons';
+    faSadCry,
+    faPlayCircle,
+    faRedo} from '@fortawesome/free-solid-svg-icons';
 
     import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons' ;
 
@@ -52,5 +54,7 @@ export const iconMapping = {
     "mail": faEnvelope,
     "back": faArrowLeft,
     "glass": faGlassCheers,
-    "sad": faSadCry
+    "sad": faSadCry,
+    "play": faPlayCircle,
+    "redo": faRedo
 };

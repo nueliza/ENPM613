@@ -21,7 +21,6 @@ class Discussions extends Component {
             "model_name": "Discussion",
             "model_id": discussion_id
         }
-        console.log("here", this.props.deleteDiscussion);
         this.props.deleteDiscussion(reqObject)
             .then(() => {
                 if (this.props.isTutor)

@@ -17,7 +17,6 @@ axios.defaults.withCredentials = true;
 
 export function getStudentList() {
     axios.defaults.withCredentials = true;
-    console.log("token2",sessionStorage.getItem("token"))
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
         dispatch({

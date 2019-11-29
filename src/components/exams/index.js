@@ -6,7 +6,6 @@ import ToastContainer from "../toast";
 import Loading from "../loading";
 
 const ExamList = (props) => {
-    console.log("Here Exams Page", props.isTutor);
     return (
         <ul className="list-group">
             {props.examList.map((exam, idx) => {
