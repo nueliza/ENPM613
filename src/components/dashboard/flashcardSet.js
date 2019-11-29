@@ -12,15 +12,11 @@ class FlashcardSet extends Component {
         this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})
     }
 
-    handleReset = () =>{
-        //TODO
-        // let payload = {
-        //     "set_id": this.props.flashcard.set_id
-        // }
-        // this.props.resetProgress(payload)
-        // .then(()=>{
-        //     this.props.getFlashcard({"set_id": this.props.flashcard.set_id})
-        // })
+    handleReset = (set_id) =>{
+        this.props.resetProgress({"set_id": set_id})
+        .then(()=>{
+            this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})
+        })
     }
 
     render() {
@@ -51,7 +47,7 @@ class FlashcardSet extends Component {
                                         <button className="btn btn-info getSatProSecondaryButton"
                                         style={{marginLeft: "10px"}}
                                          onClick={() =>{
-                                            this.handleReset()
+                                            this.handleReset(set.set_id)
                                         }}>
                                             <FontAwesomeIcon icon={iconMapping["redo"]} size="1x" /> &nbsp;
                                             Reset Progress 
