@@ -7,14 +7,9 @@ import { Redirect } from 'react-router';
 import Welcome from "./containers/welcome";
 import Modules from "./containers/modules";
 import Dashboard from "./containers/dashboard";
-import ViewExam from "./components/exams/viewExam";
-import Discussion from "./components/discussions/discussion";
-import Files from "./components/files";
-import Flashcards from "./components/flashcards";
-import CreateDiscussion from "./components/discussions/createDiscussion";
-import Grades from "./containers/grades";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
+  console.log("PrivateRoute", authed);
   return (
     <Route
       {...rest}
@@ -29,26 +24,75 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
 
 class App extends React.Component {
   render(){
+    let dashboardAuthed = false;
+    if(this.props.userInfo.user_type === "Tutor"|| this.props.userInfo.user_type === "Admin"){
+      dashboardAuthed = Object.keys(this.props.userInfo).length !== 0 ? true : false;
+    }
+    else{
+      dashboardAuthed = (Object.keys(this.props.userInfo).length !== 0 && 
+      this.props.selectedModuleId !== "") ? true : false;
+    }
     return (
       <React.Fragment>
-        
         <Router>
           <Route path="/" exact component={Welcome} />  
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/modules' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/dashboard' component={Dashboard} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/CreateDiscussion' component={Dashboard} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Discussion' component={Dashboard} />
-          {/* <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Disucssions' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Exams' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/TakeExam' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/CreateExam' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/ViewExam' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Grades' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Files' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Flashcards' component={Modules} />
-          <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/Students' component={Modules} /> */}
+          <PrivateRoute 
+            authed ={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path ='/modules' 
+            component={Modules} 
+          />
+          <PrivateRoute 
+            authed = {dashboardAuthed}
+            path ='/dashboard' 
+            component={Dashboard} 
+          />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/CreateDiscussion' 
+            component={Dashboard} 
+          />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/Discussion' 
+            component={Dashboard} 
+          />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/Discussions' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/Exams' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/CreateExam' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/ViewExam' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/TakeExam' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/Grades' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/Files' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/Flashcards' 
+            component={Dashboard} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/Students' 
+            component={Dashboard} />
         </Router>
-       
       </React.Fragment>
     );
   }
@@ -58,7 +102,7 @@ class App extends React.Component {
 const mapStateToProps = (state) =>{
   return{
     userInfo : state.user.userInfo,
-    loginError: state.user.loginError
+    selectedModuleId: state.user.selectedModuleId,
   }
 }
 
