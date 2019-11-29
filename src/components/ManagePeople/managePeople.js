@@ -1,6 +1,7 @@
 import { iconMapping } from "../utils/iconsMapping.js";
 import React, { Component } from 'react';
 import { getStudentList } from '../../actions/studentHandler';
+import { getTutorsList } from '../../actions/studentHandler';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {connect} from 'react-redux';
 import Loading from '../loading';
@@ -19,6 +20,7 @@ class ManagePeople extends Component {
 
     UNSAFE_componentWillMount(){
         this.props.getStudentList();
+        this.props.getTutorsList();
     }
 
     render(){
@@ -71,13 +73,15 @@ class ManagePeople extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        getStudentList : ()=>dispatch(getStudentList()),
+        getStudentList : ()=> dispatch(getStudentList()),
+        getTutorsList: ()=> dispatch(getTutorsList()),
         logoutUser: () => dispatch(logoutUser()),
     }
 }
 const mapStateToProps = state => ({
     userInfo: state.user.userInfo,
     studentList: state.student.studentList,
+    tutorList: state.student.tutorList,
     loading: state.loader.loading
 })
 

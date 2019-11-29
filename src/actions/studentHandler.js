@@ -44,6 +44,39 @@ export function getStudentList() {
         })
   }
 }
+/**
+ * Gets the list of all Tutors
+ */
+
+export function getTutorsList() {
+    axios.defaults.withCredentials = true;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_TUTOR_LIST_STARTED
+        });
+        return axios.get(`/get_tutors`)
+        .then(result => {
+            dispatch({
+                type: actionTypes.GET_TUTOR_LIST_SUCCESS,
+                payload: result.data.tutors
+            })
+        })
+        .catch(error =>{
+            let errorMessage ="";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
+            dispatch({
+                type: actionTypes.GET_TUTOR_LIST_FAILED,
+                error: errorMessage
+            });
+        })
+  }
+}
 
 /**
  * Gets the list of modules available to students
