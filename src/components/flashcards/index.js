@@ -10,7 +10,6 @@ class Flashcards extends Component {
     
 
     render() {
-        console.log("this.props", this.props)
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
         return this.props.flashcard === "" ? <Redirect to="/dashboard" />:

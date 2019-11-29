@@ -11,7 +11,6 @@ class Card extends Component {
    
     render() {
 
-      console.log("FC_d", this.props.cardId);
       const content = this.state.showAnswer ? this.props.backContent : this.props.frontContent;
       const iconClass = this.state.showAnswer ? 'reply' : 'share';
       const cardClass = this.state.showAnswer ? 'back' : '';

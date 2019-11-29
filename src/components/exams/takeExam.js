@@ -66,7 +66,6 @@ class TakeExam extends Component {
 
     render() {
 
-        console.log("Here, Take Exam", this.state);
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
         return Object.keys(this.props.selectedExam).length === 0 ? <Redirect to="/exams"/> :

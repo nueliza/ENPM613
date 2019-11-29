@@ -32,7 +32,6 @@ class Registration extends Component {
     }
 
     handleChange = (e) => {
-        console.log(e)
         let registrationInfo = this.state.registrationInfo;
         if (e.target.name !== "terms") {
             registrationInfo[e.target.name] = e.target.value;
@@ -45,7 +44,6 @@ class Registration extends Component {
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        console.log("Here", this.validateForm());
         if(this.validateForm()){
             this.props.registerUser(this.state.registrationInfo)
             .then(()=>{

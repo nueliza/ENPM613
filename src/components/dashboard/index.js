@@ -42,7 +42,6 @@ class Dashboard extends Component {
         const isTutor = userInfo.user_type === "Tutor" ? true : false;
         const selectedModuleId = this.props.selectedModuleId;
         const selectedModuleName = this.props.selectedModuleName;
-        console.log("SelectedModule", selectedModuleId, selectedModuleName);
 
         return (
             <Router>
