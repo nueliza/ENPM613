@@ -7,8 +7,7 @@ import { Redirect } from 'react-router';
 import Welcome from "./containers/welcome";
 import Modules from "./containers/modules";
 import Dashboard from "./containers/dashboard";
-import Header from "./components/header";
-import Footer from "./components/footer";
+
 import ViewExam from "./components/exams/viewExam";
 import Discussion from "./components/discussions/discussion";
 import Files from "./components/files";
@@ -34,7 +33,6 @@ class App extends React.Component {
       <React.Fragment>
         
         <Router>
-          <Header />
           <Route path="/" exact component={Welcome} />  
           <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/modules' component={Modules} />
           <PrivateRoute authed={Object.keys(this.props.userInfo).length === 0? false : true } path='/dashboard' component={Dashboard} />
@@ -46,7 +44,6 @@ class App extends React.Component {
           <Route path="/files" component={props => <Files />} /> {/**TODO removed after development */}
           <Route path="/grades" component={props => <Grades />} /> {/**TODO be removed after development */}
           <Route path="/flashcards" component={props => <Flashcards />} />  {/**TODO be removed after development */}
-          <Footer />
         </Router>
        
       </React.Fragment>

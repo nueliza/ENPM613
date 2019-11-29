@@ -7,6 +7,8 @@ import logo from "../dashboard/images/Logo.png";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import WelcomeCarousel from "../carousel";
+import Header from "../header";
+import Footer from "../footer";
 import success1 from "../successStories/images/success1.jpg";
 import success2 from "../successStories/images/success2.jpg";
 import success3 from "../successStories/images/success3.jpg";
@@ -41,6 +43,7 @@ class Welcome extends Component {
     render() {
         return (
             <Fragment>
+                <Header />
                 <ToastContainer />
                 <div className="information">
                     <div className="welcomeLogo">
@@ -113,6 +116,7 @@ class Welcome extends Component {
                     </div>
 
                 </div>
+                <Footer />
                 <Login
                     showModal={this.state.showLoginModal}
                     onCloseModal={this.onCloseLoginModal}

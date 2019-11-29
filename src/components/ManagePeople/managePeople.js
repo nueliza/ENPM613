@@ -2,7 +2,8 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import React, { Component } from 'react';
 import { getStudentList } from '../../actions/studentHandler';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import Loading from '../loading';
 
 class ManagePeople extends Component {
 
@@ -22,7 +23,16 @@ class ManagePeople extends Component {
         //DONE add delete button to each student
         //Connect API call to delete a student with each delete button
         //Implement secondary login before all of this functionality
-        return (
+        if(this.props.loading) return <Loading />
+
+        //redirects to Not found page if the getStudentList API fails
+
+        return Object.keys(this.props.studentList).length === 0? 
+        <div>
+            Where did all the students go??
+        </div>
+        :
+        (
             
             <div className="dashboard_body student_body">
                 <h2>Student List</h2>
@@ -64,8 +74,9 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 const mapStateToProps = state => ({
-    studentList: state.user.studentList
+    studentList: state.student.studentList,
+    loading: state.loader.loading
 })
 
-export default connect(null, mapDispatchToProps)(ManagePeople)
+export default connect(mapStateToProps, mapDispatchToProps)(ManagePeople)
 // export default ManagePeople;

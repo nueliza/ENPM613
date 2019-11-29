@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-
+import { withRouter } from "react-router-dom";
 import "../modules/modules.css";
 import modules from "./images/courses.png";
 import peopele from "./images/people.jpg";
@@ -35,7 +35,7 @@ class AdminDashboard extends Component {
                         </div>
                     </div>
                     <div className="card">
-                        <img className="card-img" src={peopele} alt="People" />
+                        <img className="card-img" src={peopele} alt="People" onClick={()=> this.props.history.push('/managePeople')}/>
                         <hr />
                         <div className="card-body">
                             <h5 className="card-title">Manage People</h5>
@@ -50,4 +50,4 @@ class AdminDashboard extends Component {
             </Fragment>)
     }
 }
-export default AdminDashboard;
+export default withRouter(AdminDashboard);
