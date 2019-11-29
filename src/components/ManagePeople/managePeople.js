@@ -23,10 +23,10 @@ class ManagePeople extends Component {
 
     render(){
         
-        //Call API to get list of student.
+            //DONE Call API to get list of student.
         //Call API to check whether login is sucessfull and update store.
         //Call API to get list of tutors
-        //DONE add delete button to each student
+            //DONE add delete button to each student
         //Connect API call to delete a student with each delete button
         //Implement secondary login before all of this functionality
         if(this.props.loading) return <Loading />
@@ -59,7 +59,7 @@ class ManagePeople extends Component {
                             <span>
                                 {student.fname} {student.lname}
                             </span>
-                            <button type="button" className="btn btn-info">Delete</button>
+                            <button onClick={this.deleteStudent} type="button" className="btn btn-info">Delete</button>
                         </li>
                     })}
                 </ul>
