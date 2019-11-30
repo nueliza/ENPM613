@@ -62,7 +62,7 @@ class Welcome extends Component {
                             <button className="btn btn-link" onClick={() => this.setState({ showLoginModal: true })}>Sign In </button>
                             <button className="btn btn-info" onClick={() => this.setState({ showRegistrationModal: true })}>Sign up </button>
                             &nbsp;
-                            <button className="btn btn-info" onClick={() => this.props.logoutUser()}> Sign out</button>
+                            {/* <button className="btn btn-info" onClick={() => this.props.logoutUser()}> Sign out</button> */}
                         </div>
                     </div>
                 </div>
