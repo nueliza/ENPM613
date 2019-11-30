@@ -89,3 +89,16 @@ visibility: visible;
     vertical-align: top;
 }
 
+.card-body{
+    margin: 0 auto !important;
+}
+
+.flashcardSetDashboard .card{
+    width: 30%;
+    margin-top: 20px;
+}
+
+.flashcardSetDashboard .card-title{
+    text-align: center;
+}
+

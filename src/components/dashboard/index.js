@@ -34,7 +34,6 @@ class Dashboard extends Component {
 
     }
     logout = (e) =>{
-        e.preventDefault();
         this.props.logoutUser();
     }
 
@@ -43,7 +42,6 @@ class Dashboard extends Component {
         const isTutor = userInfo.user_type === "Tutor" ? true : false;
         const selectedModuleId = this.props.selectedModuleId;
         const selectedModuleName = this.props.selectedModuleName;
-        console.log("SelectedModule", selectedModuleId, selectedModuleName);
 
         return (
             <Router>
@@ -152,7 +150,11 @@ class Dashboard extends Component {
                                     <div className="userInfo">
                                         <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
                                         <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
-                                        <a href="/" onClick={this.logout}>Sign out</a>
+                                        <button className="btn btn-info getSatProSecondaryButton" onClick={() => {
+                                            this.logout()
+                                        }}>
+                                            Sign out
+                                        </button>
                                     </div>
                                 </div>
 
