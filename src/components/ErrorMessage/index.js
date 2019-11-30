@@ -6,7 +6,6 @@ import "../global.css";
 
 class ErrorMessage extends Component{
     render(){
-        console.log("error", this.props.content);
         let hide = this.props.content === "" || this.props.content === undefined ? "hide": "";
         let messageType = this.props.messageType === "error"? "errorMessage ": "warningMessage ";
         return(

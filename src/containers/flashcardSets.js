@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import FlashcardSets from '../components/dashboard/flashcardSet';
-import { getFlashcardSets, getFlashcard } from "../actions/flashcardsHandler";
+import { getFlashcardSets, getFlashcard,resetProgress } from "../actions/flashcardsHandler";
 
 const mapDispatchToProps = (dispatch) => {
     return{
         getFlashcardSets: (payload) =>(dispatch(getFlashcardSets(payload))),
-        getFlashcard: (payload) =>(dispatch(getFlashcard(payload)))
+        getFlashcard: (payload) =>(dispatch(getFlashcard(payload))),
+        resetProgress: (payload) =>dispatch(resetProgress(payload)),
     }
 }
 

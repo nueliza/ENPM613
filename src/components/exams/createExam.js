@@ -152,27 +152,15 @@ class CreateExam extends Component {
         e.preventDefault();
         //TODO: Input field validations
 
-        console.log("Exam", this.state.Exam);
         const reqObject ={
             "exam_name":this.state.examName,
             "questions": this.state.Exam
         }
-        console.log("reqObject", reqObject);
         this.props.createExam(reqObject)
         .then(()=>{
             this.props.history.push("/exams")
         })
     }
-
-//    isFormValid = (value, itemId) =>{
-
-//         if(value === ""){
-//             this.setState({
-//                 errors: this.state.errors.push({ id: itemId, message: "This field is required" })
-//             });
-//             console.log("isFormValid", this.state.errors);
-//         }
-//    }
 
     handleChange = (e) => {
         let Exam = [...this.state.Exam]
@@ -182,8 +170,6 @@ class CreateExam extends Component {
             this.setState({examName: e.target.value})
         }
         else {
-            console.log("HERE IN", e.target.dataset.id, 
-            e.target.name, e.target.value)
             Exam[e.target.dataset.id][e.target.name] = e.target.value;
         }
         this.setState({ Exam });
