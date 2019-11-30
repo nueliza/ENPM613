@@ -16,6 +16,10 @@ import flashCard from "../serviceHighlights/images/flashCard.png";
 import Header from "../header";
 import Footer from "../footer";
 
+
+/**
+ * Representational component for welcome page
+ */
 class Welcome extends Component {
     constructor(props) {
         super(props);

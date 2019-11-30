@@ -10,6 +10,9 @@ import { Redirect } from 'react-router';
 import './login.css';
 import ErrorMessage from '../ErrorMessage';
 
+/**
+ * Representational component for login functionality.
+ */
 class Login extends Component {
     constructor(props) {
         super(props);

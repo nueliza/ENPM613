@@ -3,6 +3,10 @@ import Loader from 'react-loader-spinner';
 
 import "./loader.css";
 
+/**
+ * Representational Component for loader.
+ * This component is reused through the aplication.
+ */
 class Loading extends Component {
     render() {
         return (

@@ -14,7 +14,7 @@ axios.defaults.withCredentials = true
 
 
 /**
- * Gets the list of exams for a particular module for a tutor
+ * Communicates with the get_exams and gets the list of exams for a particular module for a tutor
  * @param {Object} reqObject 
  */
 export function getExamListTutor() {
@@ -47,7 +47,7 @@ export function getExamListTutor() {
 }
 
 /**
-* getExamlist gets the list of exams for a particular module for a student
+* Communicates with the get_exams API and gets the list of exams for a particular module for a student
 * @param {Object} reqObject 
 */
 export function getExamListStudent(reqObject) {
@@ -82,7 +82,7 @@ export function getExamListStudent(reqObject) {
 
 
 /**
- * Creates a new exam
+ * Communicats with the create_exam API and creates an exam 
  * @param {Object} reqObject 
  */
 export function createExam(reqObject) {
@@ -115,7 +115,7 @@ export function createExam(reqObject) {
 }
 
 /**
- * Submits the exam taken by the student
+ * Communicates with the submit_exam API and submits the exam taken by the student
  * @param {Object} reqObject 
  */
 
@@ -150,7 +150,7 @@ export function submitExam(reqObject) {
 
 
 /**
- * Deletes a particular Exam
+ * Communicates with delete_exam API and deletes a particular Exam
  * @param {Object} reqObject 
  */
 export function deleteExam(reqObject) {
@@ -182,7 +182,7 @@ export function deleteExam(reqObject) {
 }
 
 /**
-* Gets the details of a particular exam
+* Communicates wuth the view_exam and gets the details of a particular exam
 * @param {Object} reqObject 
 */
 export function getExam(reqObject) {
@@ -215,7 +215,7 @@ export function getExam(reqObject) {
 }
 
 /**
- * Gets the list of grades for a particular module
+ * Communicates with the view_grades API and gets the list of grades for a particular module
  * @param {Object} reqObject 
  */
 export function getGradesList(reqObject) {

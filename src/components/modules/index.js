@@ -6,7 +6,10 @@ import ToastContainer from "../toast";
 import "./modules.css"
 import logo from "../dashboard/images/Logo.png";
 
-
+/**
+ * Representational compoenent for the modules in the system. 
+ * Tutor do not have this page. 
+ */
 class Modules extends Component {
     
     logout = (e) =>{

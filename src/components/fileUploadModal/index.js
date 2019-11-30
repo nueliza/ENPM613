@@ -5,6 +5,9 @@ import Dropzone from 'react-dropzone-uploader';
 
 import "./modal.css";
 
+/**
+ * Representational component for File upload modal
+ */
 const FileUploader = (props) =>{
     // specify upload params and url for your files
     const getUploadParams = ({ meta }) => { return { url: 'https://httpbin.org/post' } }

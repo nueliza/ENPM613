@@ -1,5 +1,5 @@
 /**
- * Contains service handlers for all user account
+ * Service handlers for all user account
  */
 
 import * as actionTypes from "./actionTypes";
@@ -30,8 +30,11 @@ export function loginUser(user) {
         })
         .catch(error => {
             let errorMessage = "";
-            if(error.response){
-                errorMessage = "Invalid Credentials"
+            if(error.response.status === 400){
+                errorMessage = "You're already logged in. Please try again."
+            }
+            else if(error.response.status === 401){
+                errorMessage = "Invalid credentials"
             }
             else{
                 errorMessage = errors.Error_500
@@ -77,7 +80,7 @@ export function registerUser(registerData) {
 
 }
 /**
- * Communicates with the logout API, removes the JWT token from the local storage, and logs out the user
+ * Communicates with the logout API, removes the JWT token, and store from the local storage, and logs out the user
  */
 export function logoutUser() {
     return async dispatch => {

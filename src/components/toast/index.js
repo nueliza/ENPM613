@@ -5,6 +5,10 @@ import { resetToast } from "../../actions";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/**
+ * Representational component for toast messages.
+ * These are used thorugh out the system
+ */
 class ToastContainer extends Component {
     render() {
         setTimeout(function(){ this.props.resetToast();}.bind(this),6000);

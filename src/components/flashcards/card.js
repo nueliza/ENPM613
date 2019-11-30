@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-
+/**
+ * Representational Component for Flashcards. 
+ * This component allows users to set preference to each flashcard using Easy, Medium or Hard buttons.
+ * User can move to the next flashcard only after setting preference for the current flashcard
+ */
 class Card extends Component {
   
     constructor() {

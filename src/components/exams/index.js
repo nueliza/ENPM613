@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
 import ToastContainer from "../toast";
 import Loading from "../loading";
-
+/**
+ * Representational component to show the list of exams.
+ * Tutors can delete a selected exam. Tutors can also navigate to create exam page from here.
+ * Students are take the exams which are not yet completed. They also view their answers for the submitted exams
+ */
 const ExamList = (props) => {
     return (
         <ul className="list-group">
@@ -85,7 +89,6 @@ class Exams extends Component {
 
     render() {
         if (this.props.loading) return <Loading />
-        //redirects to Not found page if the getExamsList API fails
         return (
             <div className="dashboard_body">
                 <div className="dashboard_subSection">

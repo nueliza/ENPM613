@@ -9,7 +9,9 @@ import { withRouter } from "react-router-dom";
 import ToastContainer from "../toast";
 
 
-
+/**
+ * Representational component for student registration
+ */
 class Registration extends Component {
     constructor(props) {
         super(props);
@@ -214,9 +216,9 @@ class Registration extends Component {
                             <input type="text" name="lname"
                                 placeholder="Your last name"
                             />
-                            <ErrorMessage content={this.state.errors["fname"]} messageType="error" />
-                            <ErrorMessage content={this.state.errors["lname"]} messageType="error" />
                         </div>
+                        <ErrorMessage content={this.state.errors["fname"]} messageType="error" />
+                        <ErrorMessage content={this.state.errors["lname"]} messageType="error" />
                         <div className="form-group">
                             <FontAwesomeIcon icon={faUserCircle} size="2x" color="#601A4A" />&nbsp;
                             <input type="text" name="username"

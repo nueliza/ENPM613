@@ -7,6 +7,11 @@ import ToastContainer from "../toast/index";
 
 import "./index.css";
 
+/**
+ * Representational component for list of discussions.
+ * Users can naviagte to view a particular discussion.
+ * Tutors can delete discussions
+ */
 class Discussions extends Component {
 
     UNSAFE_componentWillMount() {
@@ -32,9 +37,6 @@ class Discussions extends Component {
 
     render() {
         if (this.props.loading) return <Loading />
-
-        //redirects to Not found page if the getStudentList API fails
-        //TODO check if discussion call is success
         return (
             <div className="dashboard_body discussionList_body">
                 <ToastContainer />

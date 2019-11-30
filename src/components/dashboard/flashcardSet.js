@@ -1,12 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router-dom";
+
 import Loading from "../loading";
 import NotFound from "../NotFound";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import './dashboard.css';
 
+/**
+ * Representational Component for Flashcard sets for a particular module.
+ * Users can choose their flashcard sets to get started with it or reset the progress in a set.
+ */
 class FlashcardSet extends Component {
     componentDidMount() {
         this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})

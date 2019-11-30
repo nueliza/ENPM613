@@ -4,6 +4,10 @@ import "./exams.css";
 import Loading from "../loading";
 import { Redirect } from 'react-router';
 
+/**
+ * Representation component for taking an exam
+ */
+
 const ExamQuestions =(props) =>{
     return(
         props.exam.map((question, id)=>{

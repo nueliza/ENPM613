@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
-
 import "../modules/modules.css";
 import modules from "./images/courses.png";
 import peopele from "./images/people.jpg";
 
+
+/**
+ * Representational Compoenent for Admin dashboard, helps admins to navigate to Manage People, Manage Module pages
+ */
 class AdminDashboard extends Component {
     logout = (e) =>{
         e.preventDefault();

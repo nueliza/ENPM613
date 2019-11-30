@@ -6,6 +6,10 @@ import { createExam} from "../../actions/examHandler";
 import "./exams.css";
 import ErrorMessage from "../ErrorMessage";
 
+/**
+ * Representation component for creating an exam.
+ */
+
 const QuestionInput = (props) => {
     return (
         props.Exam.map((item, id) => {

@@ -4,9 +4,11 @@ import Immutable from 'immutable';
 import _ from 'lodash';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iconMapping } from "../utils/iconsMapping.js";
-
 import "./flashcards.css";
 
+/**
+ * Wrapper component to represent Flashcards
+ */
 class CardContainer extends Component {
     constructor() {
         super();
