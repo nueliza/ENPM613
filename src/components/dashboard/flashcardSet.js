@@ -27,12 +27,13 @@ class FlashcardSet extends Component {
             <Fragment>
                 <div className="modules flashcardSetDashboard">
                     {this.props.flashcardSets.map((set, id)=>{
+                        let progress = set.fc_progress + '%'
                         return(
                             <div className="card" key={id} >
                                 <div className="card-body">
                                     <h5 className="card-title">{set.set_name}</h5>
                                     <div className="progress" style={{marginBottom: "10px"}}>
-                                        <div className="progress-bar" style={{ width: "50%", backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
+                                        <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{progress}</b></div>
                                     </div>
                                        <div>
                                         <button className="btn btn-info getSatProSecondaryButton" onClick={() => {
