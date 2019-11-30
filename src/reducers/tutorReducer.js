@@ -13,6 +13,7 @@ const studentReducer = (state = initialState, action) => {
         case actionTypes.GET_TUTOR_LIST_SUCCESS: {
             return {...state, tutorList: action.payload}
         }
+
            
         default:
             return state

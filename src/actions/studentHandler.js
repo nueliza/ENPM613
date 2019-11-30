@@ -53,13 +53,14 @@ export function getTutorsList() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
         dispatch({
-            type: actionTypes.GET_TUTOR_LIST_STARTED
+            type: actionTypes.GET_TUTOR_LIST_SUCCESS
         });
         return axios.get(`/get_tutors`)
         .then(result => {
+            console.log("Tutor: ", result)
             dispatch({
                 type: actionTypes.GET_TUTOR_LIST_SUCCESS,
-                payload: result.data.tutors
+                payload: result.data.user_lis
             })
         })
         .catch(error =>{
@@ -75,7 +76,33 @@ export function getTutorsList() {
                 error: errorMessage
             });
         })
-  }
+    }
+}
+
+export function deleteUser(reqObject, user_type) {
+    return async dispatch => {
+        return axios.post(`/delete`, reqObject)
+            .then(response => {
+                console.log("Response for delete user!:: ", response)
+               /* dispatch({
+                    type: actionTypes.DELETE_EXAM_SUCCESS,
+                    payload: "You've successfully deleted the exam!"
+                }) */
+            })
+            .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
+                /*dispatch({
+                    type: actionTypes.DELETE_EXAM_FAILED,
+                    error: errorMessage
+                }) */
+            })
+    }
 }
 
 /**
