@@ -30,8 +30,11 @@ export function loginUser(user) {
         })
         .catch(error => {
             let errorMessage = "";
-            if(error.response){
-                errorMessage = "Invalid Credentials"
+            if(error.response.status === 400){
+                errorMessage = "You're already logged in. Please try again."
+            }
+            else if(error.response.status === 401){
+                errorMessage = "Invalid credentials"
             }
             else{
                 errorMessage = errors.Error_500

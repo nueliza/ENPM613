@@ -7,6 +7,10 @@
     width: 87% !important;
 }
 
+.RegistrationWrapper .form-group{
+    margin-bottom: 10px !important;
+}
+
 
 .RegistrationWrapper #password{
     width: 87% !important;
