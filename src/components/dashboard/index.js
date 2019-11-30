@@ -22,7 +22,7 @@ import Grades from "../../containers/grades";
 import FlashcardSet from "../../containers/flashcardSets";
 import Students from "../../containers/students";
 import ToastContainer from "../toast/index";
-import ViewExam from "../exams/viewExam";
+import ViewExam from "../../containers/viewExam";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -148,25 +148,31 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
-                                        <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
-                                        <button className="btn btn-info getSatProSecondaryButton" onClick={() => {
+                                        <button className="btn btn-info getSatProSecondaryButton" 
+                                        style={{float: "right", lineHeight: "35px"}}
+                                        onClick={() => {
                                             this.logout()
                                         }}>
                                             Sign out
                                         </button>
+                                        <div style={{float: "right", marginRight: "10px"}}>
+                                        <span style={{fontSize: "22px"}}> <b> Hello, {userInfo.fname} {userInfo.lname} !</b></span> <br />
+                                            <span>Last logged In: </span><span className="bold">{userInfo.last_logged_in}</span> <br />
+                                        </div>
+                                        
+                                        
                                     </div>
                                 </div>
 
                                 <hr />
 
-                                <Route path="/discussions" component={props => 
+                                <Route path="/Discussions" component={props => 
                                     <Discussions 
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
                                     />} 
                                 />
-                                <Route path="/discussion" component={props => 
+                                <Route path="/Discussion" component={props => 
                                     <Discussion />} 
                                 /> 
                                 <Route path="/CreateDiscussion" component={props => 
@@ -178,7 +184,7 @@ class Dashboard extends Component {
                                     />}
                                 />
 
-                                <Route path="/exams" component={props => 
+                                <Route path="/Exams" component={props => 
                                     <Exams 
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
@@ -190,29 +196,26 @@ class Dashboard extends Component {
                                         createExam={this.props.createExam}
                                     />} 
                                 />
-                                <Route path="/takeExam" component={props => 
+                                <Route path="/TakeExam" component={props => 
                                     <TakeExam  />} 
                                 />
 
-                                <Route path="/grades" component={props => 
+                                <Route path="/Grades" component={props => 
                                     <Grades selectedModuleId = {selectedModuleId} />} 
                                 />
-                                <Route path="/files" component={props => <Files isTutor={isTutor}/>} />
+                                <Route path="/Files" component={props => <Files isTutor={isTutor}/>} />
                                 <Route path="/dashboard" component={props => 
                                     isTutor? <Students />:
                                     <FlashcardSet 
                                         selectedModuleId = {selectedModuleId}
                                     />} 
                                     />
-                                <Route path="/flashcards" component={props => <Flashcards />} />
-                                <Route path="/students" component={props => <Students />} />
-                                <Route path="/viewExam" component={props => 
+                                <Route path="/Flashcards" component={props => <Flashcards />} />
+                                <Route path="/Students" component={props => <Students />} />
+                                <Route path="/ViewExam" component={props => 
                                     <ViewExam
+                                        {...props}
                                         isTutor={isTutor} 
-                                        loading= {this.props.loading}
-                                        selectedExam ={this.props.selectedExam}
-                                        selectedExamName = {this.props.selectedExamName}
-                                        selectedExamScore = {this.props.selectedExamScore}
                                     />} 
                                 />
                             </main>

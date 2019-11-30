@@ -7,7 +7,10 @@ import loaderReducer from "./loaderReducer";
 import studentReducer from './studentReducer';
 import flashcardReducer from './flashcardReducer';
 
-export default combineReducers({
+import * as actionTypes from "../actions/actionTypes";
+
+//Persist State
+const appReducer = combineReducers({
     user : userReducer ,
     exam : examReducer,
     discussion: discussionReducer,
@@ -15,4 +18,14 @@ export default combineReducers({
     loader : loaderReducer,
     student : studentReducer,
     flashcards: flashcardReducer
-})
+  })
+  
+const rootReducer = (state, action) => {
+    //On successful logout reset state
+    if (action.type === actionTypes.LOGOUT_USER_SUCESS) {
+        state = undefined
+    }
+    return appReducer(state, action)
+}
+
+export default rootReducer;

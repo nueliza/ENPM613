@@ -16,10 +16,7 @@ const mapStateToProps = state => ({
     selectedModuleId: state.user.selectedModuleId,
     selectedModuleName: state.user.selectedModuleName,
     selectedDiscussion: state.discussion.selectedDiscussion,
-    selectedExam:  state.exam.selectedExam,
-    selectedExamName: state.exam.selectedExamName,
-    selectedExamId: state.exam.selectedExamId,
-    selectedExamScore: state.exam.selectedExamScore
+    
     //loading: state.loader.loading
 })
 

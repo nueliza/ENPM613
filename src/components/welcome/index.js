@@ -13,6 +13,8 @@ import success3 from "../successStories/images/success3.jpg";
 import autoGrading from "../serviceHighlights/images/autoGrading.png";
 import discussion from "../serviceHighlights/images/discussion.jpg";
 import flashCard from "../serviceHighlights/images/flashCard.png";
+import Header from "../header";
+import Footer from "../footer";
 
 class Welcome extends Component {
     constructor(props) {
@@ -41,6 +43,7 @@ class Welcome extends Component {
     render() {
         return (
             <Fragment>
+                <Header />
                 <ToastContainer />
                 <div className="information">
                     <div className="welcomeLogo">
@@ -128,6 +131,7 @@ class Welcome extends Component {
                     registerUser={this.props.registerUser}
                     registrationError={this.props.registrationError}
                 />
+                <Footer />
             </Fragment>)
     }
 }

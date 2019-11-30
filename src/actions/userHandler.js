@@ -86,7 +86,7 @@ export function logoutUser() {
         });
         return axios.get(`/logout`)
             .then(payload => {
-                localStorage.removeItem("token", payload.token);
+                localStorage.clear();
                 dispatch({
                     type: actionTypes.LOGOUT_USER_SUCESS,
                     payload: "You've logged out sucessfully!"
