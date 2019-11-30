@@ -1,5 +1,5 @@
 /**
- * Contains service handlers for all user account
+ * Service handlers for all user account
  */
 
 import * as actionTypes from "./actionTypes";
@@ -77,7 +77,7 @@ export function registerUser(registerData) {
 
 }
 /**
- * Communicates with the logout API, removes the JWT token from the local storage, and logs out the user
+ * Communicates with the logout API, removes the JWT token, and store from the local storage, and logs out the user
  */
 export function logoutUser() {
     return async dispatch => {

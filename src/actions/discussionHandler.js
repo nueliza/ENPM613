@@ -13,7 +13,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
 axios.defaults.withCredentials = true
 
 /**
- * createDiscussion starts a new discussion
+ * Communicates with the create_discussion API and starts a new discussion
  * @param {Object} reqObject 
  */
 export function createDiscussion(reqObject) {
@@ -46,9 +46,9 @@ export function createDiscussion(reqObject) {
   }
 
   /**
-   * Gets all the discussions in a module for a student
+   * Communicates with the get_discusions API and gets the list of a discussions in a module for a student
+   * @param {Object} reqObject 
    */
-
   export function getDiscussionListStudent(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
@@ -79,10 +79,9 @@ export function createDiscussion(reqObject) {
     }
   }
 
-/**
-   * Gets all the discussions in a module for a tutor
+  /**
+   * Communicates with the get_discussions API and gets the list of a discussions for a tutor
    */
-
   export function getDiscussionListTutor() {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
@@ -113,10 +112,10 @@ export function createDiscussion(reqObject) {
     }
   }
 
-  /**
-   * Gets a particular discussion
+    /**
+   * Communicates with the view_discussion API and gets the details of a particular discussion
+   * @param {Object} reqObject 
    */
-
   export function getDiscussion(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
@@ -147,8 +146,8 @@ export function createDiscussion(reqObject) {
     }
   }
 
-  /**
- * Deletes a particular Discussion
+/**
+ * Communicates with the delete API and deletes the selected discussion
  * @param {Object} reqObject 
  */
 export function deleteDiscussion(reqObject) {
@@ -179,7 +178,10 @@ export function deleteDiscussion(reqObject) {
     }
 }
 
-
+/**
+ * Communicates with the create_discuss_thread API and reply to a discussion
+ * @param {Object} reqObject 
+ */
 export function replyToDiscussion(reqObject) {
     return async dispatch => {
         dispatch({
