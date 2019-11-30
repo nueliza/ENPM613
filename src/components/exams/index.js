@@ -39,6 +39,9 @@ const ExamList = (props) => {
                                     props.getExam({ "exam_id": exam.exam_id });
                                     props.history.push({
                                         pathname: '/viewExam',
+                                        state: {
+                                            from: "Exams"
+                                        }
                                     })
                                 }}
                             >

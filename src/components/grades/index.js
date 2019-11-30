@@ -40,11 +40,14 @@ class Grades extends Component {
                                             this.props.getExam({ "exam_id": grade.exam_id});
                                             this.props.history.push({
                                                 pathname: '/viewExam',
+                                                state: {
+                                                    from: "Grades"
+                                                }
                                             })
                                         }}
                                     >
-                                        
-                                        View Answers</button>
+                                        View Answers
+                                    </button>
                                 </li>
                             )
                         })}
