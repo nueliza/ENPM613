@@ -69,7 +69,7 @@ class Dashboard extends Component {
                                             {isTutor? (
                                             <React.Fragment>
                                                 <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
-                                                <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
+                                                <ReactTooltip id='Modules' type='info' className='mySepecialClass' >
                                                     <span>Students</span>
                                                 </ReactTooltip> 
                                             </React.Fragment>
@@ -77,7 +77,7 @@ class Dashboard extends Component {
                                             :  
                                             <React.Fragment>
                                                 <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x" />  
-                                                <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
+                                                <ReactTooltip id='Modules' type='info' className='mySepecialClass' >
                                                     <span>All Modules</span>
                                                 </ReactTooltip>    
                                             </React.Fragment>
@@ -91,7 +91,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Files">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Files"]} data-tip data-for='Files' size="2x" />
-                                            <ReactTooltip id='Files' type='info' class='tooltips'>
+                                            <ReactTooltip id='Files' type='info' className='mySepecialClass'>
                                                 <span>Files</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -102,7 +102,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Exams">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Exams"]} data-tip data-for='Exams' size="2x" />
-                                            <ReactTooltip id='Exams' type='info' class='tooltips'>
+                                            <ReactTooltip id='Exams' type='info' className='mySepecialClass'>
                                                 <span>Exams</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -115,7 +115,7 @@ class Dashboard extends Component {
                                         <NavItem eventKey="Grades">
                                             <NavIcon>
                                                 <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
-                                                <ReactTooltip id='Grades' type='info' class='tooltips'>
+                                                <ReactTooltip id='Grades' type='info' className='mySepecialClass'>
                                                     <span>Grades</span>
                                                 </ReactTooltip>
                                             </NavIcon>
@@ -127,7 +127,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Discussions">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Discussions"]} data-tip data-for='Discussions' size="2x" />
-                                            <ReactTooltip id='Discussions' type='info' class='tooltips'>
+                                            <ReactTooltip id='Discussions' type='info' className='mySepecialClass'>
                                                 <span>Discussions</span>
                                             </ReactTooltip>
                                         </NavIcon>
