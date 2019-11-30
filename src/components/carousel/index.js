@@ -5,7 +5,9 @@ import slide1 from "./images/1.jpeg";
 import slide2 from "./images/2.jpeg";
 import slide3 from "./images/3.jpeg";
 
-
+/**
+ * Representational Component for the carousel on the welcome page.
+ */
 class WelcomeCarousel extends Component {
 
     render() {

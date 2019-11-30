@@ -24,6 +24,14 @@ import Students from "../../containers/students";
 import ToastContainer from "../toast/index";
 import ViewExam from "../../containers/viewExam";
 
+/**
+ * Representational Component for Student/ Tutor Dashboard. 
+ * The dashboard feature change based on the user logged in. i.e. Student or tutor.
+ * The features include Flashcards, students, exams, grades, files and discussions
+ * Users can navigate to the respective pages using the SideNav.
+ * React routes are used to make the navigation between these components seemless.
+ * 
+ */
 class Dashboard extends Component {
     constructor(props) {
         super(props);

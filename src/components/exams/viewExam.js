@@ -6,6 +6,10 @@ import "./exams.css";
 import Loading from "../loading";
 import { Redirect } from 'react-router';
 
+/**
+ * Representational component for viewing an exam
+ */
+
 class ViewExam extends Component {
 
     render() {

@@ -5,6 +5,10 @@ import { withRouter } from "react-router-dom";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/***
+ * Representational component for viewing a particular disucssion.
+ * Allows users to reply to a particular discussion
+ */
 const DiscussionThreads = (props) => {
 
     return (

@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import "./header.css";
 
+/**
+ *Functional Element to show resuable header
+ */
 const Header = props => {
     if (props.location.pathname === "/dashboard" || props.location.pathname === "/modules") return null;
     return (

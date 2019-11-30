@@ -5,6 +5,10 @@ import { withRouter } from "react-router-dom";
 import "./grades.css";
 import Loading from "../loading";
 
+/**
+ * Representaional component for Grades.
+ * Students can view the list of Grades of a particuar module
+ */
 class Grades extends Component {
     UNSAFE_componentWillMount() {
         this.props.getGradesList({"mod_id": this.props.selectedModuleId})
@@ -13,7 +17,6 @@ class Grades extends Component {
     render() {
 
         if (this.props.loading) return <Loading />
-        //redirects to Not found page if the getExamsList API fails
         return  (
             <div className="dashboard_body grades_body">
                 <div className="dashboard_subSection">

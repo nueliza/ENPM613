@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 import Loading from '../loading';
-import NotFound from "../NotFound";
 
+/**
+ * Representational component for list of students in the system
+ */
 class Students extends Component {
 
     UNSAFE_componentWillMount(){

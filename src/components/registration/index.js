@@ -9,7 +9,9 @@ import { withRouter } from "react-router-dom";
 import ToastContainer from "../toast";
 
 
-
+/**
+ * Representational component for student registration
+ */
 class Registration extends Component {
     constructor(props) {
         super(props);

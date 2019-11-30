@@ -6,12 +6,13 @@ import { withRouter } from "react-router-dom";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/**
+ * Wrapper component for Flashcards in a flashcard set
+ */
 class Flashcards extends Component {
-    
-
     render() {
         if (this.props.loading) return <Loading />
-        //redirects to Not found page if the getExamsList API fails
+        //redirects to Dashboard page if the getFlashcards API fails
         return this.props.flashcard === "" ? <Redirect to="/dashboard" />:
         (
             <Fragment>
