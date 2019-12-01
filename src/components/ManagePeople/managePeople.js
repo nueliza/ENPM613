@@ -35,7 +35,7 @@ class ManagePeople extends Component {
         
             //DONE Call API to get list of student.
         //Call API to check whether login is sucessfull and update store.
-        //Call API to get list of tutors
+        //DONE Call API to get list of tutors
             //DONE add delete button to each student
         //Connect API call to delete a student with each delete button
         //Implement secondary login before all of this functionality
@@ -79,7 +79,7 @@ class ManagePeople extends Component {
                             size="1x"
                             // className={props.isTutor ? "" : "hide"}
                             style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
-                            // onClick={() => props.handleDelete(exam.exam_id)}
+                            onClick={() => this.handleDelete(student.user_id)}
                         />
                             {/* <button onClick={this.deleteStudent} type="button" className="btn btn-info">Delete</button> */}
                         </li>
@@ -102,7 +102,7 @@ class ManagePeople extends Component {
                             size="1x"
                             // className={props.isTutor ? "" : "hide"}
                             style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
-                            onClick={() => this.handleDelete(tutor.user_id)}
+                            // onClick={() => this.handleDelete(tutor.user_id)}
                         />
                             {/* <button onClick={this.deleteStudent} type="button" className="btn btn-info">Delete</button> */}
                         </li>

@@ -81,13 +81,17 @@ export function getTutorsList() {
 
 export function deleteUser(reqObject, user_type) {
     return async dispatch => {
+        dispatch({
+            type: actionTypes.DELETE_STUDENT_STARTED
+        });
         return axios.post(`/delete`, reqObject)
             .then(response => {
+                
                 console.log("Response for delete user!:: ", response)
-               /* dispatch({
-                    type: actionTypes.DELETE_EXAM_SUCCESS,
-                    payload: "You've successfully deleted the exam!"
-                }) */
+                dispatch({
+                    type: actionTypes.DELETE_STUDENT_SUCCESS,
+                    payload: "You've successfully deleted the student!"
+                })
             })
             .catch(error => {
                 let errorMessage = "";
@@ -97,10 +101,10 @@ export function deleteUser(reqObject, user_type) {
                 else{
                     errorMessage = errors.Error_500
                 }
-                /*dispatch({
-                    type: actionTypes.DELETE_EXAM_FAILED,
+                dispatch({
+                    type: actionTypes.DELETE_STUDENT_FAILED,
                     error: errorMessage
-                }) */
+                })
             })
     }
 }
