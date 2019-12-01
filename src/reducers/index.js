@@ -6,6 +6,7 @@ import toastReducer from "./toastReducer";
 import loaderReducer from "./loaderReducer";
 import studentReducer from './studentReducer';
 import flashcardReducer from './flashcardReducer';
+import filesReducer from "./filesReducer";
 
 import * as actionTypes from "../actions/actionTypes";
 
@@ -17,7 +18,8 @@ const appReducer = combineReducers({
     toast: toastReducer,
     loader : loaderReducer,
     student : studentReducer,
-    flashcards: flashcardReducer
+    flashcards: flashcardReducer,
+    files: filesReducer
   })
   
 const rootReducer = (state, action) => {

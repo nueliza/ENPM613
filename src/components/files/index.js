@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iconMapping } from "../utils/iconsMapping.js";
 import FileUploadModal from "../fileUploadModal";
 import "./files.css";
+import Loading from "../loading";
 
 
 class Files extends Component {
@@ -12,8 +13,23 @@ class Files extends Component {
             showModal: false
         }
     }
+
+
+    UNSAFE_componentWillMount() {
+        if (this.props.isTutor)
+            this.props.getFilesTutor()
+        // else
+        //     this.props.getFilesStudent({ "mod_id": this.props.selectedModuleId })
+    }
+
+    handleDownload = (link) =>{
+        window.open(link,"_blank")
+    }
+    
     render() {
-        return (
+        if (this.props.loading) return <Loading />
+        return Object.keys(this.props.files).length === 0 ? "Not Found":
+        (
             <div className="dashboard_body files_body">
                 <div className="dashboard_subSection">
                     <div className="quoteWrapper">
@@ -23,18 +39,20 @@ class Files extends Component {
                     </div>
                     <br />
                     <ul className="list-group">
-                        <li className="list-group-item">File 1 
-                            <FontAwesomeIcon 
-                                icon={iconMapping["Trash"]} 
-                                size="1x" 
-                                className={this.props.isTutor?"": "hide"}
-                                style={{color: "var(--alert-color)", float: "right", marginTop: "10px", marginLeft: "10px"}}
-                            />
-                            <button type="button" className="btn btn-info">Download</button>
-                        </li>
-                        <li className="list-group-item">File 2 <button type="button" className="btn btn-info">Download</button></li>
-                        <li className="list-group-item">File 3 <button type="button" className="btn btn-info">Download</button></li>
-                        <li className="list-group-item">File 4 <span className="tag notPublishedTag"><FontAwesomeIcon icon={iconMapping["NotPublished"]} size="1x" />&nbsp;<b>Not published</b></span><button type="button" className="btn btn-secondary">Download</button></li>
+                    {this.props.files.map((file,id)=>{
+                            return(
+                                <li className="list-group-item" key={id}>{file.file_name}
+                                    <FontAwesomeIcon 
+                                        icon={iconMapping["Trash"]} 
+                                        size="1x" 
+                                        className={this.props.isTutor?"": "hide"}
+                                        style={{color: "var(--alert-color)", float: "right", marginTop: "10px", marginLeft: "10px"}}
+                                    />
+                                    <button type="button" className="btn btn-info" onClick={()=>this.handleDownload(file.link)}>Download</button>
+                                </li>
+                            )
+                        })
+                    }
                     </ul>
                     <br/>
                     {this.props.isTutor?
@@ -50,6 +68,7 @@ class Files extends Component {
                     <FileUploadModal 
                         isVisible = {this.state.showModal} 
                         onCloseModal = {()=>{this.setState({ showModal :false} )}} 
+                        uploadFile = {this.props.uploadFile}
                     />
                 </div>
             </div>

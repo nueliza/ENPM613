@@ -22,6 +22,8 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.CREATE_DISCUSSION_SUCCESS:
         //flashcards handler
         case actionTypes.RESET_PREF_SUCCESS:
+        //files handler
+        case actionTypes.UPLOAD_FILES_SUCCESS:
             return{...state, toastMessage: action.payload, toastType: "SUCCESS"}
 
         /**Failure scenarios */
@@ -49,6 +51,8 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_FC_SET_FAILED:
         case actionTypes.GET_FC_FAILED:
         case actionTypes.SET_PREF_FAILED:
+        //file handler
+        case actionTypes.UPLOAD_FILES_FAILED:
             return{...state, toastMessage: action.error, toastType: "FAILURE"}
         
         case actionTypes.RESET_TOAST: 
