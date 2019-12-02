@@ -35,7 +35,7 @@ class ModuleContainer extends Component {
       }} />
     }
     else if (this.props.userInfo.user_type === "Admin") {
-      return <ManagePeople/>
+      return <Redirect to = "/ManagePeople" />
     }
     else
       return <Redirect to="/" />

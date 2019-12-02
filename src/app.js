@@ -16,6 +16,8 @@ import CreateDiscussion from "./components/discussions/createDiscussion";
 import Grades from "./components/grades";
 import ManagePeople from './containers/managePeople';
 
+import ViewUser from "./components/viewUserDetails";
+
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
     <Route
@@ -44,6 +46,8 @@ class App extends React.Component {
           <Route path="/files" component={props => <Files />} /> {/**TODO removed after development */}
           <Route path="/grades" component={props => <Grades />} /> {/**TODO be removed after development */}
           <Route path="/flashcards" component={props => <Flashcards />} />  {/**TODO be removed after development */}
+
+          <Route path="/ViewUser" component={props => <ViewUser />} />  {/**TODO be removed after development */}
         </Router>
        
       </React.Fragment>

@@ -2,12 +2,16 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from '../loading';
-
+import Modal from "react-responsive-modal";
+import SecondaryPasswordModal from "../ManagePeople/secondaryPasswordModal";
 
 class ManagePeople extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            showModal: false
+        }
     }
 
     logout = (e) =>{
@@ -26,6 +30,14 @@ class ManagePeople extends Component {
     UNSAFE_componentWillMount(){
         this.props.getStudentList();
         this.props.getTutorsList();
+    }
+
+    onCloseModal = () => {
+        this.setState({ showModal: false })
+    }
+
+    onOpenModal = () => {
+        this.setState({ showModal: true })
     }
 
     render(){
@@ -79,9 +91,10 @@ class ManagePeople extends Component {
                                     className="btn btn-info"
                                     onClick={() => {
                                         //this.props.getDiscussion({ "discuss_id": discussion.discuss_id })
-                                        this.props.history.push({
-                                            pathname: '/ViewStudent',
-                                        })
+                                        this.setState({showModal: true})
+                                        // this.props.history.push({
+                                        //     pathname: '/ViewStudent',
+                                        // })
                                     }}
                                 >
                                     View Details
@@ -104,6 +117,11 @@ class ManagePeople extends Component {
                         </li>
                     })}
                 </ul>
+                <SecondaryPasswordModal 
+                    showModal={this.state.showModal}
+                    onCloseModal={this.onCloseModal}
+                    onOpenModal = {this.onOpenModal}
+                />
                 </div>
             </div>
         )
