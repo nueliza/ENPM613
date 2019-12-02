@@ -171,7 +171,7 @@ export function deleteExam(reqObject) {
                     errorMessage = error.response.data.message
                 }
                 else{
-                    errorMessage = errors.Error_500
+                    errorMessage = "Sorry! Cannot delete this exam as it has been taken by students"
                 }
                 dispatch({
                     type: actionTypes.DELETE_EXAM_FAILED,

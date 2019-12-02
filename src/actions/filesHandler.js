@@ -1,5 +1,5 @@
 /**
- * Contains all the service handlers for discussions
+ * Contains all the service handlers for files
  */
 
 import * as actionTypes from "./actionTypes";
@@ -12,7 +12,9 @@ axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
 axios.defaults.withCredentials = true
 
-
+/**
+ * Communicates with get_files API, and returns the list of files for the module tutor is assigned to.
+ */
 export function getFilesTutor(){
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
@@ -43,6 +45,11 @@ export function getFilesTutor(){
     }
 }
 
+
+/**
+ * Communicates with the get_files API to get the list of exams for students based on the module selected.
+ * @param {Object} reqObject 
+ */
 export function getFilesStudent(reqObject){
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
@@ -73,6 +80,10 @@ export function getFilesStudent(reqObject){
     }
 }
 
+/**
+ * Communicated with the add_file API, and upload the file to the system
+ * @param {FormData} reqObject 
+ */
 export function uploadFile(reqObject){
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
@@ -103,6 +114,10 @@ export function uploadFile(reqObject){
     }
 }
 
+/**
+ * Communicates with the delete API and delete the file from the system
+ * @param {Object} reqObject 
+ */
 export function deleteFile(reqObject) {
     return async dispatch => {
         dispatch({
