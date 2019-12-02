@@ -1,7 +1,8 @@
-import React, { Component} from 'react';
+import React, { Component, Fragment} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { iconMapping } from "../utils/iconsMapping.js";
 import FileUploadModal from "../fileUploadModal";
+import ReactTooltip from 'react-tooltip';
 import "./files.css";
 import Loading from "../loading";
 
@@ -42,9 +43,8 @@ class Files extends Component {
     
     render() {
         if (this.props.loading) return <Loading />
-        return Object.keys(this.props.files).length === 0 ? "Not Found":
-        (
-            <div className="dashboard_body files_body">
+        return (
+             <div className="dashboard_body files_body">
                 <div className="dashboard_subSection">
                     <div className="quoteWrapper">
                         <FontAwesomeIcon icon={iconMapping["QuoteLeft"]} size="2x" style={{color: "gray"}} />&nbsp;
@@ -52,23 +52,34 @@ class Files extends Component {
                         <span className="author">- Benjamin Franklin</span>
                     </div>
                     <br />
-                    <ul className="list-group">
-                    {this.props.files.map((file,id)=>{
-                            return(
-                                <li className="list-group-item" key={id}>{file.file_name}
-                                    <FontAwesomeIcon 
-                                        icon={iconMapping["Trash"]} 
-                                        onClick={()=>this.handleDelete(file.file_id)}
-                                        size="1x" 
-                                        className={this.props.isTutor?"": "hide"}
-                                        style={{color: "var(--alert-color)", float: "right", marginTop: "10px", marginLeft: "10px"}}
-                                    />
-                                    <button type="button" className="btn btn-info" onClick={()=>this.handleDownload(file.link)}>Download</button>
-                                </li>
-                            )
-                        })
+                    {Object.keys(this.props.files).length === 0 ? 
+                        <Fragment>
+                            <FontAwesomeIcon icon={iconMapping["sad"]} color="gray" size="7x" /> <br /><br />
+                            Whoopsie-daisy!! No files yet! <br /><br />
+                        </Fragment>
+                    :
+                        <ul className="list-group">
+                        {this.props.files.map((file,id)=>{
+                                return(
+                                    <li className="list-group-item" key={id}>{file.file_name}
+                                        <FontAwesomeIcon 
+                                            icon={iconMapping["Trash"]} 
+                                            data-tip data-for='Delete'
+                                            onClick={()=>this.handleDelete(file.file_id)}
+                                            size="1x" 
+                                            className={this.props.isTutor?"": "hide"}
+                                            style={{color: "var(--alert-color)", float: "right", marginTop: "10px", marginLeft: "10px", cursor: "pointer"}}
+                                        />
+                                        <ReactTooltip id='Delete' type='info' className='mySepecialClass' >
+                                            <span>Delete</span>
+                                        </ReactTooltip> 
+                                        <button type="button" className="btn btn-info" onClick={()=>this.handleDownload(file.link)}>Download</button>
+                                    </li>
+                                )
+                            })
+                        }
+                        </ul>
                     }
-                    </ul>
                     <br/>
                     {this.props.isTutor?
                     <button 

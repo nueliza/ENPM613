@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import ToastContainer from "../toast";
 import Loading from "../loading";
 /**
@@ -18,10 +19,14 @@ const ExamList = (props) => {
                         <FontAwesomeIcon
                             icon={iconMapping["Trash"]}
                             size="1x"
+                            data-tip data-for='Delete'
                             className={props.isTutor ? "" : "hide"}
-                            style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
+                            style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px", cursor: "pointer"}}
                             onClick={() => props.handleDelete(exam.exam_id)}
                         />
+                         <ReactTooltip id='Delete' type='info' className='mySepecialClass' >
+                            <span>Delete</span>
+                        </ReactTooltip> 
                         {!props.isTutor && exam.completed === false ?
                             <button
                                 type="button"

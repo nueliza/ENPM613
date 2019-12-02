@@ -77,7 +77,7 @@ class Dashboard extends Component {
                                             {isTutor? (
                                             <React.Fragment>
                                                 <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
-                                                <ReactTooltip id='Modules' type='info' className='mySepecialClass' >
+                                                <ReactTooltip id='Students' type='info' className='mySepecialClass' >
                                                     <span>Students</span>
                                                 </ReactTooltip> 
                                             </React.Fragment>
