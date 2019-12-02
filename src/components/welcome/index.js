@@ -15,8 +15,7 @@ import success3 from "../successStories/images/success3.jpg";
 import autoGrading from "../serviceHighlights/images/autoGrading.png";
 import discussion from "../serviceHighlights/images/discussion.jpg";
 import flashCard from "../serviceHighlights/images/flashCard.png";
-import Header from "../header";
-import Footer from "../footer";
+
 
 
 /**
@@ -68,7 +67,7 @@ class Welcome extends Component {
                             <button className="btn btn-link" onClick={() => this.setState({ showLoginModal: true })}>Sign In </button>
                             <button className="btn btn-info" onClick={() => this.setState({ showRegistrationModal: true })}>Sign up </button>
                             &nbsp;
-                            {/* <button className="btn btn-info" onClick={() => this.props.logoutUser()}> Sign out</button> */}
+                            <button className="btn btn-info" onClick={() => this.props.logoutUser()}> Sign out</button>
                         </div>
                     </div>
                 </div>

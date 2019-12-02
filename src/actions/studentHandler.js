@@ -79,15 +79,13 @@ export function getTutorsList() {
     }
 }
 
-export function deleteUser(reqObject, user_type) {
+export function deleteUser(reqObject) {
     return async dispatch => {
         dispatch({
             type: actionTypes.DELETE_STUDENT_STARTED
         });
         return axios.post(`/delete`, reqObject)
             .then(response => {
-                
-                console.log("Response for delete user!:: ", response)
                 dispatch({
                     type: actionTypes.DELETE_STUDENT_SUCCESS,
                     payload: "You've successfully deleted the student!"
@@ -139,6 +137,40 @@ export function getModulesList() {
                 error: errorMessage
             });
         })
+    }
+}
+
+/**
+ * 
+ * Communicates with get_user API and gets the details of a particular user
+ */
+export function getUserDetails(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.DELETE_STUDENT_STARTED
+        });
+        return axios.post(`/delete`, reqObject)
+            .then(response => {
+                
+                console.log("Response for delete user!:: ", response)
+                dispatch({
+                    type: actionTypes.DELETE_STUDENT_SUCCESS,
+                    payload: "You've successfully deleted the student!"
+                })
+            })
+            .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
+                dispatch({
+                    type: actionTypes.DELETE_STUDENT_FAILED,
+                    error: errorMessage
+                })
+            })
     }
 }
 

@@ -7,6 +7,8 @@ import { Redirect } from 'react-router';
 import Welcome from "./containers/welcome";
 import Modules from "./containers/modules";
 import Dashboard from "./containers/dashboard";
+import ManagePeople from  "./containers/managePeople";
+import ViewUser from "./containers/viewUser";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   console.log("PrivateRoute", authed);
@@ -92,8 +94,14 @@ class App extends React.Component {
             authed={Object.keys(this.props.userInfo).length === 0? false : true } 
             path='/Students' 
             component={Dashboard} />
-
-          <
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/ManagePeople' 
+            component={ManagePeople} />
+          <PrivateRoute 
+            authed={Object.keys(this.props.userInfo).length === 0? false : true } 
+            path='/ViewUser' 
+            component={ViewUser} />
         </Router>
       </React.Fragment>
     );

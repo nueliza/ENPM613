@@ -40,6 +40,10 @@ class ManagePeople extends Component {
         this.setState({ showModal: true })
     }
 
+    logout = (e) =>{
+        this.props.logoutUser();
+    }
+
     render(){
         
         if(this.props.loading) return <Loading />
@@ -56,9 +60,17 @@ class ManagePeople extends Component {
                     <h3> Manage People </h3>
                    
                     <div className="userInfo">
-                        <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
-                        <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <a href="/" onClick={this.logout}>Sign out</a>
+                        <button className="btn btn-info getSatProSecondaryButton" 
+                            style={{float: "right", lineHeight: "35px"}}
+                            onClick={() => {
+                            this.logout()
+                        }}>
+                            Sign out
+                        </button>
+                        <div style={{float: "right", marginRight: "10px"}}>
+                            <span style={{fontSize: "22px"}}> <b> Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</b></span> <br />
+                            <span>Last logged In: </span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
+                        </div>
                     </div>
                 </div>
                 <hr/>
@@ -88,7 +100,7 @@ class ManagePeople extends Component {
                                 />
                                 <button
                                     type="button"
-                                    className="btn btn-info"
+                                    className="btn btn-info getSatProSecondaryButton"
                                     onClick={() => {
                                         //this.props.getDiscussion({ "discuss_id": discussion.discuss_id })
                                         this.setState({showModal: true})
