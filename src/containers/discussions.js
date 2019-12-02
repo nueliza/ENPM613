@@ -3,6 +3,9 @@ import Discussions from '../components/discussions';
 
 import {getDiscussionListStudent, getDiscussionListTutor, getDiscussion, deleteDiscussion} from "../actions/discussionHandler"
 
+/**
+ * Functional compoenent for Discussion page
+ */
 
 const mapDispatchToProps = (dispatch) => {
     return{
