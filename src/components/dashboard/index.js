@@ -86,7 +86,7 @@ class Dashboard extends Component {
                                             <React.Fragment>
                                                 <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x" />  
                                                 <ReactTooltip id='Modules' type='info' className='mySepecialClass' >
-                                                    <span>All Modules</span>
+                                                    <span>Flashcard Sets</span>
                                                 </ReactTooltip>    
                                             </React.Fragment>
                                             }
