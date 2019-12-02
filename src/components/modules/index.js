@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import math from "./images/math.jpg";
+import Maths from "./images/math.jpeg";
+import English from "./images/english.jpeg";
 import ToastContainer from "../toast";
 import "./modules.css"
 import logo from "../dashboard/images/Logo.png";
@@ -18,6 +19,10 @@ class Modules extends Component {
 
 
     render() {
+        let images ={
+            "English": English,
+            "Math": Maths
+        }
         return (
             <Fragment>
                 <div className="dashboard_header">
@@ -46,7 +51,7 @@ class Modules extends Component {
                         let progress = module.progress + "%";
                         return(
                             <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card" key={id}>
-                                <img className="card-img" src={math} alt="Math" />
+                                <img className="card-img" src={images[module.mod_name]} alt="Math" />
                                 <div className="progress">
                                     <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{module.progress}%</b></div>
                                 </div>
