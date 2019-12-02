@@ -14,7 +14,7 @@ import Files from "./components/files";
 import Flashcards from "./components/flashcards";
 import CreateDiscussion from "./components/discussions/createDiscussion";
 import Grades from "./components/grades";
-import ManagePeople from './components/ManagePeople/managePeople';
+import ManagePeople from './containers/managePeople';
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (

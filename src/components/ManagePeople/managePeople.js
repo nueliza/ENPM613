@@ -1,10 +1,8 @@
 import { iconMapping } from "../utils/iconsMapping.js";
 import React, { Component } from 'react';
-import { getStudentList, getTutorsList, deleteUser } from '../../actions/studentHandler';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {connect} from 'react-redux';
 import Loading from '../loading';
-import { logoutUser } from "../../actions/userHandler";
+
 
 class ManagePeople extends Component {
 
@@ -50,13 +48,12 @@ class ManagePeople extends Component {
                         <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
                         <a href="/" onClick={this.logout}>Sign out</a>
                     </div>
-                    
                 </div>
                 <hr/>
                 <div className="quoteWrapper">
-                        <FontAwesomeIcon icon={iconMapping["QuoteLeft"]} size="2x" style={{color: "gray"}} />&nbsp;
-                        <span className="quoteContent">Look around you, and all you will see are people the world would be better off without. </span>
-                        <span className="author">- Light Yagami</span>
+                    <FontAwesomeIcon icon={iconMapping["QuoteLeft"]} size="2x" style={{color: "gray"}} />&nbsp;
+                    <span className="quoteContent">Look around you, and all you will see are people the world would be better off without. </span>
+                    <span className="author">- Light Yagami</span>
                 </div>
                 <br />
                 <h2>Student List</h2>
@@ -65,7 +62,7 @@ class ManagePeople extends Component {
                     {this.props.studentList.map((student, id) => {
                         return <li className="list-group-item" key={id}>
                                     <div className="avatar">
-                                        {student.fname.charAt(0)}{student.lname.charAt(0)}
+                                        {student.fname.charAt(0).toUpperCase()}{student.lname.charAt(0).toUpperCase()}
                                     </div>
                                     &nbsp; &nbsp;
                                     <span>
@@ -95,11 +92,10 @@ class ManagePeople extends Component {
                 <br/>
                 <h2>Tutor List</h2>
                 <ul className="list-group">
-                    
                     { (this.props.tutorList) && this.props.tutorList.map((tutor, id) => {
                         return <li className="list-group-item" key={id}>
                              <div className="avatar">
-                                {tutor.fname.charAt(0)}{tutor.lname.charAt(0)}
+                                {tutor.fname.charAt(0).toUpperCase()}{tutor.lname.charAt(0).toUpperCase()}
                             </div>
                             &nbsp; &nbsp;
                             <span>
@@ -114,20 +110,4 @@ class ManagePeople extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        getStudentList : ()=> dispatch(getStudentList()),
-        getTutorsList: ()=> dispatch(getTutorsList()),
-        deleteUser: (user_id)=>dispatch(deleteUser(user_id)),
-        logoutUser: () => dispatch(logoutUser()),
-    }
-}
-const mapStateToProps = state => ({
-    userInfo: state.user.userInfo,
-    studentList: state.student.studentList,
-    tutorList: state.student.tutorList,
-    loading: state.loader.loading
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ManagePeople)
-// export default ManagePeople;
+export default ManagePeople;
