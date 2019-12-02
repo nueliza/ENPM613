@@ -75,7 +75,6 @@ export function getFilesStudent(reqObject){
 
 export function uploadFile(reqObject){
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
-    //axios.defaults.headers.post['Content-Type'] = 'application/json'; 
     return async dispatch => {
         dispatch({
             type: actionTypes.UPLOAD_FILES_STARTED
@@ -100,5 +99,33 @@ export function uploadFile(reqObject){
                 error: errorMessage
             })
         })
+    }
+}
+
+export function deleteFile(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.DELETE_FILE_STARTED
+        });
+        return axios.post(`/delete`, reqObject)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.DELETE_FILE_SUCCESS,
+                    payload: "You've successfully deleted the file!"
+                })
+            })
+            .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
+                dispatch({
+                    type: actionTypes.DELETE_FILE_FAILED,
+                    error: errorMessage
+                })
+            })
     }
 }

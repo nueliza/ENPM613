@@ -25,6 +25,13 @@ class Files extends Component {
     handleDownload = (link) =>{
         window.open(link,"_blank")
     }
+
+    handleDelete = (fileId) =>{
+        let payload ={
+            "model_name": "File",
+            "model_id": fileId
+        }
+    }
     
     render() {
         if (this.props.loading) return <Loading />
@@ -44,6 +51,7 @@ class Files extends Component {
                                 <li className="list-group-item" key={id}>{file.file_name}
                                     <FontAwesomeIcon 
                                         icon={iconMapping["Trash"]} 
+                                        onClick={()=>this.handleDelete(file.file_id)}
                                         size="1x" 
                                         className={this.props.isTutor?"": "hide"}
                                         style={{color: "var(--alert-color)", float: "right", marginTop: "10px", marginLeft: "10px"}}
