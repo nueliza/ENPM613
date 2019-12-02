@@ -75,11 +75,12 @@ export function getFilesStudent(reqObject){
 
 export function uploadFile(reqObject){
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
     return async dispatch => {
         dispatch({
             type: actionTypes.UPLOAD_FILES_STARTED
         });
-        return axios.post(`/add_file/`, reqObject, { headers: { 'Content-Type': 'multipart/form-data' } })
+        return axios.post(`/add_file/`, reqObject)
         .then( response =>{
             dispatch({
                 type: actionTypes.UPLOAD_FILES_SUCCESS,

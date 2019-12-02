@@ -31,6 +31,13 @@ class Files extends Component {
             "model_name": "File",
             "model_id": fileId
         }
+        this.props.deleteFile(payload)
+        .then(()=>{
+            if (this.props.isTutor)
+            this.props.getFilesTutor()
+            else
+            this.props.getFilesStudent({ "mod_id": this.props.selectedModuleId })
+        })
     }
     
     render() {
@@ -77,6 +84,7 @@ class Files extends Component {
                         isVisible = {this.state.showModal} 
                         onCloseModal = {()=>{this.setState({ showModal :false} )}} 
                         uploadFile = {this.props.uploadFile}
+                        getFiles = {()=>    this.props.isTutor? this.props.getFilesTutor() : this.props.getFilesStudent({ "mod_id": this.props.selectedModuleId }) }
                     />
                 </div>
             </div>

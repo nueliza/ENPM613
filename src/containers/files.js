@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import Files from '../components/files';
-import {getFilesTutor, uploadFile, getFilesStudent} from "../actions/filesHandler";
+import {getFilesTutor, uploadFile, getFilesStudent, deleteFile} from "../actions/filesHandler";
 
 const mapDispatchToProps = (dispatch) => {
     return{
         getFilesTutor: ()=>dispatch(getFilesTutor()),
         uploadFile: (payload) =>dispatch(uploadFile(payload)),
         getFilesStudent: (payload)=>dispatch(getFilesStudent(payload)),
+        deleteFile: (payload)=>dispatch(deleteFile(payload))
     }
 }
 

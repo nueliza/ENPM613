@@ -20,6 +20,9 @@ const FileUploader = (props) =>{
         let payload = new FormData();
         payload.append("file", allFiles[0].file)
         props.uploadFile(payload)
+        .then(()=>{
+            props.getFiles()
+        })
         props.onCloseModal()
     }
 
@@ -49,7 +52,7 @@ class FileUploadModal extends Component {
             <Modal open={this.props.isVisible} onClose={this.props.onCloseModal}>
                 <h2>Upload Files</h2>
                 <hr />
-                <FileUploader onCloseModal={this.props.onCloseModal} uploadFile = {this.props.uploadFile}/>
+                <FileUploader onCloseModal={this.props.onCloseModal} uploadFile = {this.props.uploadFile} getFiles={this.props.getFiles}/>
                 <label>Supported file types: .pdf</label>
             </Modal>)
     }
