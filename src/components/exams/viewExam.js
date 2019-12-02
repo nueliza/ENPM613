@@ -6,12 +6,18 @@ import "./exams.css";
 import Loading from "../loading";
 import { Redirect } from 'react-router';
 
+/**
+ * Representational component for viewing an exam
+ */
+
 class ViewExam extends Component {
 
     render() {
+        console.log("props", this.props)
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
-        return Object.keys(this.props.selectedExam).length === 0 ? <Redirect to="/exams"/> :
+        let redirection = this.props.location.state.from === "Exams"? '/exams':'/grades'
+        return Object.keys(this.props.selectedExam).length === 0 ? <Redirect to={redirection}/> :
         (
             <div className="dashboard_body view_exam">
                 <div className="dashboard_subSection">
@@ -21,11 +27,11 @@ class ViewExam extends Component {
                         style={{marginBottom: "10px"}}
                         onClick={() => {
                             this.props.history.push({
-                                pathname: '/exams',
+                                pathname: redirection,
                             })
                         }}>
                         <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
-                        &nbsp;<span>Back to Exams</span>
+                        &nbsp;<span>Back to {this.props.location.state.from}</span>
                     </button>
                     <br />
                     <h3>{this.props.selectedExamName}</h3>

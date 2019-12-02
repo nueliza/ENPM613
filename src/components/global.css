@@ -24,10 +24,13 @@
 }
 
 .errorMessage {
-    width: 50%;
+    width: 100%;
     margin-top: 5px;
     color: var(--alert-color);
     font-size: 13px;
+    margin-bottom: 5px;
+    text-align: left !important;
+    padding-left: 53px;
 }
 .warningMessage {
     width: 50%;
@@ -111,6 +114,10 @@ input{
     height: 500px !important;
 }
 
+.carousel .slide img{
+    object-fit: cover !important;
+    height: 500px !important
+}
 
 body{
     font-family: 'Poppins',sans-serif !important;

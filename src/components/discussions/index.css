@@ -1,6 +1,4 @@
-.discussionList_body .discussion{
-    cursor: pointer;
-}
+
 
 .discussion_body{
     width:70%;
@@ -76,6 +74,9 @@
     width: 100% !important;
 }
 
+.NewDiscussionWrapper .errorMessage{
+    padding-left: 0px !important
+}
 
 
 @media only screen and (max-width: 768px){ 

@@ -2,11 +2,17 @@ import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router-dom";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReactTooltip from 'react-tooltip';
 import Loading from '../loading';
 import ToastContainer from "../toast/index";
 
 import "./index.css";
 
+/**
+ * Representational component for list of discussions.
+ * Users can naviagte to view a particular discussion.
+ * Tutors can delete discussions
+ */
 class Discussions extends Component {
 
     UNSAFE_componentWillMount() {
@@ -32,9 +38,6 @@ class Discussions extends Component {
 
     render() {
         if (this.props.loading) return <Loading />
-
-        //redirects to Not found page if the getStudentList API fails
-        //TODO check if discussion call is success
         return (
             <div className="dashboard_body discussionList_body">
                 <ToastContainer />
@@ -59,10 +62,14 @@ class Discussions extends Component {
                                         <FontAwesomeIcon
                                             icon={iconMapping["Trash"]}
                                             size="1x"
+                                            data-tip data-for='Delete'
                                             className={this.props.isTutor ? "" : "hide"}
-                                            style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
+                                            style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px", cursor: "pointer" }}
                                             onClick={() => this.handleDelete(discussion.discuss_id)}
                                         />
+                                         <ReactTooltip id='Delete' type='info' className='mySepecialClass' >
+                                            <span>Delete</span>
+                                        </ReactTooltip> 
                                         <button
                                             type="button"
                                             className="btn btn-info"

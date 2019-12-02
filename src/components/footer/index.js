@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+/**
+ * Functional element for a reusable footer.
+ */
 const Footer = props => {
     if (props.location.pathname === "/dashboard" || props.location.pathname === "/modules") return null;
     return (

@@ -12,7 +12,7 @@ axios.defaults.withCredentials = true;
 
 
 /**
- * Gets the list of all students
+ * Communicates with the get_students API and gets the list of all students
  */
 
 export function getStudentList() {
@@ -110,7 +110,7 @@ export function deleteUser(reqObject, user_type) {
 }
 
 /**
- * Gets the list of modules available to students
+ * Coommunicates with the get_modules API and gets the list of modules available to students
  */
 
 export function getModulesList() {

@@ -11,11 +11,11 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
 axios.defaults.withCredentials = true;
 
-
+ 
 /**
- * Gets the list of Flashcard sets
+ * Communicates with the view_flashcard_sets API and gets the list of Flashcard sets
+ * @param {Object} reqObject 
  */
-
 export function getFlashcardSets(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
@@ -46,9 +46,9 @@ export function getFlashcardSets(reqObject) {
 }
 
 /**
- * Gets the first flashcard in the selected flashcard set
+ * Communicates with view_flashcard_set API and gets the first flashcard in the selected flashcard set
+ * @param {Object} reqObject 
  */
-
 export function getFlashcard(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
@@ -78,6 +78,10 @@ export function getFlashcard(reqObject) {
   }
 }
 
+/**
+ * Communicates with set_pref API and sets the preference set by the user.
+ * @param {Object} reqObject 
+ */
 export function setPreference(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {
@@ -107,7 +111,10 @@ export function setPreference(reqObject) {
   }
 }
 
-
+/**
+ * Communicates with the reset_flashcard_set API and resets a user's progress in a flashcard set
+ * @param {Object} reqObject 
+ */
 export function resetProgress(reqObject) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     return async dispatch => {

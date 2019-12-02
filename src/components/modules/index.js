@@ -1,29 +1,45 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import math from "./images/math.jpg";
+import Maths from "./images/math.jpeg";
+import English from "./images/english.jpeg";
 import ToastContainer from "../toast";
 import "./modules.css"
-import Footer from "../footer";
+import logo from "../dashboard/images/Logo.png";
 
-
+/**
+ * Representational compoenent for the modules in the system. 
+ * Tutor do not have this page. 
+ */
 class Modules extends Component {
     
     logout = (e) =>{
-        e.preventDefault();
         this.props.logoutUser();
     }
 
 
     render() {
+        let images ={
+            "English": English,
+            "Math": Maths
+        }
         return (
             <Fragment>
                 <div className="dashboard_header">
-                    <h3> Modules </h3>
+                    <img className="mainLogo" alt="Logo" src={logo} />
+                    <h3 style={{paddingTop: "10px", paddingLeft: "10px"}}> Modules </h3>
                     <div className="userInfo">
-                        <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
-                        <span>Last logged In:</span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
-                        <a href="/" onClick={this.logout}>Sign out</a>
+                        <button className="btn btn-info getSatProSecondaryButton" 
+                            style={{float: "right", lineHeight: "35px"}}
+                            onClick={() => {
+                            this.logout()
+                        }}>
+                            Sign out
+                        </button>
+                        <div style={{float: "right", marginRight: "10px"}}>
+                            <span style={{fontSize: "22px"}}> <b> Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</b></span> <br />
+                            <span>Last logged In: </span><span className="bold">{this.props.userInfo.last_logged_in}</span> <br />
+                        </div>
                     </div>
                 </div>
 
@@ -35,7 +51,7 @@ class Modules extends Component {
                         let progress = module.progress + "%";
                         return(
                             <Link to='/dashboard' onClick={()=>{this.props.setSelectedModule(module.mod_id, module.mod_name)}} className="card" key={id}>
-                                <img className="card-img" src={math} alt="Math" />
+                                <img className="card-img" src={images[module.mod_name]} alt="Math" />
                                 <div className="progress">
                                     <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{module.progress}%</b></div>
                                 </div>

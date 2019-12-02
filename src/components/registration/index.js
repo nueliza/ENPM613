@@ -9,7 +9,9 @@ import { withRouter } from "react-router-dom";
 import ToastContainer from "../toast";
 
 
-
+/**
+ * Representational component for student registration
+ */
 class Registration extends Component {
     constructor(props) {
         super(props);
@@ -207,25 +209,25 @@ class Registration extends Component {
                     <hr />
                     <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                         <div className="form-group nameField" >
-                            <FontAwesomeIcon icon={faUser} size="2x" color="#601A4A" />
+                            <FontAwesomeIcon icon={faUser} size="2x" color="#601A4A" />&nbsp;
                             <input type="text" name="fname"
                                 placeholder="Your First name"
                             />
                             <input type="text" name="lname"
                                 placeholder="Your last name"
                             />
-                            <ErrorMessage content={this.state.errors["fname"]} messageType="error" />
-                            <ErrorMessage content={this.state.errors["lname"]} messageType="error" />
                         </div>
+                        <ErrorMessage content={this.state.errors["fname"]} messageType="error" />
+                        <ErrorMessage content={this.state.errors["lname"]} messageType="error" />
                         <div className="form-group">
-                            <FontAwesomeIcon icon={faUserCircle} size="2x" color="#601A4A" />
+                            <FontAwesomeIcon icon={faUserCircle} size="2x" color="#601A4A" />&nbsp;
                             <input type="text" name="username"
                                 placeholder="Your username"
                             />
                             <ErrorMessage content={this.state.errors["username"]} messageType="error" />
                         </div>
                         <div className="form-group">
-                            <FontAwesomeIcon icon={faLock} size="2x" color="#601A4A" />
+                            <FontAwesomeIcon icon={faLock} size="2x" color="#601A4A" />&nbsp;
                             <input type="password" name="password"
                                 id="password"
                                 placeholder="Your password"
@@ -233,14 +235,14 @@ class Registration extends Component {
                             <ErrorMessage content={this.state.errors["password"]} messageType="error" />
                         </div>
                         <div className="form-group">
-                            <FontAwesomeIcon icon={faEnvelope} size="2x" color="#601A4A" />
+                            <FontAwesomeIcon icon={faEnvelope} size="2x" color="#601A4A" />&nbsp;
                             <input type="text" name="email"
                                 placeholder="Your email"
                             />
                             <ErrorMessage content={this.state.errors["email"]} messageType="error" />
                         </div>
                         <div className="form-group">
-                            <FontAwesomeIcon icon={faPhone} size="2x" color="#601A4A" />
+                            <FontAwesomeIcon icon={faPhone} size="2x" color="#601A4A" />&nbsp;
                             <NumberFormat  placeholder="Your phone number" 
                                 format="+1 (###) ###-####" mask="_" 
                                 name="phone" 

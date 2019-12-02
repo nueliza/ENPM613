@@ -2,9 +2,14 @@ import React, { Component, Fragment } from 'react';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import ToastContainer from "../toast";
 import Loading from "../loading";
-
+/**
+ * Representational component to show the list of exams.
+ * Tutors can delete a selected exam. Tutors can also navigate to create exam page from here.
+ * Students are take the exams which are not yet completed. They also view their answers for the submitted exams
+ */
 const ExamList = (props) => {
     return (
         <ul className="list-group">
@@ -14,10 +19,14 @@ const ExamList = (props) => {
                         <FontAwesomeIcon
                             icon={iconMapping["Trash"]}
                             size="1x"
+                            data-tip data-for='Delete'
                             className={props.isTutor ? "" : "hide"}
-                            style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
+                            style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px", cursor: "pointer"}}
                             onClick={() => props.handleDelete(exam.exam_id)}
                         />
+                         <ReactTooltip id='Delete' type='info' className='mySepecialClass' >
+                            <span>Delete</span>
+                        </ReactTooltip> 
                         {!props.isTutor && exam.completed === false ?
                             <button
                                 type="button"
@@ -39,6 +48,9 @@ const ExamList = (props) => {
                                     props.getExam({ "exam_id": exam.exam_id });
                                     props.history.push({
                                         pathname: '/viewExam',
+                                        state: {
+                                            from: "Exams"
+                                        }
                                     })
                                 }}
                             >
@@ -82,7 +94,6 @@ class Exams extends Component {
 
     render() {
         if (this.props.loading) return <Loading />
-        //redirects to Not found page if the getExamsList API fails
         return (
             <div className="dashboard_body">
                 <div className="dashboard_subSection">

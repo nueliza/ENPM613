@@ -6,13 +6,28 @@ import toastReducer from "./toastReducer";
 import loaderReducer from "./loaderReducer";
 import studentReducer from './studentReducer';
 import flashcardReducer from './flashcardReducer';
+import filesReducer from "./filesReducer";
 
-export default combineReducers({
+import * as actionTypes from "../actions/actionTypes";
+
+//Persist State
+const appReducer = combineReducers({
     user : userReducer ,
     exam : examReducer,
     discussion: discussionReducer,
     toast: toastReducer,
     loader : loaderReducer,
     student : studentReducer,
-    flashcards: flashcardReducer
-})
+    flashcards: flashcardReducer,
+    files: filesReducer
+  })
+  
+const rootReducer = (state, action) => {
+    //On successful logout reset state
+    if (action.type === actionTypes.LOGOUT_USER_SUCESS) {
+        state = undefined
+    }
+    return appReducer(state, action)
+}
+
+export default rootReducer;

@@ -1,12 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router-dom";
+
 import Loading from "../loading";
 import NotFound from "../NotFound";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import './dashboard.css';
 
+/**
+ * Representational Component for Flashcard sets for a particular module.
+ * Users can choose their flashcard sets to get started with it or reset the progress in a set.
+ */
 class FlashcardSet extends Component {
     componentDidMount() {
         this.props.getFlashcardSets({"mod_id": this.props.selectedModuleId})
@@ -27,12 +31,13 @@ class FlashcardSet extends Component {
             <Fragment>
                 <div className="modules flashcardSetDashboard">
                     {this.props.flashcardSets.map((set, id)=>{
+                        let progress = set.fc_progress + '%'
                         return(
                             <div className="card" key={id} >
                                 <div className="card-body">
                                     <h5 className="card-title">{set.set_name}</h5>
                                     <div className="progress" style={{marginBottom: "10px"}}>
-                                        <div className="progress-bar" style={{ width: "50%", backgroundColor: 'var(--primary-color)' }}><b>50%</b></div>
+                                        <div className="progress-bar" style={{ width: progress, backgroundColor: 'var(--primary-color)' }}><b>{progress}</b></div>
                                     </div>
                                        <div>
                                         <button className="btn btn-info getSatProSecondaryButton" onClick={() => {

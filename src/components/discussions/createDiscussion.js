@@ -3,6 +3,10 @@ import ErrorMessage from "../ErrorMessage";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/**
+ * Representational component to Start a discussions.
+ * Users can start a discussion from here.
+ */
 class CreateDiscussion extends Component {
     constructor(props){
         super(props);

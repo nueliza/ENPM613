@@ -22,8 +22,16 @@ import Grades from "../../containers/grades";
 import FlashcardSet from "../../containers/flashcardSets";
 import Students from "../../containers/students";
 import ToastContainer from "../toast/index";
-import ViewExam from "../exams/viewExam";
+import ViewExam from "../../containers/viewExam";
 
+/**
+ * Representational Component for Student/ Tutor Dashboard. 
+ * The dashboard feature change based on the user logged in. i.e. Student or tutor.
+ * The features include Flashcards, students, exams, grades, files and discussions
+ * Users can navigate to the respective pages using the SideNav.
+ * React routes are used to make the navigation between these components seemless.
+ * 
+ */
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -69,7 +77,7 @@ class Dashboard extends Component {
                                             {isTutor? (
                                             <React.Fragment>
                                                 <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
-                                                <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
+                                                <ReactTooltip id='Students' type='info' className='mySepecialClass' >
                                                     <span>Students</span>
                                                 </ReactTooltip> 
                                             </React.Fragment>
@@ -77,8 +85,8 @@ class Dashboard extends Component {
                                             :  
                                             <React.Fragment>
                                                 <FontAwesomeIcon icon={iconMapping["Modules"]} data-tip data-for='Modules' size="2x" />  
-                                                <ReactTooltip id='Modules' type='info' class='mySepecialClass' >
-                                                    <span>All Modules</span>
+                                                <ReactTooltip id='Modules' type='info' className='mySepecialClass' >
+                                                    <span>Flashcard Sets</span>
                                                 </ReactTooltip>    
                                             </React.Fragment>
                                             }
@@ -91,7 +99,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Files">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Files"]} data-tip data-for='Files' size="2x" />
-                                            <ReactTooltip id='Files' type='info' class='tooltips'>
+                                            <ReactTooltip id='Files' type='info' className='mySepecialClass'>
                                                 <span>Files</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -102,7 +110,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Exams">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Exams"]} data-tip data-for='Exams' size="2x" />
-                                            <ReactTooltip id='Exams' type='info' class='tooltips'>
+                                            <ReactTooltip id='Exams' type='info' className='mySepecialClass'>
                                                 <span>Exams</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -115,7 +123,7 @@ class Dashboard extends Component {
                                         <NavItem eventKey="Grades">
                                             <NavIcon>
                                                 <FontAwesomeIcon icon={iconMapping["Grades"]} data-tip data-for='Grades' size="2x" />
-                                                <ReactTooltip id='Grades' type='info' class='tooltips'>
+                                                <ReactTooltip id='Grades' type='info' className='mySepecialClass'>
                                                     <span>Grades</span>
                                                 </ReactTooltip>
                                             </NavIcon>
@@ -127,7 +135,7 @@ class Dashboard extends Component {
                                     <NavItem eventKey="Discussions">
                                         <NavIcon>
                                             <FontAwesomeIcon icon={iconMapping["Discussions"]} data-tip data-for='Discussions' size="2x" />
-                                            <ReactTooltip id='Discussions' type='info' class='tooltips'>
+                                            <ReactTooltip id='Discussions' type='info' className='mySepecialClass'>
                                                 <span>Discussions</span>
                                             </ReactTooltip>
                                         </NavIcon>
@@ -148,25 +156,31 @@ class Dashboard extends Component {
                                         </React.Fragment> 
                                     }
                                     <div className="userInfo">
-                                        <span className="bold">Hello, {this.props.userInfo.fname} {this.props.userInfo.lname} !</span> <br />
-                                        <span>Last logged In:</span><span className="bold">{userInfo.last_logged_in}</span> <br />
-                                        <button className="btn btn-info getSatProSecondaryButton" onClick={() => {
+                                        <button className="btn btn-info getSatProSecondaryButton" 
+                                        style={{float: "right", lineHeight: "35px"}}
+                                        onClick={() => {
                                             this.logout()
                                         }}>
                                             Sign out
                                         </button>
+                                        <div style={{float: "right", marginRight: "10px"}}>
+                                        <span style={{fontSize: "22px"}}> <b> Hello, {userInfo.fname} {userInfo.lname} !</b></span> <br />
+                                            <span>Last logged In: </span><span className="bold">{userInfo.last_logged_in}</span> <br />
+                                        </div>
+                                        
+                                        
                                     </div>
                                 </div>
 
                                 <hr />
 
-                                <Route path="/discussions" component={props => 
+                                <Route path="/Discussions" component={props => 
                                     <Discussions 
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
                                     />} 
                                 />
-                                <Route path="/discussion" component={props => 
+                                <Route path="/Discussion" component={props => 
                                     <Discussion />} 
                                 /> 
                                 <Route path="/CreateDiscussion" component={props => 
@@ -178,7 +192,7 @@ class Dashboard extends Component {
                                     />}
                                 />
 
-                                <Route path="/exams" component={props => 
+                                <Route path="/Exams" component={props => 
                                     <Exams 
                                         isTutor={isTutor} 
                                         selectedModuleId = {selectedModuleId}
@@ -190,29 +204,31 @@ class Dashboard extends Component {
                                         createExam={this.props.createExam}
                                     />} 
                                 />
-                                <Route path="/takeExam" component={props => 
+                                <Route path="/TakeExam" component={props => 
                                     <TakeExam  />} 
                                 />
 
-                                <Route path="/grades" component={props => 
+                                <Route path="/Grades" component={props => 
                                     <Grades selectedModuleId = {selectedModuleId} />} 
                                 />
-                                <Route path="/files" component={props => <Files isTutor={isTutor}/>} />
+                                <Route path="/Files" component={props => 
+                                    <Files 
+                                        isTutor={isTutor}
+                                        selectedModuleId = {selectedModuleId}
+                                        />} 
+                                />
                                 <Route path="/dashboard" component={props => 
                                     isTutor? <Students />:
                                     <FlashcardSet 
                                         selectedModuleId = {selectedModuleId}
                                     />} 
                                     />
-                                <Route path="/flashcards" component={props => <Flashcards />} />
-                                <Route path="/students" component={props => <Students />} />
-                                <Route path="/viewExam" component={props => 
+                                <Route path="/Flashcards" component={props => <Flashcards />} />
+                                <Route path="/Students" component={props => <Students />} />
+                                <Route path="/ViewExam" component={props => 
                                     <ViewExam
+                                        {...props}
                                         isTutor={isTutor} 
-                                        loading= {this.props.loading}
-                                        selectedExam ={this.props.selectedExam}
-                                        selectedExamName = {this.props.selectedExamName}
-                                        selectedExamScore = {this.props.selectedExamScore}
                                     />} 
                                 />
                             </main>
