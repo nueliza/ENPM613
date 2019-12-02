@@ -2,6 +2,10 @@ import { connect } from 'react-redux';
 import Students from '../components/students';
 import { getStudentList } from "../actions/studentHandler";
 
+/**
+ * Functional compoenent for Students page
+ */
+
 const mapStateToProps =( state) =>{
     return{
         loading: state.loader.loading,

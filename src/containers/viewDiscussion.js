@@ -3,6 +3,10 @@ import Discussion from '../components/discussions/discussion';
 
 import {replyToDiscussion, getDiscussion} from "../actions/discussionHandler";
 
+/**
+ * Functional compoenent for Discussion page
+ */
+
 const mapDispatchToProps = (dispatch) => {
     return{
         replyToDiscussion: (payload) =>dispatch(replyToDiscussion(payload)),

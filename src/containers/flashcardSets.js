@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import FlashcardSets from '../components/dashboard/flashcardSet';
 import { getFlashcardSets, getFlashcard,resetProgress } from "../actions/flashcardsHandler";
+/**
+ * Functional compoenent for flashcard set page
+ */
 
 const mapDispatchToProps = (dispatch) => {
     return{

@@ -2,6 +2,9 @@ import { connect } from 'react-redux';
 import Exams from '../components/exams';
 import {getExamListTutor, getExam, deleteExam, getExamListStudent} from "../actions/examHandler";
 
+/**
+ * Functional compoenent for Exam page
+ */
 
 const mapDispatchToProps = (dispatch) => {
     return{

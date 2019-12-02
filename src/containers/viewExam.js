@@ -3,6 +3,11 @@ import ViewExam from '../components/exams/viewExam';
 
 import {replyToDiscussion, getDiscussion} from "../actions/discussionHandler";
 
+
+/**
+ * Functional compoenent for View Exam page
+ */
+
 const mapDispatchToProps = (dispatch) => {
     return{
         replyToDiscussion: (payload) =>dispatch(replyToDiscussion(payload)),
