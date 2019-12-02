@@ -77,7 +77,7 @@ class Dashboard extends Component {
                                             {isTutor? (
                                             <React.Fragment>
                                                 <FontAwesomeIcon icon={iconMapping["Students"]} data-tip data-for='Students' size="2x" />
-                                                <ReactTooltip id='Modules' type='info' className='mySepecialClass' >
+                                                <ReactTooltip id='Students' type='info' className='mySepecialClass' >
                                                     <span>Students</span>
                                                 </ReactTooltip> 
                                             </React.Fragment>
@@ -211,7 +211,12 @@ class Dashboard extends Component {
                                 <Route path="/Grades" component={props => 
                                     <Grades selectedModuleId = {selectedModuleId} />} 
                                 />
-                                <Route path="/Files" component={props => <Files isTutor={isTutor}/>} />
+                                <Route path="/Files" component={props => 
+                                    <Files 
+                                        isTutor={isTutor}
+                                        selectedModuleId = {selectedModuleId}
+                                        />} 
+                                />
                                 <Route path="/dashboard" component={props => 
                                     isTutor? <Students />:
                                     <FlashcardSet 

@@ -24,6 +24,9 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_DISCUSSION_STARTED:
         case actionTypes.RESET_PREF_STARTED:
         case actionTypes.REPLY_TO_DISCUSSION_STARTED:
+        case actionTypes.GET_FILES_STARTED:
+        case actionTypes.UPLOAD_FILES_STARTED:
+        case actionTypes.DELETE_FILE_STARTED:
             return{ ...state, loading: true}
             
         case actionTypes.LOGIN_USER_FAILED:
@@ -62,6 +65,12 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.RESET_PREF_FAILED:
         case actionTypes.REPLY_TO_DISCUSSION_SUCCESS:
         case actionTypes.REPLY_TO_DISCUSSION_FAILED:
+        case actionTypes.GET_FILES_SUCCESS:
+        case actionTypes.GET_FILES_FAILED:
+        case actionTypes.UPLOAD_FILES_FAILED:
+        case actionTypes.UPLOAD_FILES_SUCCESS:
+        case actionTypes.DELETE_FILE_SUCCESS:
+        case actionTypes.DELETE_FILE_FAILED:
             return{ ...state, loading: false}
         
         default:

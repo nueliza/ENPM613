@@ -17,7 +17,12 @@ const FileUploader = (props) =>{
     
     // receives array of files that are done uploading when submit button is clicked
     const handleSubmit = (files, allFiles) => {
-        allFiles.forEach(f => f.remove())
+        let payload = new FormData();
+        payload.append("file", allFiles[0].file)
+        props.uploadFile(payload)
+        .then(()=>{
+            props.getFiles()
+        })
         props.onCloseModal()
     }
 
@@ -25,22 +30,30 @@ const FileUploader = (props) =>{
         <Dropzone
         getUploadParams={getUploadParams}
         onChangeStatus={handleChangeStatus}
-        maxFiles={3}
-        accept=".docx,.pdf"
+        maxFiles={1}
+        accept=".pdf"
         maxSizeBytes={3145728}
-        inputWithFilesContent={files => `${3 - files.length} more`}
+        inputWithFilesContent={files => `${1 - files.length} more`}
         onSubmit={handleSubmit}
         />
     )
 } 
 
 class FileUploadModal extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            file: {}
+        }
+    }
+
     render() {
         return (
             <Modal open={this.props.isVisible} onClose={this.props.onCloseModal}>
                 <h2>Upload Files</h2>
                 <hr />
-                <FileUploader onCloseModal={this.props.onCloseModal}/>
+                <FileUploader onCloseModal={this.props.onCloseModal} uploadFile = {this.props.uploadFile} getFiles={this.props.getFiles}/>
+                <label>Supported file types: .pdf</label>
             </Modal>)
     }
 }
