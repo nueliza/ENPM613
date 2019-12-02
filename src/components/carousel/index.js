@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import slide1 from "./images/1.jpg";
-import slide2 from "./images/2.jpg";
-import slide3 from "./images/3.jpg";
+import slide2 from "./images/7.png";
+import slide3 from "./images/6.png";
 
 /**
  * Representational Component for the carousel on the welcome page.
