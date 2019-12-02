@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import ManagePeople from '../components/ManagePeople/managePeople';
-import { getStudentList, getTutorsList, deleteUser } from '../actions/studentHandler';
+import { getStudentList, getTutorsList, getUserDetails } from '../actions/studentHandler';
 import { logoutUser } from "../actions/userHandler";
 
 const mapDispatchToProps = (dispatch) => {
     return{
         getStudentList : ()=> dispatch(getStudentList()),
         getTutorsList: ()=> dispatch(getTutorsList()),
-        deleteUser: (user_id)=>dispatch(deleteUser(user_id)),
+        getUserDetails: (payload) =>dispatch(getUserDetails(payload)),
         logoutUser: () => dispatch(logoutUser()),
     }
 }

@@ -2,7 +2,6 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from '../loading';
-import Modal from "react-responsive-modal";
 import SecondaryPasswordModal from "../ManagePeople/secondaryPasswordModal";
 
 class ManagePeople extends Component {
@@ -10,7 +9,8 @@ class ManagePeople extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false
+            showModal: false,
+            selectedStudentId: ""
         }
     }
 
@@ -80,7 +80,7 @@ class ManagePeople extends Component {
                     <span className="author">- Light Yagami</span>
                 </div>
                 <br />
-                <h2>Student List</h2>
+                <h2>Enrolled Students</h2>
                 <div className="dashboard_subSection">
                 <ul className="list-group">
                     {this.props.studentList.map((student, id) => {
@@ -102,8 +102,8 @@ class ManagePeople extends Component {
                                     type="button"
                                     className="btn btn-info getSatProSecondaryButton"
                                     onClick={() => {
-                                        //this.props.getDiscussion({ "discuss_id": discussion.discuss_id })
-                                        this.setState({showModal: true})
+                                        
+                                        this.setState({showModal: true, selectedStudentId: student.user_id})
                                         // this.props.history.push({
                                         //     pathname: '/ViewStudent',
                                         // })
@@ -115,7 +115,7 @@ class ManagePeople extends Component {
                     })}
                 </ul>
                 <br/>
-                <h2>Tutor List</h2>
+                <h2>Available Tutors</h2>
                 <ul className="list-group">
                     { (this.props.tutorList) && this.props.tutorList.map((tutor, id) => {
                         return <li className="list-group-item" key={id}>
@@ -131,6 +131,7 @@ class ManagePeople extends Component {
                 </ul>
                 <SecondaryPasswordModal 
                     showModal={this.state.showModal}
+                    getUserDetails = {()=>this.props.getUserDetails({"user_id": this.state.selectedStudentId})}
                     onCloseModal={this.onCloseModal}
                     onOpenModal = {this.onOpenModal}
                 />

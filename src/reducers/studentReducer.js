@@ -2,7 +2,8 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
     studentList: {},
-    tutorList: {}
+    tutorList: {},
+    selectedStudent: {}
 }
 
 const studentReducer = (state = initialState, action) => {
@@ -12,6 +13,9 @@ const studentReducer = (state = initialState, action) => {
         }
         case actionTypes.GET_TUTOR_LIST_SUCCESS: {
             return {...state, tutorList: action.payload}
+        }
+        case actionTypes.GET_USER_SUCCESS: {
+            return {...state, selectedStudent: action.payload}
         }
            
         default:

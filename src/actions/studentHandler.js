@@ -147,15 +147,13 @@ export function getModulesList() {
 export function getUserDetails(reqObject) {
     return async dispatch => {
         dispatch({
-            type: actionTypes.DELETE_STUDENT_STARTED
+            type: actionTypes.GET_USER_STARTED
         });
-        return axios.post(`/delete`, reqObject)
+        return axios.post(`/get_user`, reqObject)
             .then(response => {
-                
-                console.log("Response for delete user!:: ", response)
                 dispatch({
-                    type: actionTypes.DELETE_STUDENT_SUCCESS,
-                    payload: "You've successfully deleted the student!"
+                    type: actionTypes.GET_USER_SUCCESS,
+                    payload: response.data.user_info
                 })
             })
             .catch(error => {
@@ -167,7 +165,7 @@ export function getUserDetails(reqObject) {
                     errorMessage = errors.Error_500
                 }
                 dispatch({
-                    type: actionTypes.DELETE_STUDENT_FAILED,
+                    type: actionTypes.GET_USER_FAILED,
                     error: errorMessage
                 })
             })

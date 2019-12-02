@@ -22,7 +22,11 @@ class SecondaryPasswordModal extends Component{
         e.preventDefault();
         if(this.validateForm()){
             this.setState({passwordError: "", password: ""})
-            this.props.history.push('ViewUser')
+            this.props.getUserDetails()
+            .then(()=>{
+                this.props.history.push('ViewUser')
+            })
+           
         }
         
     }
