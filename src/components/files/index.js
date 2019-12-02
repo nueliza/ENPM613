@@ -18,8 +18,8 @@ class Files extends Component {
     UNSAFE_componentWillMount() {
         if (this.props.isTutor)
             this.props.getFilesTutor()
-        // else
-        //     this.props.getFilesStudent({ "mod_id": this.props.selectedModuleId })
+        else
+            this.props.getFilesStudent({ "mod_id": this.props.selectedModuleId })
     }
 
     handleDownload = (link) =>{

@@ -43,18 +43,18 @@ export function getFilesTutor(){
     }
 }
 
-export function uploadFile(reqObject){
-    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
-    //axios.defaults.headers.post['Content-Type'] = 'application/json'; 
+export function getFilesStudent(reqObject){
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}` 
     return async dispatch => {
         dispatch({
             type: actionTypes.GET_FILES_STARTED
         });
-        return axios.post(`/add_file/`, reqObject, { headers: { 'Content-Type': 'multipart/form-data' } })
+        return axios.post(`/get_files`, reqObject)
         .then( response =>{
             dispatch({
                 type: actionTypes.GET_FILES_SUCCESS,
-                payload: "File has been uploaded successfully"
+                payload: response.data.file_list
             })
         })
         .catch( error =>{
@@ -67,6 +67,36 @@ export function uploadFile(reqObject){
                 }
             dispatch({
                 type: actionTypes.GET_FILES_FAILED,
+                error: errorMessage
+            })
+        })
+    }
+}
+
+export function uploadFile(reqObject){
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    //axios.defaults.headers.post['Content-Type'] = 'application/json'; 
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.UPLOAD_FILES_STARTED
+        });
+        return axios.post(`/add_file/`, reqObject, { headers: { 'Content-Type': 'multipart/form-data' } })
+        .then( response =>{
+            dispatch({
+                type: actionTypes.UPLOAD_FILES_SUCCESS,
+                payload: "File has been uploaded successfully"
+            })
+        })
+        .catch( error =>{
+            let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
+            dispatch({
+                type: actionTypes.UPLOAD_FILES_FAILED,
                 error: errorMessage
             })
         })
