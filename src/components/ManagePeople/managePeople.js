@@ -74,10 +74,21 @@ class ManagePeople extends Component {
                                     <FontAwesomeIcon
                                     icon={iconMapping["Trash"]}
                                     size="1x"
-                                    // className={props.isTutor ? "" : "hide"}
                                     style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
                                     onClick={() => this.handleDelete(student.user_id)}
                                 />
+                                <button
+                                    type="button"
+                                    className="btn btn-info"
+                                    onClick={() => {
+                                        //this.props.getDiscussion({ "discuss_id": discussion.discuss_id })
+                                        this.props.history.push({
+                                            pathname: '/ViewStudent',
+                                        })
+                                    }}
+                                >
+                                    View Details
+                                </button>
                             </li>
                     })}
                 </ul>
