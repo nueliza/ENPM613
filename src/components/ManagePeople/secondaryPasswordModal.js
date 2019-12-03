@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import Modal from "react-responsive-modal";
+import { Redirect } from 'react-router';
 import ErrorMessage from '../ErrorMessage';
-import { validate } from '@babel/types';
+import Loading from "../loading";
+
 class SecondaryPasswordModal extends Component{
     constructor(props){
         super(props);
@@ -21,14 +23,13 @@ class SecondaryPasswordModal extends Component{
         //Confirm sucess and redirect
         e.preventDefault();
         if(this.validateForm()){
-            this.setState({passwordError: "", password: ""})
-            this.props.getUserDetails()
-            .then(()=>{
-                this.props.history.push('ViewUser')
-            })
-           
+            let payload={
+                "user_id": this.props.selectedStudentId,
+                "sec_pwd": this.state.password
+            }
+            this.props.onCloseModal()
+            this.props.getUserDetails(payload)
         }
-        
     }
 
     validateForm = () =>{
@@ -42,10 +43,13 @@ class SecondaryPasswordModal extends Component{
     }
 
     render(){
+        if (this.props.loading) return <Loading show={this.props.loading} />
+        if (this.props.selectedStudent !== "") return <Redirect to='/ViewUser' /> 
         return(
             <Modal open={this.props.showModal} onClose={this.props.onCloseModal} >
                 Please enter your verification password:
                 <hr />
+                <ErrorMessage messageType="error" content={this.props.adminError}/>
                 <ErrorMessage messageType="error" content={this.state.passwordError}/>
                 <form onSubmit={this.onSubmit}>
                     <input type="password"

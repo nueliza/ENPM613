@@ -60,13 +60,13 @@ export function registerUser(registerData) {
             .then(result => {
                 dispatch({
                     type: actionTypes.REGISTRATION_SUCCESS,
-                    payload: result.data.message
+                    payload: "You've successfully registered"
                 })
             })
             .catch(error => {
                 let errorMessage = ""
-                if(error.response){
-                    errorMessage = error.response.data.message
+                if(error.response.status === 400){
+                    errorMessage = "You've already registered. Please sign in"
                 }
                 else{
                     errorMessage = errors.Error_500

@@ -2,6 +2,7 @@ import { iconMapping } from "../utils/iconsMapping.js";
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from '../loading';
+import ToastContainer from "../toast/index";
 import SecondaryPasswordModal from "../ManagePeople/secondaryPasswordModal";
 
 class ManagePeople extends Component {
@@ -10,7 +11,8 @@ class ManagePeople extends Component {
         super(props);
         this.state = {
             showModal: false,
-            selectedStudentId: ""
+            selectedStudentId: "",
+            purpose: ""
         }
     }
 
@@ -45,9 +47,8 @@ class ManagePeople extends Component {
     }
 
     render(){
-        
         if(this.props.loading) return <Loading />
-
+        console.log("here", this.props.deleteSucess)
         //redirects to Not found page if the getStudentList API fails
         return Object.keys(this.props.studentList).length === 0? 
         <div>
@@ -74,6 +75,7 @@ class ManagePeople extends Component {
                     </div>
                 </div>
                 <hr/>
+                <ToastContainer />
                 <div className="quoteWrapper">
                     <FontAwesomeIcon icon={iconMapping["QuoteLeft"]} size="2x" style={{color: "gray"}} />&nbsp;
                     <span className="quoteContent">Look around you, and all you will see are people the world would be better off without. </span>
@@ -92,21 +94,11 @@ class ManagePeople extends Component {
                                     <span>
                                         {student.fname} {student.lname}
                                     </span>
-                                    <FontAwesomeIcon
-                                    icon={iconMapping["Trash"]}
-                                    size="1x"
-                                    style={{ color: "var(--alert-color)", float: "right", marginLeft: "10px" }}
-                                    onClick={() => this.handleDelete(student.user_id)}
-                                />
                                 <button
                                     type="button"
                                     className="btn btn-info getSatProSecondaryButton"
                                     onClick={() => {
-                                        
-                                        this.setState({showModal: true, selectedStudentId: student.user_id})
-                                        // this.props.history.push({
-                                        //     pathname: '/ViewStudent',
-                                        // })
+                                        this.setState({showModal: true, selectedStudentId: student.user_id, purpose: "view"})
                                     }}
                                 >
                                     View Details
@@ -131,9 +123,13 @@ class ManagePeople extends Component {
                 </ul>
                 <SecondaryPasswordModal 
                     showModal={this.state.showModal}
-                    getUserDetails = {()=>this.props.getUserDetails({"user_id": this.state.selectedStudentId})}
+                    selectedStudentId = {this.state.selectedStudentId}
+                    getUserDetails = {(payload)=>this.props.getUserDetails(payload)}
                     onCloseModal={this.onCloseModal}
                     onOpenModal = {this.onOpenModal}
+                    purpose = {this.state.purpose}
+                    selectedStudent ={this.props.selectedStudent}
+                    loading = {this.props.loading}
                 />
                 </div>
             </div>

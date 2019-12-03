@@ -13,7 +13,6 @@ import { Redirect } from 'react-router';
 class ViewExam extends Component {
 
     render() {
-        console.log("props", this.props)
         if (this.props.loading) return <Loading />
         //redirects to Not found page if the getExamsList API fails
         let redirection = this.props.location.state.from === "Exams"? '/exams':'/grades'

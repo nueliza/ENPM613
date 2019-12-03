@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 import Loading from '../loading';
+import { iconMapping } from "../utils/iconsMapping.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ViewUserDetails extends Component{
     constructor(props){
@@ -12,8 +15,7 @@ class ViewUserDetails extends Component{
 
     render(){
         if(this.props.loading) return <Loading />
-        console.log("Selected user", this.props.selectedStudent)
-        return Object.keys(this.props.selectedStudent).length === 0? "Not found" :
+        return this.props.selectedStudent.length === ""? "Not found" :
         (
             <div className="dashboard_body student_body">
                 <div className="dashboard_header">
@@ -35,6 +37,18 @@ class ViewUserDetails extends Component{
                 </div>
                 <hr/>
                 <div className="dashboard_subSection">
+                    <button
+                        type="button"
+                        className="btn btn-info getSatProSecondaryButton"
+                        onClick={() => {
+                            this.props.resetSelectedStudent()
+                            this.props.history.push('/ManagePeople')
+                        }}
+                    >
+                        <FontAwesomeIcon icon={iconMapping["back"]} size="1x" />
+                        Back to Manage People
+                    </button>
+                    <br /> <br/>
                     <table className="table">
                         <thead class="thead-dark">
                             <tr>
@@ -47,11 +61,11 @@ class ViewUserDetails extends Component{
                         </thead>
                         <tbody>
                             <tr>
-                                <td  scope="row">{this.props.selectedStudent.fname}</td>
+                                <td  scope="row">{this.props.selectedStudent.username}</td>
                                 <td>{this.props.selectedStudent.fname}</td>
-                                <td>{this.props.selectedStudent.fname}</td>
-                                <td>{this.props.selectedStudent.fname}</td>
-                                <td>{this.props.selectedStudent.fname}</td>
+                                <td>{this.props.selectedStudent.lname}</td>
+                                <td>{this.props.selectedStudent.phone}</td>
+                                <td>{this.props.selectedStudent.email}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -59,9 +73,15 @@ class ViewUserDetails extends Component{
                         type="button"
                         className="btn btn-info getSatProSecondaryButton"
                         onClick={() => {
+                            this.props.deleteUser({"model_id": this.props.selectedStudent.user_id, "model_name": "User"})
+                            .then(()=>{
+                                this.props.history.push('/ManagePeople')
+                            })
+                            
                         }}
                     >
-                        Delete <b>{this.props.selectedStudent.username} </b>from the system
+                        <FontAwesomeIcon icon={iconMapping["Trash"]} size="1x" /> &nbsp;
+                        Delete <b>{this.props.selectedStudent.fname} {this.props.selectedStudent.lname} </b> from the system
                     </button>
                 </div>
             </div>
@@ -69,4 +89,4 @@ class ViewUserDetails extends Component{
     }
 }
 
-export default ViewUserDetails;
+export default withRouter(ViewUserDetails);

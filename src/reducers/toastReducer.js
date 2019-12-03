@@ -37,6 +37,7 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_STUDENT_LIST_FAILED:
         case actionTypes.GET_MODULE_LIST_FAILED:
         case actionTypes.DELETE_STUDENT_FAILED:
+        case actionTypes.GET_USER_FAILED:
         //exam hanlder
         case actionTypes.GET_EXAM_LIST_FAILED:
         case actionTypes.DELETE_EXAM_FAILED:

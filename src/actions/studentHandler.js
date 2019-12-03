@@ -97,7 +97,7 @@ export function deleteUser(reqObject) {
                     errorMessage = error.response.data.message
                 }
                 else{
-                    errorMessage = errors.Error_500
+                    errorMessage = "Sorry! You're not authorized"
                 }
                 dispatch({
                     type: actionTypes.DELETE_STUDENT_FAILED,
@@ -158,8 +158,8 @@ export function getUserDetails(reqObject) {
             })
             .catch(error => {
                 let errorMessage = "";
-                if(error.response){
-                    errorMessage = error.response.data.message
+                if(error.response.status === 401){
+                    errorMessage = "Sorry! You're not authorized"
                 }
                 else{
                     errorMessage = errors.Error_500
