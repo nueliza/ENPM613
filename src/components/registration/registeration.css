@@ -11,6 +11,10 @@
     margin-bottom: 10px !important;
 }
 
+.terms{
+    color: gray;
+}
+
 
 .RegistrationWrapper #password{
     width: 87% !important;
