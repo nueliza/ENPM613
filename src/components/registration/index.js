@@ -24,12 +24,7 @@ class Registration extends Component {
             passwordError: "",
             emailIdError: "",
             phoneError: "",
-            termsError: "",
-            //errors: {fname: "", lname: "", username: "", password: "", email: "", phone: "", terms: ""},
             errors:{},
-           // isFormValid: false,
-            isTermsChecked: false,
-            
             showToast: false
         }
     }
@@ -184,14 +179,6 @@ class Registration extends Component {
                     }
                  }
                 break;
-             case "terms":
-                 if(this.state.isTermsChecked === false){
-                     this.setState({termsError: "Please read the terms and conditions"})
-                 }
-                 else{
-                    this.setState({termsError: ""})
-                 }
-             break;
              default: console.log("Form is valid");
          }
 
@@ -207,6 +194,7 @@ class Registration extends Component {
                 <div className="RegistrationWrapper">
                     <br />
                     <h3>Sign Up</h3>
+                    <span className="terms">It's free and only takes a minute !</span>
                     <hr />
                     <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                         <div className="form-group nameField" >
@@ -251,10 +239,9 @@ class Registration extends Component {
                             />
                             <ErrorMessage content={this.state.errors["phone"]} messageType="error" />
                         </div>
-                        <div className="form-group">
-                            <input type="checkbox" name="terms"
-                            /> I read and agree to <a href="/">Terms and Conditions</a>
-                            <ErrorMessage content={this.state.errors["terms"]} messageType="error" />
+                        <div className="form-group terms">
+                            By clicking on the Sign Up button, <br />
+                            you agree to our <a href="/">Terms and Conditions</a>
                         </div>
                         <input type="submit"
                             className="btn btn-primary getSatProSubmitBtn"
