@@ -7,14 +7,15 @@ import logo from "../dashboard/images/Logo.png";
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import WelcomeCarousel from "../carousel";
+import Header from "../header";
+import Footer from "../footer";
 import success1 from "../successStories/images/success1.jpg";
 import success2 from "../successStories/images/success2.jpg";
 import success3 from "../successStories/images/success3.jpg";
 import autoGrading from "../serviceHighlights/images/autoGrading.png";
 import discussion from "../serviceHighlights/images/discussion.jpg";
 import flashCard from "../serviceHighlights/images/flashCard.png";
-import Header from "../header";
-import Footer from "../footer";
+
 
 
 /**
@@ -66,7 +67,7 @@ class Welcome extends Component {
                             <button className="btn btn-link" onClick={() => this.setState({ showLoginModal: true })}>Sign In </button>
                             <button className="btn btn-info" onClick={() => this.setState({ showRegistrationModal: true })}>Sign up </button>
                             &nbsp;
-                            {/* <button className="btn btn-info" onClick={() => this.props.logoutUser()}> Sign out</button> */}
+                            <button className="btn btn-info" onClick={() => this.props.logoutUser()}> Sign out</button>
                         </div>
                     </div>
                 </div>
@@ -120,6 +121,7 @@ class Welcome extends Component {
                     </div>
 
                 </div>
+                <Footer />
                 <Login
                     showModal={this.state.showLoginModal}
                     onCloseModal={this.onCloseLoginModal}
@@ -134,6 +136,7 @@ class Welcome extends Component {
                     openLoginModal={this.openLoginModal}
                     registerUser={this.props.registerUser}
                     registrationError={this.props.registrationError}
+                    loading = {this.props.loading}
                 />
                 <Footer />
             </Fragment>)

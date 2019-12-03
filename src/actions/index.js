@@ -24,4 +24,11 @@ export const resetToast = () =>{
 }
 
 
+export const resetSelectedStudent = () =>{
+    return{
+        type: actionTypes.RESET_STUDENT
+    }
+}
+
+
 

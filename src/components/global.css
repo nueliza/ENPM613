@@ -119,6 +119,14 @@ input{
     height: 500px !important
 }
 
+.table{
+    width: 75% !important;
+
+}
+.table .thead-dark th{
+    background-color:var(--primary-color) !important ;
+}
+
 body{
     font-family: 'Poppins',sans-serif !important;
 }

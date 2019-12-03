@@ -44,6 +44,68 @@ export function getStudentList() {
         })
   }
 }
+/**
+ * Gets the list of all Tutors
+ */
+
+export function getTutorsList() {
+    axios.defaults.withCredentials = true;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_TUTOR_LIST_SUCCESS
+        });
+        return axios.get(`/get_tutors`)
+        .then(result => {
+            console.log("Tutor: ", result)
+            dispatch({
+                type: actionTypes.GET_TUTOR_LIST_SUCCESS,
+                payload: result.data.user_lis
+            })
+        })
+        .catch(error =>{
+            let errorMessage ="";
+            if(error.response){
+                errorMessage = error.response.data.message
+            }
+            else{
+                errorMessage = errors.Error_500
+            }
+            dispatch({
+                type: actionTypes.GET_TUTOR_LIST_FAILED,
+                error: errorMessage
+            });
+        })
+    }
+}
+
+export function deleteUser(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.DELETE_STUDENT_STARTED
+        });
+        return axios.post(`/delete`, reqObject)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.DELETE_STUDENT_SUCCESS,
+                    payload: "You've successfully deleted the student!"
+                })
+            })
+            .catch(error => {
+                let errorMessage = "";
+                if(error.response){
+                    errorMessage = error.response.data.message
+                }
+                else{
+                    errorMessage = "Sorry! You're not authorized"
+                }
+                dispatch({
+                    type: actionTypes.DELETE_STUDENT_FAILED,
+                    error: errorMessage
+                })
+            })
+    }
+}
 
 /**
  * Coommunicates with the get_modules API and gets the list of modules available to students
@@ -75,6 +137,38 @@ export function getModulesList() {
                 error: errorMessage
             });
         })
+    }
+}
+
+/**
+ * 
+ * Communicates with get_user API and gets the details of a particular user
+ */
+export function getUserDetails(reqObject) {
+    return async dispatch => {
+        dispatch({
+            type: actionTypes.GET_USER_STARTED
+        });
+        return axios.post(`/get_user`, reqObject)
+            .then(response => {
+                dispatch({
+                    type: actionTypes.GET_USER_SUCCESS,
+                    payload: response.data.user_info
+                })
+            })
+            .catch(error => {
+                let errorMessage = "";
+                if(error.response.status === 401){
+                    errorMessage = "Sorry! You're not authorized"
+                }
+                else{
+                    errorMessage = errors.Error_500
+                }
+                dispatch({
+                    type: actionTypes.GET_USER_FAILED,
+                    error: errorMessage
+                })
+            })
     }
 }
 
