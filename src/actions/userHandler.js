@@ -33,7 +33,7 @@ export function loginUser(user) {
             if(error.response){
                 if(error.response.status === 400)
                     errorMessage = "You're already logged in. Please try again."
-                else if(error.response.status === 401)
+                else 
                     errorMessage = "Invalid credentials"
             }
             else{

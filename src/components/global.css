@@ -46,6 +46,9 @@
 input{
     text-align: left !important;
 }
+a{
+    text-decoration: underline !important;
+}
 
 .quoteWrapper .quote{
     font-size: 85px;

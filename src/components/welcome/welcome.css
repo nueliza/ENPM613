@@ -31,6 +31,9 @@
 .getIntoTheSystem{
     display: inline-block;
 }
+.getIntoTheSystem .btn-link{
+    text-decoration: underline !important;
+}
 
 
 .information .rightWrapper{
