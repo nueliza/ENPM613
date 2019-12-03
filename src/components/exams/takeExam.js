@@ -19,13 +19,17 @@ const ExamQuestions =(props) =>{
                         return(
                             <React.Fragment key={idx}>
                                 <input 
+                                    style={{cursor:"pointer"}}
                                     type="radio" 
                                     id={`${question.ques_id}-${idx}`} 
                                     name={question.ques_id} 
                                     value={option}
                                     onChange={props.handleChange}/>
                                 &nbsp;
-                                <label htmlFor={`${question.questionId}-${idx}`}>{option}</label>
+                                <label 
+                                    htmlFor={`${question.ques_id}-${idx}`}
+                                    style={{cursor:"pointer"}}
+                                >{option}</label>
                                 <br />
                             </React.Fragment>
                         )
