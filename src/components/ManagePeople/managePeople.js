@@ -5,6 +5,9 @@ import Loading from '../loading';
 import ToastContainer from "../toast/index";
 import SecondaryPasswordModal from "../ManagePeople/secondaryPasswordModal";
 
+/**
+ * Representational component for Manage people page
+ */
 class ManagePeople extends Component {
 
     constructor(props) {
@@ -48,7 +51,6 @@ class ManagePeople extends Component {
 
     render(){
         if(this.props.loading) return <Loading />
-        console.log("here", this.props.deleteSucess)
         //redirects to Not found page if the getStudentList API fails
         return Object.keys(this.props.studentList).length === 0? 
         <div>

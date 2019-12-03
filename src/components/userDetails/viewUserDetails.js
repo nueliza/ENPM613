@@ -4,6 +4,9 @@ import Loading from '../loading';
 import { iconMapping } from "../utils/iconsMapping.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+/**
+ * Representational component for view user details page
+ */
 class ViewUserDetails extends Component{
     constructor(props){
         super(props);

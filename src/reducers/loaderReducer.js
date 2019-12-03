@@ -29,6 +29,7 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.DELETE_FILE_STARTED:
         case actionTypes.DELETE_STUDENT_STARTED:
         case actionTypes.GET_USER_STARTED:
+        case actionTypes.REGISTERATION_STARTED:
             return{ ...state, loading: true}
             
         case actionTypes.LOGIN_USER_FAILED:
@@ -79,6 +80,8 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_USER_SUCCESS:
         case actionTypes.DELETE_STUDENT_FAILED:
         case actionTypes.DELETE_STUDENT_SUCCESS:
+        case actionTypes.REGISTRATION_FAILED:
+        case actionTypes.REGISTRATION_SUCCESS:
             return{ ...state, loading: false}
         
         default:

@@ -136,6 +136,7 @@ class Welcome extends Component {
                     openLoginModal={this.openLoginModal}
                     registerUser={this.props.registerUser}
                     registrationError={this.props.registrationError}
+                    loading = {this.props.loading}
                 />
                 <Footer />
             </Fragment>)
