@@ -2,6 +2,10 @@ import { connect } from 'react-redux';
 import Files from '../components/files';
 import {getFilesTutor, uploadFile, getFilesStudent, deleteFile} from "../actions/filesHandler";
 
+/**
+ * Functional compoenent for files page
+ */
+
 const mapDispatchToProps = (dispatch) => {
     return{
         getFilesTutor: ()=>dispatch(getFilesTutor()),

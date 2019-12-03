@@ -3,6 +3,10 @@ import TakeExam from '../components/exams/takeExam';
 
 import { submitExam } from '../actions/examHandler';
 
+/**
+ * Functional compoenent for Take Exam page
+ */
+
 const mapDispatchToProps = (dispatch) => {
     return{
         submitExam: (payload) => (dispatch(submitExam(payload))),

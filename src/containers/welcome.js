@@ -2,6 +2,11 @@ import { connect } from 'react-redux';
 import {loginUser, registerUser, logoutUser} from "../actions/userHandler";
 import Welcome from '../components/welcome';
 
+
+/**
+ * Functional compoenent for Welcome page
+ */
+
 const mapDispatchToProps = (dispatch) => {
     return{
         loginUser: (data) => dispatch(loginUser(data)),

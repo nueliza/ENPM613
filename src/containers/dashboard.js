@@ -3,6 +3,10 @@ import Dashboard from '../components/dashboard';
 import {logoutUser} from "../actions/userHandler";
 import {createDiscussion} from "../actions/discussionHandler";
 
+/**
+ * 
+ * Functional component for student dahsboard
+ */
 
 const mapDispatchToProps = (dispatch) => {
     return{

@@ -3,6 +3,11 @@ import Grades from '../components/grades';
 
 import {getGradesList, getExam} from "../actions/examHandler";
 
+/**
+ * Functional compoenent for Grades page
+ */
+
+
 const mapDispatchToProps = (dispatch) => {
     return{
         getGradesList: (payload) =>(dispatch(getGradesList(payload))),

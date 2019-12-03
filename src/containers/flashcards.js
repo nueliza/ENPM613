@@ -3,6 +3,10 @@ import Flashcards from '../components/flashcards';
 
 import {setPreference, getFlashcard} from "../actions/flashcardsHandler";
 
+/**
+ * Functional compoenent for flashcards page
+ */
+
 const mapDispatchToProps = (dispatch) => {
     return{
         setPreference: (payload) =>dispatch(setPreference(payload)),

@@ -10,6 +10,11 @@ import { getModulesList } from "../actions/studentHandler";
 import Loading from "../components/loading";
 import NotFound from "../components/NotFound";
 
+
+/**
+ * Functional compoenent for Modules page
+ */
+
 class ModuleContainer extends Component {
   UNSAFE_componentWillMount() {
     if(Object.keys(this.props.userInfo).length !== 0){
