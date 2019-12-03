@@ -121,7 +121,6 @@ class Welcome extends Component {
                     </div>
 
                 </div>
-                <Footer />
                 <Login
                     showModal={this.state.showLoginModal}
                     onCloseModal={this.onCloseLoginModal}
