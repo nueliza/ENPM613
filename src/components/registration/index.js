@@ -7,6 +7,7 @@ import './registeration.css';
 import ErrorMessage from "../ErrorMessage";
 import { withRouter } from "react-router-dom";
 import ToastContainer from "../toast";
+import Loading from "../loading";
 
 
 /**
@@ -197,7 +198,7 @@ class Registration extends Component {
     }
 
     render() {
-        
+        if (this.props.loading) return <Loading show={this.props.loading} />
         return (
             <Modal open={this.props.showModal} onClose={this.props.onCloseModal}>
                 {

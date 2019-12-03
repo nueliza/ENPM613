@@ -13,6 +13,8 @@ const toastReducer = (state = initialState, action) => {
             return{ ...state, toastMessage: "You've logged in successfully!!", toastType:"SUCCESS"}
         case actionTypes.REGISTRATION_SUCCESS:
         case actionTypes.LOGOUT_USER_SUCESS:
+        //student handler
+        case actionTypes.DELETE_STUDENT_SUCCESS:
         //exam hanlder
         case actionTypes.CREATE_EXAM_SUCCESS:
         case actionTypes.DELETE_EXAM_SUCCESS:
@@ -34,6 +36,8 @@ const toastReducer = (state = initialState, action) => {
         //student handler
         case actionTypes.GET_STUDENT_LIST_FAILED:
         case actionTypes.GET_MODULE_LIST_FAILED:
+        case actionTypes.DELETE_STUDENT_FAILED:
+        case actionTypes.GET_USER_FAILED:
         //exam hanlder
         case actionTypes.GET_EXAM_LIST_FAILED:
         case actionTypes.DELETE_EXAM_FAILED:

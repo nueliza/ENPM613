@@ -27,6 +27,9 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_FILES_STARTED:
         case actionTypes.UPLOAD_FILES_STARTED:
         case actionTypes.DELETE_FILE_STARTED:
+        case actionTypes.DELETE_STUDENT_STARTED:
+        case actionTypes.GET_USER_STARTED:
+        case actionTypes.REGISTERATION_STARTED:
             return{ ...state, loading: true}
             
         case actionTypes.LOGIN_USER_FAILED:
@@ -47,6 +50,8 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.GET_MODULE_LIST_FAILED:
         case actionTypes.GET_STUDENT_LIST_FAILED:
         case actionTypes.GET_STUDENT_LIST_SUCCESS:
+        case actionTypes.GET_TUTOR_LIST_FAILED:
+        case actionTypes.GET_TUTOR_LIST_SUCCESS:
         case actionTypes.GET_DISCUSSION_LIST_FAILED:
         case actionTypes.GET_DISCUSSION_LIST_SUCCESS:
         case actionTypes.GET_EXAM_SUCCESS:
@@ -71,6 +76,12 @@ const toastReducer = (state = initialState, action) => {
         case actionTypes.UPLOAD_FILES_SUCCESS:
         case actionTypes.DELETE_FILE_SUCCESS:
         case actionTypes.DELETE_FILE_FAILED:
+        case actionTypes.GET_USER_FAILED:
+        case actionTypes.GET_USER_SUCCESS:
+        case actionTypes.DELETE_STUDENT_FAILED:
+        case actionTypes.DELETE_STUDENT_SUCCESS:
+        case actionTypes.REGISTRATION_FAILED:
+        case actionTypes.REGISTRATION_SUCCESS:
             return{ ...state, loading: false}
         
         default:
